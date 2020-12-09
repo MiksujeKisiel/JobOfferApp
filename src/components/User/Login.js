@@ -1,55 +1,65 @@
-import React, {useRef, useState} from 'react'
+import React from "react";
+import {
+  Form,
+  StyledLink,
+  FormWrapper,
+  Wrapper,
+  Text,
+  Label,
+  Input,
+  Button,
+  Group,
+} from "./FormStyles";
+import { ErrorMessage, Formik } from "formik";
+import * as Yup from "yup";
 
-import { useAuth } from '../../contexts/AuthContext';
-import { useHistory } from 'react-router-dom'
-import { Form, StyledLink, FormWrapper, Wrapper, Text, Label, Input, Button} from './FormStyles';
-export default function Login(){
-    const emailRef = useRef()
-    const passwordRef = useRef()
-    const { login } = useAuth()
-    const [error, setError] = useState('')
-    const [loading, setLoading] = useState(false)
-    const history = useHistory()
-    async function handleSubmit(e){
-        e.preventDefault()
-    
-        try{
-            setError('')
-            setLoading(true)
-           await login(emailRef.current.value, passwordRef.current.value)
-           history.push('/')
-        } catch{
-            setError('Failed to log in')
-        }
-        setLoading(false)
+const LoginSchema = Yup.object().shape({
+  email: Yup.string().email("invalid email").required("the email is required."),
+  password: Yup.string().required("the password is required"),
+});
 
-       
-    }
-    return (
-<Wrapper>
-        <FormWrapper>
+export default function Login() {
+  return (
+    <Wrapper>
+      <FormWrapper>
+        <Text>Sign In</Text>
+        <Formik
+          initialValues={{
+            email: "",
+            password: "",
+          }}
+          validationSchema={LoginSchema}
+          onSubmit={(values, { setSubmitting }) => {
+            console.log(values);
+          }}
+        >
+          {({ isSubmitting, isValid }) => (
+            <Form>
+              <Group>
+                <Label>Email</Label>
+                <Input type="email" name="email" />
+                <ErrorMessage name="email"></ErrorMessage>
+              </Group>
 
-           <Text>Sign In</Text>
-    {error ?? <p> {error}</p>}
-            <Form 
-            onSubmit={handleSubmit}>
-                <div className="group">
-            <Label>Email</Label>
-            <Input type="email" ref={emailRef} required/>
-            </div>
-            <div className="group">
-            <Label >Password</Label>
-            <Input type="password" ref={passwordRef} required/>
-            </div>
-        <Button disabled={loading}>Log in</Button>
-        </Form>
-     <div className="links">
-            <StyledLink to="/forgot-password"> forgot password?</StyledLink>
-        <p>Don't have an account? <StyledLink to="/signup">create account</StyledLink>
-        </p>
+              <Group>
+                <Label>Password</Label>
+                <Input type="password" name="password" />
+                <ErrorMessage name="password"></ErrorMessage>
+              </Group>
+              <Button type="submit">Log in</Button>
+            </Form>
+          )}
+        </Formik>
+
+        <div className="links">
+          <StyledLink to="/forgot-password"> forgot password?</StyledLink>
+          <p>
+            Don't have an account?{" "}
+            <StyledLink to="/signup">create account</StyledLink>
+          </p>
         </div>
-        </FormWrapper>
-        </Wrapper>
-    )
+      </FormWrapper>
+    </Wrapper>
+  );
 }
 

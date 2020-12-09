@@ -1,19 +1,23 @@
 import styled from 'styled-components';
 import {Link } from 'react-router-dom';
+import { Form as FormFormik, Field} from 'formik';
 
-export const Form = styled.form`
+export const Form = styled(FormFormik)`
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-.group{
-    margin: 10px 0;
-    width: 100%;
-}
+
+
 
 
 `
+export const Group = styled.div`
 
+.group{
+    margin: 10px 0;
+    width: 100%;
+}`
 export const StyledLink = styled(Link)`
 color: #7481A1;
 font-size: 13px;
@@ -23,8 +27,10 @@ font-size: 13px;
 export const FormWrapper = styled.div`
 display: flex;
 flex-direction: column;
-max-width: 300px;
+
 padding: 0 20px;
+box-shadow: 0 0 20px rgba(21,21,21,0.2);
+padding: 150px;
 `
 export const Wrapper = styled.div`
 display: flex;
@@ -53,7 +59,7 @@ color: #7481A1;
 
 
 `
-export const Input = styled.input`
+export const Input = styled(Field)`
 width: 100%;
 border: none;
 background: #F4F5F8;

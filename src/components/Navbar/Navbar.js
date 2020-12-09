@@ -62,17 +62,10 @@ const Navbar = () => {
                     exact to="/">  <img className="logo" src={Logo} alt=""/></StyledLink>  
               
                     </li>
-                    <li>
-                    <StyledLink
-                    exact to="/">Oferty pracy</StyledLink>  
-                  </li>
+      
                   </ul>
                   <ul>
-                    <li>
-                    <StyledLink 
-                     activeClassName="active" 
-                    to="/post">Post a job offer</StyledLink>  
-                    </li>
+     
                     <li>
                         <StyledLink 
                          activeClassName="active" 
@@ -83,6 +76,7 @@ const Navbar = () => {
                      activeClassName="active" 
                     to="/signup">Sign up</StyledLink>
                     </li>
+          
             
                 </ul>
             </Nav>
