@@ -120,6 +120,7 @@ const OfferBox = () => {
                onChange={(e) => setName(e.target.value)}
             value={name}
             type="text"
+            required
             />
             </div>
               <div>
@@ -127,6 +128,7 @@ const OfferBox = () => {
             <Input
             onChange={(e) => setCompany(e.target.value)}
             value={company}
+            required
             />
             </div>
             <div>
@@ -134,6 +136,7 @@ const OfferBox = () => {
             <Input
             onChange={(e) => setCompany(e.target.value)}
             value={company}
+            required
             />
             </div>
             <div>
@@ -142,6 +145,7 @@ const OfferBox = () => {
               onChange={(e) => setCompanySize(e.target.value)}
             value={companySize}
             type="text"
+            required
             />
             </div>
             <div>
@@ -150,6 +154,7 @@ const OfferBox = () => {
               onChange={(e) => setEarnings(e.target.value)}
             value={earnings}
             type="text"
+            required
             />
             </div>
             <div>
@@ -158,6 +163,7 @@ const OfferBox = () => {
               onChange={(e) => setLocation(e.target.value)}
             value={location}
             type="text"
+            required
             />
             </div>
          
