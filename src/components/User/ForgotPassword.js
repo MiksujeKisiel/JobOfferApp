@@ -1,7 +1,8 @@
 import React, {useRef, useState} from 'react'
 import styled from 'styled-components'
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom'
+import { Form, StyledLink, FormWrapper, Wrapper, Text, Label, Input, Button} from './FormStyles';
 
 
 export default function ForgotPassword() {
@@ -27,33 +28,22 @@ export default function ForgotPassword() {
   }
   return (
     <Wrapper>
-      <h2>Log in</h2>
+      <FormWrapper>
+      <Text>Reset password</Text>
       {error && <p> {error}</p>}
       {message && <p>{message}</p>}
-      <form style={{ display: "flex" }} onSubmit={handleSubmit}>
+      <Form style={{ alignItems: "center" }} onSubmit={handleSubmit}>
+      <div className="group" s>
         <Label>Email</Label>
         <Input type="email" ref={emailRef} required />
+        </div>
         <Button disabled={loading} type="submit" >Reset password</Button>
-      </form>
-      <Link to="/login"> Log in</Link>
-      <Text>
-        Don't have an account? <Link to="/signup">create account</Link>
-      </Text>
+      </Form>
+
+    
+      </FormWrapper>
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const Text = styled.p``;
-const Label = styled.label``;
-const Input = styled.input`
-  max-width: 300px;
-  border: 1px solid #131313;
-`;
-const Button = styled.button`
-  width: 150px;
-`;
 

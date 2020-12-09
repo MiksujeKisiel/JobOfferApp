@@ -1,24 +1,47 @@
 import React, { useEffect, useState} from 'react'
 import styled from 'styled-components'
+
+import Offer from './Offer';
 import { db } from '../firebase'
-import Offer from './Offer'
-import OfferBox from './OfferBox';
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+align-items: center;
+justify-content: center;
+max-width: 1100px;
+margin: 40px auto;
+display: flex;
+flex-wrap: wrap;
 
+`
+const Text = styled.p`
 
-function Post(){
-const [offer, setOffer] = useState([]);
+font-size: 25px;
+font-weight: 600;
+
+`
+const OfferWrapper = styled.div`
+  width: 100%;
+  
+`
+const Header = styled.header`
+    width: 100%;
+    margin-bottom: 10px;
+
+`
+const Main = () => {
+    const [offer, setOffer] = useState([]);
 
 useEffect(() => {
     db.collection("offer").onSnapshot((snapshot) =>
       setOffer(snapshot.docs.map((doc) => doc.data()))
     );
   }, []);
-
     return (
         <Wrapper>
-          <OfferBox/>
+            <Header>
+            <Text>Oferty pracy</Text>
+            </Header>
+            <OfferWrapper>
             {offer.map((offer) =>(
                 <Offer
                 company={offer.company}
@@ -28,9 +51,11 @@ useEffect(() => {
                 name={offer.name}     
                 />
              ) )}
-            
+             </OfferWrapper>
+      
+
         </Wrapper>
     )
 }
 
-export default Post
+export default Main

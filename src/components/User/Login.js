@@ -1,7 +1,8 @@
 import React, {useRef, useState} from 'react'
-import styled from 'styled-components'
-import { useAuth } from '../contexts/AuthContext';
-import { Link, useHistory } from 'react-router-dom'
+
+import { useAuth } from '../../contexts/AuthContext';
+import { useHistory } from 'react-router-dom'
+import { Form, StyledLink, FormWrapper, Wrapper, Text, Label, Input, Button} from './FormStyles';
 export default function Login(){
     const emailRef = useRef()
     const passwordRef = useRef()
@@ -25,48 +26,30 @@ export default function Login(){
        
     }
     return (
-        <Wrapper>
-            <h2>Log in</h2>
+<Wrapper>
+        <FormWrapper>
+
+           <Text>Sign In</Text>
     {error ?? <p> {error}</p>}
-            <form style={{display: "flex"}}
+            <Form 
             onSubmit={handleSubmit}>
+                <div className="group">
             <Label>Email</Label>
             <Input type="email" ref={emailRef} required/>
+            </div>
+            <div className="group">
             <Label >Password</Label>
             <Input type="password" ref={passwordRef} required/>
-   
+            </div>
         <Button disabled={loading}>Log in</Button>
-        </form>
-        <div>
-            <Link to="/forgot-password"> forgot password?</Link>
+        </Form>
+     <div className="links">
+            <StyledLink to="/forgot-password"> forgot password?</StyledLink>
+        <p>Don't have an account? <StyledLink to="/signup">create account</StyledLink>
+        </p>
         </div>
-        <Text>Don't have an account? <Link to="/signup">create account</Link>
-        <Link to="/post">post work</Link>
-        </Text>
+        </FormWrapper>
         </Wrapper>
     )
 }
-
-
-const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-
-
-
-`
-const Text = styled.p`
-
-`
-const Label = styled.label`
-
-`
-const Input = styled.input`
-max-width: 300px;
-border: 1px solid #131313;
-
-`
-const Button = styled.button`
-width: 150px;
-`
 
