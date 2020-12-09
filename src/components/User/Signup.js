@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react'
-import styled from 'styled-components'
+
 import { useAuth } from '../../contexts/AuthContext';
-import { Link, useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import { Form, StyledLink, FormWrapper, Wrapper, Text, Label, Input, Button} from './FormStyles';
 
 
