@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-
 import { connect } from "react-redux";
 import { Formik, Field } from "formik";
 import { Form, FormWrapper, Wrapper, Text } from "../Form/FormStyles";
@@ -43,7 +42,7 @@ const AddJob = ({addJob, error, loading}) => {
           validationSchema={JobSchema}
           onSubmit={async (values, { setSubmitting }) => {
             console.log(values);
-            await addJob(values)
+            await addJob(values);
             setSubmitting(false);
           }}
         >
