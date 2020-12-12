@@ -28,7 +28,7 @@ export const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  createFirestoreInstance
+  createFirestoreInstance,
 };
 
 export default store;

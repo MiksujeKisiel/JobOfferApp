@@ -6,7 +6,7 @@ import jobReducer from './jobReducer';
 import authReducer from './authReducer';
 
 const rootReducer = combineReducers({
-     auth: authReducer,
+    auth: authReducer,
     job: jobReducer,
     firebase:firebaseReducer,
     firestore: firestoreReducer

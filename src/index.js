@@ -7,15 +7,15 @@ import {
   ReactReduxFirebaseProvider
 } from "react-redux-firebase";
 import rrfProps from "./store";
-import Loader from "./components/Loader";
-import styled from "styled-components";
+// import Loader from "./components/Loader";
+// import styled from "styled-components";
 
-const Wrapper = styled.div`
-  height: calc(100vh - 90px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+// const Wrapper = styled.div`
+//   height: calc(100vh - 90px);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// `;
 
 const root = document.getElementById("root");
 
