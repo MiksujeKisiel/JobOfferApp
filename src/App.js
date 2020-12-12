@@ -1,30 +1,64 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from './components/User/Login';
-import Signup from './components/User/Signup';
-import Layout from './Layout/Layout';
-import { Provider } from 'react-redux';
-import store from './store';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import Login from "./components/User/Login";
+import Signup from "./components/User/Signup";
+import Layout from "./Layout/Layout";
+import Logout from "./components/User/Logout";
+import AddJob from './components/Job/AddJob'
+import Main from './components/Job/Main'
+import { connect } from "react-redux";
+import VerifyEmail from "./components/User/VerifyEmail";
+import RecoverPassword from './components/User/RecoverPassword'
+import Profile from './components/User/Profile';
 
 
+const App = ({ loggedIn, emailVerified }) => {
+  let routes;
 
-
-function App() {
+  if (loggedIn && !emailVerified) {
+    routes = (
+      <Switch>
+        <Route exact path="/verify-email" component={VerifyEmail} />
+        <Route exact path="/logout" component={Logout} />
+        <Route exact path="/" component={Main} />
+        <Redirect to="/verify-email" />
+      </Switch>
+    );
+  } else if (loggedIn && emailVerified) {
+    routes = (
+      <Switch>
+        <Route exact path="/" component={Main} />
+        <Route path="/logout" component={Logout} />
+        <Route path="/addjob" component={AddJob} />
+        <Route exact path="/profile" component={Profile} />
+        <Redirect to="/" />
+      </Switch>
+    );
+  } else {
+    routes = (
+      <Switch>
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/recover-password" component={RecoverPassword} />
+        <Route exact path="/" component={Main} />
+      </Switch>
+    );
+  }
   return (
- 
-    <Provider store={store}>
-      <Router>
-          <Switch>
-            <Layout> 
-            <Route exact path="/signup" component={Signup}/>
-            <Route path="/" component={Login}/>    
-            </Layout>
-          </Switch>  
-      </Router>
-      </Provider>
-  
-
+    <Router>
+      <Layout>{routes}</Layout>
+    </Router>
   );
-}
+};
 
-export default App;
+const mapStateToProps = ({ firebase }) => ({
+  loggedIn: firebase.auth.uid ? true : null,
+  emailVerified: firebase.auth.emailVerified,
+});
+
+export default connect(mapStateToProps)(App);

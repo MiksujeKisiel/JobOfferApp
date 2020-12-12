@@ -1,24 +1,26 @@
-import React from "react";
-import {
-  Form,
-  StyledLink,
-  FormWrapper,
-  Wrapper,
-  Text,
-  Label,
-  Input,
-  Button,
-  Group,
-} from "./FormStyles";
-import { ErrorMessage, Formik } from "formik";
+import React, { useEffect } from "react";
+import { Form, FormWrapper, Wrapper, Text } from "../Form/FormStyles";
+import { Formik, Field } from "formik";
 import * as Yup from "yup";
+import Input from "../Form/Input";
+import Button from "../Form/Button";
+import Reference from '../Form/Reference';
+import { connect } from 'react-redux'
+import * as actions from '../../store/actions';
+import Message from '../Form/Message';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("invalid email").required("the email is required."),
   password: Yup.string().required("the password is required"),
 });
 
-export default function Login() {
+function Login({login, loading, error, cleanUp}) {
+  useEffect(() =>{
+    return () =>{
+    cleanUp();
+    }
+  },[cleanUp]);
+
   return (
     <Wrapper>
       <FormWrapper>
@@ -29,37 +31,56 @@ export default function Login() {
             password: "",
           }}
           validationSchema={LoginSchema}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={async (values, { setSubmitting }) => {
             console.log(values);
+            await login(values);
+            setSubmitting(false);
           }}
         >
           {({ isSubmitting, isValid }) => (
             <Form>
-              <Group>
-                <Label>Email</Label>
-                <Input type="email" name="email" />
-                <ErrorMessage name="email"></ErrorMessage>
-              </Group>
-
-              <Group>
-                <Label>Password</Label>
-                <Input type="password" name="password" />
-                <ErrorMessage name="password"></ErrorMessage>
-              </Group>
-              <Button type="submit">Log in</Button>
+              <Field 
+               word="Email"
+               type="email" 
+               name="email" 
+               component={Input} />
+              <Field
+                word="Password"
+                type="password"
+                name="password"
+                component={Input}
+              />
+              <Button 
+                disabled={!isValid || isSubmitting}
+                loading={loading ? "Signing up" : null}
+              type="submit">Log in</Button>
             </Form>
           )}
         </Formik>
-
-        <div className="links">
-          <StyledLink to="/forgot-password"> forgot password?</StyledLink>
-          <p>
-            Don't have an account?{" "}
-            <StyledLink to="/signup">create account</StyledLink>
-          </p>
-        </div>
+        <Message error show={error}>
+        {error}   
+        </Message>
+        <Reference
+               text="forgot your"
+               link=" password"
+               to="/forgot-password"
+        />
+      
       </FormWrapper>
     </Wrapper>
   );
 }
 
+
+const mapStateToProps = ({auth}) => ({
+  loading: auth.loading,
+  error: auth.error,
+})
+
+const mapDispatchToProps = {
+  login: actions.signIn,
+  cleanUp: actions.clean
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

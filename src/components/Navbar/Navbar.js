@@ -1,87 +1,63 @@
-import React from 'react'
-import styled from 'styled-components';
-import { NavLink as Link } from 'react-router-dom';
-import Logo from '../../assets/images/kisieljobs.png'
+import React from "react";
+import styled from "styled-components";
+import Logo from "../../assets/images/kisieljobs.png";
+import NavLink from "./NavLink";
+import { NavLink as Link } from "react-router-dom";
 
 const Nav = styled.nav`
-background: #0E1926;
-display: flex;
-justify-content: space-between;
-ul{
-position: relative;
-display: flex;
-align-items: center;
-height: 90px;
-.logo{
-    width: 120px;
-    height: 80px;
-}
-.active{
-    color:#00C2E9;
-  li{
-    :after{
-        content: "";
-        width: 500px;
-        height: 5px;
-        background: blue;
-        position: absolute;
-        display: block;
-       
+  background: #0e1926;
+  display: flex;
+  justify-content: space-between;
+    .logo {
+      width: 120px;
+      height: 80px;
     }
-  }
-  
-}
+`;
 
-li{
-    
-    height: 100%;
+const Wrapper = styled.ul`
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    :hover{
-        
-    }
-}
-}
-`
-const StyledLink = styled(Link)`
-color: white;
-font-size: 19px;
-margin: 0 20px;
-
+    height: 90px;
 `
 
+const Navbar = ({ loggedIn }) => {
+  let links;
 
-const Navbar = () => {
-    return (
-   
-             <Nav>
-                <ul>
-                    <li className="li">
-                    <StyledLink
-                    exact to="/">  <img className="logo" src={Logo} alt=""/></StyledLink>  
-              
-                    </li>
+  if (loggedIn) {
+    links = (
+      <>
+      <Wrapper>
+        <NavLink text="Home" to="/" />
       
-                  </ul>
-                  <ul>
-     
-                    <li>
-                        <StyledLink 
-                         activeClassName="active" 
-                        to="/login">Log in</StyledLink>
-                    </li>
-                    <li>
-                    <StyledLink 
-                     activeClassName="active" 
-                    to="/signup">Sign up</StyledLink>
-                    </li>
-          
-            
-                </ul>
-            </Nav>
-      
-    )
-}
+  
+        <NavLink text="add offer" to="/addjob" />
+      </Wrapper>
+      <Wrapper>
+      <NavLink text="profile" to="/profile" />
+        <NavLink text="Logout" to="/logout" />
+        </Wrapper>
+        </>
+            );
+  } else {
+    links = (
+      <>
+        <Wrapper >
+          <Link to="/">
+            <img className="logo" src={Logo} alt="" />
+          </Link>
+          <NavLink to="/" text="home" />
+        </Wrapper>
+        <Wrapper >
+          <NavLink exact to="/login" text="login" />
+          <NavLink exact to="/recover-password" text="Recover password" />
+          <NavLink exact to="/signup" text="signup" />
+        </Wrapper>
+      </>
+    );
+  }
 
-export default Navbar
+  return <Nav>{links}</Nav>;
+};
+
+export default Navbar;

@@ -1,0 +1,26 @@
+export const AUTH_START = "AUTH_START";
+export const AUTH_END = "AUTH_END";
+export const AUTH_SUCCESS = "AUTH_SUCCES";
+export const AUTH_FAIL = "AUTH_FAIL";
+
+export const CLEAN_UP = "CLEAN_UP";
+
+export const VERIFY_START = "VERIFY_START";
+export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
+export const VERIFY_FAIL = "VERIFY_FAIL";
+
+export const RECOVERY_START = "RECOVERY_START";
+export const RECOVERY_SUCCESS = "RECOVERY_SUCCESS";
+export const RECOVERY_FAIL = "RECOVERY_FAIL";
+
+export const PROFILE_EDIT_START = "PROFILE_EDIT_START";
+export const PROFILE_EDIT_SUCCESS = "PROFILE_EDIT_SUCCESS";
+export const PROFILE_EDIT_FAIL = "PROFILE_EDIT_FAIL";
+
+export const ADD_JOB_START = "ADD_JOB_START"
+export const ADD_JOB_SUCCESS = "ADD_JOB_SUCCESS"
+export const ADD_JOB_FAIL = "ADD_JOB_FAIL"
+
+export const DELETE_JOB_START = "DELATE_JOB_START"
+export const DELETE_JOB_SUCCESS = "DELATE_JOB_SUCCESS"
+export const DELETE_JOB_FAIL = "DELATE_JOB_FAIL"

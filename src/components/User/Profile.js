@@ -1,55 +1,57 @@
 import React, {useEffect} from "react";
-import { Formik, Field } from "formik";
-import Input from "../Form/Input";
-import Button from "../Form/Button";
-import Reference from '../Form/Reference';
-import Message from '../Form/Message';
-import * as Yup from "yup";
-import { Form, FormWrapper, Wrapper, Text } from "../Form/FormStyles";
-import * as actions from "../../store/actions";
+
 import { connect } from "react-redux";
+import { Formik, Field } from "formik";
+import { Form, FormWrapper, Wrapper, Text } from "../Form/FormStyles";
+import Button from "../Form/Button";
+import Message from "../Form/Message";
+import Input from "../Form/Input";
+import * as Yup from "yup";
+import * as actions from "../../store/actions";
 
-const LoginSchema = Yup.object().shape({
+const ProfileSchema = Yup.object().shape({
   firstName: Yup.string()
-    .required("Your first name is required")
-    .min(3, "Too short")
-    .max(25, "Too long"),
+    .required('Your first name is required.')
+    .min(3, 'Too short.')
+    .max(25, 'Too long.'),
   lastName: Yup.string()
-    .required("Your last name is required")
-    .min(3, "Too short")
-    .max(25, "Too long"),
-  email: Yup.string().email("invalid email").required("the email is required."),
-  password: Yup.string()
-    .required("the password is required")
-    .min(8, "Too short")
-    .max(25, "Too long"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], `Password doesn't match`)
-    .required("You need to confirm your password"),
+    .required('Your last name is required.')
+    .min(3, 'Too short.')
+    .max(25, 'Too long.'),
+  email: Yup.string()
+    .email('Invalid email.')
+    .required('The email is required.'),
+    password: Yup.string()
+    .min(3, 'Too short.')
+    .max(25, 'Too long.'),
+    confirmPassword: Yup.string()
+       .oneOf([Yup.ref('password'), null], 'Passwords must match')
 });
-
-const Signup = ({ signUp, loading, error, cleanUp }) => {
+const Profile = ({ firebase, loading, error, editProfile, cleanUp}) => {
   useEffect(() =>{
     return () =>{
     cleanUp();
     }
-  },[cleanUp])
+  },[cleanUp]);
+
+  if (!firebase.profile.isLoaded) return null;
+
   return (
     <Wrapper>
       <FormWrapper>
-        <Text>Sign Up</Text>
+        <Text>Edit profile</Text>
         <Formik
           initialValues={{
-            firstName: "",
-            lastName: "",
-            email: "",
+            firstName: firebase.profile.firstName,
+            lastName: firebase.profile.lastName,
+            email: firebase.auth.email,
             password: "",
             confirmPassword: "",
           }}
-          validationSchema={LoginSchema}
+          validationSchema={ProfileSchema}
           onSubmit={async (values, { setSubmitting }) => {
             console.log(values);
-            await signUp(values);
+           await editProfile(values);
             setSubmitting(false);
           }}
         >
@@ -83,32 +85,33 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
               <Button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Signing up" : null}
-                type="submit">
+                type="submit"
+              >
                 Sign up
               </Button>
             </Form>
           )}
-        </Formik>
-        <Reference
-        text="Have you got an account? "
-        link="log in"
-        to="/login"/>
+        </Formik>  
         <Message error show={error}>
         {error}   
+        </Message>
+        <Message error show={error === false}>
+        Profile updated  
         </Message>
       </FormWrapper>
     </Wrapper>
   );
 };
 
-const mapStateToProps = ({ auth }) => ({
-  loading: auth.loading,
-  error: auth.error
+const mapStateToProps = ({ firebase, auth }) => ({
+  firebase,
+  loading: auth.profileEdit.loading,
+  error: auth.profileEdit.error
 });
 
 const mapDispatchToProps = {
-  signUp: actions.signUp,
+  editProfile: actions.editProfile,
   cleanUp: actions.clean
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
