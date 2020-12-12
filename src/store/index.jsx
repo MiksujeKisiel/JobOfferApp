@@ -7,8 +7,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
 import config from '../Firebase/Firebase';
 
-
-
 export const store = createStore(
   rootReducer,
   composeWithDevTools(

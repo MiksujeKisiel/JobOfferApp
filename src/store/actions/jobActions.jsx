@@ -25,7 +25,7 @@ export const addJob = (data) => async (
         .set({
           jobs: [newJob],
         });
-    } else {
+    } else{
       firestore
         .collection("jobs")
         .doc(userId)
