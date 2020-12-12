@@ -39,19 +39,4 @@ const Main = () => {
   );
 };
 
-const mapStateToProps = ({firebase}) => ({
- 
-})
-
-const mapDispatchToProps = {
-    
-}
-
-
-export default compose(
-   firestoreConnect(['jobs']),
-    connect(
-        mapStateToProps,
-        mapDispatchToProps
-    )
-)(Main)
+export default Main;
