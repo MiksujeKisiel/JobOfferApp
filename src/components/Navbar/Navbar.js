@@ -8,18 +8,18 @@ const Nav = styled.nav`
   background: #0e1926;
   display: flex;
   justify-content: space-between;
-    .logo {
-      width: 120px;
-      height: 80px;
-    }
+  .logo {
+    width: 120px;
+    height: 80px;
+  }
 `;
 
 const Wrapper = styled.ul`
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 90px;
-`
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 90px;
+`;
 
 const Navbar = ({ loggedIn }) => {
   let links;
@@ -27,28 +27,28 @@ const Navbar = ({ loggedIn }) => {
   if (loggedIn) {
     links = (
       <>
-      <Wrapper>
-        <NavLink text="Home" to="/" />
-      
-  
-        <NavLink text="add offer" to="/addjob" />
-      </Wrapper>
-      <Wrapper>
-      <NavLink text="profile" to="/profile" />
-        <NavLink text="Logout" to="/logout" />
+        <Wrapper>
+          <NavLink text="Home" to="/" />
+          <NavLink text="add offer" to="/addjob" />
+          <NavLink text="my job offers" to="/profile-jobs" />
+          <NavLink text="Jobs offers" to="/" />
         </Wrapper>
-        </>
-            );
+        <Wrapper>
+          <NavLink text="profile" to="/profile" />
+          <NavLink text="Logout" to="/logout" />
+        </Wrapper>
+      </>
+    );
   } else {
     links = (
       <>
-        <Wrapper >
+        <Wrapper>
           <Link to="/">
             <img className="logo" src={Logo} alt="" />
           </Link>
           <NavLink to="/" text="home" />
         </Wrapper>
-        <Wrapper >
+        <Wrapper>
           <NavLink exact to="/login" text="login" />
           <NavLink exact to="/recover-password" text="Recover password" />
           <NavLink exact to="/signup" text="signup" />

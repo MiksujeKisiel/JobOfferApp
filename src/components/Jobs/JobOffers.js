@@ -25,7 +25,7 @@ const Header = styled.header`
   margin-bottom: 10px;
 `;
 
-const ProfileJobs = ({ jobs, requested, userId }) => {
+const JobOffers = ({ jobs, requested, userId }) => {
 
 
   let content;
@@ -86,4 +86,4 @@ const mapDispatchToProps = {};
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect((props) => [`jobs/${props.userId}`])
-)(ProfileJobs);
+)(JobOffers);

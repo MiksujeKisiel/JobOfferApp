@@ -10,7 +10,8 @@ import Signup from "./components/User/Signup";
 import Layout from "./Layout/Layout";
 import Logout from "./components/User/Logout";
 import AddJob from './components/Job/AddJob'
-import Main from './components/Job/Main'
+import ProfileJobs from './components/Job/Main'
+import JobOffers from './components/Jobs/JobOffers'
 import { connect } from "react-redux";
 import VerifyEmail from "./components/User/VerifyEmail";
 import RecoverPassword from './components/User/RecoverPassword'
@@ -25,17 +26,18 @@ const App = ({ loggedIn, emailVerified }) => {
       <Switch>
         <Route exact path="/verify-email" component={VerifyEmail} />
         <Route exact path="/logout" component={Logout} />
-        <Route exact path="/" component={Main} />
+      
         <Redirect to="/verify-email" />
       </Switch>
     );
   } else if (loggedIn && emailVerified) {
     routes = (
       <Switch>
-        <Route exact path="/" component={Main} />
+        <Route exact path="/profile-jobs" component={ProfileJobs} />
         <Route path="/logout" component={Logout} />
         <Route path="/addjob" component={AddJob} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/" component={JobOffers} />
         <Redirect to="/" />
       </Switch>
     );
@@ -45,7 +47,7 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/recover-password" component={RecoverPassword} />
-        <Route exact path="/" component={Main} />
+        <Route exact path="/" component={JobOffers} />
       </Switch>
     );
   }
@@ -61,4 +63,9 @@ const mapStateToProps = ({ firebase }) => ({
   emailVerified: firebase.auth.emailVerified,
 });
 
-export default connect(mapStateToProps)(App);
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

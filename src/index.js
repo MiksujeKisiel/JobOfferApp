@@ -7,6 +7,7 @@ import {
   ReactReduxFirebaseProvider
 } from "react-redux-firebase";
 import {rrfProps} from "./store";
+
 // import Loader from "./components/Loader";
 // import styled from "styled-components";
 
