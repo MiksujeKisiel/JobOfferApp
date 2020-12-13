@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Login from "./components/User/Login";
 import Signup from "./components/User/Signup";
-import Layout from "./Layout/Layout";
+import Layout from "./layout/Layout";
 import Logout from "./components/User/Logout";
 import AddJob from './components/Job/AddJob'
 import ProfileJobs from './components/Job/Main'
