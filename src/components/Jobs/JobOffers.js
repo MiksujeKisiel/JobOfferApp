@@ -39,7 +39,7 @@ const JobOffers = ({ jobs, requested, userId }) => {
     content = (
       <div>
         <p >
-        nie masz dodanych ofert prac
+        nikt nie dodał jeszcze ofert pracy
         </p>
       </div>
     );
@@ -47,7 +47,7 @@ const JobOffers = ({ jobs, requested, userId }) => {
     content = (
       <div>
         <p >
-          nie masz dodanych ofert prac
+        nikt nie dodał jeszcze ofert pracy
         </p>
       </div>
     );
