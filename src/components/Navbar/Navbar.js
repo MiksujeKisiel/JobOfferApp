@@ -28,12 +28,15 @@ const Navbar = ({ loggedIn }) => {
     links = (
       <>
         <Wrapper>
+        <img className="logo" src={Logo} alt="" />
           <NavLink text="Home" to="/" />
-          <NavLink text="add offer" to="/addjob" />
-          <NavLink text="my job offers" to="/profile-jobs" />
+    
+     
           <NavLink text="Jobs offers" to="/" />
         </Wrapper>
         <Wrapper>
+        <NavLink text="my job offers" to="/profile-jobs" />
+        <NavLink text="add offer" to="/addjob" />
           <NavLink text="profile" to="/profile" />
           <NavLink text="Logout" to="/logout" />
         </Wrapper>
