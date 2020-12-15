@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import { Form, FormWrapper, Wrapper, Text } from "../Form/FormStyles";
+import { Form, FormWrapper, Wrapper, Text } from "../Items/Form/FormStyles";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
-import Input from "../Form/Input";
-import Button from "../Form/Button";
-import Reference from '../Form/Reference';
+import Input from "../Items/Form/Input";
+import Button from "../Items/Form/Button";
+import Reference from '../Items/Form/Reference';
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions';
-import Message from '../Form/Message';
+import Message from '../Items/Form/Message';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("invalid email").required("the email is required."),

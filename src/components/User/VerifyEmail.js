@@ -2,8 +2,8 @@ import React, {useEffect} from "react";
 import styled from "styled-components";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
-import Button from "../Form/Button";
-import Message from "../Form/Button";
+import Button from "../Items/Form/Button";
+import Message from "../Items/Form/Button";
 
 const Wrapper = styled.div``;
 const Text = styled.p``;

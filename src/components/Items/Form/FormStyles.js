@@ -9,8 +9,6 @@ align-items: center;
 justify-content: center;
 `
 
-
-
 export const FormWrapper = styled.div`
 display: flex;
 flex-direction: column;

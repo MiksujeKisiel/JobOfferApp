@@ -39,3 +39,31 @@ export const addJob = (data) => async (
     dispatch({ type: actions.ADD_JOB_FAIL, payload: err.message });
   }
 };
+
+// Delete job
+
+export const deleteJob = id => async(dispatch, getState, {getFirestore}) =>{
+  const firestore = getFirestore();
+  const userId = getState().firebase.auth.uid;
+
+  dispatch({ type: actions.DELETE_JOB_START });
+  try {
+    const res = await firestore
+      .collection('jobs')
+      .doc(userId)
+      .get();
+    const previousJobs = res.data().jobs;
+    const newJobs = previousJobs.filter(job => job.id !== id);
+    await firestore
+      .collection('jobs')
+      .doc(userId)
+      .update({
+        jobs: newJobs
+      });
+
+    dispatch({type: actions.DELETE_JOB_SUCCESS})
+  }
+  catch(err){
+    dispatch({type: actions.DELETE_JOB_FAIL})
+  }
+}

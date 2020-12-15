@@ -26,8 +26,6 @@ const Header = styled.header`
 `;
 
 const ProfileJobs = ({ jobs, requested, userId }) => {
-
-
   let content;
   if (!jobs) {
     content = (
@@ -38,17 +36,13 @@ const ProfileJobs = ({ jobs, requested, userId }) => {
   } else if (!jobs[userId] || !jobs[userId].jobs) {
     content = (
       <div>
-        <p >
-        nie masz dodanych ofert prac
-        </p>
+        <p>nie masz dodanych ofert prac</p>
       </div>
     );
   } else if (jobs[userId].jobs.length === 0) {
     content = (
       <div>
-        <p >
-          nie masz dodanych ofert prac
-        </p>
+        <p>nie masz dodanych ofert prac</p>
       </div>
     );
   } else {
@@ -57,7 +51,7 @@ const ProfileJobs = ({ jobs, requested, userId }) => {
         {jobs[userId].jobs
           .slice(0)
           .reverse()
-          .map(jobs => (
+          .map((jobs) => (
             <Offer jobs={jobs} />
           ))}
       </OfferWrapper>

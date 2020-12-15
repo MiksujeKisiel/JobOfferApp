@@ -1,11 +1,11 @@
 import React, {useEffect} from "react";
 import { Formik, Field } from "formik";
-import Input from "../Form/Input";
-import Button from "../Form/Button";
-import Reference from '../Form/Reference';
-import Message from '../Form/Message';
+import Input from "../Items/Form/Input";
+import Button from "../Items/Form/Button";
+import Reference from '../Items/Form/Reference';
+import Message from '../Items/Form/Message';
 import * as Yup from "yup";
-import { Form, FormWrapper, Wrapper, Text } from "../Form/FormStyles";
+import { Form, FormWrapper, Wrapper, Text } from "../Items/Form/FormStyles";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 

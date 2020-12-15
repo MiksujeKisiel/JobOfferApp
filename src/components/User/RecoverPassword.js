@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { FormWrapper, Form,Wrapper  } from "../Form/FormStyles";
+import { FormWrapper, Form,Wrapper  } from "../Items/Form/FormStyles";
 import { Formik, Field } from "formik";
-import Input from "../Form/Input";
+import Input from "../Items/Form/Input";
 import * as Yup from "yup";
-import Button from '../Form/Button';
-import Message from '../Form/Message';
+import Button from '../Items/Form/Button';
+import Message from '../Items/Form/Message';
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions'
 

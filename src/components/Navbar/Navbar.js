@@ -28,10 +28,8 @@ const Navbar = ({ loggedIn }) => {
     links = (
       <>
         <Wrapper>
-        <img className="logo" src={Logo} alt="" />
+         <img className="logo" src={Logo} alt="" />
           <NavLink text="Home" to="/" />
-    
-     
           <NavLink text="Jobs offers" to="/" />
         </Wrapper>
         <Wrapper>
