@@ -85,5 +85,5 @@ const mapDispatchToProps = {};
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect((props) => [`jobs/${props.userId}`])
+  firestoreConnect((props) => ['jobs'])
 )(JobOffers);

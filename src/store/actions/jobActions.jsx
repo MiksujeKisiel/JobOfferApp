@@ -67,3 +67,34 @@ export const deleteJob = id => async(dispatch, getState, {getFirestore}) =>{
     dispatch({type: actions.DELETE_JOB_FAIL})
   }
 }
+
+//edit Job
+export const editJob = (id, data) => async(dispatch, getState, {getFirestore}) =>{
+  const firestore = getFirestore();
+  const userId = getState().firebase.auth.uid;
+  dispatch({ type: actions.EDIT_JOB_START });
+ 
+  try {
+    const res = await firestore
+      .collection('jobs')
+      .doc(userId)
+      .get();
+    const jobs = res.data().jobs;
+    const index = jobs.findIndex(job => job.id === id);
+    jobs[index] = data.jobs;
+
+    await firestore
+      .collection('jobs')
+      .doc(userId)
+      .update({
+        jobs,
+      });
+    dispatch({ type: actions.EDIT_JOB_SUCCESS });
+    return true;
+  }
+  catch (err){
+
+    dispatch({ type: actions.EDIT_JOB_FAIL, payload: err.message });
+
+  }
+}

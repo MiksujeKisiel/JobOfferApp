@@ -34,6 +34,15 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         deleteJob: { ...state.deleteJob, loading: true, error: payload },
       };
+
+    case actions.EDIT_JOB_START:
+      return { ...state, loading: true };
+
+    case actions.EDIT_JOB_SUCCESS:
+      return { ...state, loading: true, error: false };
+
+    case actions.EDIT_JOB_FAIL:
+      return { ...state, loading: true, error: payload };
     default:
       return state;
   }
