@@ -29,7 +29,7 @@ const DeleteJob = ({ show, close, isOpened, jobs, deleteJob, error, loading }) =
         {error}   
         </Message>
         <Message error show={error === false}>
-        Job deleted succesfuly
+        Job deleted 
         </Message>
     </Modal>
   );
