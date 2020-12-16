@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import Offer from "./Offer";
+import JobsWrapper from "./JobsWrapper";
+import Job from './Job';
 
 const Wrapper = styled.div`
   align-items: center;
@@ -25,65 +26,67 @@ const Header = styled.header`
   margin-bottom: 10px;
 `;
 
-const JobOffers = ({ jobs, requested, userId }) => {
+const MainJobs = ({jobs}) => {
 
 
-  let content;
-  if (!jobs) {
-    content = (
-      <div>
-        <p>ładowanie</p>
-      </div>
-    );
-  } else if (!jobs[userId] || !jobs[userId].jobs) {
-    content = (
-      <div>
-        <p >
-        nikt nie dodał jeszcze ofert pracy
-        </p>
-      </div>
-    );
-  } else if (jobs[userId].jobs.length === 0) {
-    content = (
-      <div>
-        <p >
-        nikt nie dodał jeszcze ofert pracy
-        </p>
-      </div>
-    );
-  } else {
-    content = (
-      <OfferWrapper>
-        {jobs[userId].jobs
-          .slice(0)
-          .reverse()
-          .map(jobs => (
-            <Offer jobs={jobs} />
-          ))}
-      </OfferWrapper>
-    );
-  }
 
+
+
+    console.log(jobs)
+
+  // let content;
+  // if (!jobs) {
+  //   content = (
+  //     <div>
+  //       <p>ładowanie</p>
+  //     </div>
+  //   );
+  // } else if (!jobs || !jobs.jobs) {
+  //   content = (
+  //     <div>
+  //       <p>nie masz dodanych ofert prac</p>
+  //     </div>
+  //   );
+  // } else if (jobs.jobs.length === 0) {
+  //   content = (
+  //     <div>
+  //       <p>nie masz dodanych ofert prac</p>
+  //     </div>
+  //   );
+  // } else {
+  //   content = (
+  //     <OfferWrapper>
+  //       {jobs.jobs
+  //         .slice(0)
+  //         .reverse()
+  //         .map((jobs) => (
+  //           <Offer jobs={jobs} />
+  //         ))}
+  //     </OfferWrapper>
+  //   );
+  // }
   return (
     <Wrapper>
       <Header>
         <Text>Oferty pracy</Text>
       </Header>
-      <OfferWrapper>{content}</OfferWrapper>
+      <OfferWrapper>
+      <Job job={jobs}/>
+
+      </OfferWrapper>
     </Wrapper>
   );
-};
+}
+const mapStateToProps = ({firestore}) => ({
+  jobs: firestore.ordered.jobs,
 
-const mapStateToProps = ({ firebase, firestore }) => ({
-  userId: firebase.auth.uid,
-  jobs: firestore.data.jobs,
-  // requesting: firestore.status.requesting,
-  requested: firestore.status.requested,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  
+};
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect((props) => ['jobs'])
-)(JobOffers);
+  firestoreConnect([{collection: 'jobs'}] )
+)(MainJobs);

@@ -16,6 +16,7 @@ import { connect } from "react-redux";
 import VerifyEmail from "./components/User/VerifyEmail";
 import RecoverPassword from './components/User/RecoverPassword'
 import Profile from './components/User/Profile';
+import MainJobs from './components/Jobs/JobOffers';
 
 
 const App = ({ loggedIn, emailVerified }) => {
@@ -37,7 +38,7 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route path="/logout" component={Logout} />
         <Route path="/addjob" component={AddJob} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/" component={JobOffers} />
+        <Route exact path="/" component={MainJobs} />
         <Redirect to="/" />
       </Switch>
     );
@@ -47,7 +48,7 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/recover-password" component={RecoverPassword} />
-        <Route exact path="/" component={JobOffers} />
+        <Route exact path="/" component={MainJobs} />
       </Switch>
     );
   }
