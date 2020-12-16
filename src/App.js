@@ -11,7 +11,7 @@ import Layout from "./layout/Layout";
 import Logout from "./components/User/Logout";
 import AddJob from './components/Job/AddJob'
 import ProfileJobs from './components/Job/Main'
-import JobOffers from './components/Jobs/JobOffers'
+
 import { connect } from "react-redux";
 import VerifyEmail from "./components/User/VerifyEmail";
 import RecoverPassword from './components/User/RecoverPassword'

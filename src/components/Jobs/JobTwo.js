@@ -12,7 +12,6 @@ const JobTwo = ({jobs, id}) => {
           .map((jobs) => (
             <JobThree jobs={jobs} />
           ))}
-{/* {JSON.stringify(jobs)} */}
         </Wrapper>
     )
 }

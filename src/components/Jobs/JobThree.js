@@ -44,6 +44,7 @@ display: flex;
 
 `
 
+
 const Wrapper = styled.div`
 margin: 0 auto;
 display: flex;
@@ -56,6 +57,7 @@ border-left: 3px solid #151515;
 padding: 0 15px;
 cursor: pointer;
 transition: 0.4s ease;
+width: 700px;
 :hover{
     background: #f6f2fc;
 }

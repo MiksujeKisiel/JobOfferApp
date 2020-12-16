@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+
 import JobTwo from './JobTwo';
 
 
@@ -13,7 +13,7 @@ const Job = ({job, id}) => {
 <JobTwo jobs={job.jobs} id={job.id}/>
            )
        })}
-      
+
         </div>
        
      
