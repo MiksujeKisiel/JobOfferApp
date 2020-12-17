@@ -25,6 +25,23 @@ const JobSchema = Yup.object().shape({
     .required("attribute is required")
     .min(3, "Too short.")
     .max(25, "Too long."),
+    location: Yup.string()
+    .required("location is required")
+    .min(3, "Too short.")
+    .max(25, "Too long."),
+    jobtype: Yup.string()
+    .required("jobtype is required")
+    .min(3, "Too short.")
+    .max(25, "Too long."),
+    jobtime: Yup.string()
+    .required("jobtime is required")
+    .min(3, "Too short.")
+    .max(25, "Too long."),
+    joblevel: Yup.string()
+    .required("joblevel is required")
+    .min(3, "Too short.")
+    .max(25, "Too long."),
+
 
 });
 const AddJob = ({addJob, error, loading}) => {
@@ -38,6 +55,11 @@ const AddJob = ({addJob, error, loading}) => {
             company: '',
             earnings: '',
             attribute: '',
+            location: '',
+            jobtype: '',
+            jobtime: '',
+            joblevel: '',
+
           }}
           validationSchema={JobSchema}
           onSubmit={async (values, { setSubmitting }) => {
@@ -71,6 +93,30 @@ const AddJob = ({addJob, error, loading}) => {
                 word="attributes"
                 type="text"
                 name="attribute"
+                component={Input}
+              />
+                <Field
+                word="location"
+                type="text"
+                name="location"
+                component={Input}
+              />
+                <Field
+                word="jobtype"
+                type="text"
+                name="jobtype"
+                component={Input}
+              />
+                <Field
+                word="jobtime"
+                type="text"
+                name="jobtime"
+                component={Input}
+              />
+                <Field
+                word="joblevel"
+                type="text"
+                name="job level"
                 component={Input}
               />
               <Button

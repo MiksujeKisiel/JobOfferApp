@@ -6,6 +6,7 @@ import { ReactComponent as JobType } from "../../assets/svg/jobtype.svg";
 import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
 import { ReactComponent as Money } from "../../assets/svg/money.svg";
 import { ReactComponent as Talk } from "../../assets/svg/talk.svg";
+import { ReactComponent as Done } from "../../assets/svg/accept.svg";
 
 const Wrapper = styled.div`
   background: #f1f1f1;
@@ -17,6 +18,7 @@ const Wrapper = styled.div`
 `;
 
 const OfferHeader = styled.div`
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   background: white;
@@ -24,6 +26,13 @@ const OfferHeader = styled.div`
   box-shadow: 0 0 10px rgba(21, 21, 21, 0.3);
   margin: 10px 0;
   padding: 30px 0;
+ 
+  @media (min-width: ${600}px) {
+
+    max-width: 1280px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
   .svg {
     width: 40px;
     height: 44px;
@@ -60,11 +69,15 @@ const MoneyWrapper = styled.div`
   align-items: center;
   background: #e7e9f6;
   margin: 20px 0;
+  width: 100%;
 `;
 const InfoWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 10px 15px;
+  @media (min-width: ${600}px) {
+    width: 50%;
+  }
 `;
 
 const MoneyTextWrapper = styled.div``;
@@ -80,6 +93,14 @@ const TechnologiesWrapper = styled.div`
   box-shadow: 0 0 10px rgba(21, 21, 21, 0.3);
   margin: 5px 0;
   padding: 30px 15px;
+  border-radius: 10px;
+  .svg {
+    width: 22px;
+    height: 22px;
+    padding-top: 3px;
+    fill: #1825aa;
+    margin-right: 20px;
+  }
 `;
 
 const Header = styled.h2`
@@ -106,6 +127,26 @@ const TechnologyText = styled.p`
   margin: 10px 0 0 5px;
   transition: all 0.3 ease-in;
 `;
+
+const BigDoneWrapper = styled.div`
+display: flex;
+align-items: flex-start;
+flex-direction: column;
+`
+
+const DoneWrapper = styled.div`
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+margin: 10px;
+`
+
+const DoneText = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+
+`
+
 const JobDetails = () => {
   return (
     <Wrapper>
@@ -167,8 +208,24 @@ const JobDetails = () => {
       </TechnologiesWrapper>
       <TechnologiesWrapper>
       <Header>Twój zakres obowiązków</Header>
-
-
+      <BigDoneWrapper>
+        <DoneWrapper>
+      <Done className="svg" />
+      <DoneText>Bardzo dobra znajomość reacta</DoneText>
+      </DoneWrapper>
+      <DoneWrapper>
+      <Done className="svg" />
+      <Text>Optymalizowanie projektów pod względem szybkości</Text>
+      </DoneWrapper>
+      <DoneWrapper>
+      <Done className="svg" />
+      <Text>Bardzo dobra znajomość reacta</Text>
+      </DoneWrapper>
+      <DoneWrapper>
+      <Done className="svg" />
+      <Text>Bardzo dobra znajomość reacta</Text>
+      </DoneWrapper>
+      </BigDoneWrapper>
       </TechnologiesWrapper>
     </Wrapper>
   );
