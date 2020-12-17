@@ -11,13 +11,12 @@ import Layout from "./layout/Layout";
 import Logout from "./components/User/Logout";
 import AddJob from './components/Job/AddJob'
 import ProfileJobs from './components/Job/Main'
-
 import { connect } from "react-redux";
 import VerifyEmail from "./components/User/VerifyEmail";
 import RecoverPassword from './components/User/RecoverPassword'
 import Profile from './components/User/Profile';
 import MainJobs from './components/Jobs/JobOffers';
-
+import JobDetails from './components/Jobs/JobDetails';
 
 const App = ({ loggedIn, emailVerified }) => {
   let routes;
@@ -39,6 +38,7 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route path="/addjob" component={AddJob} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/" component={MainJobs} />
+        <Route exact path="/job" component={JobDetails} />
         <Redirect to="/" />
       </Switch>
     );

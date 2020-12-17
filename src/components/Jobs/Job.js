@@ -1,23 +1,27 @@
-import React from 'react'
+import React from "react";
+import JobThree from "./JobThree";
 
-import JobTwo from './JobTwo';
+const Job = ({ job, id }) => {
+  return (
+    <>
+      {job &&
+        job.map((job) => {
+          return <JobMaper jobs={job.jobs} id={job.id} />;
+        })}
+    </>
+  );
+};
 
-
-
-const Job = ({job, id}) => {
-   console.log(job)
-    return (
-   <div>
-       { job && job.map(job => { 
-           return(
-<JobTwo jobs={job.jobs} id={job.id}/>
-           )
-       })}
-
-        </div>
-       
-     
-    )
-}
-
-export default Job
+const JobMaper = ({ jobs }) => {
+  return (
+    <>
+      {jobs
+        .slice(0)
+        .reverse()
+        .map((jobs) => (
+          <JobThree jobs={jobs} />
+        ))}
+    </>
+  );
+};
+export default Job;

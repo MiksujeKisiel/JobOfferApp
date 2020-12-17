@@ -25,13 +25,6 @@ const Header = styled.header`
 `;
 
 const MainJobs = ({jobs}) => {
-
-
-
-
-
-    console.log(jobs)
-
   // let content;
   // if (!jobs) {
   //   content = (
@@ -77,7 +70,6 @@ const MainJobs = ({jobs}) => {
 }
 const mapStateToProps = ({firestore}) => ({
   jobs: firestore.ordered.jobs,
-
 });
 
 const mapDispatchToProps = {

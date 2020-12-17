@@ -27,7 +27,7 @@ const JobSchema = Yup.object().shape({
     .min(3, "Too short.")
     .max(25, "Too long."),
 });
-const EditJob = ({ error, loading, close, editJob, job, show}) => {
+const EditJob = ({ error, loading, close, editJob, show}) => {
   async function jobEditing() {
     await editJob(editJob.id);
     close();
@@ -81,7 +81,6 @@ const EditJob = ({ error, loading, close, editJob, job, show}) => {
                 >
                   Delete job
                 </Button>
-              
               </Form>
             )}
           </Formik>
