@@ -5,61 +5,63 @@ import { Form, FormWrapper, Wrapper, Text } from "../Items/Form/FormStyles";
 import Button from "../Items/Form/Button";
 import Message from "../Items/Form/Message";
 import Input from "../Items/Form/Input";
+import Select from "../Items/Form/Select";
+
 import * as Yup from "yup";
 import * as actions from "../../store/actions";
 
 const JobSchema = Yup.object().shape({
-  name: Yup.string()
+    name: Yup.string()
     .required("name is required.")
-    .min(3, "Too short.")
-    .max(25, "Too long."),
-  earnings: Yup.string()
-    .required("earnings required.")
     .min(3, "Too short.")
     .max(25, "Too long."),
     company: Yup.string()
     .required("company name is required")
     .min(3, "Too short.")
     .max(25, "Too long."),
-    attribute: Yup.string()
-    .required("attribute is required")
+  earnings: Yup.string()
+    .required("earnings required.")
     .min(3, "Too short.")
     .max(25, "Too long."),
     location: Yup.string()
     .required("location is required")
     .min(3, "Too short.")
     .max(25, "Too long."),
-    jobtype: Yup.string()
-    .required("jobtype is required")
-    .min(3, "Too short.")
-    .max(25, "Too long."),
-    jobtime: Yup.string()
-    .required("jobtime is required")
-    .min(3, "Too short.")
-    .max(25, "Too long."),
-    joblevel: Yup.string()
+    // contract: Yup.string()
+    // .required("jobtime is required")
+    // .min(3, "Too short.")
+    // .max(25, "Too long."),
+    employmentType: Yup.string()
     .required("joblevel is required")
     .min(3, "Too short.")
     .max(25, "Too long."),
-
-
+    // interview: Yup.string()
+    // .required("joblevel is required")
+    // .min(3, "Too short.")
+    // .max(25, "Too long."),
+    // timelapse: Yup.string()
+    // .required("timelapse is required")
+    // .min(3, "Too short.")
+    // .max(25, "Too long."),
+ 
+ 
+ 
 });
-const AddJob = ({addJob, error, loading}) => {
+const AddJob = ({ addJob, error, loading }) => {
   return (
     <Wrapper>
       <FormWrapper>
         <Text>add job</Text>
         <Formik
           initialValues={{
-            name: '',
-            company: '',
-            earnings: '',
-            attribute: '',
-            location: '',
-            jobtype: '',
-            jobtime: '',
-            joblevel: '',
-
+            name: "",
+            company: "",
+            earnings: "",
+            location: "",
+            contract: "",
+            employmentType: "",
+            interview: "",
+            timelapse: "",
           }}
           validationSchema={JobSchema}
           onSubmit={async (values, { setSubmitting }) => {
@@ -70,53 +72,59 @@ const AddJob = ({addJob, error, loading}) => {
         >
           {({ isSubmitting, isValid }) => (
             <Form>
+              <Field word="Name" type="text" name="name" component={Input} />
               <Field
-                word="Name"
-                type="text"
-                name="name"
-                component={Input}
-              />
-              <Field
-                word="Company"
+                word="Nazwa firmy"
                 type="text"
                 name="company"
                 component={Input}
               />
-              
               <Field
-                word="earnings"
+                word="Zarobki"
                 type="text"
                 name="earnings"
                 component={Input}
               />
               <Field
-                word="attributes"
+                word="Sposób zatrudnienia"
                 type="text"
-                name="attribute"
-                component={Input}
+                name="interview"
+                component={Select}
+                option="Zdalnie"
+                optionTwo="W miejscu pracy"
+                optionThree="W zakładzie pracy"
+           
               />
-                <Field
-                word="location"
+              <Field
+                word="Lokalizacja"
                 type="text"
                 name="location"
                 component={Input}
               />
-                <Field
-                word="jobtype"
+
+              <Field
+                word="Czas pracy"
                 type="text"
-                name="jobtype"
-                component={Input}
+                component={Select}
+                name="timelapse"
+                option="Pełny etat"
+                optionTwo="Pół etatu"
+                optionThree="Ćwierć etatu"
               />
-                <Field
-                word="jobtime"
+              <Field
+                word="Rodzaj kontraktu"
                 type="text"
-                name="jobtime"
-                component={Input}
+                name="contract"
+                component={Select}
+                option="Umowa o pracę"
+                optionTwo="Umowa o dzieło"
+                optionThree="B2B"
               />
-                <Field
-                word="joblevel"
+
+              <Field
+                word="Posada"
                 type="text"
-                name="job level"
+                name="employmentType"
                 component={Input}
               />
               <Button
@@ -130,25 +138,23 @@ const AddJob = ({addJob, error, loading}) => {
           )}
         </Formik>
         <Message error show={error}>
-        {error}   
+          {error}
         </Message>
         <Message error show={error === false}>
-        Job added 
+          Job added
         </Message>
       </FormWrapper>
     </Wrapper>
   );
 };
 
-const mapStateToProps = ({job}) => ({
+const mapStateToProps = ({ job }) => ({
   loading: job.loading,
-  error: job.error
-
+  error: job.error,
 });
 
 const mapDispatchToProps = {
- addJob: actions.addJob
-
+  addJob: actions.addJob,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddJob);

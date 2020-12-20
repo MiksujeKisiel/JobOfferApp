@@ -1,27 +1,19 @@
 import React from "react";
-import JobThree from "./JobThree";
-
-const Job = ({ job, id }) => {
-  return (
-    <>
-      {job &&
-        job.map((job) => {
-          return <JobMaper jobs={job.jobs} id={job.id} />;
-        })}
-    </>
-  );
-};
-
+import JobList from './JobList';
+import { Link } from 'react-router-dom'
 const JobMaper = ({ jobs }) => {
+  console.log(jobs)
   return (
     <>
-      {jobs
-        .slice(0)
-        .reverse()
-        .map((jobs) => (
-          <JobThree jobs={jobs} />
-        ))}
-    </>
-  );
-};
-export default Job;
+     {jobs && jobs.map((jobs) => (
+       <Link to={'job/' + jobs.id}>
+   
+            <JobList jobs={jobs} />
+            </Link>
+          ))}
+          </>
+     
+    );
+}
+
+export default JobMaper;

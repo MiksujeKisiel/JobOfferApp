@@ -28,10 +28,9 @@ const Navbar = ({ loggedIn }) => {
     links = (
       <>
         <Wrapper>
-         <img className="logo" src={Logo} alt="" />
+       <Link to="/">
+         <img className="logo" src={Logo} alt="" /></Link>
           <NavLink text="Home" to="/" />
-          <NavLink text="Jobs offers" to="/" />
-          <NavLink text="Job detail" to="/job" />
         </Wrapper>
         <Wrapper>
         <NavLink text="my job offers" to="/profile-jobs" />

@@ -71,7 +71,6 @@ const ProfileJobs = ({ jobs, requested, userId }) => {
 const mapStateToProps = ({ firebase, firestore }) => ({
   userId: firebase.auth.uid,
   jobs: firestore.data.jobs,
-  // requesting: firestore.status.requesting,
   requested: firestore.status.requested,
 });
 

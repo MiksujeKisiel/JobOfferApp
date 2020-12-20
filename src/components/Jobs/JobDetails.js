@@ -7,6 +7,135 @@ import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
 import { ReactComponent as Money } from "../../assets/svg/money.svg";
 import { ReactComponent as Talk } from "../../assets/svg/talk.svg";
 import { ReactComponent as Done } from "../../assets/svg/accept.svg";
+import { connect } from 'react-redux'
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from 'redux';
+
+
+const JobDetails = (props) => {
+  const id = props.match.params.id
+
+  const { job } = props;
+
+  if (job){
+      return(
+        <Wrapper>
+        <OfferHeader>
+          <InfoWrapper>
+            <Text company>{id}</Text>
+          </InfoWrapper>
+          <MoneyWrapper>
+            <SvgWrapper>
+              <Money className="money" />
+            </SvgWrapper>
+            <MoneyTextWrapper>
+              <BigText>{job.companyName}</BigText>
+              <Text money>brutto / mies.</Text>
+            </MoneyTextWrapper>
+          </MoneyWrapper>
+          <InfoWrapper>
+            <SvgWrapper>
+              <Marker className="svg" />
+            </SvgWrapper>
+            <Text>{job.location}</Text>
+          </InfoWrapper>
+          <InfoWrapper>
+            <SvgWrapper>
+              <Talk className="svg" />
+            </SvgWrapper>
+            <Text>{job.type}</Text>
+          </InfoWrapper>
+          <InfoWrapper>
+            <SvgWrapper>
+              <JobType className="svg" />
+            </SvgWrapper>
+            <Text>Umowa o prace</Text>
+          </InfoWrapper>
+          <InfoWrapper>
+            <SvgWrapper>
+              <JobTime className="svg" />
+            </SvgWrapper>
+            <Text>Pełny etat</Text>
+          </InfoWrapper>
+          <InfoWrapper>
+            <SvgWrapper>
+              <JobLevel className="svg" />
+            </SvgWrapper>
+            <Text>Wyższy specjalista (Senior)</Text>
+          </InfoWrapper>
+        </OfferHeader>
+        <TechnologiesWrapper>
+          <Header>Technologie, których używamy</Header>
+          <Text technologies>Wymagane</Text>
+          <TechnologyWrapper>
+            <TechnologyText>HTML</TechnologyText>
+            <TechnologyText>CSS</TechnologyText>
+            <TechnologyText>REACT</TechnologyText>
+            <TechnologyText>JAVASCRIPT</TechnologyText>
+            <TechnologyText>Git</TechnologyText>
+            <TechnologyText>SASS</TechnologyText>
+          </TechnologyWrapper>
+        </TechnologiesWrapper>
+        <TechnologiesWrapper>
+        <Header>Twój zakres obowiązków</Header>
+        <BigDoneWrapper>
+          <DoneWrapper>
+        <Done className="svg" />
+        <DoneText>Bardzo dobra znajomość reacta</DoneText>
+        </DoneWrapper>
+        <DoneWrapper>
+        <Done className="svg" />
+        <Text>Optymalizowanie projektów pod względem szybkości</Text>
+        </DoneWrapper>
+        <DoneWrapper>
+        <Done className="svg" />
+        <Text>Bardzo dobra znajomość reacta</Text>
+        </DoneWrapper>
+        <DoneWrapper>
+        <Done className="svg" />
+        <Text>Bardzo dobra znajomość reacta</Text>
+        </DoneWrapper>
+        </BigDoneWrapper>
+        </TechnologiesWrapper>
+      </Wrapper>
+      )
+  }
+  else{
+    return (
+        <div>
+            no job detail
+        </div>
+        );
+  }
+
+  
+  
+};
+
+
+const mapStateToProps = (state, ownProps) => {
+    const id = ownProps.match.params.id
+    const jobs = state.firestore.data.jobs
+    const job = jobs ? jobs[id] : null
+
+    console.log(jobs)
+    return{
+        job: job
+    }
+}
+
+const mapDispatchToProps = {
+    
+}
+
+
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    firestoreConnect([
+        {collection: 'jobs'}
+    ])
+)(JobDetails)
+
 
 const Wrapper = styled.div`
   background: #f1f1f1;
@@ -144,91 +273,5 @@ margin: 10px;
 const DoneText = styled.p`
   font-size: 14px;
   font-weight: 400;
-
 `
 
-const JobDetails = () => {
-  return (
-    <Wrapper>
-      <OfferHeader>
-        <InfoWrapper>
-          <Text company>Frontend Developer</Text>
-        </InfoWrapper>
-        <MoneyWrapper>
-          <SvgWrapper>
-            <Money className="money" />
-          </SvgWrapper>
-          <MoneyTextWrapper>
-            <BigText>3 500zł - 4 000zł</BigText>
-            <Text money>brutto / mies.</Text>
-          </MoneyTextWrapper>
-        </MoneyWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <Marker className="svg" />
-          </SvgWrapper>
-          <Text>Warszawa, mazowieckie</Text>
-        </InfoWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <Talk className="svg" />
-          </SvgWrapper>
-          <Text>Rekrutacja zdalna</Text>
-        </InfoWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <JobType className="svg" />
-          </SvgWrapper>
-          <Text>Umowa o prace</Text>
-        </InfoWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <JobTime className="svg" />
-          </SvgWrapper>
-          <Text>Pełny etat</Text>
-        </InfoWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <JobLevel className="svg" />
-          </SvgWrapper>
-          <Text>Wyższy specjalista (Senior)</Text>
-        </InfoWrapper>
-      </OfferHeader>
-      <TechnologiesWrapper>
-        <Header>Technologie, których używamy</Header>
-        <Text technologies>Wymagane</Text>
-        <TechnologyWrapper>
-          <TechnologyText>HTML</TechnologyText>
-          <TechnologyText>CSS</TechnologyText>
-          <TechnologyText>REACT</TechnologyText>
-          <TechnologyText>JAVASCRIPT</TechnologyText>
-          <TechnologyText>Git</TechnologyText>
-          <TechnologyText>SASS</TechnologyText>
-        </TechnologyWrapper>
-      </TechnologiesWrapper>
-      <TechnologiesWrapper>
-      <Header>Twój zakres obowiązków</Header>
-      <BigDoneWrapper>
-        <DoneWrapper>
-      <Done className="svg" />
-      <DoneText>Bardzo dobra znajomość reacta</DoneText>
-      </DoneWrapper>
-      <DoneWrapper>
-      <Done className="svg" />
-      <Text>Optymalizowanie projektów pod względem szybkości</Text>
-      </DoneWrapper>
-      <DoneWrapper>
-      <Done className="svg" />
-      <Text>Bardzo dobra znajomość reacta</Text>
-      </DoneWrapper>
-      <DoneWrapper>
-      <Done className="svg" />
-      <Text>Bardzo dobra znajomość reacta</Text>
-      </DoneWrapper>
-      </BigDoneWrapper>
-      </TechnologiesWrapper>
-    </Wrapper>
-  );
-};
-
-export default JobDetails;

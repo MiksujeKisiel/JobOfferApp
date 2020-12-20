@@ -8,31 +8,28 @@ export const addJob = (data) => async (
 ) => {
   const firestore = getFirestore();
   const userId = getState().firebase.auth.uid;
+  const id = new Date().valueOf()
   dispatch({ type: actions.ADD_JOB_START });
   try {
-    const res = await firestore.collection("jobs").doc(userId).get();
+
     const newJob = {
-      id: new Date().valueOf(),
-      workName: data.name,
-      companyName: data.company,
-      earningsNumber: data.earnings,
-      attributes: data.attribute,
+     
+     
     };
-    if (!res.data()) {
-      firestore
-        .collection("jobs")
-        .doc(userId)
-        .set({
-          jobs: [newJob],
-        });
-    } else{
-      firestore
-        .collection("jobs")
-        .doc(userId)
-        .update({
-          jobs: [...res.data().jobs, newJob],
-        });
-    }
+    
+    await firestore.collection("jobs").add({
+      userid: userId,
+      name: data.name,
+      companyName: data.company,
+      earnings: data.earnings,
+      location: data.location,
+      contract: data.contract,
+      timelapse: data.timelapse,
+      employmentType: data.employmentType,
+      interview: data.interview
+  })
+
+ 
     dispatch({ type: actions.ADD_JOB_SUCCESS});
     return true;
   } catch (err) {
@@ -107,32 +104,7 @@ export const allJobs = (id, data) => async(dispatch, getState, {getFirestore}) =
 
 }
 
-// all jobs
-// export const allJobs = (data) => async (
-//   dispatch,
-//   getState,
-//   { getFirestore }
-// ) => {
-//   const firestore = getFirestore();
-//   const observer = firestore.onSnapshot;
-     
-//   try{
-//     firestore.collection("categories").valueChanges().map(document => {
-//       return document(a => {
-//         const data = a.payload.doc.data();//Here is your content
-//         const id = a.payload.doc.id;//Here is the key of your document
-//         return { id, ...data };
-//       });
-//   }
-// }
-//   catch(err){
-//     dispatch({ type: actions.EDIT_JOB_FAIL, payload: err.message });
-//   }
 
-
-  
-//   }
-// }
   
 
   
