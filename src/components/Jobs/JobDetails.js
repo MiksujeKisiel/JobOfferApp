@@ -26,7 +26,7 @@ const JobDetails = (props) => {
         employmentType={job.employmentType}
         />
     <Technologies
-      responsibility={job.responsibility}
+      requirement={job.requirement}
     />
     <Responsibilities
    

@@ -25,7 +25,8 @@ export const addJob = (data) => async (
       timelapse: data.timelapse,
       employmentType: data.employmentType,
       interview: data.interview,
-      responsibility: data.responsibility
+      responsibility: data.responsibility,
+      requirement: data.requirement
   })
 
  

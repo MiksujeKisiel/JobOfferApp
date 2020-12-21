@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 const Text = styled.p``
 
-const Technologies = ({responsibility}) => {
-  const listItems = responsibility.slice(0).map((number) =>
+const Technologies = ({requirement}) => {
+  const listItems = requirement.slice(0).map((number) =>
   <TechnologyText>{number}</TechnologyText>
   );
     return (

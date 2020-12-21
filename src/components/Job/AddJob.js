@@ -65,7 +65,8 @@ const AddJob = ({ addJob, error, loading }) => {
             employmentType: "",
             interview: "Rozmowa o pracę",
             timelapse: "Pełny etat",
-            responsibility: []
+            responsibility: [],
+            requirement: []
           }}
           validationSchema={JobSchema}
           onSubmit={async (values, { setSubmitting }) => {
@@ -141,17 +142,30 @@ const AddJob = ({ addJob, error, loading }) => {
                 component={Input}
               />
                 <Field
-                word="wymagania"
+                word="obowiązki"
                 type="text"
                 name="responsibility[0]"
                 component={Input}
               />
                   <Field
-                word="wymagania"
+                word="obowiązki"
                 type="text"
                 name="responsibility[1]"
                 component={Input}
               />
+               <Field
+                word="wymagania"
+                type="text"
+                name="requirement[0]"
+                component={Input}
+              />
+                  <Field
+                word="wymagania"
+                type="text"
+                name="requirement[1]"
+                component={Input}
+              />
+
               
           
               <Button
