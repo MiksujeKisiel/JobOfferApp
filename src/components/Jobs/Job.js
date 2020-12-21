@@ -7,7 +7,6 @@ const JobMaper = ({ jobs }) => {
     <>
      {jobs && jobs.map((jobs) => (
        <Link to={'job/' + jobs.id}>
-   
             <JobList jobs={jobs} />
             </Link>
           ))}

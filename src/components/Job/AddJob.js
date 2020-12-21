@@ -6,9 +6,11 @@ import Button from "../Items/Form/Button";
 import Message from "../Items/Form/Message";
 import Input from "../Items/Form/Input";
 import Select from "../Items/Form/Select";
-
 import * as Yup from "yup";
 import * as actions from "../../store/actions";
+
+
+
 
 const JobSchema = Yup.object().shape({
     name: Yup.string()
@@ -57,13 +59,13 @@ const AddJob = ({ addJob, error, loading }) => {
             name: "",
             company: "",
             earnings: "",
-            earningsType: "",
+            earningsType: "Brutto / h",
             location: "",
-            contract: "",
+            contract: "Umowa o pracę",
             employmentType: "",
-            interview: "",
-            timelapse: "",
-            responsibility: ""
+            interview: "Rozmowa o pracę",
+            timelapse: "Pełny etat",
+            responsibility: []
           }}
           validationSchema={JobSchema}
           onSubmit={async (values, { setSubmitting }) => {
@@ -87,17 +89,17 @@ const AddJob = ({ addJob, error, loading }) => {
                 name="earnings"
                 component={Input}
               />
-                <Field
-                word="Zarobki"
-                type="text"
-                name="earningsType"
+                   <Field
+                word="Czas pracy"
+                type="select"
                 component={Select}
-                option="brutto / mies"
-                optionTwo="miesięcznie"
-                optionThree="na godz."
+                name="earningsType"
+                option="Brutto / mies"
+                optionTwo="Netto / mies"
+                optionThree="Zł / h"
               />
               <Field
-                word="Sposób zatrudnienia"
+                word="Rozmowa o pracę"
                 type="text"
                 name="interview"
                 component={Select}
@@ -141,15 +143,17 @@ const AddJob = ({ addJob, error, loading }) => {
                 <Field
                 word="wymagania"
                 type="text"
-                name="responsibility"
+                name="responsibility[0]"
                 component={Input}
               />
                   <Field
                 word="wymagania"
                 type="text"
-                name="responsibility"
+                name="responsibility[1]"
                 component={Input}
               />
+              
+          
               <Button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Adding job" : null}

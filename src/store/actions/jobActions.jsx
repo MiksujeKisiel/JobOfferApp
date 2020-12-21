@@ -12,9 +12,7 @@ export const addJob = (data) => async (
   dispatch({ type: actions.ADD_JOB_START });
   try {
 
-    const responsibilities = {
-     responsibility: data.responsibility
-    };
+    
     
     await firestore.collection("jobs").add({
       userid: userId,
@@ -27,7 +25,7 @@ export const addJob = (data) => async (
       timelapse: data.timelapse,
       employmentType: data.employmentType,
       interview: data.interview,
-      responsibilities
+      responsibility: data.responsibility
   })
 
  

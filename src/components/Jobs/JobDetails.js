@@ -11,7 +11,7 @@ const JobDetails = (props) => {
  
 
   const { job } = props;
-
+  console.log(job.responsibility)
   if (job){
       return(
         <Wrapper>
@@ -26,9 +26,11 @@ const JobDetails = (props) => {
         employmentType={job.employmentType}
         />
     <Technologies
-    
+      responsibility={job.responsibility}
     />
-    <Responsibilities/>
+    <Responsibilities
+   
+    />
       </Wrapper>
       )
   }

@@ -4,18 +4,18 @@ import styled from 'styled-components'
 
 const Text = styled.p``
 
-const Technologies = () => {
+const Technologies = ({responsibility}) => {
+  const listItems = responsibility.slice(0).map((number) =>
+  <TechnologyText>{number}</TechnologyText>
+  );
     return (
         <TechnologiesWrapper>
         <Header>Technologie, których używamy</Header>
         <Text technologies>Wymagane</Text>
         <TechnologyWrapper>
-          <TechnologyText>HTML</TechnologyText>
-          <TechnologyText>CSS</TechnologyText>
-          <TechnologyText>REACT</TechnologyText>
-          <TechnologyText>JAVASCRIPT</TechnologyText>
-          <TechnologyText>Git</TechnologyText>
-          <TechnologyText>SASS</TechnologyText>
+       {listItems}
+        
+       
         </TechnologyWrapper>
       </TechnologiesWrapper>
    

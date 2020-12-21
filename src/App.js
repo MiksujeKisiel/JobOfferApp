@@ -50,7 +50,8 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/recover-password" component={RecoverPassword} />
-        {/* <Route exact path="/" component={MainJobs} /> */}
+        <Route exact path="/" component={MainJobs} />
+        <Route exact path="/job/:id" component={JobDetails} />
       </Switch>
     );
   }

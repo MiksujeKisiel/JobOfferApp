@@ -23,8 +23,6 @@ const JobList = ({ jobs }) => {
         </div>
         <p className="location">{jobs.location}</p>
       </AttributeLocationWrapper>
- 
-        
       </Wrapper>
 
 
@@ -83,7 +81,7 @@ const Wrapper = styled.div`
   padding: 0 15px;
   cursor: pointer;
   transition: 0.4s ease;
-  width: 700px;
+  width: 900px;
   :hover {
     background: #f6f2fc;
   }

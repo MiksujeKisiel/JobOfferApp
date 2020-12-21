@@ -72,7 +72,8 @@ const MoneyTextWrapper = styled.div``;
 const SvgWrapper = styled.div``;
 
 const Header = ({name, companyName, earnings, location, interview, contract, timelapse, employmentType}) => {
-    return (
+   console.log(name)
+  return (
         <OfferHeader>
         <InfoWrapper>
           <Text company>{name}</Text>
