@@ -8,13 +8,12 @@ export const addJob = (data) => async (
 ) => {
   const firestore = getFirestore();
   const userId = getState().firebase.auth.uid;
-  const id = new Date().valueOf()
+
   dispatch({ type: actions.ADD_JOB_START });
   try {
 
-    const newJob = {
-     
-     
+    const responsibilities = {
+     responsibility: data.responsibility
     };
     
     await firestore.collection("jobs").add({
@@ -22,11 +21,13 @@ export const addJob = (data) => async (
       name: data.name,
       companyName: data.company,
       earnings: data.earnings,
+      earningsType: data.earningsType,
       location: data.location,
       contract: data.contract,
       timelapse: data.timelapse,
       employmentType: data.employmentType,
-      interview: data.interview
+      interview: data.interview,
+      responsibilities
   })
 
  

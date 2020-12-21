@@ -101,7 +101,3 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([{collection: 'jobs'}] )
 )(JobList);
-
-    // // <Link to={'/job/' + jobs.id}>
- 
-    // </Link>

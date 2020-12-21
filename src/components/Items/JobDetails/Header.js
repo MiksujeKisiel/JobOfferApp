@@ -7,7 +7,8 @@ import { ReactComponent as JobLevel } from "../../../assets/svg/joblvl.svg";
 import { ReactComponent as Money } from "../../../assets/svg/money.svg";
 import { ReactComponent as Talk } from "../../../assets/svg/talk.svg";
 
-const Wrapper = styled.div``
+
+
 const Text = styled.p``
 const OfferHeader = styled.div`
   border-radius: 10px;
@@ -70,24 +71,19 @@ const InfoWrapper = styled.div`
 const MoneyTextWrapper = styled.div``;
 const SvgWrapper = styled.div``;
 
-const Header = ({job}) => {
-
-
-  const {name, companyName} = {job}
-
-
+const Header = ({name, companyName, earnings, location, interview, contract, timelapse, employmentType}) => {
     return (
         <OfferHeader>
         <InfoWrapper>
           <Text company>{name}</Text>
-          <Text company>{job.companyName}</Text>
+          <Text company>{companyName}</Text>
         </InfoWrapper>
         <MoneyWrapper>
           <SvgWrapper>
             <Money className="money" />
           </SvgWrapper>
           <MoneyTextWrapper>
-            <BigText>{job.earnings}</BigText>
+            <BigText>{earnings}</BigText>
             <Text money>brutto / mies.</Text>
           </MoneyTextWrapper>
         </MoneyWrapper>
@@ -95,34 +91,36 @@ const Header = ({job}) => {
           <SvgWrapper>
             <Marker className="svg" />
           </SvgWrapper>
-          <Text>{job.location}</Text>
+          <Text>{location}</Text>
         </InfoWrapper>
         <InfoWrapper>
           <SvgWrapper>
             <Talk className="svg" />
           </SvgWrapper>
-          <Text>{job.interview}</Text>
+          <Text>{interview}</Text>
         </InfoWrapper>
         <InfoWrapper>
           <SvgWrapper>
             <JobType className="svg" />
           </SvgWrapper>
-          <Text>{job.contract}</Text>
+          <Text>{contract}</Text>
         </InfoWrapper>
         <InfoWrapper>
           <SvgWrapper>
             <JobTime className="svg" />
           </SvgWrapper>
-          <Text>{job.timelapse}</Text>
+          <Text>{timelapse}</Text>
         </InfoWrapper>
         <InfoWrapper>
           <SvgWrapper>
             <JobLevel className="svg" />
           </SvgWrapper>
-          <Text>{job.employmentType}</Text>
+          <Text>{employmentType}</Text>
         </InfoWrapper>
       </OfferHeader>
     )
 }
+
+
 
 export default Header

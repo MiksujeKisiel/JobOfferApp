@@ -57,11 +57,13 @@ const AddJob = ({ addJob, error, loading }) => {
             name: "",
             company: "",
             earnings: "",
+            earningsType: "",
             location: "",
             contract: "",
             employmentType: "",
             interview: "",
             timelapse: "",
+            responsibility: ""
           }}
           validationSchema={JobSchema}
           onSubmit={async (values, { setSubmitting }) => {
@@ -84,6 +86,15 @@ const AddJob = ({ addJob, error, loading }) => {
                 type="text"
                 name="earnings"
                 component={Input}
+              />
+                <Field
+                word="Zarobki"
+                type="text"
+                name="earningsType"
+                component={Select}
+                option="brutto / mies"
+                optionTwo="miesięcznie"
+                optionThree="na godz."
               />
               <Field
                 word="Sposób zatrudnienia"
@@ -125,6 +136,18 @@ const AddJob = ({ addJob, error, loading }) => {
                 word="Posada"
                 type="text"
                 name="employmentType"
+                component={Input}
+              />
+                <Field
+                word="wymagania"
+                type="text"
+                name="responsibility"
+                component={Input}
+              />
+                  <Field
+                word="wymagania"
+                type="text"
+                name="responsibility"
                 component={Input}
               />
               <Button
