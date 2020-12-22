@@ -16,7 +16,7 @@ const JobSchema = Yup.object().shape({
     name: Yup.string()
     .required("name is required.")
     .min(3, "Too short.")
-    .max(25, "Too long."),
+    .max(30, "Too long."),
     company: Yup.string()
     .required("company name is required")
     .min(3, "Too short.")

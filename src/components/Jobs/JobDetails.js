@@ -1,75 +1,56 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
-import { compose } from 'redux';
-import Header from '../Items/JobDetails/Header';
-import Responsibilities from '../Items/JobDetails/Responsibilities';
-import Technologies from '../Items/JobDetails/Technologies';
+import { compose } from "redux";
+import Header from "../Items/JobDetails/Header";
+import Responsibilities from "../Items/JobDetails/Responsibilities";
+import Technologies from "../Items/JobDetails/Technologies";
 
 const JobDetails = (props) => {
- 
-
   const { job } = props;
-  console.log(job.responsibility)
-  if (job){
-      return(
-        <Wrapper>
-        <Header
-        name={job.name}
-        companyName={job.companyName}
-        earnings={job.earnings}
-        location={job.location}
-        interview={job.interview}
-        contract={job.contract}
-        timelapse={job.timelapse}
-        employmentType={job.employmentType}
-        />
-    <Technologies
-      requirement={job.requirement}
-    />
-    <Responsibilities
-   
-    />
-      </Wrapper>
-      )
-  }
-  else{
-    return (
-        <div>
-            no job detail
-        </div>
-        );
-  }
 
-  
-  
+  if (job) {
+    return (
+      <Wrapper>
+        <span className="background"/>
+        <ContentWrapper>
+        <Header
+          name={job.name}
+          companyName={job.companyName}
+          earnings={job.earnings}
+          location={job.location}
+          interview={job.interview}
+          contract={job.contract}
+          timelapse={job.timelapse}
+          employmentType={job.employmentType}
+        />
+        <Technologies requirement={job.requirement} />
+        <Responsibilities responsibility={job.responsibility} />
+        </ContentWrapper>
+      </Wrapper>
+    );
+  } else {
+    return <div>no job detail</div>;
+  }
 };
 
-
 const mapStateToProps = (state, ownProps) => {
-    const id = ownProps.match.params.id
-    const jobs = state.firestore.data.jobs
-    const job = jobs ? jobs[id] : null
+  const id = ownProps.match.params.id;
+  const jobs = state.firestore.data.jobs;
+  const job = jobs ? jobs[id] : null;
+  console.log(jobs);
+  return {
+    job: job,
+  };
+};
 
-    console.log(jobs)
-    return{
-        job: job
-    }
-}
-
-const mapDispatchToProps = {
-    
-}
-
+const mapDispatchToProps = {};
 
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    firestoreConnect([
-        {collection: 'jobs'}
-    ])
-)(JobDetails)
-
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect([{ collection: "jobs" }])
+)(JobDetails);
 
 const Wrapper = styled.div`
   background: #f1f1f1;
@@ -77,4 +58,27 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding-top: 30px;
+  position: relative;
+  .background{
+    background-color: #40B4E5;
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+  }
 `;
+
+const ContentWrapper = styled.div`
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  z-index: 2;
+  @media (min-width: ${1024}px) {
+    max-width: 850px;
+  }
+`

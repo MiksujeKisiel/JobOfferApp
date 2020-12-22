@@ -1,36 +1,21 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { ReactComponent as Done } from "../../../assets/svg/accept.svg";
 
-
-const Text = styled.p``
-
-const Responsibilities = () => {
-    
-    return (
-        <TechnologiesWrapper>
-        <Header>Twój zakres obowiązków</Header>
-        <BigDoneWrapper>
-          <DoneWrapper>
-        <Done className="svg" />
-        <DoneText>Bardzo dobra znajomość reacta</DoneText>
-        </DoneWrapper>
-        <DoneWrapper>
-        <Done className="svg" />
-        <Text>Optymalizowanie projektów pod względem szybkości</Text>
-        </DoneWrapper>
-        <DoneWrapper>
-        <Done className="svg" />
-        <Text>Bardzo dobra znajomość reacta</Text>
-        </DoneWrapper>
-        <DoneWrapper>
-        <Done className="svg" />
-        <Text>Bardzo dobra znajomość reacta</Text>
-        </DoneWrapper>
-        </BigDoneWrapper>
-        </TechnologiesWrapper>
-    )
-}
+const Responsibilities = ({ responsibility }) => {
+  const listItems = responsibility.slice(0).map((number) => (
+    <DoneWrapper>
+      <Done className="svg" />
+      <Text>{number}</Text>
+    </DoneWrapper>
+  ));
+  return (
+    <TechnologiesWrapper>
+      <Header>Twój zakres obowiązków</Header>
+      <BigDoneWrapper>{listItems}</BigDoneWrapper>
+    </TechnologiesWrapper>
+  );
+};
 
 const TechnologiesWrapper = styled.div`
   justify-content: flex-start;
@@ -42,11 +27,10 @@ const TechnologiesWrapper = styled.div`
   box-shadow: 0 0 10px rgba(21, 21, 21, 0.3);
   margin: 5px 0;
   padding: 30px 15px;
-  border-radius: 10px;
+
   .svg {
-    width: 22px;
-    height: 22px;
-    padding-top: 3px;
+    width: 17px;
+    height: 17px;
     fill: #1825aa;
     margin-right: 20px;
   }
@@ -58,24 +42,24 @@ const Header = styled.h2`
   margin: 0 0 20px;
 `;
 
-
 const BigDoneWrapper = styled.div`
-display: flex;
-align-items: flex-start;
-flex-direction: column;
-`
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+`;
 
 const DoneWrapper = styled.div`
-display: flex;
-align-items: flex-start;
-justify-content: space-between;
-margin: 10px;
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  padding-bottom: 1px solid #c1c1c1;
+`;
 
-const DoneText = styled.p`
-  font-size: 14px;
+const Text = styled.p`
+  font-size: 16px;
+  
   font-weight: 400;
-`
+`;
 
-
-export default Responsibilities
+export default Responsibilities;

@@ -1,127 +1,216 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { ReactComponent as Marker } from "../../../assets/svg/marker.svg";
 import { ReactComponent as JobTime } from "../../../assets/svg/jobtime.svg";
 import { ReactComponent as JobType } from "../../../assets/svg/jobtype.svg";
 import { ReactComponent as JobLevel } from "../../../assets/svg/joblvl.svg";
 import { ReactComponent as Money } from "../../../assets/svg/money.svg";
 import { ReactComponent as Talk } from "../../../assets/svg/talk.svg";
+import { ReactComponent as Office } from "../../../assets/svg/office.svg";
 
-
-
-const Text = styled.p``
 const OfferHeader = styled.div`
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   background: white;
   width: 90%;
   box-shadow: 0 0 10px rgba(21, 21, 21, 0.3);
   margin: 10px 0;
-  padding: 30px 0;
- 
+  padding: 0px 0 30px;
   @media (min-width: ${600}px) {
-
-    max-width: 1280px;
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .svg {
-    width: 40px;
-    height: 44px;
-    fill: #1825aa;
-    background: #e4e6f3;
-    padding: 11px;
-    border-radius: 100px;
-    margin-right: 10px;
-  }
-  .money {
-    width: 60px;
+`;
+
+const TopWrapper = styled.div`
+  padding: 10px 20px;
+  width: 100%;
+  .office {
+    fill: #f1f1f1;
     height: 60px;
-    fill: #1825aa;
-    padding: 11px 2px;
-    margin-right: 5px;
+    width: 60px;
+    margin: 20px auto 20px;
+    display: block;
+  }
+  @media (min-width: ${350}px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .office {
+      fill: #f1f1f1;
+      width: 50px;
+      margin: 0;
+    }
+  }
+  @media (min-width: ${600}px) {
+    .office {
+      height: 60px;
+      width: 60px;
+    }
+   
+    padding: 0 20px 20px;
+  }
+  @media (min-width: ${1024}px) {
+width: 60%;
+padding-top: 10px;
+padding: 10px 20px;
+  }
+`;
+
+const Title = styled.h2`
+  font-size: 19px;
+  line-height: 125%;
+
+  span {
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+  }
+  @media (min-width: ${350}px) {
+    width: calc(100% - 100px);
+    margin-left: 20px;
+    height: auto;
+  }
+  @media (min-width: ${600}px) {
+    font-size: 24px;
+    width: 80%;
+    span {
+      font-size: 15px;
+    }
+  }
+`;
+
+const Text = styled.p`
+  font-size: 14px;
+  margin-left: 5px;
+`;
+
+const MoneyWrapper = styled.div`
+  display: flex;
+  padding: 0 15px;
+  border-left: 2px solid #1825AA;
+  align-items: center;
+  background: #e7e9f6;
+  margin: 0 0 10px;
+  padding: 15px 15px;
+  width: 100%;
+  .money {
+    width: 100px;
+    fill: #1825AA;
+  }
+  @media (min-width: ${1024}px) {
+    width: 40%;
+    padding: 10px 0 10px 15px;
   }
 `;
 
 const BigText = styled.p`
   font-size: 23px;
   font-weight: bold;
-  color: #1825aa;
-  margin-bottom: 3px;
+  color: #1825AA;
+  line-height: 100%;
+  @media (min-width: ${600}px) {
+    display: inline;
+  }
+`;
+const MoneyText = styled.p`
+  font-size: 14px;
+  color: #1825AA;
+  @media (min-width: ${600}px) {
+    display: inline;
+    margin-left: 8px;
+   }
 `;
 
-const MoneyWrapper = styled.div`
-  display: flex;
-  border-left: 3px solid #1825aa;
-  align-items: center;
-  background: #e7e9f6;
-  margin: 20px 0;
-  width: 100%;
-`;
+
+
 const InfoWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px 15px;
+  margin: 10px 0 10px 15px;
   @media (min-width: ${600}px) {
-    width: 50%;
+    width: 45%;
+    max-width: 300px;
   }
 `;
 
-const MoneyTextWrapper = styled.div``;
-const SvgWrapper = styled.div``;
+const SvgWrapper = styled.div`
+  background: #e4e6f3;
+  width: 39px;
+  height: 39px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  .svg {
+    width: 16px;
+    height: 20px;
+    fill: #1825AA;
+  }
+`;
 
-const Header = ({name, companyName, earnings, location, interview, contract, timelapse, employmentType}) => {
-   console.log(name)
+const Header = ({
+  name,
+  companyName,
+  earnings,
+  location,
+  interview,
+  contract,
+  timelapse,
+  employmentType,
+}) => {
+  console.log(name);
   return (
-        <OfferHeader>
-        <InfoWrapper>
-          <Text company>{name}</Text>
-          <Text company>{companyName}</Text>
-        </InfoWrapper>
-        <MoneyWrapper>
-          <SvgWrapper>
-            <Money className="money" />
-          </SvgWrapper>
-          <MoneyTextWrapper>
-            <BigText>{earnings}</BigText>
-            <Text money>brutto / mies.</Text>
-          </MoneyTextWrapper>
-        </MoneyWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <Marker className="svg" />
-          </SvgWrapper>
-          <Text>{location}</Text>
-        </InfoWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <Talk className="svg" />
-          </SvgWrapper>
-          <Text>{interview}</Text>
-        </InfoWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <JobType className="svg" />
-          </SvgWrapper>
-          <Text>{contract}</Text>
-        </InfoWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <JobTime className="svg" />
-          </SvgWrapper>
-          <Text>{timelapse}</Text>
-        </InfoWrapper>
-        <InfoWrapper>
-          <SvgWrapper>
-            <JobLevel className="svg" />
-          </SvgWrapper>
-          <Text>{employmentType}</Text>
-        </InfoWrapper>
-      </OfferHeader>
-    )
-}
+    <OfferHeader>
+      <TopWrapper>
+        <Office className="office" />
+        <Title company>
+          {name}
+          <span>{companyName}</span>
+        </Title>
+      </TopWrapper>
+      <MoneyWrapper>
+        <SvgWrapper>
+          <Money className="money" />
+        </SvgWrapper>
+        <div>
+          <BigText>{earnings}</BigText>
+          <MoneyText>brutto / mies.</MoneyText>
+        </div>
+      </MoneyWrapper>
+      <InfoWrapper>
+        <SvgWrapper>
+          <Marker className="svg" />
+        </SvgWrapper>
+        <Text>{location}</Text>
+      </InfoWrapper>
+      <InfoWrapper>
+        <SvgWrapper>
+          <Talk className="svg" />
+        </SvgWrapper>
+        <Text>{interview}</Text>
+      </InfoWrapper>
+      <InfoWrapper>
+        <SvgWrapper>
+          <JobType className="svg" />
+        </SvgWrapper>
+        <Text>{contract}</Text>
+      </InfoWrapper>
+      <InfoWrapper>
+        <SvgWrapper>
+          <JobTime className="svg" />
+        </SvgWrapper>
+        <Text>{timelapse}</Text>
+      </InfoWrapper>
+      <InfoWrapper>
+        <SvgWrapper>
+          <JobLevel className="svg" />
+        </SvgWrapper>
+        <Text>{employmentType}</Text>
+      </InfoWrapper>
+    </OfferHeader>
+  );
+};
 
-
-
-export default Header
+export default Header;

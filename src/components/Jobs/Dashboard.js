@@ -29,9 +29,8 @@ const Dashboard = ({jobs}) => {
     <Wrapper>
       <Header>
         <Text>Oferty pracy</Text>
-        <JobMaper jobs={jobs}/>
       </Header>
-      <div></div>
+      <JobMaper jobs={jobs}/>
     </Wrapper>
   );
 };

@@ -14,8 +14,6 @@ const Technologies = ({requirement}) => {
         <Text technologies>Wymagane</Text>
         <TechnologyWrapper>
        {listItems}
-        
-       
         </TechnologyWrapper>
       </TechnologiesWrapper>
    
