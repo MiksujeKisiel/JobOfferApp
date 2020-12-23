@@ -50,8 +50,8 @@ const TechnologiesWrapper = styled.div`
   width: 90%;
   box-shadow: 0 0 10px rgba(21, 21, 21, 0.3);
   margin: 5px 0;
-  padding: 30px 15px;
-  border-radius: 10px;
+  padding: 30px 30px;
+
   .svg {
     width: 22px;
     height: 22px;

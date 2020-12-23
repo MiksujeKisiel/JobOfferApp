@@ -11,16 +11,20 @@ justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;                                                                                                      
 }
+@media (min-width: ${1440}px) {
+    width: 1100px;   
+    flex-direction: row;
+    flex-wrap: wrap;                                                                                                      
+}
 `
 
 export const FormWrapper = styled.div`
 display: flex;
 flex-direction: column;
 padding: 0 20px;
-
 @media (min-width: ${768}px) {
 padding: 10px;
-box-shadow: 10px 0 20px rgba(21,21,21,0.2);
+
 }
 `
 export const Wrapper = styled.div`

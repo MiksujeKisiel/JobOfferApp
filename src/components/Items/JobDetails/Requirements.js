@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Done } from "../../../assets/svg/accept.svg";
 
-const Responsibilities = ({ responsibility }) => {
-  const listItems = responsibility.slice(0).map((number) => (
+const Requirements = ({ requirement }) => {
+  const listItems = requirement.slice(0).map((number) => (
     <DoneWrapper>
       <Done className="svg" />
       <Text>{number}</Text>
@@ -11,7 +11,7 @@ const Responsibilities = ({ responsibility }) => {
   ));
   return (
     <TechnologiesWrapper>
-      <Header>Twój zakres obowiązków</Header>
+      <Header>Wymagania</Header>
       <BigDoneWrapper>{listItems}</BigDoneWrapper>
     </TechnologiesWrapper>
   );
@@ -57,8 +57,7 @@ const DoneWrapper = styled.div`
 
 const Text = styled.p`
   font-size: 16px;
-  
   font-weight: 400;
 `;
 
-export default Responsibilities;
+export default Requirements;

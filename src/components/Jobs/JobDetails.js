@@ -6,7 +6,8 @@ import { compose } from "redux";
 import Header from "../Items/JobDetails/Header";
 import Responsibilities from "../Items/JobDetails/Responsibilities";
 import Technologies from "../Items/JobDetails/Technologies";
-
+import About from '../Items/JobDetails/About';
+import Requirements from '../Items/JobDetails/Requirements';
 const JobDetails = (props) => {
   const { job } = props;
 
@@ -27,6 +28,9 @@ const JobDetails = (props) => {
         />
         <Technologies requirement={job.requirement} />
         <Responsibilities responsibility={job.responsibility} />
+        <Requirements requirement={job.requirement}/>
+        <About about={job.about}
+        companyName={job.companyName}/>
         </ContentWrapper>
       </Wrapper>
     );

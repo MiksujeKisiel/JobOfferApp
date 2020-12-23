@@ -78,11 +78,16 @@ const Title = styled.h2`
       font-size: 15px;
     }
   }
+
 `;
 
 const Text = styled.p`
   font-size: 14px;
   margin-left: 5px;
+  @media (min-width: ${1024}px) {
+    font-size: 15px;
+  }
+
 `;
 
 const MoneyWrapper = styled.div`
@@ -101,7 +106,9 @@ const MoneyWrapper = styled.div`
   @media (min-width: ${1024}px) {
     width: 40%;
     padding: 10px 0 10px 15px;
+    border-left: none;
   }
+ 
 `;
 
 const BigText = styled.p`
@@ -120,6 +127,10 @@ const MoneyText = styled.p`
     display: inline;
     margin-left: 8px;
    }
+   @media (min-width: ${1024}px) {
+    display: block;
+    margin-left: 0;
+}
 `;
 
 
@@ -148,6 +159,15 @@ const SvgWrapper = styled.div`
     height: 20px;
     fill: #1825AA;
   }
+  @media (min-width: ${1024}px) {
+    .svg {
+    width: 20px;
+    height: 22px;
+    fill: #1825AA;
+  }
+  height: 42px;
+  width: 42px;
+  }
 `;
 
 const Header = ({
@@ -160,7 +180,7 @@ const Header = ({
   timelapse,
   employmentType,
 }) => {
-  console.log(name);
+ 
   return (
     <OfferHeader>
       <TopWrapper>

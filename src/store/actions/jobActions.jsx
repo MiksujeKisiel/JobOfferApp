@@ -18,6 +18,7 @@ export const addJob = (data) => async (
       userid: userId,
       name: data.name,
       companyName: data.company,
+      employees: data.employees,
       earnings: data.earnings,
       earningsType: data.earningsType,
       location: data.location,
@@ -26,7 +27,9 @@ export const addJob = (data) => async (
       employmentType: data.employmentType,
       interview: data.interview,
       responsibility: data.responsibility,
-      requirement: data.requirement
+      requirement: data.requirement,
+      offer: data.offer,
+      about: data.about
   })
 
  
