@@ -1,24 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../../assets/images/kisieljobs.png";
+
 import NavLink from "./NavLink";
 import { NavLink as Link } from "react-router-dom";
-
+import Logo from '../Items/Logo'
 const Nav = styled.nav`
-  background: #0e1926;
+  padding: 0 50px;
   display: flex;
   justify-content: space-between;
-  .logo {
-    width: 120px;
-    height: 80px;
-  }
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
+
 `;
 
 const Wrapper = styled.ul`
   position: relative;
   display: flex;
   align-items: center;
-  height: 90px;
+  height: 80px;
 `;
 
 const Navbar = ({ loggedIn }) => {
@@ -29,7 +27,7 @@ const Navbar = ({ loggedIn }) => {
       <>
         <Wrapper>
        <Link to="/">
-         <img className="logo" src={Logo} alt="" /></Link>
+         <Logo/></Link>
           <NavLink text="Home" to="/" />
         </Wrapper>
         <Wrapper>
@@ -45,14 +43,14 @@ const Navbar = ({ loggedIn }) => {
       <>
         <Wrapper>
           <Link to="/">
-            <img className="logo" src={Logo} alt="" />
+            <Logo/>
           </Link>
           <NavLink to="/" text="home" />
         </Wrapper>
         <Wrapper>
-          <NavLink exact to="/login" text="login" />
-          <NavLink exact to="/recover-password" text="Recover password" />
-          <NavLink exact to="/signup" text="signup" />
+          <NavLink exact to="/login" text="Zaloguj się" />
+      
+          <NavLink exact to="/signup" text="Załóż konto" />
         </Wrapper>
       </>
     );

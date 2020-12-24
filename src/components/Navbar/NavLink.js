@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { NavLink as Link } from 'react-router-dom';
 
 const StyledLink = styled(Link)`
-color: white;
-font-size: 19px;
+color: #1c1c1c;
+font-size: 16px;
 margin: 0 20px;
 `
 

@@ -1,13 +1,15 @@
 import React, {useEffect} from "react";
 import { Formik, Field } from "formik";
-import Input from "../Items/Form/Input";
+import Input from "../Items/Form/InputUser";
 import Button from "../Items/Form/Button";
 import Reference from '../Items/Form/Reference';
 import Message from '../Items/Form/Message';
+import register from '../../assets/images/register.jpg'
 import * as Yup from "yup";
 import { Form, FormWrapper, Wrapper, Text } from "../Items/Form/FormStyles";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
+import BackgroundImage from '../Items/Form/BackgroundImage'
 
 const LoginSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -37,7 +39,7 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
   return (
     <Wrapper>
       <FormWrapper>
-        <Text>Sign Up</Text>
+        <Text>Zarejestruj się</Text>
         <Formik
           initialValues={{
             firstName: "",
@@ -56,26 +58,26 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
           {({ isSubmitting, isValid }) => (
             <Form>
               <Field
-                word="First Name"
+                word="Imię"
                 type="text"
                 name="firstName"
                 component={Input}
               />
               <Field
-                word="Last Name"
+                word="Nazwisko"
                 type="text"
                 name="lastName"
                 component={Input}
               />
-              <Field word="Email" type="email" name="email" component={Input} />
+              <Field word="Adres e-mail" type="email" name="email" component={Input} />
               <Field
-                word="Password"
+                word="Hasło"
                 type="password"
                 name="password"
                 component={Input}
               />
               <Field
-                word="Confirm Password"
+                word="Potwierdź hasło"
                 type="password"
                 name="confirmPassword"
                 component={Input}
@@ -84,22 +86,29 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Signing up" : null}
                 type="submit">
-                Sign up
+               Zarejestruj się
               </Button>
             </Form>
           )}
         </Formik>
         <Reference
-        text="Have you got an account? "
-        link="log in"
+        text="Masz konto?"
+        link=" Zaloguj się"
         to="/login"/>
         <Message error show={error}>
         {error}   
         </Message>
       </FormWrapper>
+     <BackgroundImage
+     src={register}
+     bigText={"Jesteś o krok od lepszej pracy."}
+     text={"Załóż konto i sprawdź, czy nie szukasz."}
+     />
     </Wrapper>
   );
 };
+
+
 
 const mapStateToProps = ({ auth }) => ({
   loading: auth.loading,
@@ -110,5 +119,7 @@ const mapDispatchToProps = {
   signUp: actions.signUp,
   cleanUp: actions.clean
 };
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

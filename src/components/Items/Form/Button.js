@@ -3,13 +3,15 @@ import styled from 'styled-components'
 
 const StyledButton = styled.button`
 width: 150px;
-background-color: #8F90DA;
+background-color: #1825AA;
+width: 100%;
 border: none;
 color: white;
-margin: 20px 0;
-padding: 10px 5px;
-border-radius: 5px;
+margin: 40px 0;
+padding: 15px 5px;
+border-radius: 50px;
 font-size: 16px;
+max-width: 250px;
 `
 
 

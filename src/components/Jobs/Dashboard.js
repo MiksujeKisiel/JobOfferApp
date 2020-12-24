@@ -3,7 +3,13 @@ import styled from "styled-components";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import Background from './Background';
 import JobMaper from './Job';
+
+
+
+
+
 const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
@@ -23,15 +29,17 @@ const Header = styled.header`
 `;
 
 const Dashboard = ({jobs}) => {
-
-
   return (
+    <>
+   
+    <Background/>
     <Wrapper>
       <Header>
         <Text>Oferty pracy</Text>
       </Header>
       <JobMaper jobs={jobs}/>
     </Wrapper>
+    </>
   );
 };
 const mapStateToProps = ({firestore}) => {

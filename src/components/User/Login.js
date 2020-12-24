@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import { Form, FormWrapper, Wrapper, Text } from "../Items/Form/FormStyles";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
-import Input from "../Items/Form/Input";
+import Input from "../Items/Form/InputUser";
 import Button from "../Items/Form/Button";
 import Reference from '../Items/Form/Reference';
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions';
 import Message from '../Items/Form/Message';
-
+import BackgroundImage from '../Items/Form/BackgroundImage';
+import loginimage from '../../assets/images/loginimage.jpg'
+import { Link } from "react-router-dom";
+import styled from 'styled-components';
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("invalid email").required("the email is required."),
   password: Yup.string().required("the password is required"),
@@ -24,7 +27,7 @@ function Login({login, loading, error, cleanUp}) {
   return (
     <Wrapper>
       <FormWrapper>
-        <Text>Sign In</Text>
+        <Text>Zaloguj się</Text>
         <Formik
           initialValues={{
             email: "",
@@ -50,10 +53,12 @@ function Login({login, loading, error, cleanUp}) {
                 name="password"
                 component={Input}
               />
+               <StyledLink to="/recover-password"> zapomniałeś hasła?</StyledLink>
               <Button 
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Signing up" : null}
-              type="submit">Log in</Button>
+              type="submit">Zaloguj się</Button>
+           
             </Form>
           )}
         </Formik>
@@ -61,12 +66,17 @@ function Login({login, loading, error, cleanUp}) {
         {error}   
         </Message>
         <Reference
-               text="forgot your"
-               link=" password"
-               to="/forgot-password"
+               text="Nie masz konta?"
+               link=" Zarejestruj się"
+               to="/signup"
         />
       
       </FormWrapper>
+      <BackgroundImage
+           src={loginimage}
+           bigText={"Jesteś o krok od lepszej pracy."}
+           text={"Załóż konto i sprawdź, czy nie szukasz."}
+      />
     </Wrapper>
   );
 }
@@ -83,4 +93,10 @@ const mapDispatchToProps = {
   
 }
 
+const StyledLink = styled(Link)`
+  color: #1B75BC;
+  text-align: right;
+
+  margin: 20px 0 0 50px;
+`;
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
