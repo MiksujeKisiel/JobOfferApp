@@ -59,6 +59,7 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/job/:id" component={JobDetails} />
         </Layout>
+        <Redirect to="/" />
       </Switch>
     );
   }

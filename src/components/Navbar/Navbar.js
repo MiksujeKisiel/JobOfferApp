@@ -1,22 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-
 import NavLink from "./NavLink";
 import { NavLink as Link } from "react-router-dom";
 import Logo from '../Items/Logo'
+import MobileNavbar from './MobileNavbar';
 const Nav = styled.nav`
-  padding: 0 50px;
+
+  @media (min-width: ${768}px) {
+    padding: 0 50px;
   display: flex;
   justify-content: space-between;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
-
+  }
 `;
 
 const Wrapper = styled.ul`
-  position: relative;
+display: none;
+  @media (min-width: ${768}px) {
+    position: relative;
   display: flex;
   align-items: center;
   height: 80px;
+  }
 `;
 
 const Navbar = ({ loggedIn }) => {
@@ -28,13 +33,13 @@ const Navbar = ({ loggedIn }) => {
         <Wrapper>
        <Link to="/">
          <Logo/></Link>
-          <NavLink text="Home" to="/" />
+          <NavLink text="Oferty pracy" to="/" />
         </Wrapper>
         <Wrapper>
-        <NavLink text="my job offers" to="/profile-jobs" />
-        <NavLink text="add offer" to="/addjob" />
-          <NavLink text="profile" to="/profile" />
-          <NavLink text="Logout" to="/logout" />
+        <NavLink text="" to="/profile-jobs" />
+        <NavLink text="Dodaj oferte pracy" to="/addjob" />
+          <NavLink text="Profil" to="/profile" />
+          <NavLink text="Wyloguj się" to="/logout" />
         </Wrapper>
       </>
     );
@@ -45,18 +50,20 @@ const Navbar = ({ loggedIn }) => {
           <Link to="/">
             <Logo/>
           </Link>
-          <NavLink to="/" text="home" />
+          <NavLink to="/" text="Oferty pracy" />
         </Wrapper>
         <Wrapper>
           <NavLink exact to="/login" text="Zaloguj się" />
-      
           <NavLink exact to="/signup" text="Załóż konto" />
+          <NavLink exact to="" text="Dodaj ogłoszenie" />
         </Wrapper>
       </>
     );
   }
 
-  return <Nav>{links}</Nav>;
+  return <Nav>{links}
+  <MobileNavbar/>
+  </Nav>;
 };
 
 export default Navbar;
