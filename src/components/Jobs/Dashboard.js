@@ -11,13 +11,18 @@ import JobList from './JobList';
 
 
 const Wrapper = styled.div`
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   display: flex;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 50px 0 100px 150px;
+  padding: 50px 0 100px 0px;
+  @media (min-width: ${768}px) {
+    padding: 50px 0 100px 100px;
+  
+
+}
 `;
 
 const TextWrapper = styled.div`
