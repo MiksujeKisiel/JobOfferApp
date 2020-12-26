@@ -4,8 +4,8 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import Background from './Background';
-import JobMaper from './Job';
-
+import {Link } from 'react-router-dom';
+import JobList from './JobList';
 
 
 
@@ -13,20 +13,12 @@ import JobMaper from './Job';
 const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
-  max-width: 1100px;
-  margin: 40px auto;
+  flex-direction: column;
   display: flex;
-  flex-wrap: wrap;
-`;
-const Text = styled.p`
-  font-size: 25px;
-  font-weight: 600;
+ 
+
 `;
 
-const Header = styled.header`
-  
-  margin-bottom: 10px;
-`;
 
 const Dashboard = ({jobs}) => {
   return (
@@ -34,10 +26,15 @@ const Dashboard = ({jobs}) => {
    
     <Background/>
     <Wrapper>
-      <Header>
+      {/* <Header>
         <Text>Oferty pracy</Text>
-      </Header>
-      <JobMaper jobs={jobs}/>
+      </Header> */}
+      {jobs && jobs.map((jobs) => (
+       <Link to={'job/' + jobs.id}>
+            <JobList jobs={jobs} />
+            </Link>
+          ))}
+      {/* <JobMaper jobs={jobs}/> */}
     </Wrapper>
     </>
   );

@@ -1,101 +1,161 @@
 import React from "react";
 import styled from "styled-components";
-
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { connect } from "react-redux";
-
-
-
-
+import { ReactComponent as JobType } from "../../assets/svg/jobtype.svg";
+import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
+import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
+import { ReactComponent as Suitcase } from "../../assets/svg/suitcase.svg";
+import { ReactComponent as Office } from "../../assets/svg/office.svg";
 const JobList = ({ jobs }) => {
-  console.log(jobs)
+  const { location, employmentType, contract, companyName, name } = jobs;
   return (
-      <Wrapper>
+    <Wrapper>
+      <OfficeWrapper>
+    <Office className="office"/>
+      </OfficeWrapper>
       <NameCompanyWrapper>
-        <p className="name">{jobs.name}</p>
-        <p className="company">{jobs.companyName}</p>
+        <JobName>{name}</JobName>
+        <CompanyWrapper>
+          <Suitcase className="suitcase" />{" "}
+          <CompanyName>{companyName}</CompanyName>
+        </CompanyWrapper>
       </NameCompanyWrapper>
       <AttributeLocationWrapper>
-        <div className="attributes">
-          <p className="attribute">{jobs.earnings}</p>
-          <p className="attribute">{jobs.interview}</p>
-        </div>
-        <p className="location">{jobs.location}</p>
+        <SmallWrapper>
+          <Marker className="svg" /> <AttributeText>{location}</AttributeText>
+        </SmallWrapper>
+        <SmallWrapper>
+          <JobType className="svg" /> <AttributeText>{contract}</AttributeText>
+        </SmallWrapper>
+        <SmallWrapper>
+          <JobLevel className="svg" />
+          <AttributeText>{employmentType}</AttributeText>
+        </SmallWrapper>
       </AttributeLocationWrapper>
-      </Wrapper>
-
-
+      <DateWrapper>
+        <Date>Opublikowana: 26 grudnia 2020</Date>
+      </DateWrapper>
+    </Wrapper>
   );
 };
+const CompanyWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 5px 0 0;
+  .suitcase {
+    fill: #0060ee;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    @media (min-width: ${768}px) {
+      display: none;
+}
+  }
+ 
+`;
+const OfficeWrapper = styled.div`
+display: flex;
+align-items: flex-end;
+@media (min-width: ${768}px) {
+  height: 100%;
+}
+`
+const CompanyName = styled.p`
+font-size: 15px;
+`;
 
-
+const JobName = styled.p`
+  color: #006cf1;
+  font-weight: 600;
+  font-size: 15px;
+  @media (min-width: ${768}px) {
+  font-size: 21px;
+}
+`;
 
 const NameCompanyWrapper = styled.div`
   display: flex;
-  align-items: flex-end;
-  width: 50%;
-  .name {
-    font-size: 18px;
-  }
-  .company {
-    color: #9f9c99;
-    margin-left: 5px;
-  }
+  flex-direction: column;
+  margin-left: 15px;
+  @media (min-width: ${768}px) {
+ width: 70%;
+ margin-left: 20px;
+
+}
 `;
 
 const AttributeLocationWrapper = styled.div`
-  width: 50%;
+  margin: 10px 0 0;
+  width: 100%;
+  .svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    fill: #707070;
+  }
+  @media (min-width: ${768}px) {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  .location {
-    color: #9f9c99;
+  flex-wrap: wrap;
+  max-width: 350px;
+  padding-left: 80px;
+  margin: 25px 0 0;
+  .svg {
+   margin-right: 6px;
   }
-  .attribute {
-    border: 1px solid #9f9c99;
-    padding: 5px 10px;
-    color: #9f9c99;
-    font-size: 14px;
-    margin: 0 5px;
-    transition: all 0.3 ease-in;
-    :hover {
-      color: black;
-      border: 1px solid black;
-    }
+}
+  
+`;
+
+const AttributeText = styled.p`
+  font-size: 15px;
+`;
+
+const SmallWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  @media (min-width: ${768}px) {
+    margin: 5px 20px 5px 0;
   }
-  .attributes {
-    display: flex;
-  }
+`;
+const DateWrapper = styled.div`
+  margin-top: 10px;
+  width: 100%;
+  @media (min-width: ${768}px) {
+  padding-left: 80px;
+  border-top: 1px solid #c1c1c1;
+}
+`;
+const Date = styled.p`
+  font-size: 14px;
+  margin-top: 10px;
 `;
 
 const Wrapper = styled.div`
-  margin: 0 auto;
+  width: 90vw;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 15px;
+  margin: 30px 0;
+  border-radius: 8px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  border-bottom: 1px solid rgb(240, 240, 240);
-  border-left: 3px solid #151515;
-  padding: 0 15px;
-  cursor: pointer;
-  transition: 0.4s ease;
-  width: 900px;
-  :hover {
-    background: #f6f2fc;
+  max-width: 1000px;
+  padding: 20px;
+  border-left: 4px solid #0091EA;
+  @media (min-width: ${768}px) {
+    margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 30px;
+  
+
+}
+  .office{
+    width: 60px;
+    height: 50px;
+    
   }
 `;
 
-const mapStateToProps = ({firestore}) => ({
-  // jobs: firestore.ordered.jobs,
-});
-
-const mapDispatchToProps = {
-  
-};
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{collection: 'jobs'}] )
-)(JobList);
+export default compose(firestoreConnect([{ collection: "jobs" }]))(JobList);
