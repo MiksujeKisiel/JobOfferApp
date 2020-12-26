@@ -15,9 +15,59 @@ const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   display: flex;
- 
-
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 0 100px 150px;
 `;
+
+const TextWrapper = styled.div`
+max-width: 1000px;
+border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+width: 100%;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+margin: 0 0 15px;
+
+`
+
+const SmallWrapper = styled.div`
+  cursor: pointer;
+  position: relative;
+  &::after{
+    width: 100%;
+    content: "";
+    background-color:#0060EE;
+    height: 3px;
+    position: absolute;
+  }
+  &:nth-of-type(2){
+    &::after{
+   height: 0;
+  }  }
+  .mapa{
+    color: #5D5D5D;
+  }
+`
+
+const Text = styled.p`
+font-size: 20px;
+color: #0060EE;
+letter-spacing: 1.5px;
+padding: 10px 30px;
+
+`
+const BigText = styled.p`
+font-size: 25px;
+font-weight: 300;
+`
+
+const BigTextWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 15px;
+`
+
+
 
 
 const Dashboard = ({jobs}) => {
@@ -26,15 +76,22 @@ const Dashboard = ({jobs}) => {
    
     <Background/>
     <Wrapper>
-      {/* <Header>
-        <Text>Oferty pracy</Text>
-      </Header> */}
-      {jobs && jobs.map((jobs) => (
+      <BigTextWrapper>
+      <BigText>Oferty pracy (42)</BigText>
+      </BigTextWrapper>
+      <TextWrapper>
+        <SmallWrapper>
+        <Text>Lista</Text>
+        </SmallWrapper>
+        <SmallWrapper>
+        <Text className="mapa">Mapa</Text>
+        </SmallWrapper>
+      </TextWrapper>
+            {jobs && jobs.map((jobs) => (
        <Link to={'job/' + jobs.id}>
             <JobList jobs={jobs} />
             </Link>
           ))}
-      {/* <JobMaper jobs={jobs}/> */}
     </Wrapper>
     </>
   );
