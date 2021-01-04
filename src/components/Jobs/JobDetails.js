@@ -67,7 +67,7 @@ const Wrapper = styled.div`
   .background{
     background-color: #40B4E5;
     width: 100%;
-    height: 100px;
+    height: 110px;
     position: absolute;
     top: 0;
     z-index: 0;
@@ -82,7 +82,11 @@ const ContentWrapper = styled.div`
   align-items: center;
   width: 90%;
   z-index: 2;
-  @media (min-width: ${1024}px) {
+  @media (min-width: ${768}px) {
     max-width: 850px;
+    
+  }
+  @media (min-width: ${1280}px) {
+    margin-right: 320px;
   }
 `

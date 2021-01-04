@@ -5,8 +5,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import GlobalStyle from './assets/style/GlobalStyle';
-// import Main from "./components/Job/Main";
 import Login from "./components/User/Login";
 import Signup from "./components/User/Signup";
 import Layout from "./layout/Layout";
@@ -55,7 +55,6 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/recover-password" component={RecoverPassword} />
         <Layout>
- 
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/job/:id" component={JobDetails} />
         </Layout>
@@ -64,7 +63,7 @@ const App = ({ loggedIn, emailVerified }) => {
     );
   }
   return (
-    <Router>
+    <Router onUpdate={() => window.scrollTo(0, 0)} history={createBrowserHistory()}>
       {routes}
       <GlobalStyle/>
     </Router>

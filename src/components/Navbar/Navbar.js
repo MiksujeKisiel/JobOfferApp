@@ -2,26 +2,36 @@ import React from "react";
 import styled from "styled-components";
 import NavLink from "./NavLink";
 import { NavLink as Link } from "react-router-dom";
-import Logo from '../Items/Logo'
-import MobileNavbar from './MobileNavbar';
+import Logo from "../Items/Logo";
+import MobileNavbar from "./MobileNavbar";
 const Nav = styled.nav`
-
   @media (min-width: ${768}px) {
-    padding: 0 50px;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   }
 `;
 
+const StyledLink = styled(Link)`
+font-family: 'Open sans', sans-serif;
+margin-left: 50px;
+font-size: 14px;
+`
+
 const Wrapper = styled.ul`
-display: none;
+  display: none;
   @media (min-width: ${768}px) {
     position: relative;
-  display: flex;
-  align-items: center;
-  height: 80px;
+    display: flex;
+    align-items: center;
+    height: 80px;
   }
+`;
+
+const SmallWrapper = styled.div`
+  height: 100%;
+  background-color: #1825aa;
 `;
 
 const Navbar = ({ loggedIn }) => {
@@ -31,15 +41,18 @@ const Navbar = ({ loggedIn }) => {
     links = (
       <>
         <Wrapper>
-       <Link to="/">
-         <Logo/></Link>
+          <Link to="/">
+            <Logo navbar />
+          </Link>
           <NavLink text="Oferty pracy" to="/" />
         </Wrapper>
         <Wrapper>
-        <NavLink text="" to="/profile-jobs" />
-        <NavLink text="Dodaj oferte pracy" to="/addjob" />
-          <NavLink text="Profil" to="/profile" />
-          <NavLink text="Wyloguj się" to="/logout" />
+          <NavLink text="" to="/profile-jobs" />
+          <NavLink user text="Profil" to="/profile" />
+          <NavLink user text="Wyloguj się" to="/logout" />
+          <SmallWrapper>
+            <NavLink offer text="Dodaj oferte pracy" to="/addjob" />
+          </SmallWrapper>
         </Wrapper>
       </>
     );
@@ -48,22 +61,27 @@ const Navbar = ({ loggedIn }) => {
       <>
         <Wrapper>
           <Link to="/">
-            <Logo/>
+            <Logo navbar />
           </Link>
-          <NavLink to="/" text="Oferty pracy" />
+          <StyledLink to="/">Oferty pracy</StyledLink>
         </Wrapper>
         <Wrapper>
-          <NavLink exact to="/login" text="Zaloguj się" />
-          <NavLink exact to="/signup" text="Załóż konto" />
-          <NavLink exact to="" text="Dodaj ogłoszenie" />
+          <NavLink user exact to="/login" text="Zaloguj się" />
+          <NavLink user signup exact to="/signup" text="Załóż konto" />
+          <SmallWrapper>
+            <NavLink offer exact to="/login" text="Dodaj ogłoszenie" />
+          </SmallWrapper>
         </Wrapper>
       </>
     );
   }
 
-  return <Nav>{links}
-  <MobileNavbar/>
-  </Nav>;
+  return (
+    <Nav>
+      {links}
+      <MobileNavbar />
+    </Nav>
+  );
 };
 
 export default Navbar;

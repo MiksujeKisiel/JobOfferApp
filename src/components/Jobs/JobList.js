@@ -149,6 +149,7 @@ const Wrapper = styled.div`
   align-items: flex-start;
   padding: 30px;
   
+  
 
 }
   .office{

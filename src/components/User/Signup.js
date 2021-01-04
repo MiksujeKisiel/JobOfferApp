@@ -10,24 +10,24 @@ import { Form, FormWrapper, Wrapper, Text } from "../Items/Form/FormStyles";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 import BackgroundImage from '../Items/Form/BackgroundImage'
-
+import Logo from '../Items/Logo'
 const LoginSchema = Yup.object().shape({
   firstName: Yup.string()
-    .required("Your first name is required")
-    .min(3, "Too short")
-    .max(25, "Too long"),
+    .required("Twoje imie jest wymagane")
+    .min(3, "Zbyt krótkie")
+    .max(25, "Zbyt długie"),
   lastName: Yup.string()
-    .required("Your last name is required")
-    .min(3, "Too short")
-    .max(25, "Too long"),
-  email: Yup.string().email("invalid email").required("the email is required."),
+    .required("Twoje nazwisko jest wymagane")
+    .min(3, "Zbyt krótkie")
+    .max(25, "Zbyt długie"),
+  email: Yup.string().email("Błędny adres e-mail").required("Adres e-mail jest wymagany"),
   password: Yup.string()
-    .required("the password is required")
-    .min(8, "Too short")
-    .max(25, "Too long"),
+    .required("Hasło jest wymagane")
+    .min(8, "Zbyt krótkie")
+    .max(25, "Zbyt długie"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], `Password doesn't match`)
-    .required("You need to confirm your password"),
+    .oneOf([Yup.ref("password"), null], `Hasła nie są takie same`)
+    .required("Musisz potwierdzić hasło"),
 });
 
 const Signup = ({ signUp, loading, error, cleanUp }) => {
@@ -39,6 +39,7 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
   return (
     <Wrapper>
       <FormWrapper>
+        < Logo />
         <Text>Zarejestruj się</Text>
         <Formik
           initialValues={{

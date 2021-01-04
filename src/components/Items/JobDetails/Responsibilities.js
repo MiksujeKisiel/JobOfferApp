@@ -33,6 +33,10 @@ const TechnologiesWrapper = styled.div`
     fill: #1825aa;
     margin-right: 20px;
   }
+  @media (min-width: ${600}px) {
+  
+  width: 100%;
+}
 `;
 
 const Header = styled.h2`

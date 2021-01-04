@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import * as actions from '../../store/actions'
 import BackgroundImage from '../Items/Form/BackgroundImage'
 import forgetpasswords from '../../assets/images/forgetpasswords.jpg'
-
+import Logo from '../Items/Logo'
 const BigText = styled.p`
   font-weight: 300;
   font-family: "Open sans", sans-serif;
@@ -28,7 +28,7 @@ const Text = styled.p`
 color: #9a9a9a;
 `
 const RecoverSchema = Yup.object().shape({
-  email: Yup.string().email("invalid email").required("the email is required."),
+  email: Yup.string().email("Błędny e-mail").required("Musisz podać adres e-mail"),
 });
 
 const RecoverPassword = ({error, sendEmail}) => {
@@ -49,6 +49,7 @@ const RecoverPassword = ({error, sendEmail}) => {
       {({ isSubmitting, isValid, loading }) => (
         <Form>
 <TextWrapper>
+
             <BigText>Przypomnij hasło</BigText>
             <Text>Podaj nam swój e-mail
 </Text>
@@ -74,8 +75,8 @@ const RecoverPassword = ({error, sendEmail}) => {
     </FormWrapper>
     <BackgroundImage
      src={forgetpasswords}
-     bigText={"Jesteś o krok od lepszej pracy."}
-     text={"Załóż konto i sprawdź, czy nie szukasz."}
+     bigText={"Nie pamiętasz hasła? Nie martw się, zdarza się najlepszym."}
+  
      />
     </Wrapper>
   );

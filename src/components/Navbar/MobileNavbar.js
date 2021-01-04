@@ -12,7 +12,7 @@ const BigWrapper = styled.div`
   position: fixed;
   bottom: 0;
   box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.3);
-  z-index: 500;
+  z-index: 1000;
 
   .active {
     .svg {

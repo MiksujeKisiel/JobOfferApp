@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   @media (min-width: ${600}px) {
     flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
   }
   .companyName{
       width: 40%;

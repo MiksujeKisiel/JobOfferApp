@@ -38,12 +38,19 @@ color: white;
 z-index: -1;   
 font-family: 'Open Sans';    
 font-size: 30px; 
+@media (min-width: ${1280}px) {
+    font-size: 45px;
+    max-width: 60%;
+  }
 `
 const Text = styled.p`
 font-family: 'Open Sans';  
 font-weight: 300;
 margin-top: 10px;
 color: white;
+@media (min-width: ${1280}px) {
+    font-size: 19px;
+  }
 `
 
 const StyledLink = styled(Link)`

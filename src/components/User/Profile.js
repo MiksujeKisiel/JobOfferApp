@@ -38,7 +38,7 @@ const Profile = ({ firebase, loading, error, editProfile, cleanUp}) => {
 
   return (
     <Wrapper>
-      <FormWrapper>
+      <FormWrapper profile>
         <Text>Edit profile</Text>
         <Formik
           initialValues={{
@@ -84,10 +84,10 @@ const Profile = ({ firebase, loading, error, editProfile, cleanUp}) => {
               />
               <Button
                 disabled={!isValid || isSubmitting}
-                loading={loading ? "Signing up" : null}
+                loading={loading ? "Edytowanie" : null}
                 type="submit"
               >
-                Sign up
+                Edytuj
               </Button>
             </Form>
           )}

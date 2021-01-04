@@ -12,9 +12,10 @@ import BackgroundImage from '../Items/Form/BackgroundImage';
 import loginimage from '../../assets/images/loginimage.jpg'
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import Logo from '../Items/Logo'
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().email("invalid email").required("the email is required."),
-  password: Yup.string().required("the password is required"),
+  email: Yup.string().email("Zły e-mail").required("Adres e-mail jest wymagany"),
+  password: Yup.string().required("Hasło jest wymagane"),
 });
 
 function Login({login, loading, error, cleanUp}) {
@@ -27,6 +28,7 @@ function Login({login, loading, error, cleanUp}) {
   return (
     <Wrapper>
       <FormWrapper>
+        <Logo/>
         <Text>Zaloguj się</Text>
         <Formik
           initialValues={{
@@ -58,11 +60,7 @@ function Login({login, loading, error, cleanUp}) {
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Signing up" : null}
               type="submit">Zaloguj się</Button>
-           
-            </Form>
-          )}
-        </Formik>
-        <Message error show={error}>
+                           <Message error show={error}>
         {error}   
         </Message>
         <Reference
@@ -70,12 +68,18 @@ function Login({login, loading, error, cleanUp}) {
                link=" Zarejestruj się"
                to="/signup"
         />
+            </Form>
+
+          )}
+   
+        </Formik>
+  
       
       </FormWrapper>
       <BackgroundImage
            src={loginimage}
-           bigText={"Jesteś o krok od lepszej pracy."}
-           text={"Załóż konto i sprawdź, czy nie szukasz."}
+           bigText={"Nowa praca? Jesteś w dobrym miejscu"}
+           text={"Mamy setki ofert pracy od najlepszych pracodawców"}
       />
     </Wrapper>
   );

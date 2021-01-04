@@ -94,8 +94,8 @@ const Background = () => {
       <TextWrapper>
         <BigText>Pracuj tam gdzie chcesz</BigText>
         <Text>Możesz w prosty sposób znaleźć pracę</Text>
-        <Link to="/login">
-          {" "}
+        <Link to="/job">
+       
           <Button>Szukaj pracy</Button>
         </Link>
         <Text>Na kisiel.pl mamy 23 23 ofert pracy</Text>

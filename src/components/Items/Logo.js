@@ -8,6 +8,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 border-radius: 50px;
+margin: ${(props) => (props.navbar) ? '0 0 0 30px' : '30px 0' };
 `
 const Text = styled.p`
 font-size: 25px;
@@ -16,9 +17,9 @@ color: white;
 font-weight: 600;
 `
 
-const Logo = () => {
+const Logo = ({navbar}) => {
     return (
-        <Wrapper>
+        <Wrapper navbar={navbar}>
             <Text>kisiel.pl</Text>
         </Wrapper>
     )

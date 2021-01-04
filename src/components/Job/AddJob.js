@@ -284,15 +284,17 @@ const AddJob = ({ addJob, error, loading }) => {
                 Dodaj oferte pracy
               </Button>
             </SubmitButtonWrapper>
-          </Form>
-        )}
-      </Formik>
-      <Message error show={error}>
+            <Message error show={error}>
         {error}
       </Message>
       <Message error show={error === false}>
         Job added
       </Message>
+          </Form>
+        )}
+      
+      </Formik>
+   
     </FormWrapper>
   );
 };
