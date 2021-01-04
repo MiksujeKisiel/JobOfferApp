@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import * as actions from '../../store/actions'
 import BackgroundImage from '../Items/Form/BackgroundImage'
 import forgetpasswords from '../../assets/images/forgetpasswords.jpg'
-import Logo from '../Items/Logo'
+
 const BigText = styled.p`
   font-weight: 300;
   font-family: "Open sans", sans-serif;
