@@ -19,6 +19,7 @@ import AddJob from "./components/Job/AddJob";
 import Dashboard from "./components/Jobs/Dashboard";
 import { compose } from "redux";
 
+
 import JobDetails from "./components/Jobs/JobDetails";
 
 const App = ({ loggedIn, emailVerified }) => {
@@ -63,10 +64,12 @@ const App = ({ loggedIn, emailVerified }) => {
     );
   }
   return (
+
     <Router onUpdate={() => window.scrollTo(0, 0)} history={createBrowserHistory()}>
       {routes}
       <GlobalStyle/>
     </Router>
+
   );
 };
 

@@ -19,10 +19,10 @@ const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
       <Text>Verify your email</Text>
       <Button
         disabled={loading}
-        loading={loading ? "Sending email..." : null}
+        loading={loading ? "Wysyłanie maila" : null}
         onClick={() => sendVerification()}
       >
-        Send again
+        Wyślij ponowanie
       </Button>
       <Message error show={error}>
         {error}

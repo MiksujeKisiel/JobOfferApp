@@ -36,7 +36,6 @@ const Offer = ({ jobs }) => {
          show={isEditing}
          close={() => setisEditing(true)}
         /> */}
-
       </Controls>
     </div>
   );

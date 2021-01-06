@@ -6,6 +6,7 @@ const StyledLoader = styled.div`
   position: relative;
   width: 64px;
   height: 64px;
+  margin: 0 auto;
   & div {
     box-sizing: border-box;
     display: block;

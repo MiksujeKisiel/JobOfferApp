@@ -8,9 +8,12 @@ import Responsibilities from "../Items/JobDetails/Responsibilities";
 import Technologies from "../Items/JobDetails/Technologies";
 import About from '../Items/JobDetails/About';
 import Requirements from '../Items/JobDetails/Requirements';
+import UserJob from '../Items/JobDetails/UserJob'
 const JobDetails = (props) => {
   const { job } = props;
-
+  const { loggedIn } = props;
+  console.log(loggedIn)
+  console.log(job.userid)
   if (job) {
     return (
       <Wrapper>
@@ -32,20 +35,24 @@ const JobDetails = (props) => {
         <About about={job.about}
         companyName={job.companyName}/>
         </ContentWrapper>
+        <UserJob userId={job.userid}/>
+ 
       </Wrapper>
     );
-  } else {
+  } else if (!job) {
     return <div>no job detail</div>;
   }
 };
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
+  
   const jobs = state.firestore.data.jobs;
   const job = jobs ? jobs[id] : null;
   console.log(jobs);
   return {
     job: job,
+    loggedIn: state.firebase.auth.uid
   };
 };
 
@@ -60,8 +67,7 @@ const Wrapper = styled.div`
   background: #f1f1f1;
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   padding-top: 30px;
   position: relative;
   .background{

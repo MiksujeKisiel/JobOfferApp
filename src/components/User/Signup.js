@@ -85,7 +85,7 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
               />
               <Button
                 disabled={!isValid || isSubmitting}
-                loading={loading ? "Signing up" : null}
+                loading={loading ? "Rejestrowanie" : null}
                 type="submit">
                Zarejestruj się
               </Button>

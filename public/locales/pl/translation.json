@@ -1,0 +1,10 @@
+{
+    "NavLinks":{
+        "home":"Oferty",
+        "logout":"Wyloguj",
+        "login":"Zaloguj",
+        "signup":"Zarejestruj się",
+        "add":"Dodaj oferte",
+        "profile":"Profil"
+    }
+}

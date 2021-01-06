@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { Provider } from "react-redux";
@@ -7,7 +7,8 @@ import {
   ReactReduxFirebaseProvider
 } from "react-redux-firebase";
 import {rrfProps} from "./store";
-
+import i18n from './i18n/i18n'
+import { I18nextProvider } from 'react-i18next';
 // import Loader from "./components/Loader";
 // import styled from "styled-components";
 
@@ -22,13 +23,17 @@ const root = document.getElementById("root");
 
 
   ReactDOM.render(
+    <Suspense fallback={(<div></div>)}>
     <React.StrictMode>
+       <I18nextProvider i18n={i18n}>
       <Provider store={store}>
         <ReactReduxFirebaseProvider {...rrfProps}>
           <App />
         </ReactReduxFirebaseProvider>
       </Provider>
-    </React.StrictMode>,
+      </I18nextProvider>
+    </React.StrictMode>
+    </Suspense>,
     root
   );
 

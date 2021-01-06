@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import main from "../../assets/images/Main.jpg";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 const Wrapper = styled.div`
   display: none;
   @media (min-width: ${768}px) {
@@ -88,11 +89,12 @@ const Button = styled.button`
 `;
 
 const Background = () => {
+  const [t] = useTranslation();
   return (
     <Wrapper>
       <Image src={main} />
       <TextWrapper>
-        <BigText>Pracuj tam gdzie chcesz</BigText>
+        <BigText>{t('background[0]')}</BigText>
         <Text>Możesz w prosty sposób znaleźć pracę</Text>
         <Link to="/job">
        

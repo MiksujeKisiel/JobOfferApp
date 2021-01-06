@@ -12,12 +12,12 @@ const JobList = ({ jobs }) => {
   return (
     <Wrapper>
       <OfficeWrapper>
-    <Office className="office"/>
+        <Office className="office" />
       </OfficeWrapper>
       <NameCompanyWrapper>
         <JobName>{name}</JobName>
         <CompanyWrapper>
-          <Suitcase className="suitcase" />{" "}
+          <Suitcase className="suitcase" />
           <CompanyName>{companyName}</CompanyName>
         </CompanyWrapper>
       </NameCompanyWrapper>
@@ -50,19 +50,18 @@ const CompanyWrapper = styled.div`
     margin-right: 5px;
     @media (min-width: ${768}px) {
       display: none;
-}
+    }
   }
- 
 `;
 const OfficeWrapper = styled.div`
-display: flex;
-align-items: flex-end;
-@media (min-width: ${768}px) {
-  height: 100%;
-}
-`
+  display: flex;
+  align-items: flex-end;
+  @media (min-width: ${768}px) {
+    height: 100%;
+  }
+`;
 const CompanyName = styled.p`
-font-size: 15px;
+  font-size: 15px;
 `;
 
 const JobName = styled.p`
@@ -70,8 +69,8 @@ const JobName = styled.p`
   font-weight: 600;
   font-size: 15px;
   @media (min-width: ${768}px) {
-  font-size: 21px;
-}
+    font-size: 21px;
+  }
 `;
 
 const NameCompanyWrapper = styled.div`
@@ -79,10 +78,9 @@ const NameCompanyWrapper = styled.div`
   flex-direction: column;
   margin-left: 15px;
   @media (min-width: ${768}px) {
- width: 70%;
- margin-left: 20px;
-
-}
+    width: 70%;
+    margin-left: 20px;
+  }
 `;
 
 const AttributeLocationWrapper = styled.div`
@@ -95,16 +93,15 @@ const AttributeLocationWrapper = styled.div`
     fill: #707070;
   }
   @media (min-width: ${768}px) {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 350px;
-  padding-left: 80px;
-  margin: 25px 0 0;
-  .svg {
-   margin-right: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 350px;
+    padding-left: 80px;
+    margin: 25px 0 0;
+    .svg {
+      margin-right: 6px;
+    }
   }
-}
-  
 `;
 
 const AttributeText = styled.p`
@@ -123,9 +120,9 @@ const DateWrapper = styled.div`
   margin-top: 10px;
   width: 100%;
   @media (min-width: ${768}px) {
-  padding-left: 80px;
-  border-top: 1px solid #c1c1c1;
-}
+    padding-left: 80px;
+    border-top: 1px solid #c1c1c1;
+  }
 `;
 const Date = styled.p`
   font-size: 14px;
@@ -141,21 +138,17 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   max-width: 1000px;
   padding: 20px;
-  border-left: 4px solid #0091EA;
+  border-left: 4px solid #0091ea;
   @media (min-width: ${768}px) {
     margin: 10px 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  padding: 30px;
-  
-  
-
-}
-  .office{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 30px;
+  }
+  .office {
     width: 60px;
     height: 50px;
-    
   }
 `;
 

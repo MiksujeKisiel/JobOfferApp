@@ -13,6 +13,7 @@ import loginimage from '../../assets/images/loginimage.jpg'
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import Logo from '../Items/Logo'
+import { useTranslation } from 'react-i18next';
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Zły e-mail").required("Adres e-mail jest wymagany"),
   password: Yup.string().required("Hasło jest wymagane"),
@@ -24,12 +25,12 @@ function Login({login, loading, error, cleanUp}) {
     cleanUp();
     }
   },[cleanUp]);
-
+  const [t] = useTranslation();
   return (
     <Wrapper>
       <FormWrapper>
         <Logo/>
-        <Text>Zaloguj się</Text>
+        <Text>{t('login')}</Text>
         <Formik
           initialValues={{
             email: "",
@@ -45,12 +46,12 @@ function Login({login, loading, error, cleanUp}) {
           {({ isSubmitting, isValid }) => (
             <Form>
               <Field 
-               word="Email"
+               word={t('email')}
                type="email" 
                name="email" 
                component={Input} />
               <Field
-                word="Password"
+                word={t('password')}
                 type="password"
                 name="password"
                 component={Input}
@@ -58,7 +59,7 @@ function Login({login, loading, error, cleanUp}) {
                <StyledLink to="/recover-password"> zapomniałeś hasła?</StyledLink>
               <Button 
                 disabled={!isValid || isSubmitting}
-                loading={loading ? "Signing up" : null}
+                loading={loading ? "..." : null}
               type="submit">Zaloguj się</Button>
                            <Message error show={error}>
         {error}   

@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import Background from './Background';
 import {Link } from 'react-router-dom';
 import JobList from './JobList';
-
+import Loader from '../Loader';
 
 
 
@@ -76,6 +76,35 @@ const BigTextWrapper = styled.div`
 
 
 const Dashboard = ({jobs}) => {
+let content;
+if (!jobs) {
+  content = (
+    <Loader/>
+  );
+} else if (!jobs || !jobs) {
+  content = (
+    <div>
+      <p>nie masz dodanych ofert prac</p>
+    </div>
+  );
+} else if (jobs.length === 0) {
+  content = (
+    <div>
+      <p>nie masz dodanych ofert prac</p>
+    </div>
+  );
+} else {
+  content = (
+    <>
+    {jobs && jobs.map((jobs) => (
+      <Link to={'job/' + jobs.id}>
+           <JobList jobs={jobs} />
+           </Link>
+         ))}
+         </>
+  );
+}
+
   return (
     <>
    
@@ -92,11 +121,7 @@ const Dashboard = ({jobs}) => {
         <Text className="mapa">Mapa</Text>
         </SmallWrapper>
       </TextWrapper>
-            {jobs && jobs.map((jobs) => (
-       <Link to={'job/' + jobs.id}>
-            <JobList jobs={jobs} />
-            </Link>
-          ))}
+  {content}
     </Wrapper>
     </>
   );

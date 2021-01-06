@@ -2,18 +2,17 @@ import React from 'react'
 import Navbar from '../components/Navbar/Navbar';
 import GlobalStyle from '../assets/style/GlobalStyle';
 import { connect } from 'react-redux'
-
+import Footer from '../components/Footer/Footer';
 
 
 const Layout = ({children, loggedIn}) =>{
     return(
-        <div>
+        <>
        <Navbar loggedIn={loggedIn}/>
        <GlobalStyle/>
        {children}
-
-        </div>
-
+       <Footer/>
+        </>
     )
 }
 

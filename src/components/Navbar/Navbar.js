@@ -4,6 +4,8 @@ import NavLink from "./NavLink";
 import { NavLink as Link } from "react-router-dom";
 import Logo from "../Items/Logo";
 import MobileNavbar from "./MobileNavbar";
+
+import { useTranslation } from 'react-i18next';
 const Nav = styled.nav`
   @media (min-width: ${768}px) {
     padding: 0;
@@ -35,23 +37,26 @@ const SmallWrapper = styled.div`
 `;
 
 const Navbar = ({ loggedIn }) => {
+  const { t } = useTranslation();
+
   let links;
 
   if (loggedIn) {
     links = (
       <>
         <Wrapper>
+
           <Link to="/">
             <Logo navbar />
           </Link>
-          <NavLink text="Oferty pracy" to="/" />
+          <StyledLink to="/">{t('NavLinks.home')}</StyledLink>
         </Wrapper>
         <Wrapper>
           <NavLink text="" to="/profile-jobs" />
-          <NavLink user text="Profil" to="/profile" />
-          <NavLink user text="Wyloguj się" to="/logout" />
+          <NavLink user text={t('NavLinks.profile')} to="/profile" />
+          <NavLink user text={t('NavLinks.logout')} to="/logout" />
           <SmallWrapper>
-            <NavLink offer text="Dodaj oferte pracy" to="/addjob" />
+            <NavLink offer text={t('NavLinks.add')} to="/addjob" />
           </SmallWrapper>
         </Wrapper>
       </>
@@ -63,13 +68,13 @@ const Navbar = ({ loggedIn }) => {
           <Link to="/">
             <Logo navbar />
           </Link>
-          <StyledLink to="/">Oferty pracy</StyledLink>
+          <StyledLink to="/" >{t('NavLinks.home')}</StyledLink>
         </Wrapper>
         <Wrapper>
-          <NavLink user exact to="/login" text="Zaloguj się" />
-          <NavLink user signup exact to="/signup" text="Załóż konto" />
+          <NavLink user exact to="/login" text={t('NavLinks.login')} />
+          <NavLink user signup exact to="/signup" text={t('NavLinks.signup')} />
           <SmallWrapper>
-            <NavLink offer exact to="/login" text="Dodaj ogłoszenie" />
+            <NavLink offer exact to="/login" text={t('NavLinks.add')} />
           </SmallWrapper>
         </Wrapper>
       </>
