@@ -50,6 +50,7 @@ const Navbar = ({ loggedIn }) => {
             <Logo navbar />
           </Link>
           <StyledLink to="/">{t('NavLinks.home')}</StyledLink>
+          <StyledLink to="/profile-jobs">praca</StyledLink>
         </Wrapper>
         <Wrapper>
           <NavLink text="" to="/profile-jobs" />

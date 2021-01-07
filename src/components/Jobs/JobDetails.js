@@ -46,7 +46,6 @@ const JobDetails = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
-  
   const jobs = state.firestore.data.jobs;
   const job = jobs ? jobs[id] : null;
   console.log(jobs);

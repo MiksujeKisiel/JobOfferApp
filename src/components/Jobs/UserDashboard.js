@@ -5,9 +5,9 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import Background from './Background';
 import {Link } from 'react-router-dom';
-import JobList from './JobList';
-import Loader from '../Loader';
 import UserJobList from './UserJobList';
+import Loader from '../Loader';
+
 
 
 const Wrapper = styled.div`
@@ -97,10 +97,9 @@ if (!jobs) {
   content = (
     <>
     {jobs && jobs.map((jobs) => (
-      <Link to={'job/' + jobs.id}>
-           <JobList jobs={jobs} />
-
-           </Link>
+ 
+           <UserJobList jobs={jobs} />
+          
          ))}
          </>
   );
@@ -140,35 +139,3 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([{ collection: "jobs" }])
 )(Dashboard);
-
-// let content;
-// if (!jobs) {
-//   content = (
-//     <div>
-//       <p>ładowanie</p>
-//     </div>
-//   );
-// } else if (!jobs || !jobs.jobs) {
-//   content = (
-//     <div>
-//       <p>nie masz dodanych ofert prac</p>
-//     </div>
-//   );
-// } else if (jobs.jobs.length === 0) {
-//   content = (
-//     <div>
-//       <p>nie masz dodanych ofert prac</p>
-//     </div>
-//   );
-// } else {
-//   content = (
-//     <OfferWrapper>
-//       {jobs.jobs
-//         .slice(0)
-//         .reverse()
-//         .map((jobs) => (
-//           <Offer jobs={jobs} />
-//         ))}
-//     </OfferWrapper>
-//   );
-// }

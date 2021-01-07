@@ -15,10 +15,11 @@ import { connect } from "react-redux";
 import VerifyEmail from "./components/User/VerifyEmail";
 import RecoverPassword from "./components/User/RecoverPassword";
 import Profile from "./components/User/Profile";
+import UserJobList from './components/Jobs/UserJobList';
 import AddJob from "./components/Job/AddJob";
 import Dashboard from "./components/Jobs/Dashboard";
 import { compose } from "redux";
-
+import UserDashboard from './components/Jobs/UserDashboard'
 
 import JobDetails from "./components/Jobs/JobDetails";
 
@@ -38,8 +39,9 @@ const App = ({ loggedIn, emailVerified }) => {
   } else if (loggedIn && emailVerified) {
     routes = (
       <Switch>
-        {/* <Route exact path="/profile-jobs" component={ProfileJobs} /> */}
+      
         <Layout>
+        <Route exact path="/profile-jobs" component={UserDashboard} />
         <Route path="/logout" component={Logout} />
         <Route path="/addjob" component={AddJob} />
         <Route exact path="/profile" component={Profile} />

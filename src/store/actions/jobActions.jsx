@@ -50,13 +50,13 @@ export const deleteJob = id => async(dispatch, getState, {getFirestore}) =>{
   try {
     const res = await firestore
       .collection('jobs')
-      .doc(userId)
+      .doc()
       .get();
     const previousJobs = res.data().jobs;
     const newJobs = previousJobs.filter(job => job.id !== id);
     await firestore
       .collection('jobs')
-      .doc(userId)
+      .doc()
       .update({
         jobs: newJobs
       });
@@ -106,6 +106,8 @@ export const allJobs = (id, data) => async(dispatch, getState, {getFirestore}) =
   return snapshot.docs.map(doc => doc.data());
 
 }
+
+
 
 
   

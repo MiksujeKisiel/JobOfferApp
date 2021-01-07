@@ -14,15 +14,14 @@ const Wrapper = styled.div`
 `;
 
 const DeleteJob = ({ show, close, isOpened, jobs, deleteJob, error, loading }) => {
- 
+  console.log(jobs)
  async function jobDeleting(){
-    await deleteJob(jobs.id);
+    await deleteJob(jobs);
     close();
   }
   return (
     <Modal opened={show} close={close}>
                 <p>Are you sure you want to delete job</p>
-            
       <Wrapper>
         <Button  onClick={jobDeleting}
         disabled={loading} loading={loading ? 'Deleting...' : null}
