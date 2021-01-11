@@ -6,37 +6,36 @@ import { compose } from "redux";
 import Header from "../Items/JobDetails/Header";
 import Responsibilities from "../Items/JobDetails/Responsibilities";
 import Technologies from "../Items/JobDetails/Technologies";
-import About from '../Items/JobDetails/About';
-import Requirements from '../Items/JobDetails/Requirements';
-import UserJob from '../Items/JobDetails/UserJob'
+import About from "../Items/JobDetails/About";
+import Requirements from "../Items/JobDetails/Requirements";
+import UserJob from "../Items/JobDetails/UserJob";
+
 const JobDetails = (props) => {
   const { job } = props;
-  const { loggedIn } = props;
-  console.log(loggedIn)
-  console.log(job.userid)
+  const { jobId } = props;
+  console.log(jobId);
+
   if (job) {
     return (
       <Wrapper>
-        <span className="background"/>
+        <span className="background" />
         <ContentWrapper>
-        <Header
-          name={job.name}
-          companyName={job.companyName}
-          earnings={job.earnings}
-          location={job.location}
-          interview={job.interview}
-          contract={job.contract}
-          timelapse={job.timelapse}
-          employmentType={job.employmentType}
-        />
-        <Technologies requirement={job.requirement} />
-        <Responsibilities responsibility={job.responsibility} />
-        <Requirements requirement={job.requirement}/>
-        <About about={job.about}
-        companyName={job.companyName}/>
+          <Header
+            name={job.name}
+            companyName={job.companyName}
+            earnings={job.earnings}
+            location={job.location}
+            interview={job.interview}
+            contract={job.contract}
+            timelapse={job.timelapse}
+            employmentType={job.employmentType}
+          />
+          <Technologies requirement={job.requirement} />
+          <Responsibilities responsibility={job.responsibility} />
+          <Requirements requirement={job.requirement} />
+          <About about={job.about} companyName={job.companyName} />
         </ContentWrapper>
-        <UserJob userId={job.userid}/>
- 
+        <UserJob userId={job.userid} jobId={jobId} />
       </Wrapper>
     );
   } else if (!job) {
@@ -48,10 +47,11 @@ const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const jobs = state.firestore.data.jobs;
   const job = jobs ? jobs[id] : null;
-  console.log(jobs);
+
   return {
     job: job,
-    loggedIn: state.firebase.auth.uid
+    jobId: id,
+    loggedIn: state.firebase.auth.uid,
   };
 };
 
@@ -69,8 +69,8 @@ const Wrapper = styled.div`
   flex-direction: row;
   padding-top: 30px;
   position: relative;
-  .background{
-    background-color: #40B4E5;
+  .background {
+    background-color: #40b4e5;
     width: 100%;
     height: 110px;
     position: absolute;
@@ -89,9 +89,8 @@ const ContentWrapper = styled.div`
   z-index: 2;
   @media (min-width: ${768}px) {
     max-width: 850px;
-    
   }
   @media (min-width: ${1280}px) {
     margin-right: 320px;
   }
-`
+`;

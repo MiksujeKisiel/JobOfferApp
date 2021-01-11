@@ -15,7 +15,7 @@ import { connect } from "react-redux";
 import VerifyEmail from "./components/User/VerifyEmail";
 import RecoverPassword from "./components/User/RecoverPassword";
 import Profile from "./components/User/Profile";
-import UserJobList from './components/Jobs/UserJobList';
+
 import AddJob from "./components/Job/AddJob";
 import Dashboard from "./components/Jobs/Dashboard";
 import { compose } from "redux";
@@ -47,7 +47,7 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/job/:id" component={JobDetails} />
-        <Redirect to="/" />
+       
         </Layout>
       </Switch>
     );

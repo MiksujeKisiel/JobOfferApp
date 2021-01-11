@@ -27,11 +27,7 @@ const JobSchema = Yup.object().shape({
     .min(3, "Too short.")
     .max(25, "Too long."),
 });
-const EditJob = ({ error, loading, close, editJob, show}) => {
-  async function jobEditing() {
-    await editJob(editJob.id);
-    close();
-  }
+const EditJob = ({ error, loading, close, editJob, jobId, show, job}) => {
 
   return (
     <Modal opened={show} close={close}>
@@ -40,15 +36,13 @@ const EditJob = ({ error, loading, close, editJob, show}) => {
           <Text>add job</Text>
           <Formik
             initialValues={{
-              name: "",
-              company: "",
-              earnings: "",
-              attribute: "",
+              name: job.name,
+              company: job.companyName,
             }}
             validationSchema={JobSchema}
             onSubmit={async (values, { setSubmitting }) => {
               console.log(values);
-              await jobEditing[editJob.id](values);
+              await editJob[jobId](values);
               setSubmitting(false);
             }}
           >
@@ -61,25 +55,13 @@ const EditJob = ({ error, loading, close, editJob, show}) => {
                   name="company"
                   component={Input}
                 />
-
-                <Field
-                  word="earnings"
-                  type="text"
-                  name="earnings"
-                  component={Input}
-                />
-                <Field
-                  word="attributes"
-                  type="text"
-                  name="attribute"
-                  component={Input}
-                />
                 <Button
-                  onClick={jobEditing}
-                  disabled={loading}
-                  loading={loading ? "Deleting..." : null}
+                  onClick={close}
+                  // disabled={loading}
+                  // loading={loading ? "Editing" : null}
+                  type="submit"
                 >
-                  Delete job
+                  Edit
                 </Button>
               </Form>
             )}
@@ -89,7 +71,7 @@ const EditJob = ({ error, loading, close, editJob, show}) => {
             {error}
           </Message>
           <Message error show={error === false}>
-            Job deleted
+            edited
           </Message>
         </FormWrapper>
       </Wrapper>

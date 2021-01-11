@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
@@ -8,29 +8,21 @@ import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
 import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
 import { ReactComponent as Suitcase } from "../../assets/svg/suitcase.svg";
 import { ReactComponent as Office } from "../../assets/svg/office.svg";
-import DeleteJob from '../Job/DeleteJob';
+// import DeleteJob from '../Job/DeleteJob';
 import {Link } from 'react-router-dom';
+// import EditJob from '../Job/EditJob'
 
-const Controls = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 10px;
-  position: relative;
-`;
 
-const Control = styled.p`
-  cursor: pointer;
-`;
+// const Control = styled.p`
+//   cursor: pointer;
+// `;
 
 
 const UserJobList = ({ jobs, loggedIn }) => {
     const { location, employmentType, contract, companyName, name, userid } = jobs;
-    console.log(userid)
+    // const [isDeleting, setisDeleting] = useState(false);
+    // const [isEditing, setisEditing] = useState(false);
 
-    const [isDeleting, setisDeleting] = useState(false);
-    const [isEditing, setisEditing] = useState(false);
-    console.log(isDeleting);
-    console.log(isEditing);
  if(userid === loggedIn)  {
     return (
         <Wrapper>
@@ -61,17 +53,25 @@ const UserJobList = ({ jobs, loggedIn }) => {
         <DateWrapper>
           <Date>Opublikowana: 26 grudnia 2020</Date>
         </DateWrapper>
-        <DeleteJob/>
-        <Control onClick={() => setisDeleting(true)}>delete</Control>
+  
+        {/* <Control onClick={() => setisDeleting(true)}>delete</Control>
         <DeleteJob
           jobs={jobs.id}
           show={isDeleting}
           close={() => setisDeleting(false)}
         />
+         <Control onClick={() => setisEditing(true)}>edit</Control>
+        <EditJob
+          jobId={jobs.id}
+          job={jobs}
+          show={isEditing}
+          close={() => setisEditing(false)}
+        /> */}
       </Wrapper>
       );
  }
  else{
+   
      return null;
  }
 

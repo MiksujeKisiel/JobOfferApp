@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import main from "../../assets/images/Main.jpg";
 import { Link } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
+
 const Wrapper = styled.div`
   display: none;
   @media (min-width: ${768}px) {
@@ -47,7 +47,7 @@ const TextWrapper = styled.div`
   justify-content: center;
   align-items: center;
   @media (min-width: ${1024}px) {
-      margin-bottom: 100px;
+    margin-bottom: 100px;
   }
 `;
 
@@ -82,22 +82,21 @@ const Button = styled.button`
     margin: 25px 0 10px;
     border-radius: 50px;
   }
-  &:hover{
-      background: #80D8FF;
-      border: 1px solid #80D8FF;
+  &:hover {
+    background: #80d8ff;
+    border: 1px solid #80d8ff;
   }
 `;
 
 const Background = () => {
-  const [t] = useTranslation();
+ 
   return (
     <Wrapper>
       <Image src={main} />
       <TextWrapper>
-        <BigText>{t('background[0]')}</BigText>
+        <BigText>xd</BigText>
         <Text>Możesz w prosty sposób znaleźć pracę</Text>
         <Link to="/job">
-       
           <Button>Szukaj pracy</Button>
         </Link>
         <Text>Na kisiel.pl mamy 23 23 ofert pracy</Text>

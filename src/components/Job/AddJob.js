@@ -61,9 +61,9 @@ const AddJob = ({ addJob, error, loading }) => {
           employmentType: "",
           interview: "Rozmowa o pracę",
           timelapse: "Pełny etat",
-          responsibility: ["", ""],
-          requirement: ["", ""],
-          offer: ["", ""],
+          responsibility: [],
+          requirement: [],
+          offer: [],
           about: "",
         }}
         validationSchema={JobSchema}

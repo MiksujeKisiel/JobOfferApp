@@ -44,23 +44,12 @@ export const addJob = (data) => async (
 
 export const deleteJob = id => async(dispatch, getState, {getFirestore}) =>{
   const firestore = getFirestore();
-  const userId = getState().firebase.auth.uid;
-
   dispatch({ type: actions.DELETE_JOB_START });
   try {
-    const res = await firestore
-      .collection('jobs')
-      .doc()
-      .get();
-    const previousJobs = res.data().jobs;
-    const newJobs = previousJobs.filter(job => job.id !== id);
     await firestore
       .collection('jobs')
-      .doc()
-      .update({
-        jobs: newJobs
-      });
-
+      .doc(id)
+      .delete()
     dispatch({type: actions.DELETE_JOB_SUCCESS})
   }
   catch(err){
@@ -69,43 +58,27 @@ export const deleteJob = id => async(dispatch, getState, {getFirestore}) =>{
 }
 
 //edit Job
-export const editJob = (id, data) => async(dispatch, getState, {getFirestore}) =>{
+export const editJob = (id, data) => async (
+  dispatch,
+  getState,
+  { getFirestore }
+) => {
   const firestore = getFirestore();
-  const userId = getState().firebase.auth.uid;
-  dispatch({ type: actions.EDIT_JOB_START });
- 
+  dispatch({ type: actions.ADD_JOB_START });
   try {
-    const res = await firestore
-      .collection('jobs')
-      .doc(userId)
-      .get();
-    const jobs = res.data().jobs;
-    const index = jobs.findIndex(job => job.id === id);
-    jobs[index] = data.jobs;
-
     await firestore
       .collection('jobs')
-      .doc(userId)
+      .doc(id)
       .update({
-        jobs,
+        name: data.name,
+        companyName: data.company
       });
-    dispatch({ type: actions.EDIT_JOB_SUCCESS });
+    dispatch({ type: actions.ADD_JOB_SUCCESS });
     return true;
+  } catch (err) {
+    dispatch({ type: actions.ADD_JOB_FAIL, payload: err.message });
   }
-  catch (err){
-
-    dispatch({ type: actions.EDIT_JOB_FAIL, payload: err.message });
-
-  }
-}
-
-export const allJobs = (id, data) => async(dispatch, getState, {getFirestore}) =>{
-  const firestore = getFirestore
-
-  const snapshot = await firestore().collection('jobs').get()
-  return snapshot.docs.map(doc => doc.data());
-
-}
+};
 
 
 

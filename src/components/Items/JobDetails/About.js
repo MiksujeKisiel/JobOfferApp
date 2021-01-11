@@ -27,8 +27,6 @@ width: 60%;
 `
 
 const About = ({about, companyName}) => {
-    console.log(about)
-
     return (
         <Wrapper>
             <div className="companyName">
