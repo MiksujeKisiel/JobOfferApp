@@ -22,7 +22,7 @@ const UserJobList = ({ jobs, loggedIn }) => {
     const { location, employmentType, contract, companyName, name, userid } = jobs;
     // const [isDeleting, setisDeleting] = useState(false);
     // const [isEditing, setisEditing] = useState(false);
-
+    
  if(userid === loggedIn)  {
     return (
         <Wrapper>
