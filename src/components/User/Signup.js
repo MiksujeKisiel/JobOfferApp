@@ -1,16 +1,18 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Formik, Field } from "formik";
 import Input from "../Items/Form/InputUser";
 import Button from "../Items/Form/Button";
-import Reference from '../Items/Form/Reference';
-import Message from '../Items/Form/Message';
-import register from '../../assets/images/register.jpg'
+import Reference from "../Items/Form/Reference";
+import Message from "../Items/Form/Message";
+import register from "../../assets/images/register.jpg";
 import * as Yup from "yup";
 import { Form, FormWrapper, Wrapper, Text } from "../Items/Form/FormStyles";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
-import BackgroundImage from '../Items/Form/BackgroundImage'
-import Logo from '../Items/Logo'
+import BackgroundImage from "../Items/Form/BackgroundImage";
+import Logo from "../Items/Logo";
+
+
 const LoginSchema = Yup.object().shape({
   firstName: Yup.string()
     .required("Twoje imie jest wymagane")
@@ -20,7 +22,9 @@ const LoginSchema = Yup.object().shape({
     .required("Twoje nazwisko jest wymagane")
     .min(3, "Zbyt krótkie")
     .max(25, "Zbyt długie"),
-  email: Yup.string().email("Błędny adres e-mail").required("Adres e-mail jest wymagany"),
+  email: Yup.string()
+    .email("Błędny adres e-mail")
+    .required("Adres e-mail jest wymagany"),
   password: Yup.string()
     .required("Hasło jest wymagane")
     .min(8, "Zbyt krótkie")
@@ -31,15 +35,15 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Signup = ({ signUp, loading, error, cleanUp }) => {
-  useEffect(() =>{
-    return () =>{
-    cleanUp();
-    }
-  },[cleanUp])
+  useEffect(() => {
+    return () => {
+      cleanUp();
+    };
+  }, [cleanUp]);
   return (
     <Wrapper>
       <FormWrapper>
-        < Logo />
+        <Logo />
         <Text>Zarejestruj się</Text>
         <Formik
           initialValues={{
@@ -70,7 +74,12 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
                 name="lastName"
                 component={Input}
               />
-              <Field word="Adres e-mail" type="email" name="email" component={Input} />
+              <Field
+                word="Adres e-mail"
+                type="email"
+                name="email"
+                component={Input}
+              />
               <Field
                 word="Hasło"
                 type="password"
@@ -86,41 +95,35 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
               <Button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Rejestrowanie" : null}
-                type="submit">
-               Zarejestruj się
+                type="submit"
+              >
+                Zarejestruj się
               </Button>
             </Form>
           )}
         </Formik>
-        <Reference
-        text="Masz konto?"
-        link=" Zaloguj się"
-        to="/login"/>
+        <Reference text="Masz konto?" link=" Zaloguj się" to="/login" />
         <Message error show={error}>
-        {error}   
+          {error}
         </Message>
       </FormWrapper>
-     <BackgroundImage
-     src={register}
-     bigText={"Jesteś o krok od lepszej pracy."}
-     text={"Załóż konto i sprawdź, czy nie szukasz."}
-     />
+      <BackgroundImage
+        src={register}
+        bigText={"Jesteś o krok od lepszej pracy."}
+        text={"Załóż konto i sprawdź, czy nie szukasz."}
+      />
     </Wrapper>
   );
 };
 
-
-
 const mapStateToProps = ({ auth }) => ({
   loading: auth.loading,
-  error: auth.error
+  error: auth.error,
 });
 
 const mapDispatchToProps = {
   signUp: actions.signUp,
-  cleanUp: actions.clean
+  cleanUp: actions.clean,
 };
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

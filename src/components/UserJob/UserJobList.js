@@ -8,30 +8,27 @@ import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
 import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
 import { ReactComponent as Suitcase } from "../../assets/svg/suitcase.svg";
 import { ReactComponent as Office } from "../../assets/svg/office.svg";
-// import DeleteJob from '../Job/DeleteJob';
-import {Link } from 'react-router-dom';
-// import EditJob from '../Job/EditJob'
 
-
-// const Control = styled.p`
-//   cursor: pointer;
-// `;
-
+import { Link } from "react-router-dom";
 
 const UserJobList = ({ jobs, loggedIn }) => {
-    const { location, employmentType, contract, companyName, name, userid } = jobs;
-    // const [isDeleting, setisDeleting] = useState(false);
-    // const [isEditing, setisEditing] = useState(false);
-    
- if(userid === loggedIn)  {
+  const {
+    location,
+    employmentType,
+    contract,
+    companyName,
+    name,
+    userid,
+  } = jobs;
+  if (userid === loggedIn) {
     return (
-        <Wrapper>
+      <Wrapper>
         <OfficeWrapper>
           <Office className="office" />
         </OfficeWrapper>
         <NameCompanyWrapper>
-        <Link to={'job/' + jobs.id}>
-          <JobName>{name}</JobName>
+          <Link to={"job/" + jobs.id}>
+            <JobName>{name}</JobName>
           </Link>
           <CompanyWrapper>
             <Suitcase className="suitcase" />
@@ -43,7 +40,8 @@ const UserJobList = ({ jobs, loggedIn }) => {
             <Marker className="svg" /> <AttributeText>{location}</AttributeText>
           </SmallWrapper>
           <SmallWrapper>
-            <JobType className="svg" /> <AttributeText>{contract}</AttributeText>
+            <JobType className="svg" />{" "}
+            <AttributeText>{contract}</AttributeText>
           </SmallWrapper>
           <SmallWrapper>
             <JobLevel className="svg" />
@@ -53,28 +51,11 @@ const UserJobList = ({ jobs, loggedIn }) => {
         <DateWrapper>
           <Date>Opublikowana: 26 grudnia 2020</Date>
         </DateWrapper>
-  
-        {/* <Control onClick={() => setisDeleting(true)}>delete</Control>
-        <DeleteJob
-          jobs={jobs.id}
-          show={isDeleting}
-          close={() => setisDeleting(false)}
-        />
-         <Control onClick={() => setisEditing(true)}>edit</Control>
-        <EditJob
-          jobId={jobs.id}
-          job={jobs}
-          show={isEditing}
-          close={() => setisEditing(false)}
-        /> */}
       </Wrapper>
-      );
- }
- else{
-   
-     return null;
- }
-
+    );
+  } else {
+    return null;
+  }
 };
 const CompanyWrapper = styled.div`
   display: flex;
@@ -190,16 +171,14 @@ const Wrapper = styled.div`
 `;
 
 const mapStateToProps = (state) => {
-
-
-    return {
-      loggedIn: state.firebase.auth.uid
-    };
+  return {
+    loggedIn: state.firebase.auth.uid,
   };
-  
-  const mapDispatchToProps = {};
-  
-  export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
-    firestoreConnect([{ collection: "jobs" }])
-  )(UserJobList);
+};
+
+const mapDispatchToProps = {};
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect([{ collection: "jobs" }])
+)(UserJobList);

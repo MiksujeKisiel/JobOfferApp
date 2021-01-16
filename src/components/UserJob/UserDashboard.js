@@ -3,9 +3,8 @@ import styled from "styled-components";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import Background from "./Background";
 import UserJobList from "./UserJobList";
-import Loader from "../Loader";
+import Loader from "../Items/Loader";
 
 const Wrapper = styled.div`
   align-items: flex-start;
@@ -56,15 +55,7 @@ const Text = styled.p`
   letter-spacing: 1.5px;
   padding: 10px 30px;
 `;
-const BigText = styled.p`
-  font-size: 25px;
-  font-weight: 300;
-`;
 
-const BigTextWrapper = styled.div`
-  width: 100%;
-  margin-bottom: 15px;
-`;
 
 const Dashboard = ({ jobs }) => {
   let content;
@@ -88,17 +79,10 @@ const Dashboard = ({ jobs }) => {
 
   return (
     <>
-      <Background />
       <Wrapper>
-        <BigTextWrapper>
-          <BigText>Oferty pracy (42)</BigText>
-        </BigTextWrapper>
         <TextWrapper>
           <SmallWrapper>
             <Text>Lista</Text>
-          </SmallWrapper>
-          <SmallWrapper>
-            <Text className="mapa">Mapa</Text>
           </SmallWrapper>
         </TextWrapper>
         {content}

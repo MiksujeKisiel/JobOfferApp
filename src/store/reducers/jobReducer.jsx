@@ -15,10 +15,10 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, loading: true };
 
     case actions.ADD_JOB_SUCCESS:
-      return { ...state, loading: true, error: false };
+      return { ...state, loading: false, error: false };
 
     case actions.ADD_JOB_FAIL:
-      return { ...state, loading: true, error: payload };
+      return { ...state, loading: false, error: payload };
 
     case actions.DELETE_JOB_START:
       return { ...state, deleteJob: { ...state.deleteJob, loading: true } };
@@ -28,18 +28,18 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         deleteJob: { ...state.deleteJob, loading: false, error: false },
       };
-
+      
     case actions.DELETE_JOB_FAIL:
       return {
         ...state,
-        deleteJob: { ...state.deleteJob, loading: true, error: payload },
+        deleteJob: { ...state.deleteJob, loading: false, error: payload },
       };
 
     case actions.EDIT_JOB_START:
       return { ...state, loading: true };
 
     case actions.EDIT_JOB_SUCCESS:
-      return { ...state, loading: true, error: false };
+      return { ...state, loading: false, error: false };
 
     case actions.EDIT_JOB_FAIL:
       return { ...state, loading: true, error: payload };

@@ -3,18 +3,23 @@ import styled from "styled-components";
 import { ReactComponent as Done } from "../../../assets/svg/accept.svg";
 
 const Responsibilities = ({ responsibility }) => {
+  console.log(responsibility);
   const listItems = responsibility.slice(0).map((number) => (
     <DoneWrapper>
       <Done className="svg" />
       <Text>{number}</Text>
     </DoneWrapper>
   ));
-  return (
-    <TechnologiesWrapper>
-      <Header>Twój zakres obowiązków</Header>
-      <BigDoneWrapper>{listItems}</BigDoneWrapper>
-    </TechnologiesWrapper>
-  );
+  if (responsibility.length > 0)
+    return (
+      <TechnologiesWrapper>
+        <Header>Twój zakres obowiązków</Header>
+        <BigDoneWrapper>{listItems}</BigDoneWrapper>
+      </TechnologiesWrapper>
+    );
+  else if (responsibility.length === 0) {
+    return null;
+  }
 };
 
 const TechnologiesWrapper = styled.div`
@@ -34,9 +39,8 @@ const TechnologiesWrapper = styled.div`
     margin-right: 20px;
   }
   @media (min-width: ${600}px) {
-  
-  width: 100%;
-}
+    width: 100%;
+  }
 `;
 
 const Header = styled.h2`
@@ -61,7 +65,7 @@ const DoneWrapper = styled.div`
 
 const Text = styled.p`
   font-size: 16px;
-  
+
   font-weight: 400;
 `;
 

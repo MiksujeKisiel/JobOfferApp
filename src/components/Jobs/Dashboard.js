@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import Background from "./Background";
 import { Link } from "react-router-dom";
 import JobList from "./JobList";
-import Loader from "../Loader";
+import Loader from "../Items/Loader";
 
 const Wrapper = styled.div`
   align-items: flex-start;

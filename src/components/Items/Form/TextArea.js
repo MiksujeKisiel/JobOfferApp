@@ -10,7 +10,7 @@ const Group = styled.div`
     margin: 15px 0px;
   }
   @media (min-width: ${1024}px) {
-      margin: 30px 0;
+    margin: 30px 0;
   }
 `;
 
@@ -21,12 +21,10 @@ const StyledArea = styled.textarea`
   resize: none;
   padding: 5px 0;
   font-size: 15px;
-  &:focus{
+  &:focus {
     border: #1b75bc 2px solid;
     outline: none;
   }
- 
-
 `;
 const Label = styled.label`
   font-size: 14px;
@@ -46,7 +44,7 @@ const Error = styled.div`
   font-size: 1.2rem;
 `;
 
-const TextArea = ({ field, long,  form: { touched, errors }, ...props }) => {
+const TextArea = ({ field, long, form: { touched, errors }, ...props }) => {
   return (
     <Group long={long}>
       <Label>{props.word}</Label>

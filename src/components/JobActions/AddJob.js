@@ -8,7 +8,6 @@ import Input from "../Items/Form/Input";
 import Select from "../Items/Form/Select";
 import TextArea from '../Items/Form/TextArea';
 import styled from "styled-components";
-
 import * as Yup from "yup";
 import * as actions from "../../store/actions";
 

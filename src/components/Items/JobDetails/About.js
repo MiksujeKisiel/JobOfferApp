@@ -27,14 +27,21 @@ width: 60%;
 `
 
 const About = ({about, companyName}) => {
-    return (
+      if (about) 
+      return (
         <Wrapper>
-            <div className="companyName">
-            <Company>{companyName}</Company>
-            </div>
-            <Text>{about}</Text>
-        </Wrapper>
-    )
+        <div className="companyName">
+        <Company>{companyName}</Company>
+        </div>
+        <Text>{about}</Text>
+    </Wrapper>
+       )
+       else if(!about){
+           return null;
+       }
 }
+  
+
+
 
 export default About

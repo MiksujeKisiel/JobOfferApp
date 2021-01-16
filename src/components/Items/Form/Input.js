@@ -8,10 +8,10 @@ const Group = styled.div`
   height: 44px;
   @media (min-width: ${768}px) {
     width: ${({ long }) => (long ? "100%" : "250px")};
-      margin: 15px 0px;
+    margin: 15px 0px;
   }
   @media (min-width: ${1024}px) {
-      margin: ${({ long }) => (long ? "0px" : "30px 0")};
+    margin: ${({ long }) => (long ? "0px" : "30px 0")};
   }
 `;
 
@@ -21,12 +21,10 @@ const StyledInput = styled.input`
   border-bottom: #d3d3d3 2px solid;
   height: ${({ about }) => (about ? "400px" : "")};
   padding: 10px 0;
-  &:focus{
+  &:focus {
     border-bottom: #1b75bc 2px solid;
     outline: none;
   }
- 
-
 `;
 const Label = styled.label`
   font-size: 14px;
@@ -46,7 +44,7 @@ const Error = styled.div`
   font-size: 1.2rem;
 `;
 
-const Input = ({ field, long,  form: { touched, errors }, ...props }) => {
+const Input = ({ field, long, form: { touched, errors }, ...props }) => {
   return (
     <Group long={long}>
       <Label>{props.word}</Label>

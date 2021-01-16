@@ -1,26 +1,26 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
+const Text = styled.p``;
 
-const Text = styled.p``
-
-const Technologies = ({requirement}) => {
-  const listItems = requirement.slice(0).map((number) =>
-  <TechnologyText>{number}</TechnologyText>
-  );
+const Technologies = ({ requirement }) => {
+  const listItems = requirement
+    .slice(0)
+    .map((number) => <TechnologyText>{number}</TechnologyText>);
+  if (requirement.length > 0)
     return (
-        <TechnologiesWrapper>
+      <TechnologiesWrapper>
         <Header>Technologie, których używamy</Header>
         <Text technologies>Wymagane</Text>
-        <TechnologyWrapper>
-       {listItems}
-        </TechnologyWrapper>
+        <TechnologyWrapper>{listItems}</TechnologyWrapper>
       </TechnologiesWrapper>
-   
-    )
-}
+    );
+  else if (requirement.length === 0) {
+    return null;
+  }
+};
 
-export default Technologies
+export default Technologies;
 
 const TechnologyWrapper = styled.div`
   margin-top: 20px;
@@ -60,9 +60,8 @@ const TechnologiesWrapper = styled.div`
     margin-right: 20px;
   }
   @media (min-width: ${600}px) {
-  
-  width: 100%;
-}
+    width: 100%;
+  }
 `;
 
 const Header = styled.h2`

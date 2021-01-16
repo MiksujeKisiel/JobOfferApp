@@ -9,12 +9,16 @@ const Requirements = ({ requirement }) => {
       <Text>{number}</Text>
     </DoneWrapper>
   ));
-  return (
-    <TechnologiesWrapper>
-      <Header>Wymagania</Header>
-      <BigDoneWrapper>{listItems}</BigDoneWrapper>
-    </TechnologiesWrapper>
-  );
+  if (requirement.length > 0)
+    return (
+      <TechnologiesWrapper>
+        <Header>Wymagania</Header>
+        <BigDoneWrapper>{listItems}</BigDoneWrapper>
+      </TechnologiesWrapper>
+    );
+  else if (requirement.length === 0) {
+    return null;
+  }
 };
 
 const TechnologiesWrapper = styled.div`
@@ -34,9 +38,8 @@ const TechnologiesWrapper = styled.div`
     margin-right: 20px;
   }
   @media (min-width: ${600}px) {
-  
-  width: 100%;
-}
+    width: 100%;
+  }
 `;
 
 const Header = styled.h2`

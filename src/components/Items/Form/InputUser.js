@@ -10,7 +10,6 @@ const Group = styled.div`
     margin: 15px 0px;
   }
   @media (min-width: ${1024}px) {
-
   }
 `;
 
@@ -19,12 +18,10 @@ const StyledInput = styled.input`
   border: none;
   border-bottom: #d3d3d3 2px solid;
   padding: 10px 0;
-  &:focus{
+  &:focus {
     border-bottom: #1b75bc 2px solid;
     outline: none;
   }
- 
-
 `;
 const Label = styled.label`
   font-size: 14px;
@@ -44,7 +41,7 @@ const Error = styled.div`
   font-size: 1.2rem;
 `;
 
-const Input = ({ field, long,  form: { touched, errors }, ...props }) => {
+const Input = ({ field, long, form: { touched, errors }, ...props }) => {
   return (
     <Group long={long}>
       <Label>{props.word}</Label>

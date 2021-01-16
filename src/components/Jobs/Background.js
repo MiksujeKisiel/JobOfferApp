@@ -89,7 +89,6 @@ const Button = styled.button`
 `;
 
 const Background = () => {
- 
   return (
     <Wrapper>
       <Image src={main} />

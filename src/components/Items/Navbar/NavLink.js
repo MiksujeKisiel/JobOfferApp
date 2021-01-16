@@ -28,8 +28,7 @@ const NavLink = ({ to, text, user, signup, offer }) => {
         signup={signup}
         offer={offer}
         activeClassName="active"
-        to={to}
-      >
+        to={to}>
         {text}
       </StyledLink>
     </Wrapper>
