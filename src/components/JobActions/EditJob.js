@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Form as FormFormik, Formik, Field, FieldArray } from "formik";
-// import { Form, FormWrapper, Wrapper, Text } from "../Items/Form/FormStyles";
 import Button from "../Items/Form/Button";
 import Message from "../Items/Form/Message";
 import Input from "../Items/Form/Input";

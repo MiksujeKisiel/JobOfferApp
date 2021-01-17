@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from '../components/Items/Navbar/Navbar';
 import GlobalStyle from '../assets/style/GlobalStyle';
 import { connect } from 'react-redux'
-import Footer from '../components/Items/Footer/Footer';
+// import Footer from '../components/Items/Footer/Footer';
 
 
 const Layout = ({children, loggedIn}) =>{
@@ -11,7 +11,7 @@ const Layout = ({children, loggedIn}) =>{
        <Navbar loggedIn={loggedIn}/>
        <GlobalStyle/>
        {children}
-       <Footer/>
+       {/* <Footer/> */}
         </>
     )
 }
@@ -24,3 +24,4 @@ const mapStateToProps = ({firebase}) => ({
 
 
 export default connect(mapStateToProps)(Layout)
+

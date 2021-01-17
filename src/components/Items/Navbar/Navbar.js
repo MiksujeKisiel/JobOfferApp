@@ -4,8 +4,8 @@ import NavLink from "./NavLink";
 import { NavLink as Link } from "react-router-dom";
 import Logo from "../Logo";
 import MobileNavbar from "./MobileNavbar";
-
-import { useTranslation } from 'react-i18next';
+import DropDownMenu from "./DropDownMenu";
+import { useTranslation } from "react-i18next";
 const Nav = styled.nav`
   @media (min-width: ${768}px) {
     padding: 0;
@@ -16,10 +16,10 @@ const Nav = styled.nav`
 `;
 
 const StyledLink = styled(Link)`
-font-family: 'Open sans', sans-serif;
-margin-left: 50px;
-font-size: 14px;
-`
+  font-family: "Open sans", sans-serif;
+  margin-left: 50px;
+  font-size: 14px;
+`;
 
 const Wrapper = styled.ul`
   display: none;
@@ -45,19 +45,18 @@ const Navbar = ({ loggedIn }) => {
     links = (
       <>
         <Wrapper>
-
           <Link to="/">
             <Logo navbar />
           </Link>
-          <StyledLink to="/">{t('NavLinks.home')}</StyledLink>
-          <StyledLink to="/profile-jobs">praca</StyledLink>
+          <StyledLink to="/">{t("NavLinks.home")}</StyledLink>
         </Wrapper>
         <Wrapper>
-          <NavLink text="" to="/profile-jobs" />
-          <NavLink user text={t('NavLinks.profile')} to="/profile" />
-          <NavLink user text={t('NavLinks.logout')} to="/logout" />
+          {/* <NavLink user text="profile jobs" to="/profile-jobs" /> */}
+          <DropDownMenu />
+          {/* <NavLink user text={t('NavLinks.profile')} to="/profile" /> */}
+          {/* <NavLink user text={t('NavLinks.logout')} to="/logout" /> */}
           <SmallWrapper>
-            <NavLink offer text={t('NavLinks.add')} to="/addjob" />
+            <NavLink offer text={t("NavLinks.add")} to="/addjob" />
           </SmallWrapper>
         </Wrapper>
       </>
@@ -69,13 +68,13 @@ const Navbar = ({ loggedIn }) => {
           <Link to="/">
             <Logo navbar />
           </Link>
-          <StyledLink to="/" >{t('NavLinks.home')}</StyledLink>
+          <StyledLink to="/">{t("NavLinks.home")}</StyledLink>
         </Wrapper>
         <Wrapper>
-          <NavLink user exact to="/login" text={t('NavLinks.login')} />
-          <NavLink user signup exact to="/signup" text={t('NavLinks.signup')} />
+          <NavLink user exact to="/login" text={t("NavLinks.login")} />
+          <NavLink user signup exact to="/signup" text={t("NavLinks.signup")} />
           <SmallWrapper>
-            <NavLink offer exact to="/login" text={t('NavLinks.add')} />
+            <NavLink offer exact to="/login" text={t("NavLinks.add")} />
           </SmallWrapper>
         </Wrapper>
       </>

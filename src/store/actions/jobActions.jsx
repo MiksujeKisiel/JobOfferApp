@@ -71,9 +71,9 @@ export const editJob = (id, data) => async (
       timelapse: data.timelapse,
       employmentType: data.employmentType,
       interview: data.interview,
-      // responsibility: data.responsibility,
-      // requirement: data.requirement,
-      // offer: data.offer,
+      responsibility: data.responsibility,
+      requirement: data.requirement,
+      offer: data.offer,
       about: data.about,
     });
     dispatch({ type: actions.EDIT_JOB_SUCCESS });

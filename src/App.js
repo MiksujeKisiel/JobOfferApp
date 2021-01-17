@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+
 import { createBrowserHistory } from "history";
 import { compose } from "redux";
 import { connect } from "react-redux";
@@ -39,13 +40,13 @@ const App = ({ loggedIn, emailVerified }) => {
     routes = (
       <Switch>
         <Layout>
-          <Route exact path="/profile-jobs" component={UserDashboard} />
           <Route path="/logout" component={Logout} />
           <Route path="/addjob" component={AddJob} />
-          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/editjob/:id" component={JobEditor} />
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/job/:id" component={JobDetails} />
-          <Route exact path="/editjob/:id" component={JobEditor} />
+          <Route exact path="/profile-jobs" component={UserDashboard} />
+          <Route exact path="/profile" component={Profile} />
         </Layout>
       </Switch>
     );

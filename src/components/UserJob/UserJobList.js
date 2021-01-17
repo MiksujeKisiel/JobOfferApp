@@ -22,6 +22,7 @@ const UserJobList = ({ jobs, loggedIn }) => {
   } = jobs;
   if (userid === loggedIn) {
     return (
+     
       <Wrapper>
         <OfficeWrapper>
           <Office className="office" />
@@ -52,7 +53,9 @@ const UserJobList = ({ jobs, loggedIn }) => {
           <Date>Opublikowana: 26 grudnia 2020</Date>
         </DateWrapper>
       </Wrapper>
-    );
+    
+      
+      );
   } else {
     return null;
   }
@@ -157,6 +160,8 @@ const Wrapper = styled.div`
   max-width: 1000px;
   padding: 20px;
   border-left: 4px solid #0091ea;
+  z-index: 10;
+  background-color: white;
   @media (min-width: ${768}px) {
     margin: 10px 0;
     display: flex;

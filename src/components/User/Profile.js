@@ -8,6 +8,9 @@ import Message from "../Items/Form/Message";
 import Input from "../Items/Form/Input";
 import * as Yup from "yup";
 import * as actions from "../../store/actions";
+import Router from '../UserSettings/Router';
+
+
 
 const ProfileSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -37,6 +40,7 @@ const Profile = ({ firebase, loading, error, editProfile, cleanUp}) => {
   if (!firebase.profile.isLoaded) return null;
 
   return (
+    <Router>
     <Wrapper>
       <FormWrapper profile>
         <Text>Edit profile</Text>
@@ -100,6 +104,8 @@ const Profile = ({ firebase, loading, error, editProfile, cleanUp}) => {
         </Message>
       </FormWrapper>
     </Wrapper>
+    </Router>
+
   );
 };
 
