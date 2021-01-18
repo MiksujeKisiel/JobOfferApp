@@ -15,19 +15,19 @@ const JobSchema = Yup.object().shape({
   name: Yup.string()
     .required("name is required.")
     .min(3, "Too short.")
-    .max(30, "Too long."),
+    .max(50, "Too long."),
   company: Yup.string()
     .required("company name is required")
     .min(3, "Too short.")
-    .max(25, "Too long."),
+    .max(50, "Too long."),
   earnings: Yup.string()
     .required("earnings required.")
     .min(3, "Too short.")
-    .max(25, "Too long."),
+    .max(50, "Too long."),
   location: Yup.string()
     .required("location is required")
     .min(3, "Too short.")
-    .max(25, "Too long."),
+    .max(50, "Too long."),
   // contract: Yup.string()
   // .required("jobtime is required")
   // .min(3, "Too short.")
@@ -35,7 +35,7 @@ const JobSchema = Yup.object().shape({
   employmentType: Yup.string()
     .required("joblevel is required")
     .min(3, "Too short.")
-    .max(25, "Too long."),
+    .max(50, "Too long."),
   // interview: Yup.string()
   // .required("joblevel is required")
   // .min(3, "Too short.")

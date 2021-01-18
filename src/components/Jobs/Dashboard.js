@@ -8,12 +8,26 @@ import Background from "./Background";
 import JobList from "./JobList";
 import Loader from "../Items/Loader/Loader";
 
-const Wrapper = styled.div`
- 
- 
-  flex-direction: column;
-  display: flex;
+const Filter = styled.div`
+display: none;
+@media (min-width: ${1024}px) {
+  width: 380px;
+display: flex;
+height: 700px;
+box-shadow: rgba(11,11,11,0.2) 0px 0px 10px;
+margin: 0 30px 0 30px;
+  }
+`
 
+const Wrapper = styled.div`
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-bottom: 100px;
+  @media (min-width: ${1440}px) {
+   padding-right: 200px;
+  }
 `;
 
 const BigText = styled.p`
@@ -21,15 +35,23 @@ const BigText = styled.p`
   font-weight: 400;
   font-family: "Open sans", sans-serif;
 `;
-
-const TextWrapper = styled.div`
-text-align: left;
-margin-bottom: 15px;
-width: 90%;
-margin: 0 auto;
-
+const SmallWrapper = styled.div`
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
 
 `
+const TextWrapper = styled.div`
+  text-align: left;
+  margin-bottom: 15px;
+  width: 90%;
+  @media (min-width: ${1024}px) {
+    width: 100%;
+  }
+ 
+ 
+`;
 
 const Dashboard = ({ jobs }) => {
   let content;
@@ -46,9 +68,7 @@ const Dashboard = ({ jobs }) => {
       <>
         {jobs &&
           jobs.map((jobs) => (
-        
-              <JobList jobs={jobs} id={jobs.id} key={jobs.id} />
-          
+            <JobList jobs={jobs} id={jobs.id} key={jobs.id} />
           ))}
       </>
     );
@@ -58,10 +78,14 @@ const Dashboard = ({ jobs }) => {
     <>
       <Background />
       <Wrapper>
+      <Filter/>
+      <SmallWrapper>
         <TextWrapper>
-        <BigText>Oferty pracy (4212)</BigText>
+          <BigText>Oferty pracy (4212)</BigText>
         </TextWrapper>
         {content}
+        </SmallWrapper>
+        
       </Wrapper>
     </>
   );

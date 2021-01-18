@@ -5,7 +5,6 @@ import { compose } from "redux";
 import { ReactComponent as JobType } from "../../assets/svg/jobtype.svg";
 import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
 import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
-
 import { ReactComponent as Office } from "../../assets/svg/office.svg";
 import { ReactComponent as JobTime } from "../../assets/svg/jobtime.svg";
 import { Link } from "react-router-dom";
@@ -27,18 +26,20 @@ const JobList = ({ jobs, id }) => {
       </NameCompanyWrapper>
 
       <AttributeLocationWrapper>
-        <Attribute text={location}>
-          <Marker className="svg" />
-        </Attribute>
-        <Attribute text={contract}>
+      <Attribute text={employmentType}>
+      <Attribute text={contract}>
           <JobType className="svg" />
         </Attribute>
-        <Attribute text={employmentType}>
           <JobLevel className="svg" />
         </Attribute>
         <Attribute text={timelapse}>
           <JobTime className="svg" />
         </Attribute>
+        <Attribute text={location}>
+          <Marker className="svg" />
+        </Attribute>
+     
+   
       </AttributeLocationWrapper>
       <DateWrapper>
         <Date>Opublikowana: 26 grudnia 2020</Date>
@@ -58,13 +59,19 @@ const OfficeWrapper = styled.div`
   .office {
     width: 60px;
     height: 50px;
+    display: none;
+    @media (min-width: ${768}px) {
+    display: block;
+
+  }
+    
   }
     @media (min-width: ${768}px) {
     height: 100%;
   }
 `;
 const CompanyName = styled.p`
-  font-size: 15px;
+  font-size: 14px;
 `;
 
 const JobName = styled.p`
@@ -72,14 +79,15 @@ const JobName = styled.p`
   font-weight: 600;
   font-size: 15px;
   @media (min-width: ${768}px) {
-    font-size: 21px;
+    font-size: 23px;
+    line-height: 110%;
   }
 `;
 
 const NameCompanyWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 15px;
+  
   @media (min-width: ${768}px) {
     width: 70%;
     margin-left: 20px;
@@ -89,21 +97,20 @@ const NameCompanyWrapper = styled.div`
 const AttributeLocationWrapper = styled.ul`
   margin: 10px 0 0;
   width: 100%;
+  
   .svg {
     width: 15px;
     height: 15px;
-    margin-right: 10px;
+    margin-right: 6px;
     fill: #707070;
   }
   @media (min-width: ${768}px) {
     display: flex;
     flex-wrap: wrap;
-    max-width: 450px;
+    max-width: 400px;
     padding-left: 80px;
-    margin: 25px 0 0;
-    .svg {
-      margin-right: 6px;
-    }
+    margin: 5px 0 0;
+
   }
 `;
 
@@ -112,22 +119,23 @@ const DateWrapper = styled.div`
   width: 100%;
   @media (min-width: ${768}px) {
     padding-left: 80px;
-    border-top: 1px solid #c1c1c1;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
 `;
 const Date = styled.p`
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 10px;
 `;
 
 const Wrapper = styled(Link)`
+font-family: 'Open sans', sans-serif;
   width: 90%;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;
   margin: 10px 0;
   border-radius: 8px;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1200px;
   padding: 20px;
   border-left: 4px solid #0091ea;
   @media (min-width: ${768}px) {
@@ -135,7 +143,11 @@ const Wrapper = styled(Link)`
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    padding: 30px;
+    padding: 15px;
+  }
+  @media (min-width: ${1024}px) {
+    width: 100%;  
+    max-width: 1100px;
   }
  
 `;
