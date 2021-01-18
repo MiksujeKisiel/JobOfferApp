@@ -20,10 +20,11 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 62.5%; 
     overflow-y: scroll;
+
   }
 
   body {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Open sans', sans-serif;
     overflow-x:hidden;
     padding: 0;
     margin: 0;

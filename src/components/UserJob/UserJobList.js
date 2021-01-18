@@ -22,44 +22,48 @@ const UserJobList = ({ jobs, loggedIn }) => {
   } = jobs;
   if (userid === loggedIn) {
     return (
-     
-      <Wrapper>
-        <OfficeWrapper>
-          <Office className="office" />
-        </OfficeWrapper>
-        <NameCompanyWrapper>
-          <Link to={"job/" + jobs.id}>
+      <StyledLink  to={"job/" + jobs.id}>
+        <Wrapper>
+           
+          <OfficeWrapper>
+            <Office className="office" />
+          </OfficeWrapper>
+          <NameCompanyWrapper>
             <JobName>{name}</JobName>
-          </Link>
-          <CompanyWrapper>
-            <Suitcase className="suitcase" />
-            <CompanyName>{companyName}</CompanyName>
-          </CompanyWrapper>
-        </NameCompanyWrapper>
-        <AttributeLocationWrapper>
-          <SmallWrapper>
-            <Marker className="svg" /> <AttributeText>{location}</AttributeText>
-          </SmallWrapper>
-          <SmallWrapper>
-            <JobType className="svg" />{" "}
-            <AttributeText>{contract}</AttributeText>
-          </SmallWrapper>
-          <SmallWrapper>
-            <JobLevel className="svg" />
-            <AttributeText>{employmentType}</AttributeText>
-          </SmallWrapper>
-        </AttributeLocationWrapper>
-        <DateWrapper>
-          <Date>Opublikowana: 26 grudnia 2020</Date>
-        </DateWrapper>
-      </Wrapper>
-    
-      
-      );
+            <CompanyWrapper>
+              <Suitcase className="suitcase" />
+              <CompanyName>{companyName}</CompanyName>
+            </CompanyWrapper>
+          </NameCompanyWrapper>
+          <AttributeLocationWrapper>
+            <SmallWrapper>
+              <Marker className="svg" />{" "}
+              <AttributeText>{location}</AttributeText>
+            </SmallWrapper>
+            <SmallWrapper>
+              <JobType className="svg" />
+              <AttributeText>{contract}</AttributeText>
+            </SmallWrapper>
+            <SmallWrapper>
+              <JobLevel className="svg" />
+              <AttributeText>{employmentType}</AttributeText>
+            </SmallWrapper>
+          </AttributeLocationWrapper>
+          <DateWrapper>
+            <Date>Opublikowana: 26 grudnia 2020</Date>
+          </DateWrapper>
+        
+        </Wrapper>
+        </StyledLink>
+    );
   } else {
     return null;
   }
 };
+const StyledLink = styled(Link)`
+z-index: 20;
+`
+
 const CompanyWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -87,7 +91,7 @@ const CompanyName = styled.p`
 
 const JobName = styled.p`
   color: #006cf1;
-  font-weight: 600;
+
   font-size: 15px;
   @media (min-width: ${768}px) {
     font-size: 21px;
@@ -100,7 +104,7 @@ const NameCompanyWrapper = styled.div`
   margin-left: 15px;
   @media (min-width: ${768}px) {
     width: 70%;
-    margin-left: 20px;
+    margin-left: 30px;
   }
 `;
 
@@ -116,9 +120,7 @@ const AttributeLocationWrapper = styled.div`
   @media (min-width: ${768}px) {
     display: flex;
     flex-wrap: wrap;
-    max-width: 350px;
-    padding-left: 80px;
-    margin: 25px 0 0;
+    padding-left: 90px;
     .svg {
       margin-right: 6px;
     }
@@ -141,33 +143,36 @@ const DateWrapper = styled.div`
   margin-top: 10px;
   width: 100%;
   @media (min-width: ${768}px) {
-    padding-left: 80px;
-    border-top: 1px solid #c1c1c1;
+    padding-left: 90px;
+    border-top: 1px solid #f1f1f1;
   }
 `;
 const Date = styled.p`
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 15px;
 `;
 
 const Wrapper = styled.div`
-  width: 90vw;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 15px;
-  margin: 30px 0;
-  border-radius: 8px;
+  margin: 15px 0;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1000px;
   padding: 20px;
-  border-left: 4px solid #0091ea;
+  border-left: 5px solid #0091ea;
   z-index: 10;
   background-color: white;
   @media (min-width: ${768}px) {
     margin: 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    padding: 30px;
+    max-width: 500px;
+   
+  }
+  @media (min-width: ${1024}px) {
+    max-width: 800px;
+    overflow: hidden;
+  }
+  @media (min-width: ${1440}px) {
+    max-width: 1200px;
+    overflow: hidden;
   }
   .office {
     width: 60px;

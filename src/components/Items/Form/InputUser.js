@@ -6,8 +6,9 @@ const Group = styled.div`
   position: relative;
   width: 100%;
   @media (min-width: ${768}px) {
-    width: 250px;
+    width: ${props => (props.long ? '100%' : '250px')};
     margin: 15px 0px;
+    max-width: 500px;
   }
   @media (min-width: ${1024}px) {
   }
