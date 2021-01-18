@@ -10,7 +10,7 @@ import { Form, FormWrapper, Wrapper, Text } from "../Items/Form/FormStyles";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 import BackgroundImage from "../Items/Form/BackgroundImage";
-import Logo from "../Items/Logo";
+import Logo from "../Items/Navbar/Logo";
 
 
 const LoginSchema = Yup.object().shape({

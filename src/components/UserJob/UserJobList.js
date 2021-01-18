@@ -22,9 +22,8 @@ const UserJobList = ({ jobs, loggedIn }) => {
   } = jobs;
   if (userid === loggedIn) {
     return (
-      <StyledLink  to={"job/" + jobs.id}>
+      <StyledLink to={"job/" + jobs.id}>
         <Wrapper>
-           
           <OfficeWrapper>
             <Office className="office" />
           </OfficeWrapper>
@@ -52,17 +51,17 @@ const UserJobList = ({ jobs, loggedIn }) => {
           <DateWrapper>
             <Date>Opublikowana: 26 grudnia 2020</Date>
           </DateWrapper>
-        
         </Wrapper>
-        </StyledLink>
+      </StyledLink>
     );
   } else {
     return null;
   }
 };
 const StyledLink = styled(Link)`
-z-index: 20;
-`
+  z-index: 20;
+  max-width: 1100px;
+`;
 
 const CompanyWrapper = styled.div`
   display: flex;
@@ -164,7 +163,6 @@ const Wrapper = styled.div`
   @media (min-width: ${768}px) {
     margin: 10px 0;
     max-width: 500px;
-   
   }
   @media (min-width: ${1024}px) {
     max-width: 800px;

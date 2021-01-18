@@ -5,33 +5,40 @@ import { compose } from "redux";
 import { ReactComponent as JobType } from "../../assets/svg/jobtype.svg";
 import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
 import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
-import { ReactComponent as Suitcase } from "../../assets/svg/suitcase.svg";
+
 import { ReactComponent as Office } from "../../assets/svg/office.svg";
-const JobList = ({ jobs }) => {
-  const { location, employmentType, contract, companyName, name } = jobs;
+import { ReactComponent as JobTime } from "../../assets/svg/jobtime.svg";
+import { Link } from "react-router-dom";
+
+import Attribute from "./Attribute";
+
+const JobList = ({ jobs, id }) => {
+  const { location, employmentType, contract, companyName, name, timelapse } = jobs;
   return (
-    <Wrapper>
+    <Wrapper to={"job/" + id} key={id}>
       <OfficeWrapper>
         <Office className="office" />
       </OfficeWrapper>
       <NameCompanyWrapper>
         <JobName>{name}</JobName>
         <CompanyWrapper>
-          <Suitcase className="suitcase" />
           <CompanyName>{companyName}</CompanyName>
         </CompanyWrapper>
       </NameCompanyWrapper>
+
       <AttributeLocationWrapper>
-        <SmallWrapper>
-          <Marker className="svg" /> <AttributeText>{location}</AttributeText>
-        </SmallWrapper>
-        <SmallWrapper>
-          <JobType className="svg" /> <AttributeText>{contract}</AttributeText>
-        </SmallWrapper>
-        <SmallWrapper>
+        <Attribute text={location}>
+          <Marker className="svg" />
+        </Attribute>
+        <Attribute text={contract}>
+          <JobType className="svg" />
+        </Attribute>
+        <Attribute text={employmentType}>
           <JobLevel className="svg" />
-          <AttributeText>{employmentType}</AttributeText>
-        </SmallWrapper>
+        </Attribute>
+        <Attribute text={timelapse}>
+          <JobTime className="svg" />
+        </Attribute>
       </AttributeLocationWrapper>
       <DateWrapper>
         <Date>Opublikowana: 26 grudnia 2020</Date>
@@ -43,20 +50,16 @@ const CompanyWrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 5px 0 0;
-  .suitcase {
-    fill: #0060ee;
-    width: 15px;
-    height: 15px;
-    margin-right: 5px;
-    @media (min-width: ${768}px) {
-      display: none;
-    }
-  }
+
 `;
 const OfficeWrapper = styled.div`
   display: flex;
   align-items: flex-end;
-  @media (min-width: ${768}px) {
+  .office {
+    width: 60px;
+    height: 50px;
+  }
+    @media (min-width: ${768}px) {
     height: 100%;
   }
 `;
@@ -83,7 +86,7 @@ const NameCompanyWrapper = styled.div`
   }
 `;
 
-const AttributeLocationWrapper = styled.div`
+const AttributeLocationWrapper = styled.ul`
   margin: 10px 0 0;
   width: 100%;
   .svg {
@@ -95,7 +98,7 @@ const AttributeLocationWrapper = styled.div`
   @media (min-width: ${768}px) {
     display: flex;
     flex-wrap: wrap;
-    max-width: 350px;
+    max-width: 450px;
     padding-left: 80px;
     margin: 25px 0 0;
     .svg {
@@ -104,18 +107,6 @@ const AttributeLocationWrapper = styled.div`
   }
 `;
 
-const AttributeText = styled.p`
-  font-size: 15px;
-`;
-
-const SmallWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-  @media (min-width: ${768}px) {
-    margin: 5px 20px 5px 0;
-  }
-`;
 const DateWrapper = styled.div`
   margin-top: 10px;
   width: 100%;
@@ -129,10 +120,10 @@ const Date = styled.p`
   margin-top: 10px;
 `;
 
-const Wrapper = styled.div`
-  width: 90vw;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 15px;
-  margin: 30px 0;
+const Wrapper = styled(Link)`
+  width: 90%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;
+  margin: 10px 0;
   border-radius: 8px;
   display: flex;
   flex-wrap: wrap;
@@ -146,10 +137,7 @@ const Wrapper = styled.div`
     align-items: flex-start;
     padding: 30px;
   }
-  .office {
-    width: 60px;
-    height: 50px;
-  }
+ 
 `;
 
 export default compose(firestoreConnect([{ collection: "jobs" }]))(JobList);

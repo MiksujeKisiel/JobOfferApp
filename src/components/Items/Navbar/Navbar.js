@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import NavLink from "./NavLink";
 import { NavLink as Link } from "react-router-dom";
-import Logo from "../Logo";
+import Logo from "./Logo";
 import MobileNavbar from "./MobileNavbar";
 import DropDownMenu from "./DropDownMenu";
 import { useTranslation } from "react-i18next";

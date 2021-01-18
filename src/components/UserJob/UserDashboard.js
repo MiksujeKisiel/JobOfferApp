@@ -4,18 +4,18 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import UserJobList from "./UserJobList";
-import Loader from "../Items/Loader";
+import Loader from "../Items/Loader/Loader";
 import Router from "../UserSettings/Router";
-import TopText from '../UserSettings/Text'
+import TopText from "../UserSettings/Text";
 const Wrapper = styled.div`
-position: relative;
-display: flex;
-flex-direction: column;
-@media (min-width: ${768}px) {
-margin-left: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: ${768}px) {
+    margin-left: 50px;
   }
   @media (min-width: ${1440}px) {
-margin-left: 150px;
+    margin-left: 150px;
   }
 `;
 
@@ -41,12 +41,11 @@ const Dashboard = ({ jobs }) => {
 
   return (
     <Router>
-    
       <Wrapper>
-     <TopText
-     bigText="Twoje oferty pracy"
-     smallText="Znajdziesz tutaj dodane przez ciebie oferty pracy"
-     />
+        <TopText
+          bigText="Twoje oferty pracy"
+          smallText="Znajdziesz tutaj dodane przez ciebie oferty pracy"
+        />
         {content}
       </Wrapper>
     </Router>
@@ -57,7 +56,6 @@ const mapStateToProps = ({ firestore }) => {
     jobs: firestore.ordered.jobs,
   };
 };
-
 
 const mapDispatchToProps = {};
 

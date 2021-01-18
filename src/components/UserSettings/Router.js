@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Option from "../Items/Option";
+import Option from "../Items/Navbar/Option";
 import { connect } from "react-redux";
 import { ReactComponent as Document } from "../../assets/svg/documents.svg";
 import { ReactComponent as User } from "../../assets/svg/newuser.svg";
@@ -14,9 +14,9 @@ const Wrapper = styled.div`
     z-index: 5;
     background: #1b75bc;
     min-width: 250px;
-    /* margin-right: 50px; */
+
     @media (min-width: ${1024}px) {
-      /* margin-right: 130px; */
+
     }
   }
 `;
@@ -36,6 +36,7 @@ const NameWrapper = styled.div`
   justify-content: center;
   align-items: center;
   max-height: 250px;
+max-width: 250px;
 `;
 
 const Text = styled.p`
@@ -64,7 +65,7 @@ const Router = ({ children, firebase }) => {
         <Option left to="/profile-jobs" text="Moje oferty pracy">
           <Document className="svgs" />
         </Option>
-        <Option left to="/profile" text="Ustawienia konta">
+        <Option left to="/profile-settings" text="Ustawienia konta">
           <Settings className="svgs" />
         </Option>
         <Option left to="/logout" text="Wyloguj">

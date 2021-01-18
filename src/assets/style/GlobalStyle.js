@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   
@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Open sans', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     overflow-x:hidden;
     padding: 0;
     margin: 0;

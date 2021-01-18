@@ -16,12 +16,13 @@ import Layout from "./layout/Layout";
 import Logout from "./components/User/Logout";
 import VerifyEmail from "./components/User/VerifyEmail";
 import RecoverPassword from "./components/User/RecoverPassword";
-import Profile from "./components/User/Profile";
+import Settings from "./components/User/Settings";
 import AddJob from "./components/JobActions/AddJob";
 import Dashboard from "./components/Jobs/Dashboard";
 import UserDashboard from "./components/UserJob/UserDashboard";
 import JobDetails from "./components/Jobs/JobDetails";
 import JobEditor from "./components/Jobs/JobEditor";
+import Profile from './components/User/Profile'
 
 const App = ({ loggedIn, emailVerified }) => {
   let routes;
@@ -46,6 +47,7 @@ const App = ({ loggedIn, emailVerified }) => {
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/job/:id" component={JobDetails} />
           <Route exact path="/profile-jobs" component={UserDashboard} />
+          <Route exact path="/profile-settings" component={Settings} />
           <Route exact path="/profile" component={Profile} />
         </Layout>
       </Switch>

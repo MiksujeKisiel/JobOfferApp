@@ -4,10 +4,11 @@ import AccountMenu from "./AccountMenu";
 import { ReactComponent as Document } from "../../../assets/svg/documents.svg";
 import { ReactComponent as User } from "../../../assets/svg/newuser.svg";
 import { ReactComponent as Logout } from "../../../assets/svg/logout.svg";
+import { ReactComponent as Settings } from "../../../assets/svg/settings.svg";
 import { connect } from "react-redux";
-import Option from "../Option";
+import Option from "./Option";
 const Nav = styled.div`
-  z-index: 100;
+  z-index: 200;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -32,7 +33,6 @@ const DropDownMenu = ({ firebase }) => {
   const [menu, showMenu] = useState(false);
   return (
     <>
-      {/* <NavWrapper> */}
       <Nav showNav={menu}>
         <AccountMenu
           firstName={firebase.profile.firstName}
@@ -45,7 +45,10 @@ const DropDownMenu = ({ firebase }) => {
         <Option to="/profile-jobs" text="Moje oferty pracy">
           <Document className="svgs" />
         </Option>
-        <Option to="/profile" text="Wyloguj">
+        <Option to="/profile-settings" text="Ustawienia konta">
+          <Settings className="svgs" />
+        </Option>
+        <Option to="/logout" text="Wyloguj">
           <Logout className="svgs" />
         </Option>
       </Nav>
