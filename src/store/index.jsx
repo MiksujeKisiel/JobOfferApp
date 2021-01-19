@@ -12,6 +12,7 @@ export const store = createStore(
   composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument({ getFirestore, getFirebase })),
     reduxFirestore(config),
+    
   ),
 );
 /* eslint-enable */
@@ -20,6 +21,7 @@ export const rrfConfig = {
   userProfile: 'users',
   useFirestoreForProfile: true,
   attachAuthIsReady: true
+  
 };
 
 export const rrfProps = {
