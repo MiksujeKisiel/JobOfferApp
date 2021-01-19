@@ -12,7 +12,17 @@ import { Link } from "react-router-dom";
 import Attribute from "./Attribute";
 
 const JobList = ({ jobs, id }) => {
-  const { date, location, employmentType, contract, companyName, name, timelapse } = jobs;
+  const {
+    date,
+    location,
+    employmentType,
+    contract,
+    companyName,
+    name,
+    timelapse,
+  } = jobs;
+
+
   return (
     <Wrapper to={"job/" + id} key={id}>
       <OfficeWrapper>
@@ -24,12 +34,11 @@ const JobList = ({ jobs, id }) => {
           <CompanyName>{companyName}</CompanyName>
         </CompanyWrapper>
       </NameCompanyWrapper>
-
       <AttributeLocationWrapper>
-      <Attribute text={employmentType}>
-      <Attribute text={contract}>
-          <JobType className="svg" />
-        </Attribute>
+        <Attribute text={employmentType}>
+          <Attribute text={contract}>
+            <JobType className="svg" />
+          </Attribute>
           <JobLevel className="svg" />
         </Attribute>
         <Attribute text={timelapse}>
@@ -38,8 +47,6 @@ const JobList = ({ jobs, id }) => {
         <Attribute text={location}>
           <Marker className="svg" />
         </Attribute>
-     
-   
       </AttributeLocationWrapper>
       <DateWrapper>
         <Date>Opublikowana: {date}</Date>
@@ -51,7 +58,6 @@ const CompanyWrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 5px 0 0;
-
 `;
 const OfficeWrapper = styled.div`
   display: flex;
@@ -61,12 +67,10 @@ const OfficeWrapper = styled.div`
     height: 50px;
     display: none;
     @media (min-width: ${768}px) {
-    display: block;
-
+      display: block;
+    }
   }
-    
-  }
-    @media (min-width: ${768}px) {
+  @media (min-width: ${768}px) {
     height: 100%;
   }
 `;
@@ -87,7 +91,7 @@ const JobName = styled.p`
 const NameCompanyWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   @media (min-width: ${768}px) {
     width: 70%;
     margin-left: 20px;
@@ -97,7 +101,7 @@ const NameCompanyWrapper = styled.div`
 const AttributeLocationWrapper = styled.ul`
   margin: 10px 0 0;
   width: 100%;
-  
+
   .svg {
     width: 15px;
     height: 15px;
@@ -110,7 +114,6 @@ const AttributeLocationWrapper = styled.ul`
     max-width: 400px;
     padding-left: 80px;
     margin: 5px 0 0;
-
   }
 `;
 
@@ -128,7 +131,7 @@ const Date = styled.p`
 `;
 
 const Wrapper = styled(Link)`
-font-family: 'Open sans', sans-serif;
+  font-family: "Open sans", sans-serif;
   width: 90%;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;
   margin: 10px 0;
@@ -146,10 +149,9 @@ font-family: 'Open sans', sans-serif;
     padding: 15px;
   }
   @media (min-width: ${1024}px) {
-    width: 100%;  
+    width: 100%;
     max-width: 1100px;
   }
- 
 `;
 
 export default compose(firestoreConnect([{ collection: "jobs" }]))(JobList);

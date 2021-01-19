@@ -10,19 +10,19 @@ import { createBrowserHistory } from "history";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import GlobalStyle from "./assets/style/GlobalStyle";
-import Login from "./components/User/Login";
-import Signup from "./components/User/Signup";
+import Login from "./pages/User/Login";
+import Signup from "./pages/User/Signup";
 import Layout from "./layout/Layout";
-import Logout from "./components/User/Logout";
-import VerifyEmail from "./components/User/VerifyEmail";
-import RecoverPassword from "./components/User/RecoverPassword";
-import Settings from "./components/User/Settings";
-import AddJob from "./components/JobActions/AddJob";
-import Dashboard from "./components/Jobs/Dashboard";
-import UserDashboard from "./components/UserJob/UserDashboard";
-import JobDetails from "./components/Jobs/JobDetails";
+import Logout from "./pages/User/Logout";
+import VerifyEmail from "./pages/User/VerifyEmail";
+import RecoverPassword from "./pages/User/RecoverPassword";
+import Settings from "./pages/User/Settings";
+import AddJob from "./pages/JobActions/AddJob";
+import Dashboard from "./pages/Dashboard";
+import UserDashboard from "./pages/UserDashboard";
+import JobDetails from "./pages/JobDetails";
 import JobEditor from "./components/Jobs/JobEditor";
-import Profile from './components/User/Profile'
+import Profile from "./pages/User/Profile";
 
 const App = ({ loggedIn, emailVerified }) => {
   let routes;

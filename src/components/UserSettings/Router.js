@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Option from "../Items/Navbar/Option";
+import Option from "../Navbar/Option";
 import { connect } from "react-redux";
 import { ReactComponent as Document } from "../../assets/svg/documents.svg";
 import { ReactComponent as User } from "../../assets/svg/newuser.svg";

@@ -9,7 +9,7 @@ import i18n from "./i18n/i18n";
 import { useSelector } from "react-redux";
 import { isLoaded } from "react-redux-firebase";
 import { I18nextProvider } from "react-i18next";
-import Loader from "./components/Items/Loader/Loader";
+import Loader from "./components/Loader/Loader";
 import styled from "styled-components";
 
 const Wrapper = styled.div`

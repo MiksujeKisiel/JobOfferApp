@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import EditJob from "../JobActions/EditJob";
-import DeleteJob from "../JobActions/DeleteJob";
+import EditJob from "../../pages/JobActions/EditJob";
+import DeleteJob from "../../pages/JobActions/DeleteJob";
 
 const Wrapper = styled.div``;
 const Control = styled.p`
@@ -28,7 +28,6 @@ const JobEditor = (props) => {
     </Wrapper>
   );
 };
-
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const jobs = state.firestore.data.jobs;

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../components/Navbar/node_modules/react-i18next';
 
 const Text = styled.p``
 const Wrapper = styled.div``

@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../components/Items/Navbar/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 import GlobalStyle from '../assets/style/GlobalStyle';
 import { connect } from 'react-redux'
 // import Footer from '../components/Items/Footer/Footer';
