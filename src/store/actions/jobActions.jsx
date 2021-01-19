@@ -27,6 +27,7 @@ export const addJob = (data) => async (
       requirement: data.requirement,
       offer: data.offer,
       about: data.about,
+      // date: data.date
     });
     dispatch({ type: actions.ADD_JOB_SUCCESS });
    

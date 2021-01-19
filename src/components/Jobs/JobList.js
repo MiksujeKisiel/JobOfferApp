@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import Attribute from "./Attribute";
 
 const JobList = ({ jobs, id }) => {
-  const { location, employmentType, contract, companyName, name, timelapse } = jobs;
+  const { date, location, employmentType, contract, companyName, name, timelapse } = jobs;
   return (
     <Wrapper to={"job/" + id} key={id}>
       <OfficeWrapper>
@@ -42,7 +42,7 @@ const JobList = ({ jobs, id }) => {
    
       </AttributeLocationWrapper>
       <DateWrapper>
-        <Date>Opublikowana: 26 grudnia 2020</Date>
+        <Date>Opublikowana: {date}</Date>
       </DateWrapper>
     </Wrapper>
   );

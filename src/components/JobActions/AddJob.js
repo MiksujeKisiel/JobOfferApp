@@ -64,6 +64,7 @@ const AddJob = ({ addJob, error, loading }) => {
           requirement: [],
           offer: [],
           about: "",
+          // date: new Date(),
         }}
         validationSchema={JobSchema}
         onSubmit={async (values, { setSubmitting }) => {
