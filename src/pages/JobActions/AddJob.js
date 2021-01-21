@@ -1,7 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Form as FormFormik, Formik, Field, FieldArray } from "formik";
-import { Message,Button, Input, TextArea, Select} from '../../components/Form';
+import {
+  Message,
+  Button,
+  Input,
+  TextArea,
+  Select,
+} from "../../components/Form";
 
 import styled from "styled-components";
 import * as Yup from "yup";
@@ -41,34 +47,37 @@ const JobSchema = Yup.object().shape({
   // .min(3, "Too short.")
   // .max(25, "Too long."),
 });
-const AddJob = ({ addJob, error, loading }) => {
-  return (
+const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id}) => {
+ return (
     <FormWrapper>
       <Formik
         initialValues={{
-          name: "",
-          company: "",
-          employees: "",
-          earnings: "",
-          earningsType: "Brutto / h",
-          location: "",
-          contract: "Umowa o pracę",
-          employmentType: "",
-          interview: "Rozmowa o pracę",
-          timelapse: "Pełny etat",
-          responsibility: [],
-          requirement: [],
-          offer: [],
-          about: "",
+          name: jobEditing ? jobs.name : "",
+          company: jobEditing ? jobs.companyName : "",
+          employees: jobEditing ? jobs.employees : "",
+          earnings: jobEditing ? jobs.earnings : "",
+          earningsType: jobEditing ? jobs.earningsType : "",
+          location: jobEditing ? jobs.location : "",
+          contract: jobEditing ? jobs.contract : "Umowa o pracę",
+          employmentType: jobEditing ? jobs.employmentType : "",
+          interview: jobEditing ? jobs.interview : "Rozmowa o pracę",
+          timelapse: jobEditing ? jobs.timelapse : "Pełny etat",
+          responsibility: jobEditing ? jobs.responsibility : [],
+          requirement: jobEditing ? jobs.requirement : [],
+          offer: jobEditing ? jobs.offer : [],
+          about: jobEditing ? jobs.about : "",
           // date: new Date(),
         }}
         validationSchema={JobSchema}
         onSubmit={async (values, { setSubmitting }) => {
-          console.log(values);
-          await addJob(values);
+          jobEditing ? await editJob(id, values) : await addJob(values);
+          // console.log(values);
+          // await addJob(values);
           setSubmitting(false);
         }}
       >
+
+      
         {({ isSubmitting, isValid, values }) => (
           <Form>
             <TextWrapper>
@@ -277,22 +286,21 @@ const AddJob = ({ addJob, error, loading }) => {
                 loading={loading ? "Adding job" : null}
                 type="submit"
               >
-                Dodaj oferte pracy
+                 {jobEditing ? 'Edytuj' : 'Dodaj oferte'}
               </Button>
             </SubmitButtonWrapper>
             <Message error show={error}>
-        {error}
-      </Message>
-      <Message error show={error === false}>
-        Job added
-      </Message>
+              {error}
+            </Message>
+            <Message error show={error === false}>
+              Job added
+            </Message>
           </Form>
         )}
-      
       </Formik>
-   
     </FormWrapper>
   );
+
 };
 
 const Form = styled(FormFormik)`
@@ -366,8 +374,8 @@ const mapStateToProps = ({ job }) => ({
 
 const mapDispatchToProps = {
   addJob: actions.addJob,
+  editJob: actions.editJob,
 };
-
 
 const FieldArrayWrapper = styled.div`
   display: flex;
