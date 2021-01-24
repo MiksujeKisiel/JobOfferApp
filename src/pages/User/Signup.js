@@ -51,7 +51,6 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
           }}
           validationSchema={LoginSchema}
           onSubmit={async (values, { setSubmitting }) => {
-            console.log(values);
             await signUp(values);
             setSubmitting(false);
           }}

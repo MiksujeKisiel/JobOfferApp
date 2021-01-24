@@ -29,9 +29,6 @@ const UserJob = ({ loggedIn, userId, jobId }) => {
         </Link>
       </Wrapper>
     );
-  else if (loggedIn !== userId) {
-    return null
-  } 
   else{
     return null;
   }

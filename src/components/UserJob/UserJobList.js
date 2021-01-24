@@ -11,7 +11,7 @@ import { ReactComponent as Office } from "../../assets/svg/office.svg";
 
 import { Link } from "react-router-dom";
 
-const UserJobList = ({ jobs, loggedIn }) => {
+const UserJobList = ({ jobs, loggedIn, user}) => {
   const {
     location,
     employmentType,
@@ -20,8 +20,10 @@ const UserJobList = ({ jobs, loggedIn }) => {
     name,
     userid,
   } = jobs;
+
   if (userid === loggedIn) {
     return (
+      
       <StyledLink to={"job/" + jobs.id}>
         <Wrapper>
           <OfficeWrapper>

@@ -1,0 +1,156 @@
+Date : 2021-01-21 10:16:35
+Directory : c:\Users\sad sad\Desktop\React\app
+Total : 95 files,  22277 codes, 244 comments, 545 blanks, all 23066 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JSON             |          5 |     17,569 |          0 |          3 |     17,572 |
+| JavaScript       |         53 |      3,336 |        192 |        393 |      3,921 |
+| XML              |         20 |        511 |          9 |          9 |        529 |
+| Markdown         |          7 |        439 |          0 |         72 |        511 |
+| JavaScript React |          8 |        394 |         20 |         66 |        480 |
+| HTML             |          1 |         26 |         23 |          1 |         50 |
+| Log              |          1 |          2 |          0 |          1 |          3 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                 | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                    |         95 |     22,277 |        244 |        545 |     23,066 |
+| public                                                                               |          4 |         71 |         23 |          2 |         96 |
+| public\locales                                                                       |          2 |         20 |          0 |          0 |         20 |
+| public\locales\en                                                                    |          1 |         10 |          0 |          0 |         10 |
+| public\locales\pl                                                                    |          1 |         10 |          0 |          0 |         10 |
+| src                                                                                  |         87 |      4,640 |        221 |        507 |      5,368 |
+| src\.VSCodeCounter                                                                   |          6 |        399 |          0 |         39 |        438 |
+| src\.VSCodeCounter\2021-01-18_15-53-17                                               |          2 |        127 |          0 |         13 |        140 |
+| src\.VSCodeCounter\2021-01-19_21-10-30                                               |          2 |        135 |          0 |         13 |        148 |
+| src\.VSCodeCounter\2021-01-19_22-18-08                                               |          2 |        137 |          0 |         13 |        150 |
+| src\Firebase                                                                         |          1 |         14 |          0 |          3 |         17 |
+| src\assets                                                                           |         21 |        539 |          9 |         18 |        566 |
+| src\assets\style                                                                     |          1 |         28 |          0 |          9 |         37 |
+| src\assets\svg                                                                       |         20 |        511 |          9 |          9 |        529 |
+| src\components                                                                       |         34 |      1,844 |          1 |        216 |      2,061 |
+| src\components\Footer                                                                |          1 |         12 |          0 |          4 |         16 |
+| src\components\Form                                                                  |          9 |        311 |          0 |         43 |        354 |
+| src\components\JobDetails                                                            |          8 |        464 |          0 |         52 |        516 |
+| src\components\Jobs                                                                  |          3 |        213 |          0 |         23 |        236 |
+| src\components\Loader                                                                |          1 |         49 |          0 |          3 |         52 |
+| src\components\Modal                                                                 |          2 |         65 |          0 |          8 |         73 |
+| src\components\Navbar                                                                |          7 |        425 |          1 |         52 |        478 |
+| src\components\UserJob                                                               |          1 |        179 |          0 |         14 |        193 |
+| src\components\UserSettings                                                          |          2 |        126 |          0 |         17 |        143 |
+| src\i18n                                                                             |          2 |         34 |          0 |         11 |         45 |
+| src\layout                                                                           |          1 |         18 |          1 |          9 |         28 |
+| src\pages                                                                            |         12 |      1,269 |        190 |        133 |      1,592 |
+| src\pages\JobActions                                                                 |          2 |        420 |         72 |         33 |        525 |
+| src\pages\User                                                                       |          7 |        600 |        118 |         77 |        795 |
+| src\store                                                                            |          8 |        394 |         20 |         66 |        480 |
+| src\store\actions                                                                    |          4 |        217 |         12 |         28 |        257 |
+| src\store\reducers                                                                   |          3 |        150 |          7 |         32 |        189 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                             | language         | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| c:\Users\sad sad\Desktop\React\app\README.md                                         | Markdown         |         40 |          0 |         33 |         73 |
+| c:\Users\sad sad\Desktop\React\app\debug.log                                         | Log              |          2 |          0 |          1 |          3 |
+| c:\Users\sad sad\Desktop\React\app\package-lock.json                                 | JSON             |     17,468 |          0 |          1 |     17,469 |
+| c:\Users\sad sad\Desktop\React\app\package.json                                      | JSON             |         56 |          0 |          1 |         57 |
+| c:\Users\sad sad\Desktop\React\app\public\index.html                                 | HTML             |         26 |         23 |          1 |         50 |
+| c:\Users\sad sad\Desktop\React\app\public\locales\en\translation.json                | JSON             |         10 |          0 |          0 |         10 |
+| c:\Users\sad sad\Desktop\React\app\public\locales\pl\translation.json                | JSON             |         10 |          0 |          0 |         10 |
+| c:\Users\sad sad\Desktop\React\app\public\manifest.json                              | JSON             |         25 |          0 |          1 |         26 |
+| c:\Users\sad sad\Desktop\React\app\src\.VSCodeCounter\2021-01-18_15-53-17\details.md | Markdown         |         89 |          0 |          6 |         95 |
+| c:\Users\sad sad\Desktop\React\app\src\.VSCodeCounter\2021-01-18_15-53-17\results.md | Markdown         |         38 |          0 |          7 |         45 |
+| c:\Users\sad sad\Desktop\React\app\src\.VSCodeCounter\2021-01-19_21-10-30\details.md | Markdown         |         94 |          0 |          6 |        100 |
+| c:\Users\sad sad\Desktop\React\app\src\.VSCodeCounter\2021-01-19_21-10-30\results.md | Markdown         |         41 |          0 |          7 |         48 |
+| c:\Users\sad sad\Desktop\React\app\src\.VSCodeCounter\2021-01-19_22-18-08\details.md | Markdown         |         95 |          0 |          6 |        101 |
+| c:\Users\sad sad\Desktop\React\app\src\.VSCodeCounter\2021-01-19_22-18-08\results.md | Markdown         |         42 |          0 |          7 |         49 |
+| c:\Users\sad sad\Desktop\React\app\src\App.js                                        | JavaScript       |         83 |          0 |          7 |         90 |
+| c:\Users\sad sad\Desktop\React\app\src\Firebase\Firebase.js                          | JavaScript       |         14 |          0 |          3 |         17 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\style\GlobalStyle.js                   | JavaScript       |         28 |          0 |          9 |         37 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\accept.svg                         | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\account.svg                        | XML              |         42 |          1 |          1 |         44 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\document.svg                       | XML              |        100 |          1 |          1 |        102 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\documents.svg                      | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\home.svg                           | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\it.svg                             | XML              |         76 |          1 |          1 |         78 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\joblvl.svg                         | XML              |         50 |          1 |          1 |         52 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\jobtime.svg                        | XML              |         51 |          1 |          1 |         53 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\jobtype.svg                        | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\logout.svg                         | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\loupe.svg                          | XML              |         42 |          1 |          1 |         44 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\marker.svg                         | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\money.svg                          | XML              |         51 |          1 |          1 |         53 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\newuser.svg                        | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\next.svg                           | XML              |         41 |          1 |          1 |         43 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\office.svg                         | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\settings.svg                       | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\suitcase.svg                       | XML              |         47 |          1 |          1 |         49 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\talk.svg                           | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\assets\svg\user.svg                           | XML              |          1 |          0 |          0 |          1 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Footer\Footer.js                   | JavaScript       |         12 |          0 |          4 |         16 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Form\BackgroundImage.js            | JavaScript       |         70 |          0 |          5 |         75 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Form\Button.js                     | JavaScript       |         22 |          0 |          5 |         27 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Form\FormStyles.js                 | JavaScript       |         79 |          0 |          8 |         87 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Form\InputUser.js                  | JavaScript       |         24 |          0 |          4 |         28 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Form\Message.js                    | JavaScript       |         28 |          0 |          4 |         32 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Form\Reference.js                  | JavaScript       |         23 |          0 |          5 |         28 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Form\Select.js                     | JavaScript       |         28 |          0 |          4 |         32 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Form\TextArea.js                   | JavaScript       |         30 |          0 |          5 |         35 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Form\index.js                      | JavaScript       |          7 |          0 |          3 |         10 |
+| c:\Users\sad sad\Desktop\React\app\src\components\JobDetails\About.js                | JavaScript       |         39 |          0 |          9 |         48 |
+| c:\Users\sad sad\Desktop\React\app\src\components\JobDetails\Attribute.js            | JavaScript       |         22 |          0 |          5 |         27 |
+| c:\Users\sad sad\Desktop\React\app\src\components\JobDetails\Header.js               | JavaScript       |        234 |          0 |         13 |        247 |
+| c:\Users\sad sad\Desktop\React\app\src\components\JobDetails\JobDetailStyles.js      | JavaScript       |         26 |          0 |          3 |         29 |
+| c:\Users\sad sad\Desktop\React\app\src\components\JobDetails\Requirements.js         | JavaScript       |         28 |          0 |          5 |         33 |
+| c:\Users\sad sad\Desktop\React\app\src\components\JobDetails\Responsibilities.js     | JavaScript       |         29 |          0 |          4 |         33 |
+| c:\Users\sad sad\Desktop\React\app\src\components\JobDetails\Technologies.js         | JavaScript       |         39 |          0 |          8 |         47 |
+| c:\Users\sad sad\Desktop\React\app\src\components\JobDetails\UserJob.js              | JavaScript       |         47 |          0 |          5 |         52 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Jobs\Attribute.js                  | JavaScript       |         25 |          0 |          5 |         30 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Jobs\JobEditor.js                  | JavaScript       |         43 |          0 |          5 |         48 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Jobs\JobList.js                    | JavaScript       |        145 |          0 |         13 |        158 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Loader\Loader.js                   | JavaScript       |         49 |          0 |          3 |         52 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Modal\Backdrop.js                  | JavaScript       |         18 |          0 |          4 |         22 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Modal\Modal.js                     | JavaScript       |         47 |          0 |          4 |         51 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Navbar\AccountMenu.js              | JavaScript       |         42 |          0 |          6 |         48 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Navbar\DropDownMenu.js             | JavaScript       |        102 |          1 |         13 |        116 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Navbar\Logo.js                     | JavaScript       |         25 |          0 |          4 |         29 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Navbar\MobileNavbar.js             | JavaScript       |         76 |          0 |          5 |         81 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Navbar\NavLink.js                  | JavaScript       |         34 |          0 |          5 |         39 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Navbar\Navbar.js                   | JavaScript       |         81 |          0 |          9 |         90 |
+| c:\Users\sad sad\Desktop\React\app\src\components\Navbar\Option.js                   | JavaScript       |         65 |          0 |         10 |         75 |
+| c:\Users\sad sad\Desktop\React\app\src\components\UserJob\UserJobList.js             | JavaScript       |        179 |          0 |         14 |        193 |
+| c:\Users\sad sad\Desktop\React\app\src\components\UserSettings\Router.js             | JavaScript       |         99 |          0 |         12 |        111 |
+| c:\Users\sad sad\Desktop\React\app\src\components\UserSettings\Text.js               | JavaScript       |         27 |          0 |          5 |         32 |
+| c:\Users\sad sad\Desktop\React\app\src\i18n\LanguageChanger.js                       | JavaScript       |         18 |          0 |          4 |         22 |
+| c:\Users\sad sad\Desktop\React\app\src\i18n\i18n.js                                  | JavaScript       |         16 |          0 |          7 |         23 |
+| c:\Users\sad sad\Desktop\React\app\src\index.js                                      | JavaScript       |         46 |          0 |          5 |         51 |
+| c:\Users\sad sad\Desktop\React\app\src\layout\Layout.js                              | JavaScript       |         18 |          1 |          9 |         28 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\Dashboard.js                            | JavaScript       |        101 |          0 |          9 |        110 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\JobActions\AddJob.js                    | JavaScript       |        364 |         15 |         19 |        398 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\JobActions\DeleteJob.js                 | JavaScript       |         56 |         57 |         14 |        127 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\JobDetails.js                           | JavaScript       |         87 |          0 |          9 |         96 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\UserDashboard.js                        | JavaScript       |         61 |          0 |          5 |         66 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\User\Login.js                           | JavaScript       |         98 |          0 |          8 |        106 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\User\Logout.js                          | JavaScript       |         13 |          0 |         12 |         25 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\User\Profile.js                         | JavaScript       |        115 |          0 |         13 |        128 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\User\RecoverPassword.js                 | JavaScript       |         85 |          0 |          6 |         91 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\User\Settings.js                        | JavaScript       |        129 |        118 |         25 |        272 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\User\Signup.js                          | JavaScript       |        119 |          0 |          7 |        126 |
+| c:\Users\sad sad\Desktop\React\app\src\pages\User\VerifyEmail.js                     | JavaScript       |         41 |          0 |          6 |         47 |
+| c:\Users\sad sad\Desktop\React\app\src\store\actions\actionTypes.jsx                 | JavaScript React |         23 |          0 |          7 |         30 |
+| c:\Users\sad sad\Desktop\React\app\src\store\actions\authActions.jsx                 | JavaScript React |        117 |          8 |         13 |        138 |
+| c:\Users\sad sad\Desktop\React\app\src\store\actions\index.jsx                       | JavaScript React |          2 |          0 |          1 |          3 |
+| c:\Users\sad sad\Desktop\React\app\src\store\actions\jobActions.jsx                  | JavaScript React |         75 |          4 |          7 |         86 |
+| c:\Users\sad sad\Desktop\React\app\src\store\index.jsx                               | JavaScript React |         27 |          1 |          6 |         34 |
+| c:\Users\sad sad\Desktop\React\app\src\store\reducers\authReducer.jsx                | JavaScript React |         99 |          6 |         19 |        124 |
+| c:\Users\sad sad\Desktop\React\app\src\store\reducers\index.jsx                      | JavaScript React |         12 |          0 |          3 |         15 |
+| c:\Users\sad sad\Desktop\React\app\src\store\reducers\jobReducer.jsx                 | JavaScript React |         39 |          1 |         10 |         50 |
+| Total                                                                                |                  |     22,277 |        244 |        545 |     23,066 |
++--------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

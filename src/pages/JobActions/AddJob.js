@@ -30,25 +30,13 @@ const JobSchema = Yup.object().shape({
     .required("location is required")
     .min(3, "Too short.")
     .max(50, "Too long."),
-  // contract: Yup.string()
-  // .required("jobtime is required")
-  // .min(3, "Too short.")
-  // .max(25, "Too long."),
   employmentType: Yup.string()
     .required("joblevel is required")
     .min(3, "Too short.")
     .max(50, "Too long."),
-  // interview: Yup.string()
-  // .required("joblevel is required")
-  // .min(3, "Too short.")
-  // .max(25, "Too long."),
-  // timelapse: Yup.string()
-  // .required("timelapse is required")
-  // .min(3, "Too short.")
-  // .max(25, "Too long."),
 });
-const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id}) => {
- return (
+const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
+  return (
     <FormWrapper>
       <Formik
         initialValues={{
@@ -71,13 +59,9 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id}) => {
         validationSchema={JobSchema}
         onSubmit={async (values, { setSubmitting }) => {
           jobEditing ? await editJob(id, values) : await addJob(values);
-          // console.log(values);
-          // await addJob(values);
           setSubmitting(false);
         }}
       >
-
-      
         {({ isSubmitting, isValid, values }) => (
           <Form>
             <TextWrapper>
@@ -154,13 +138,13 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id}) => {
                         <ButtonWrapper>
                           <ActionButton
                             type="button"
-                            onClick={() => arrayHelpers.remove(index)} // remove a friend from the list
+                            onClick={() => arrayHelpers.remove(index)}
                           >
                             -
                           </ActionButton>
                           <ActionButton
                             type="button"
-                            onClick={() => arrayHelpers.insert(index, "")} // insert an empty string at a position
+                            onClick={() => arrayHelpers.insert(index, "")}
                           >
                             +
                           </ActionButton>
@@ -199,13 +183,13 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id}) => {
                         <ButtonWrapper>
                           <ActionButton
                             type="button"
-                            onClick={() => arrayHelpers.remove(index)} // remove a friend from the list
+                            onClick={() => arrayHelpers.remove(index)}
                           >
                             -
                           </ActionButton>
                           <ActionButton
                             type="button"
-                            onClick={() => arrayHelpers.insert(index, "")} // insert an empty string at a position
+                            onClick={() => arrayHelpers.insert(index, "")}
                           >
                             +
                           </ActionButton>
@@ -217,7 +201,6 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id}) => {
                       type="button"
                       onClick={() => arrayHelpers.push("")}
                     >
-                      {/* show this when user has removed all friends from the list */}
                       Dodaj odpowiedzialność
                     </ActionButton>
                   )}
@@ -286,7 +269,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id}) => {
                 loading={loading ? "Adding job" : null}
                 type="submit"
               >
-                 {jobEditing ? 'Edytuj' : 'Dodaj oferte'}
+                {jobEditing ? "Edytuj" : "Dodaj oferte"}
               </Button>
             </SubmitButtonWrapper>
             <Message error show={error}>
@@ -300,7 +283,6 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id}) => {
       </Formik>
     </FormWrapper>
   );
-
 };
 
 const Form = styled(FormFormik)`
@@ -367,15 +349,6 @@ const ActionButton = styled.button`
   display: block;
   outline: none;
 `;
-const mapStateToProps = ({ job }) => ({
-  loading: job.loading,
-  error: job.error,
-});
-
-const mapDispatchToProps = {
-  addJob: actions.addJob,
-  editJob: actions.editJob,
-};
 
 const FieldArrayWrapper = styled.div`
   display: flex;
@@ -393,5 +366,15 @@ const ArrayWrapper = styled.div`
     padding: 0;
   }
 `;
+
+const mapStateToProps = ({ job }) => ({
+  loading: job.loading,
+  error: job.error,
+});
+
+const mapDispatchToProps = {
+  addJob: actions.addJob,
+  editJob: actions.editJob,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddJob);

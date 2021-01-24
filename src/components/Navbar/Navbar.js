@@ -49,6 +49,7 @@ const Navbar = ({ loggedIn }) => {
             <Logo navbar />
           </Link>
           <StyledLink to="/">{t("NavLinks.home")}</StyledLink>
+          <StyledLink to="/user-profiles">Użytkownicy</StyledLink>
         </Wrapper>
         <Wrapper>
           <DropDownMenu />

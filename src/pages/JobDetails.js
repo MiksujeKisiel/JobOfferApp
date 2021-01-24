@@ -13,7 +13,6 @@ import UserJob from "../components/JobDetails/UserJob";
 const JobDetails = (props) => {
   const { job } = props;
   const { jobId } = props;
-
   if (job) {
     return (
       <Wrapper>

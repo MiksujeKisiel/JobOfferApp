@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 
-import { Message, Button, Input} from '../../components/Form';
+import { Message, Button, Input } from "../../components/Form";
 import Router from "../../components/UserSettings/Router";
 import TopText from "../../components/UserSettings/Text";
 import * as actions from "../../store/actions";
@@ -70,7 +70,6 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
           }}
           validationSchema={ProfileSchema}
           onSubmit={async (values, { setSubmitting }) => {
-            console.log(values);
             await editProfileTwo(values);
             setSubmitting(false);
           }}

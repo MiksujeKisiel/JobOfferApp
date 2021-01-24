@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import AccountMenu from "./AccountMenu";
-import { ReactComponent as Document } from "../../assets/svg/documents.svg";
 import { ReactComponent as User } from "../../assets/svg/newuser.svg";
-import { ReactComponent as Logout } from "../../assets/svg/logout.svg";
-import { ReactComponent as Settings } from "../../assets/svg/settings.svg";
-import { ReactComponent as Arrow } from '../../assets/svg/next.svg'
+import { ReactComponent as Arrow } from "../../assets/svg/next.svg";
 import { connect } from "react-redux";
-import Option from "./Option";
+import UserRouter from './UserRouter';
+
+
 const Nav = styled.div`
   z-index: 200;
   display: flex;
@@ -33,18 +32,7 @@ const DropDownMenu = ({ firebase }) => {
           lastName={firebase.profile.lastName}
           email={firebase.auth.email}
         />
-        <Option to="/profile" text="Profil">
-          <User className="svgs" />
-        </Option>
-        <Option to="/profile-jobs" text="Moje oferty pracy">
-          <Document className="svgs" />
-        </Option>
-        <Option to="/profile-settings" text="Ustawienia konta">
-          <Settings className="svgs" />
-        </Option>
-        <Option to="/logout" text="Wyloguj">
-          <Logout className="svgs" />
-        </Option>
+        <UserRouter/>
       </Nav>
       <StyledBurger
         showNav={menu}
@@ -53,9 +41,7 @@ const DropDownMenu = ({ firebase }) => {
       >
         <User className="svg" />
         {firebase.profile.firstName}
-        <Arrow 
-        showNav={menu}
-        className="arrow"/>
+        <Arrow showNav={menu} className="arrow" />
       </StyledBurger>
     </>
   );
@@ -81,13 +67,12 @@ const StyledBurger = styled.button`
   outline: none;
   margin-right: 30px;
 
- 
-  &:hover{
+  &:hover {
     color: #0060ee;
-    .svg{
+    .svg {
       fill: #0060ee;
     }
-    .arrow{
+    .arrow {
       fill: #0060ee;
     }
   }
@@ -96,20 +81,13 @@ const StyledBurger = styled.button`
     height: 20px;
     margin-right: 8px;
   }
-  .arrow{  
+  .arrow {
     width: 8px;
     height: 8px;
     /* transform: rotate(90deg); */
     margin-left: 5px;
     margin-top: 3px;
-    transform: ${({ showNav }) =>
-    showNav ? "rotate(180deg)" : ""};
+    transform: ${({ showNav }) => (showNav ? "rotate(180deg)" : "")};
     transition: all 0.3 ease;
-
-    
-  
-    
-    }
-    
-  
+  }
 `;

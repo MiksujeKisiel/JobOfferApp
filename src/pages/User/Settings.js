@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Formik, Field, Form } from "formik";
-import { Message, Button, Input} from '../../components/Form';
+import { Message, Button, Input } from "../../components/Form";
 import * as Yup from "yup";
 import * as actions from "../../store/actions";
 import Router from "../../components/UserSettings/Router";
@@ -35,7 +35,6 @@ const Text = styled.p`
 `;
 
 const ProfileSchema = Yup.object().shape({
-
   email: Yup.string()
     .email("Invalid email.")
     .required("The email is required."),
@@ -61,7 +60,6 @@ const Profile = ({ firebase, loading, error, editProfile, cleanUp }) => {
           bigText="Ustawienia"
           smallText="Możesz zmieniać tu email oraz hasło"
         />
-
         <Formik
           initialValues={{
             email: firebase.auth.email,
@@ -90,7 +88,7 @@ const Profile = ({ firebase, loading, error, editProfile, cleanUp }) => {
                 component={Input}
                 long
               />
-       
+
               <Field
                 word="Hasło"
                 type="password"

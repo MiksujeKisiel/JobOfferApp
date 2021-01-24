@@ -40,7 +40,6 @@ const RecoverPassword = ({ error, sendEmail }) => {
           }}
           validationSchema={RecoverSchema}
           onSubmit={async (values, { setSubmitting }) => {
-            console.log(values);
             await sendEmail(values);
             setSubmitting(false);
           }}

@@ -1,3 +1,4 @@
+import { boolean } from "yup/lib/locale";
 import * as actions from "./actionTypes";
 
 //Sign up action
@@ -19,8 +20,22 @@ export const signUp = (data) => async (
     await user.sendEmailVerification();
 
     await firestore.collection("users").doc(res.user.uid).set({
-      firstName: "",
-      lastName: "",
+      firstName: data.firstName,
+      lastName: data.lastName,
+      location: "",
+      age: "",
+      email: "",
+      phone: "",
+      payment: "",
+      experience: "",
+      education: "",
+      languages: "",
+      skills: "",
+      certificates: "",
+      hobby: "",
+      links: "",
+      userType: "",
+      show: false,
     });
     dispatch({
       type: actions.AUTH_SUCCESS,
@@ -129,6 +144,20 @@ export const editProfileTwo = (data) => async (
     await firestore.collection("users").doc(userId).update({
       firstName: data.firstName,
       lastName: data.lastName,
+      location: "",
+      age: "",
+      email: "",
+      phone: "",
+      payment: "",
+      experience: "",
+      education: "",
+      languages: "",
+      skills: "",
+      certificates: "",
+      hobby: "",
+      links: "",
+      userType: "",
+      show: boolean,
     });
     dispatch({ type: actions.PROFILE_EDIT_SUCCESS });
   } catch (err) {
