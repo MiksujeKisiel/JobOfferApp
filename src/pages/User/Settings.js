@@ -38,11 +38,13 @@ const ProfileSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email.")
     .required("The email is required."),
-  password: Yup.string().min(3, "Too short.").max(25, "Too long."),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref("password"), null],
-    "Passwords must match"
-  ),
+    password: Yup.string()
+    .required("Hasło jest wymagane")
+    .min(8, "Zbyt krótkie")
+    .max(25, "Zbyt długie"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password"), null], `Hasła nie są takie same`)
+    .required("Musisz potwierdzić hasło"),
 });
 const Profile = ({ firebase, loading, error, editProfile, cleanUp }) => {
   useEffect(() => {

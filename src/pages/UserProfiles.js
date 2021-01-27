@@ -6,11 +6,11 @@ import { connect } from "react-redux";
 import Loader from "../components/Loader/Loader";
 import UserList from "../components/UserList/UserList";
 const Wrapper = styled.div`
-  height: 100vh;
+  height: calc(100vh - 90px);
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
-
 
 const UserProfiles = ({ users }) => {
   if (!users) {
@@ -18,7 +18,10 @@ const UserProfiles = ({ users }) => {
   } else {
     return (
       <Wrapper>
-        <>{users && users.map((users) => <UserList users={users} />)}</>
+        <>
+          {users &&
+            users.map((users) => <UserList users={users} userid={users.id} />)}
+        </>
       </Wrapper>
     );
   }
@@ -29,8 +32,6 @@ const mapStateToProps = ({ firestore }) => {
     users: firestore.ordered.users,
   };
 };
-
-
 
 const mapDispatchToProps = {};
 

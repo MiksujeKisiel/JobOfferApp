@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-
 import { Message, Button, Input } from "../../components/Form";
 import Router from "../../components/UserSettings/Router";
 import TopText from "../../components/UserSettings/Text";
@@ -62,11 +61,24 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
           bigText="Profil"
           smallText="Dzięki dodawaniu informacji na swój temat możesz łatwiej znaleźć pracę!"
         />
-
         <Formik
           initialValues={{
             firstName: firebase.profile.firstName,
             lastName: firebase.profile.lastName,
+            location: firebase.profile.location,
+            age: firebase.profile.age,
+            email: firebase.profile.email,
+            phone: firebase.profile.phone,
+            payment: firebase.profile.payment,
+            experience: firebase.profile.experience, //array
+            education: firebase.profile.education, //array
+            languages: firebase.profile.languages, //array
+            skills: firebase.profile.skills, //array
+            certificates: firebase.profile.certificates, //array
+            hobby: firebase.profile.hobby, //array
+            links: firebase.profile.links, //array
+            userType: firebase.profile.userType, //option
+            // show: firebase.profile.show, //boolean
           }}
           validationSchema={ProfileSchema}
           onSubmit={async (values, { setSubmitting }) => {
@@ -79,18 +91,57 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
               <BigText>Edytuj swój profil, żeby łatwiej znaleźć pracę!</BigText>
               <Text></Text>
               <Field
-                word="First Name"
+                word="Imię"
                 type="text"
                 name="firstName"
                 component={Input}
               />
               <Field
-                word="Last Name"
+                word="Nazwisko"
                 type="text"
                 name="lastName"
                 component={Input}
               />
-
+                      <Field
+                word="Miejsce zamieszkania"
+                type="text"
+                name="location"
+                component={Input}
+              />
+                      <Field
+                word="Data urodzenia"
+                type="text"
+                name="age"
+                component={Input}
+              />
+                 <Field word="E-mail" type="text" name="email" component={Input} />
+                 <Field word="Numer telefonu" type="text" name="phone" component={Input} />
+                 <Field word="oczekiwana płaca" type="text" name="payment" component={Input} />
+                 <Field
+                word="Pracownik"
+                type="text"
+                name="userType"
+                component={Input}
+              />
+              <Field word="Hobby" type="text" name="hobby" component={Input} />
+              <Field
+                word="Doświadczenie"
+                type="text"
+                name="experience"
+                component={Input}
+              />
+           <Field
+                word="Języki"
+                type="text"
+                name="languages"
+                component={Input}
+              />
+              <Field
+                word="Umiejętności"
+                type="text"
+                name="skills"
+                component={Input}
+              />
               <Button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Edytowanie" : null}
@@ -111,6 +162,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
     </Router>
   );
 };
+
 
 const mapStateToProps = ({ firebase, auth }) => ({
   firebase,
