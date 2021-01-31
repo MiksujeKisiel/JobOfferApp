@@ -84,7 +84,7 @@ const Dashboard = ({ jobs }) => {
     <>
       <Background src={main} />
       <Wrapper>
-        <Filter />
+    
         <SmallWrapper>
           <TextWrapper>
             <BigText>Oferty pracy (4212)</BigText>
