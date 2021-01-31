@@ -75,7 +75,7 @@ export const Group = styled.div`
   width: 100%;
   @media (min-width: ${768}px) {
     width: ${(props) => (props.long ? "100%" : "250px")};
-    margin: 15px 0px;
+    margin: ${(props) => (props.profile ? "15px 50px 15px 0" : "15px 0")};
     max-width: 500px;
   }
 `;

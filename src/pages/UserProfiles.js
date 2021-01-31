@@ -18,10 +18,7 @@ const UserProfiles = ({ users }) => {
   } else {
     return (
       <Wrapper>
-        <>
-          {users &&
-            users.map((users) => <UserList users={users} userid={users.id} />)}
-        </>
+        {users && users.map((users) => <UserList users={users} userid={users.id} />)}
       </Wrapper>
     );
   }

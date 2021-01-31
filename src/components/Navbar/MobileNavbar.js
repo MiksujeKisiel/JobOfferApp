@@ -4,7 +4,7 @@ import { ReactComponent as Home } from "../../assets/svg/home.svg";
 import { ReactComponent as Loupe } from "../../assets/svg/loupe.svg";
 import { ReactComponent as User } from "../../assets/svg/user.svg";
 import { NavLink } from "react-router-dom";
-const BigWrapper = styled.div`
+const BigWrapper = styled.nav`
   display: flex;
   justify-content: space-around;
   align-items: center;

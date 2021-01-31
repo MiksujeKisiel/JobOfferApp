@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import MobileNavbar from "./MobileNavbar";
 import DropDownMenu from "./DropDownMenu";
 import { useTranslation } from "react-i18next";
+
 const Nav = styled.nav`
   @media (min-width: ${768}px) {
     padding: 0;

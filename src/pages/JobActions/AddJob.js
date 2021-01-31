@@ -87,27 +87,21 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                 type="select"
                 component={Select}
                 name="earningsType"
-                option="Brutto / mies"
-                optionTwo="Netto / mies"
-                optionThree="Zł / h"
-              />
-              <Field
-                word="Rozmowa o pracę"
-                name="interview"
-                component={Select}
-                option="Zdalnie"
-                optionTwo="W miejscu pracy"
-                optionThree="W zakładzie pracy"
-              />
-
-              <Field
-                word="Czas pracy"
-                component={Select}
-                name="timelapse"
-                option="Pełny etat"
-                optionTwo="Pół etatu"
-                optionThree="Ćwierć etatu"
-              />
+              >
+                <option value="Brutto / mies">Brutto / mies</option>
+                <option value="Netto / mies">Netto / mies</option>
+                <option value="Zł / h">Zł / h</option>
+              </Field>
+              <Field word="Rozmowa o pracę" name="interview" component={Select}>
+                <option value="Zdalnie">Zdalnie</option>
+                <option value="W miejscu pracy">W miejscu pracy</option>
+                <option value="W zakładzie pracy">W zakładzie pracy</option>
+              </Field>
+              <Field word="Czas pracy" component={Select} name="timelapse">
+                <option value="Pełny etat">Pełny etat</option>
+                <option value="Pół etatu">Pół etatu</option>
+                <option value="Ćwierć etatu">Ćwierć etatu</option>
+              </Field>
               <Field
                 word="Rodzaj kontraktu"
                 name="contract"
@@ -115,7 +109,11 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                 option="Umowa o pracę"
                 optionTwo="Umowa o dzieło"
                 optionThree="B2B"
-              />
+              >
+                <option value="Umowa o pracę">Umowa o pracę</option>
+                <option value="Umowa o dzieło">Umowa o dzieło</option>
+                <option value="B2B">B2B</option>
+              </Field>
               <Field word="Posada" name="employmentType" component={Input} />
             </InputWrapper>
             <TextWrapper>

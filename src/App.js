@@ -23,8 +23,8 @@ import UserDashboard from "./pages/UserDashboard";
 import JobDetails from "./pages/JobDetails";
 import JobEditor from "./components/Jobs/JobEditor";
 import Profile from "./pages/User/Profile";
-import UserProfiles from './pages/UserProfiles';
-import UserDetails from './components/UserList/UserDetails';
+import UserProfiles from "./pages/UserProfiles";
+import UserDetails from "./components/UserList/UserDetails";
 const App = ({ loggedIn, emailVerified }) => {
   let routes;
 
@@ -48,7 +48,11 @@ const App = ({ loggedIn, emailVerified }) => {
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/job/:id" component={JobDetails} />
           <Route exact path="/user-profiles" component={UserProfiles} />
-          <Route exact path="/user-profile-details/:id" component={UserDetails} />
+          <Route
+            exact
+            path="/user-profile-details/:id"
+            component={UserDetails}
+          />
           <Route exact path="/profile-jobs" component={UserDashboard} />
           <Route exact path="/profile-settings" component={Settings} />
           <Route exact path="/profile" component={Profile} />

@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Suitcase } from "../../assets/svg/suitcase.svg";
 import { ReactComponent as Mail } from "../../assets/svg/mail.svg";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 const Wrapper = styled(Link)`
   display: flex;
@@ -49,8 +48,7 @@ const UserType = styled.p`
   font-weight: 500;
 `;
 
-const UserList = ({ users, userid}) => {
- 
+const UserList = ({ users, userid }) => {
   if (users.show === false) {
     return null;
   } else {
@@ -63,13 +61,13 @@ const UserList = ({ users, userid}) => {
         </SmallWrapper>
         <UserType>{users.userType}</UserType>
         <SmallWrapper>
-          <Suitcase className="svg" /> <Text>Programista</Text>
+          <Suitcase className="svg" /> <Text>{users.profession}</Text>
         </SmallWrapper>
         <SmallWrapper>
-          <Mail className="svg" /> <Text>Programista</Text>
+          <Mail className="svg" /> <Text>{users.email}</Text>
         </SmallWrapper>
         <SmallWrapper>
-          <Mail className="svg" /> <Text>Programista</Text>
+          <Mail className="svg" /> <Text>{users.phone}</Text>
         </SmallWrapper>
       </Wrapper>
     );

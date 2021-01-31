@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,34 +14,29 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     width: 100%;
   }
-  .companyName{
-      width: 40%;
+  .companyName {
+    width: 40%;
   }
 `;
 
-const Company = styled.h2`
-
-`
+const Company = styled.h2``;
 const Text = styled.p`
-width: 60%;
-`
+  width: 60%;
+`;
 
-const About = ({about, companyName}) => {
-      if (about || companyName) 
-      return (
-        <Wrapper>
+const About = ({ about, companyName }) => {
+  if (about || companyName)
+    return (
+      <Wrapper>
         <div className="companyName">
-        <Company>{companyName}</Company>
+          <Company>{companyName}</Company>
         </div>
         <Text>{about}</Text>
-    </Wrapper>
-       )
-       else if(!about || !companyName){
-           return null;
-       }
-}
-  
+      </Wrapper>
+    );
+  else if (!about || !companyName) {
+    return null;
+  }
+};
 
-
-
-export default About
+export default About;

@@ -13,14 +13,12 @@ const StyledSelect = styled.select`
   }
 `;
 
-export const Select = ({ field, form: { touched, errors }, ...props }) => {
+export const Select = ({ field, children, form: { touched, errors }, ...props }) => {
   return (
     <Group>
       <Label>{props.word}</Label>
       <StyledSelect {...field} {...props}>
-        <option value={props.option}> {props.option}</option>
-        <option value={props.optionTwo}> {props.optionTwo}</option>
-        <option value={props.optionThree}> {props.optionThree}</option>
+        {children}
       </StyledSelect>
       <Error show={errors[field.name] && touched[field.name]}>
         {errors[field.name]}

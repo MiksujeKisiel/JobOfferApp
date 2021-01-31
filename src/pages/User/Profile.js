@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, FieldArray } from "formik";
 import * as Yup from "yup";
-import { Message, Button, Input } from "../../components/Form";
+import { Message, Button, Input, Select } from "../../components/Form";
 import Router from "../../components/UserSettings/Router";
 import TopText from "../../components/UserSettings/Text";
 import * as actions from "../../store/actions";
@@ -29,10 +29,11 @@ const BigText = styled.p`
   font-weight: 300;
   margin-bottom: 15px;
 `;
-const Text = styled.p`
-  max-width: 1100px;
-  font-size: 15px;
-  margin-bottom: 50px;
+
+const TopWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 900px;
 `;
 
 const ProfileSchema = Yup.object().shape({
@@ -70,13 +71,13 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
             email: firebase.profile.email,
             phone: firebase.profile.phone,
             payment: firebase.profile.payment,
+            profession: firebase.profile.profession,
             experience: firebase.profile.experience, //array
-            education: firebase.profile.education, //array
-            languages: firebase.profile.languages, //array
-            skills: firebase.profile.skills, //array
-            certificates: firebase.profile.certificates, //array
-            hobby: firebase.profile.hobby, //array
-            links: firebase.profile.links, //array
+            // education: firebase.profile.education, //array
+            // languages: firebase.profile.languages, //array
+            // skills: firebase.profile.skills, //array
+            // certificates: firebase.profile.certificates, //array
+            // links: firebase.profile.links, //array
             userType: firebase.profile.userType, //option
             // show: firebase.profile.show, //boolean
           }}
@@ -86,62 +87,120 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
             setSubmitting(false);
           }}
         >
-          {({ isSubmitting, isValid }) => (
+          {({ isSubmitting, isValid, values }) => (
             <FormWrapper>
               <BigText>Edytuj swój profil, żeby łatwiej znaleźć pracę!</BigText>
-              <Text></Text>
-              <Field
-                word="Imię"
-                type="text"
-                name="firstName"
-                component={Input}
-              />
-              <Field
-                word="Nazwisko"
-                type="text"
-                name="lastName"
-                component={Input}
-              />
-                      <Field
-                word="Miejsce zamieszkania"
-                type="text"
-                name="location"
-                component={Input}
-              />
-                      <Field
-                word="Data urodzenia"
-                type="text"
-                name="age"
-                component={Input}
-              />
-                 <Field word="E-mail" type="text" name="email" component={Input} />
-                 <Field word="Numer telefonu" type="text" name="phone" component={Input} />
-                 <Field word="oczekiwana płaca" type="text" name="payment" component={Input} />
-                 <Field
-                word="Pracownik"
-                type="text"
-                name="userType"
-                component={Input}
-              />
-              <Field word="Hobby" type="text" name="hobby" component={Input} />
-              <Field
-                word="Doświadczenie"
-                type="text"
+              <TopWrapper>
+                <Field
+                  profile
+                  word="Imię"
+                  type="text"
+                  name="firstName"
+                  component={Input}
+                />
+                <Field
+                  profile
+                  word="Nazwisko"
+                  type="text"
+                  name="lastName"
+                  component={Input}
+                />
+                <Field
+                  profile
+                  word="Miejsce zamieszkania"
+                  type="text"
+                  name="location"
+                  component={Input}
+                />
+                <Field
+                  profile
+                  word="Data urodzenia"
+                  type="text"
+                  name="age"
+                  component={Input}
+                />
+
+                <Field
+                  profile
+                  word="E-mail"
+                  type="text"
+                  name="email"
+                  component={Input}
+                />
+                <Field
+                  profile
+                  word="Numer telefonu"
+                  type="text"
+                  name="phone"
+                  component={Input}
+                />
+                <Field
+                  profile
+                  word="oczekiwana płaca"
+                  type="text"
+                  name="payment"
+                  component={Input}
+                />
+                <Field
+                  profile
+                  word="profesja"
+                  type="text"
+                  name="profession"
+                  component={Input}
+                />
+
+                <Field
+                  word="Pracownik"
+                  type="text"
+                  name="userType"
+                  component={Select}
+                >
+                  <option value="Pracodawca">Pracodawca</option>
+                  <option value="Poszukiwacz pracy">Poszukiwacz pracy</option>
+                </Field>
+              </TopWrapper>
+              <FieldArray
                 name="experience"
-                component={Input}
+                render={(arrayHelpers) => (
+                  <ArrayWrapper>
+                    {values.experience && values.experience.length > 0 ? (
+                      values.experience.map((experience, index) => (
+                        <FieldArrayWrapper key={index}>
+                          <Field
+                            long
+                            name={`experience.name.${index}`}
+                            word="zadania"
+                            component={Input}
+                          />
+                             <Field
+                            long
+                            name={`experience.bla.${index}`}
+                            word="xdxd"
+                            component={Input}
+                          />
+                          <ButtonWrapper>
+                            <ActionButton
+                              type="button"
+                              onClick={() => arrayHelpers.remove(index)} // remove a friend from the list
+                            >
+                              -
+                            </ActionButton>
+                          </ButtonWrapper>
+                        </FieldArrayWrapper>
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                    <ActionButton
+                      type="button"
+                      onClick={() => arrayHelpers.push("")}
+                    >
+                      Dodaj oferowanie
+                    </ActionButton>
+                  </ArrayWrapper>
+                )}
               />
-           <Field
-                word="Języki"
-                type="text"
-                name="languages"
-                component={Input}
-              />
-              <Field
-                word="Umiejętności"
-                type="text"
-                name="skills"
-                component={Input}
-              />
+
               <Button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Edytowanie" : null}
@@ -163,6 +222,38 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   );
 };
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  @media (min-width: ${768}px) {
+    margin-left: 40px;
+  }
+`;
+const ActionButton = styled.button`
+  border: none;
+  background-color: #3c3c3c;
+  padding: 5px 10px;
+  margin: 5px 0;
+  color: white;
+  display: block;
+  outline: none;
+`;
+
+const FieldArrayWrapper = styled.div`
+  display: flex;
+  margin: 10px 0;
+`;
+
+const ArrayWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+
+  @media (min-width: ${768}px) {
+    padding: 0;
+  }
+`;
 
 const mapStateToProps = ({ firebase, auth }) => ({
   firebase,
