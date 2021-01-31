@@ -31,7 +31,7 @@ export const FormWrapper = styled.div`
       props.profile ? "none" : " 6px 0 35px 0 rgba(0, 0, 0, 0.75)"};
     z-index: 2;
     height: ${(props) => (props.profile ? "" : "100%")};
-    padding: ${(props) => (props.profile ? "20px 0" : "100px 0")};
+    padding: ${(props) => (props.profile ? "20px 0" : "10px 0")};
   }
 `;
 

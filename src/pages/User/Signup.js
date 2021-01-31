@@ -10,14 +10,6 @@ import Logo from "../../components/Navbar/Logo";
 
 
 const LoginSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .required("Twoje imie jest wymagane")
-    .min(3, "Zbyt krótkie")
-    .max(25, "Zbyt długie"),
-  lastName: Yup.string()
-    .required("Twoje nazwisko jest wymagane")
-    .min(3, "Zbyt krótkie")
-    .max(25, "Zbyt długie"),
   email: Yup.string()
     .email("Błędny adres e-mail")
     .required("Adres e-mail jest wymagany"),
@@ -57,18 +49,7 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
         >
           {({ isSubmitting, isValid }) => (
             <Form>
-              <Field
-                word="Imię"
-                type="text"
-                name="firstName"
-                component={Input}
-              />
-              <Field
-                word="Nazwisko"
-                type="text"
-                name="lastName"
-                component={Input}
-              />
+
               <Field
                 word="Adres e-mail"
                 type="email"
