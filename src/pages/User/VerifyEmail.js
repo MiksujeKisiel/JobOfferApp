@@ -4,7 +4,9 @@ import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 import { Message, Button } from '../../components/Form';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+height: calc(100vh - 90px);
+`;
 const Text = styled.p``;
 
 const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {

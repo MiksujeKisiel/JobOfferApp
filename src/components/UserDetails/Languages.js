@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   @media (min-width: ${768}px) {
     border: 1px solid #DEDDDA;
     border-radius: 15px 10px;
-    font-size: 24px;
+    font-size: 22px;
   }
 `;
 

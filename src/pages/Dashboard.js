@@ -17,16 +17,7 @@ const Background = styled.div`
   background-size: cover;
 `;
 
-const Filter = styled.div`
-  display: none;
-  @media (min-width: ${1024}px) {
-    width: 380px;
-    display: flex;
-    height: 700px;
-    box-shadow: rgba(11, 11, 11, 0.2) 0px 0px 10px;
-    margin: 0 30px 0 30px;
-  }
-`;
+
 
 const Wrapper = styled.div`
   flex-direction: row;
