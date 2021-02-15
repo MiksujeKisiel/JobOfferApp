@@ -8,7 +8,6 @@ import {
   TextArea,
   Select,
 } from "../../components/Form";
-
 import styled from "styled-components";
 import * as Yup from "yup";
 import * as actions from "../../store/actions";
@@ -50,6 +49,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
           employmentType: jobEditing ? jobs.employmentType : "",
           interview: jobEditing ? jobs.interview : "Rozmowa o pracę",
           timelapse: jobEditing ? jobs.timelapse : "Pełny etat",
+          level: jobEditing ? jobs.level : "Junior",
           responsibility: jobEditing ? jobs.responsibility : [],
           requirement: jobEditing ? jobs.requirement : [],
           offer: jobEditing ? jobs.offer : [],
@@ -106,13 +106,20 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                 word="Rodzaj kontraktu"
                 name="contract"
                 component={Select}
-                option="Umowa o pracę"
-                optionTwo="Umowa o dzieło"
-                optionThree="B2B"
               >
                 <option value="Umowa o pracę">Umowa o pracę</option>
                 <option value="Umowa o dzieło">Umowa o dzieło</option>
                 <option value="B2B">B2B</option>
+              </Field>
+              <Field
+                word="Rodzaj kontraktu"
+                name="level"
+                component={Select}
+              >
+                <option value="Junior">Junior</option>
+                <option value="Regular">Regular</option>
+                <option value="Senior">Senior</option>
+                <option value="Expert">Expert</option>
               </Field>
               <Field word="Posada" name="employmentType" component={Input} />
             </InputWrapper>

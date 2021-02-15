@@ -40,7 +40,9 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 30px 0 0;
+  min-height: 700px;
   @media (min-width: ${768}px) {
+    min-height: 900px;
     padding: 0;
     @media (min-width: ${1024}px) {
       height: 100vh;

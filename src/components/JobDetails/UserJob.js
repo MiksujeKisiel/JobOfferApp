@@ -25,7 +25,7 @@ const UserJob = ({ loggedIn, userId, jobId }) => {
           close={() => setisDeleting(false)}
         />
         <Link to={"/editjob/" + jobId}>
-          <p>xddds</p>
+          <p>Edit Job</p>
         </Link>
       </Wrapper>
     );

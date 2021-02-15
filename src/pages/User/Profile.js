@@ -54,7 +54,8 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   }, [cleanUp]);
 
   if (!firebase.profile.isLoaded) return null;
-
+  console.log(firebase.profile.experience);
+  console.log(firebase.profile.language)
   return (
     <Router>
       <Wrapper>
@@ -74,7 +75,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
             profession: firebase.profile.profession,
             experience: firebase.profile.experience, //array
             // education: firebase.profile.education, //array
-            // languages: firebase.profile.languages, //array
+            language: firebase.profile.language, //array
             // skills: firebase.profile.skills, //array
             // certificates: firebase.profile.certificates, //array
             // links: firebase.profile.links, //array
@@ -84,6 +85,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
           validationSchema={ProfileSchema}
           onSubmit={async (values, { setSubmitting }) => {
             await editProfileTwo(values);
+            console.log(values);
             setSubmitting(false);
           }}
         >
@@ -168,13 +170,13 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                         <FieldArrayWrapper key={index}>
                           <Field
                             long
-                            name={`experience.name.${index}`}
+                            name={`experience.${index}.name`}
                             word="zadania"
                             component={Input}
                           />
-                             <Field
+                          <Field
                             long
-                            name={`experience.bla.${index}`}
+                            name={`experience.${index}.type`}
                             word="xdxd"
                             component={Input}
                           />
@@ -201,6 +203,55 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                 )}
               />
 
+
+              <FieldArray
+                name="language"
+                render={(arrayHelpers) => (
+                  <ArrayWrapper>
+                    {values.language && values.language.length > 0 ? (
+                      values.language.map((language, index) => (
+                        <FieldArrayWrapper key={index}>
+                          <Field
+                            long
+                            name={`language.${index}.name`}
+                            word="Języki"
+                            component={Input}
+                          />
+                          <Field
+                            word="Pracownik"
+                            type="text"
+                            name={`language.${index}.type`}
+                            component={Select}
+                          >
+                            <option value="A1">A1</option>
+                            <option value="A2">A2</option>
+                            <option value="B1">B1</option>
+                            <option value="B2">B2</option>
+                            <option value="C1">C1</option>
+                            <option value="C2">C2</option>
+                          </Field>
+                          <ButtonWrapper>
+                            <ActionButton
+                              type="button"
+                              onClick={() => arrayHelpers.remove(index)} // remove a friend from the list
+                            >
+                              -
+                            </ActionButton>
+                          </ButtonWrapper>
+                        </FieldArrayWrapper>
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                    <ActionButton
+                      type="button"
+                      onClick={() => arrayHelpers.push("")}
+                    >
+                      Dodaj język
+                    </ActionButton>
+                  </ArrayWrapper>
+                )}
+              />
               <Button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Edytowanie" : null}

@@ -8,24 +8,28 @@ import DropDownMenu from "./DropDownMenu";
 import { useTranslation } from "react-i18next";
 
 const Nav = styled.nav`
-  @media (min-width: ${768}px) {
+ 
+    position: absolute;
+    z-index: 10;
+    width: 100%;
     padding: 0;
     display: flex;
     justify-content: space-between;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  }
+  
 `;
 
 const StyledLink = styled(Link)`
   font-family: "Open sans", sans-serif;
   margin-left: 50px;
   font-size: 14px;
-`;
+  color: white;
+  `;
 
 const Wrapper = styled.ul`
-  display: none;
+display: none;
   @media (min-width: ${768}px) {
-    position: relative;
+    position: sticky;
     display: flex;
     align-items: center;
     height: 80px;
@@ -68,6 +72,7 @@ const Navbar = ({ loggedIn }) => {
             <Logo navbar />
           </Link>
           <StyledLink to="/">{t("NavLinks.home")}</StyledLink>
+          <StyledLink to="/user-profiles">Użytkownicy</StyledLink>
         </Wrapper>
         <Wrapper>
           <NavLink user exact to="/login" text={t("NavLinks.login")} />

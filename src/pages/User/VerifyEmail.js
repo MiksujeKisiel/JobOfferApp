@@ -1,20 +1,20 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
-import { Message, Button } from '../../components/Form';
+import { Message, Button } from "../../components/Form";
 
 const Wrapper = styled.div`
-height: calc(100vh - 90px);
+  height: calc(100vh - 90px);
 `;
 const Text = styled.p``;
 
 const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
-    useEffect(() => {
-        return () => {
-            cleanUp();
-        };
-    }, [cleanUp]);
+  useEffect(() => {
+    return () => {
+      cleanUp();
+    };
+  }, [cleanUp]);
   return (
     <Wrapper>
       <Text>Verify your email</Text>
@@ -29,7 +29,7 @@ const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
         {error}
       </Message>
       <Message success show={error === false}>
-          message sent succesfuly
+        message sent succesfuly
       </Message>
     </Wrapper>
   );
@@ -42,7 +42,7 @@ const mapStateToProps = ({ auth }) => ({
 
 const mapDispatchToProps = {
   sendVerification: actions.verifyEmail,
-  cleanUp: actions.clean
+  cleanUp: actions.clean,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(VerifyEmail);

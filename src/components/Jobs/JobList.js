@@ -2,156 +2,172 @@ import React from "react";
 import styled from "styled-components";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { ReactComponent as JobType } from "../../assets/svg/jobtype.svg";
-import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
 import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
-import { ReactComponent as Office } from "../../assets/svg/office.svg";
-import { ReactComponent as JobTime } from "../../assets/svg/jobtime.svg";
+import { ReactComponent as Wallet } from "../../assets/svg/wallet.svg";
 import { Link } from "react-router-dom";
-
-import Attribute from "./Attribute";
+// import Attribute from "./Attribute";
+// import Attribute from "./Attribute";
 
 const JobList = ({ jobs, id }) => {
-  const {
-    date,
-    location,
-    employmentType,
-    contract,
-    companyName,
-    name,
-    timelapse,
-  } = jobs;
-
+  const { location, companyName, name, level, earnings } = jobs;
 
   return (
     <Wrapper to={"job/" + id} key={id}>
-      <OfficeWrapper>
-        <Office className="office" />
-      </OfficeWrapper>
-      <NameCompanyWrapper>
-        <JobName>{name}</JobName>
-        <CompanyWrapper>
-          <CompanyName>{companyName}</CompanyName>
-        </CompanyWrapper>
-      </NameCompanyWrapper>
-      <AttributeLocationWrapper>
-        <Attribute text={employmentType}>
-          <Attribute text={contract}>
-            <JobType className="svg" />
-          </Attribute>
-          <JobLevel className="svg" />
-        </Attribute>
-        <Attribute text={timelapse}>
-          <JobTime className="svg" />
-        </Attribute>
-        <Attribute text={location}>
-          <Marker className="svg" />
-        </Attribute>
-      </AttributeLocationWrapper>
-      <DateWrapper>
-        <Date>Opublikowana: {date}</Date>
-      </DateWrapper>
+      <Image />
+      <TopWrapper>
+        <Name>{name}</Name>
+        <Company>{companyName}</Company>
+      </TopWrapper>
+      <MidWrapper>
+        <Level>{level}</Level>
+        <Wallet className="svg" /> {earnings}
+        <Marker className="svg" /> {location}
+      </MidWrapper>
+      <BottomWrapper>
+        <Attribute>{location}</Attribute>
+        <Attribute>{location}</Attribute>
+        <Attribute>{location}</Attribute>
+      </BottomWrapper>
     </Wrapper>
   );
 };
-const CompanyWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 5px 0 0;
-`;
-const OfficeWrapper = styled.div`
-  display: flex;
-  align-items: flex-end;
-  .office {
-    width: 60px;
-    height: 50px;
-    display: none;
-    @media (min-width: ${768}px) {
-      display: block;
-    }
-  }
-  @media (min-width: ${768}px) {
-    height: 100%;
-  }
-`;
-const CompanyName = styled.p`
-  font-size: 14px;
-`;
 
-const JobName = styled.p`
-  color: #006cf1;
+const Wrapper = styled(Link)`
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  border: 1px solid #ededed;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  background: white;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  @media (min-width: ${768}px) {
+    width: 100%;
+    margin: 0;
+  }
+  @media (min-width: ${1280}px) {
+  padding: 30px;
+  }
+  @media (min-width: ${1440}px) {
+  padding: 35px 35px 45px;
+  }
+  
+`;
+const Image = styled.div`
+  width: 50px;
+  height: 40px;
+  background: blue;
+  @media (min-width: ${1440}px) {
+  width: 60px;
+  height: 50px;
+  }
+`;
+const Name = styled.p`
   font-weight: 600;
-  font-size: 15px;
+  font-size: 19px;
+  color: #555454;
   @media (min-width: ${768}px) {
-    font-size: 23px;
-    line-height: 110%;
+    font-size: 20px;
+  }
+  @media (min-width: ${1280}px) {
+  font-size: 22px;
+  }
+  @media (min-width: ${1440}px) {
+  font-size: 24px;
+  }
+`;
+const Company = styled.p`
+  color: #ababab;
+  font-size: 13px;
+  line-height: 90%;
+  font-weight: 500;
+  @media (min-width: ${768}px) {
+    font-size: 14px;
+  }
+  @media (min-width: ${1280}px) {
+  font-size: 15px;
   }
 `;
 
-const NameCompanyWrapper = styled.div`
+const Level = styled.p`
+  background: #D1EFFC;
+  padding: 3px 10px;
+  border-radius: 10px;
+  color: #29B6F6;
+  font-weight: 500;
+  font-size: 12px;
+  @media (min-width: ${768}px) {
+    font-size: 13px;
+  }
+  @media (min-width: ${1440}px) {
+    font-size: 15px;
+    padding: 5px 15px;
+  }
+
+`;
+
+const TopWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
-  @media (min-width: ${768}px) {
-    width: 70%;
-    margin-left: 20px;
-  }
+  margin-left: 20px;
 `;
 
-const AttributeLocationWrapper = styled.ul`
-  margin: 10px 0 0;
+const MidWrapper = styled.div`
   width: 100%;
-
+  padding: 25px 0 30px 0;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
   .svg {
     width: 15px;
     height: 15px;
-    margin-right: 6px;
-    fill: #707070;
+    margin: 0 8px 0 20px;
   }
   @media (min-width: ${768}px) {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 400px;
-    padding-left: 80px;
-    margin: 5px 0 0;
+    .svg {
+    width: 17px;
+    height: 17px;
+  }
+  font-size: 14px;
+  padding: 35px 0 30px 0;
+  }
+  @media (min-width: ${1440}px) {
+    .svg {
+    width: 19px;
+    height: 19px;
+    margin: 0 8px 0 40px;
+  }
+  font-size: 15px;
   }
 `;
 
-const DateWrapper = styled.div`
-  margin-top: 10px;
+const BottomWrapper = styled.div`
   width: 100%;
-  @media (min-width: ${768}px) {
-    padding-left: 80px;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
-  }
-`;
-const Date = styled.p`
-  font-size: 13px;
-  margin-top: 10px;
-`;
-
-const Wrapper = styled(Link)`
-  font-family: "Open sans", sans-serif;
-  width: 90%;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 10px;
-  margin: 10px 0;
-  border-radius: 8px;
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
-  padding: 20px;
-  border-left: 4px solid #0091ea;
-  @media (min-width: ${768}px) {
-    margin: 10px 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    padding: 15px;
-  }
-  @media (min-width: ${1024}px) {
-    width: 100%;
-    max-width: 1100px;
-  }
+  
 `;
+
+const Attribute = styled.p`
+font-size: 12px;
+background: #F5F5F5;
+color: #6B6B98;
+padding: 2px 8px;
+margin: 5px 0;
+font-weight: 500;
+border-radius: 10px;
+margin-right: 10px;
+@media (min-width: ${768}px) {
+  font-size: 13px;
+  }
+  @media (min-width: ${1280}px) {
+  font-size: 14px;
+  }
+  @media (min-width: ${1440}px) {
+  padding: 3px 10px;
+}
+`
 
 export default compose(firestoreConnect([{ collection: "jobs" }]))(JobList);

@@ -7,7 +7,7 @@ const Text = styled.p``;
 const Technologies = ({ requirement }) => {
   const listItems = requirement
     .slice(0)
-    .map((text) => <Technology>{text}</Technology>);
+    .map((text) => <Technology>{text.length === 0 ? null : text}</Technology>);
   if (requirement.length > 0)
     return (
       <Wrapper>

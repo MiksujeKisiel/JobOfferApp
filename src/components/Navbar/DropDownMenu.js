@@ -4,12 +4,12 @@ import AccountMenu from "./AccountMenu";
 import { ReactComponent as User } from "../../assets/svg/newuser.svg";
 import { ReactComponent as Arrow } from "../../assets/svg/next.svg";
 import { connect } from "react-redux";
-import UserRouter from './UserRouter';
-
+import UserRouter from "./UserRouter";
 
 const Nav = styled.div`
   z-index: 200;
-  display: flex;
+  display: ${({ showNav }) =>
+    showNav ? "flex" : "none"};
   flex-direction: column;
   position: absolute;
   width: 310px;
@@ -18,9 +18,7 @@ const Nav = styled.div`
   right: 180px;
   background-color: white;
   max-height: 600px;
-  transform: ${({ showNav }) =>
-    showNav ? "translateX(0)" : "translateX(150vw)"};
-`;
+`
 
 const DropDownMenu = ({ firebase }) => {
   const [menu, showMenu] = useState(false);
@@ -32,7 +30,7 @@ const DropDownMenu = ({ firebase }) => {
           lastName={firebase.profile.lastName}
           email={firebase.auth.email}
         />
-        <UserRouter/>
+        <UserRouter />
       </Nav>
       <StyledBurger
         showNav={menu}
@@ -66,24 +64,26 @@ const StyledBurger = styled.button`
   z-index: 50;
   outline: none;
   margin-right: 30px;
-
+  color: white;
   &:hover {
-    color: #0060ee;
+    color: white;
     .svg {
-      fill: #0060ee;
+      fill: white;
     }
     .arrow {
-      fill: #0060ee;
+      fill: white;
     }
   }
   .svg {
     width: 20px;
     height: 20px;
     margin-right: 8px;
+    fill: white;
   }
   .arrow {
     width: 8px;
     height: 8px;
+    fill: white;
     /* transform: rotate(90deg); */
     margin-left: 5px;
     margin-top: 3px;

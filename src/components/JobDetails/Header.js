@@ -199,46 +199,59 @@ const Header = ({
             <span>{companyName}</span>
           </Title>
         </TopWrapper>
-        <MoneyWrapper>
-          <SvgWrapper>
-            <Money className="money" />
-          </SvgWrapper>
-          <div>
-            <BigText>{earnings}</BigText>
-            <MoneyText>brutto / mies.</MoneyText>
-          </div>
-        </MoneyWrapper>
+          {!earnings ? null : (
+               <MoneyWrapper>
+               <SvgWrapper>
+                 <Money className="money" />
+               </SvgWrapper>
+               <div>
+                   <BigText>{earnings}</BigText>
+                   <MoneyText>brutto / mies.</MoneyText>
+                 </div>
+             </MoneyWrapper>
+  
+          )}
       </GridWrapper>
-      <InfoWrapper>
-        <SvgWrapper>
-          <Marker className="svg" />
-        </SvgWrapper>
-        <Text>{location}</Text>
-      </InfoWrapper>
-      <InfoWrapper>
-        <SvgWrapper>
-          <Talk className="svg" />
-        </SvgWrapper>
-        <Text>{interview}</Text>
-      </InfoWrapper>
-      <InfoWrapper>
-        <SvgWrapper>
-          <JobType className="svg" />
-        </SvgWrapper>
-        <Text>{contract}</Text>
-      </InfoWrapper>
-      <InfoWrapper>
-        <SvgWrapper>
-          <JobTime className="svg" />
-        </SvgWrapper>
-        <Text>{timelapse}</Text>
-      </InfoWrapper>
-      <InfoWrapper>
-        <SvgWrapper>
-          <JobLevel className="svg" />
-        </SvgWrapper>
-        <Text>{employmentType}</Text>
-      </InfoWrapper>
+      {!location ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <Marker className="svg" />
+          </SvgWrapper>
+          <Text>{location}</Text>
+        </InfoWrapper>
+      )}
+      {!interview ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <Talk className="svg" />
+          </SvgWrapper>
+          <Text>{interview}</Text>
+        </InfoWrapper>
+      )}
+      {!contract ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <JobType className="svg" />
+          </SvgWrapper>
+          <Text>{contract}</Text>
+        </InfoWrapper>
+      )}
+      {!timelapse ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <JobTime className="svg" />
+          </SvgWrapper>
+          <Text>{timelapse}</Text>
+        </InfoWrapper>
+      )}
+      {!employmentType ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <JobLevel className="svg" />
+          </SvgWrapper>
+          <Text>{employmentType}</Text>
+        </InfoWrapper>
+      )}
     </OfferHeader>
   );
 };

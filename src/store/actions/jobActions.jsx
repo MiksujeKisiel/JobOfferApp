@@ -26,6 +26,7 @@ export const addJob = (data) => async (
       responsibility: data.responsibility,
       requirement: data.requirement,
       offer: data.offer,
+      level: data.level,
       about: data.about,
       // date: data.date
     });
@@ -74,6 +75,7 @@ export const editJob = (id, data) => async (
       interview: data.interview,
       responsibility: data.responsibility,
       requirement: data.requirement,
+      level: data.level,
       offer: data.offer,
       about: data.about,
     });

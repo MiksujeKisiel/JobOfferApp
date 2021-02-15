@@ -13,7 +13,7 @@ const Wrapper = styled.div`
     position: relative;
     justify-content: center;
     width: calc(100% - 400px);
-    height: 100vh;
+    height: 100%;
     :after {
       content: "";
       position: absolute;

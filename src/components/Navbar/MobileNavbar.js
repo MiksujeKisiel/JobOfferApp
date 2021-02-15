@@ -12,8 +12,7 @@ const BigWrapper = styled.nav`
   position: fixed;
   bottom: 0;
   box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-
+  background: rgba(255,255,255, 0.95);
   .active {
     .svg {
       fill: blue;
@@ -24,6 +23,9 @@ const BigWrapper = styled.nav`
     .wrapper {
       border-top: 2px solid blue;
     }
+  }
+  @media (min-width: ${400}px) {
+    justify-content: center;
   }
   @media (min-width: ${768}px) {
     display: none;
@@ -37,7 +39,8 @@ const Wrapper = styled.div`
   align-items: center;
   width: 33vw;
   @media (min-width: ${400}px) {
-    width: 25vw;
+    width: 100px;
+    margin: 0 10px;
   }
   .svg {
     width: 20px;
@@ -61,7 +64,7 @@ const MobileNavbar = () => {
           <Text className="text">Str. główna</Text>
         </Wrapper>
       </NavLink>
-      <NavLink exact to="/" activeClassName="active">
+      <NavLink exact to="/user-profiles" activeClassName="active">
         <Wrapper className="wrapper">
           <Loupe className="svg" />
           <Text className="text">Szukaj ofert</Text>

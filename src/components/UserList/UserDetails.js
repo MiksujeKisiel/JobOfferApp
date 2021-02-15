@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { Data, Education, Experience, Languages, Skills } from "../UserDetails";
+import { Data, Experience, Languages, Skills } from "../UserDetails";
 
 
 
@@ -52,7 +52,7 @@ const UserDetails = ({ user }) => {
           />
           <Languages languages={user.languages} />
           <Skills skills={user.skills} />
-          <Education education={user.education} />
+     
           <Experience experience={user.experience} />
         </SmallWrapper>
       </Wrapper>

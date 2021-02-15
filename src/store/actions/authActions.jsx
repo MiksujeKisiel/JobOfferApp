@@ -154,7 +154,7 @@ export const editProfileTwo = (data) => async (
       experience: data.experience,
       profession: data.profession,
       // education: data.education,
-      // languages: data.languages,
+      language: data.language,
       // skills: data.skills,
       // certificates: data.certificates,
       // hobby: data.hobby,

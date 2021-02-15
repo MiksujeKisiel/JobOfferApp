@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -31,8 +32,6 @@ const SmallWrapper = styled.ul`
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-
- 
 `;
 
 

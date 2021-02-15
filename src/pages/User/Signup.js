@@ -1,13 +1,23 @@
 import React, { useEffect } from "react";
 import { Formik, Field } from "formik";
 import register from "../../assets/images/register.jpg";
-import { Message, Reference, Button, Input, BackgroundImage} from '../../components/Form';
+import {
+  Message,
+  Reference,
+  Button,
+  Input,
+  BackgroundImage,
+} from "../../components/Form";
 import * as Yup from "yup";
-import { Form, FormWrapper, Wrapper, Text } from "../../components/Form/FormStyles";
+import {
+  Form,
+  FormWrapper,
+  Wrapper,
+  Text,
+} from "../../components/Form/FormStyles";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 import Logo from "../../components/Navbar/Logo";
-
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -49,7 +59,18 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
         >
           {({ isSubmitting, isValid }) => (
             <Form>
-
+              <Field
+                word="Imię"
+                type="text"
+                name="firstName"
+                component={Input}
+              />
+                <Field
+                word="Nazwisko"
+                type="text"
+                name="lastName"
+                component={Input}
+              />
               <Field
                 word="Adres e-mail"
                 type="email"

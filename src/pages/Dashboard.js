@@ -5,48 +5,86 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import JobList from "../components/Jobs/JobList";
 import Loader from "../components/Loader/Loader";
-import main from "../assets/images/header.png";
+import main from "../assets/images/header.jpg";
 
 const Background = styled.div`
   width: 100%;
-  height: 160px;
+  height: 500px;
   display: flex;
   background-image: url(${({ src }) => src});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-`;
-
-
-
-const Wrapper = styled.div`
-  flex-direction: row;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-bottom: 100px;
-  @media (min-width: ${1440}px) {
-    padding-right: 200px;
+  position: relative;
+  ::after {
+    background: linear-gradient(180deg, #0f0b2e, rgba(34, 26, 90, 0) 80%);
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+  }
+  ::before{
+    background: linear-gradient(360deg, #0f0b2e, rgba(34, 26, 90, 0) 80%);
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+  }
+  @media (min-width: ${1280}px) {
+    height: 650px;
   }
 `;
 
+const Wrapper = styled.div`
+  background: #f5f5f5;
+  height: 100%;
+`;
+
 const BigText = styled.p`
-  font-size: 22px;
-  font-weight: 400;
-  font-family: "Open sans", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  position: absolute;
+  top: 200px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 0 10px;
+  z-index: 2;
+  @media (min-width: ${768}px) {
+    font-size: 40px;
+  }
+  @media (min-width: ${1280}px) {
+    font-size: 50px;
+  }
 `;
+
 const SmallWrapper = styled.div`
-  display: flex;
+  display: grid;
+  width: 100%;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-`;
-const TextWrapper = styled.div`
-  text-align: left;
-  margin-bottom: 15px;
-  width: 90%;
+  justify-items: center;
+  position: absolute;
+  margin-top: -100px;
+  padding-bottom: 100px;
+
+  @media (min-width: ${768}px) {
+    grid-template-columns: 43% 43%;
+    grid-gap: 10px 10px;
+    padding: none;
+  }
   @media (min-width: ${1024}px) {
-    width: 100%;
+    grid-template-columns: 32% 32% 32%;
+    margin-top: -100px;
+  }
+  @media (min-width: ${1280}px) {
+    grid-template-columns: 400px 400px 400px;
+    grid-gap: 10px 20px;
+  }
+  @media (min-width: ${1440}px) {
+    grid-template-columns: 450px 450px 450px;
+    grid-gap: 30px 30px;
   }
 `;
 
@@ -73,16 +111,12 @@ const Dashboard = ({ jobs }) => {
 
   return (
     <>
-      <Background src={main} />
+      <Background src={main}>
+      <BigText>Znajdź wymarzoną pracę</BigText>
+      </Background>
       <Wrapper>
-    
-        <SmallWrapper>
-          <TextWrapper>
-            <BigText>Oferty pracy (4212)</BigText>
-          </TextWrapper>
-          {content}
-        </SmallWrapper>
-      </Wrapper>
+        <SmallWrapper>{content}</SmallWrapper>
+       </Wrapper>
     </>
   );
 };

@@ -34,10 +34,9 @@ const Text = styled.p`
   font-weight: 400;
   font-size: 15px;
   line-height: 175%;
-  span{
+  span {
     font-weight: 500;
   }
-
 `;
 
 const Name = styled.p`
@@ -65,26 +64,29 @@ export const Data = ({
     <Wrapper>
       <Background src={UserBackground} />
       <SmallWrapper>
-        <Name>
-          {firstName} {lastName}
-        </Name>
+        <Name>{firstName} {lastName}</Name>
       </SmallWrapper>
       <SmallWrapper>-</SmallWrapper>
       <SmallWrapper>
-
-        <Text>Profesja: <span>{profession}</span></Text>
+        <Text>
+          Profesja: <span>{!profession ? "Brak informacji" : profession}</span>
+        </Text>
       </SmallWrapper>
       <SmallWrapper>
- 
-        <Text>Miejsce zamieszkania: <span>{location}</span></Text>
+        <Text>
+          Miejsce zamieszkania:{" "}
+          <span>{!location ? "Brak informacji" : location}</span>
+        </Text>
       </SmallWrapper>
       <SmallWrapper>
-
-        <Text>Numer telefonu: <span>{phone}</span></Text>
+        <Text>
+          Numer telefonu: <span>{!phone ? "Brak informacji" : phone}</span>
+        </Text>
       </SmallWrapper>
       <SmallWrapper>
-     
-        <Text>E-mail: <span>{email}</span></Text>
+        <Text>
+          E-mail: <span>{!email ? "Brak informacji" : email}</span>
+        </Text>
       </SmallWrapper>
     </Wrapper>
   );
