@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import UserImage from "../../assets/images/user.png";
-import UserRouter from "../Navbar/UserRouter";
+import UserRouter from "../Navbar/User/UserRouter";
 const Wrapper = styled.div`
   display: none;
   @media (min-width: ${768}px) {

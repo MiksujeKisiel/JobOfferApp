@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Account } from "../../assets/svg/account.svg";
+import { ReactComponent as Account } from "../../../assets/svg/account.svg";
 
 const Wrapper = styled.div`
   display: flex;

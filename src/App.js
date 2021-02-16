@@ -58,6 +58,7 @@ const App = ({ loggedIn, emailVerified }) => {
           <Route exact path="/profile" component={Profile} />
           <Redirect to="/" />
         </Layout>
+        
       </Switch>
     );
   } else {
@@ -66,9 +67,8 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/recover-password" component={RecoverPassword} />
-        
         <Layout>
-        <Route exact path="/user-profiles" component={UserProfiles} />
+          <Route exact path="/user-profiles" component={UserProfiles} />
           <Route
             exact
             path="/user-profile-details/:id"

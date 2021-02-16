@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import AccountMenu from "./AccountMenu";
+import AccountMenu from "./User/AccountMenu";
 import { ReactComponent as User } from "../../assets/svg/newuser.svg";
 import { ReactComponent as Arrow } from "../../assets/svg/next.svg";
 import { connect } from "react-redux";
-import UserRouter from "./UserRouter";
+import UserRouter from "./User/UserRouter";
 
 const Nav = styled.div`
   z-index: 200;
