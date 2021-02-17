@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import JobList from "../components/Jobs/JobList";
-import Loader from "../components/Loader/Loader";
-import main from "../assets/images/header.jpg";
+import JobList from "../../components/Jobs/JobList";
+import Loader from "../../components/Loader/Loader";
+import main from "../../assets/images/header.jpg";
 
 const Background = styled.div`
   width: 100%;
@@ -115,11 +115,13 @@ const Dashboard = ({ jobs }) => {
       <BigText>Znajdź wymarzoną pracę</BigText>
       </Background>
       <Wrapper>
-        <SmallWrapper>{content}</SmallWrapper>
-       </Wrapper>
+      <SmallWrapper>{content}</SmallWrapper>
+      </Wrapper>
     </>
   );
 };
+
+
 const mapStateToProps = ({ firestore }) => {
   return {
     jobs: firestore.ordered.jobs,

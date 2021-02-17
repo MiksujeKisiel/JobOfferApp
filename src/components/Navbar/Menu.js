@@ -5,6 +5,8 @@ import { NavLink as Link } from "react-router-dom";
 import Logo from "./Logo";
 import DropDownMenu from "./DropDownMenu";
 import { useTranslation } from "react-i18next";
+import { connect } from 'react-redux'
+
 const NavLinks = styled.div`
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
   display: ${({ open }) => (open ? "block" : "none")};
@@ -12,7 +14,9 @@ const NavLinks = styled.div`
   transition: .3s ease-in;
   height: 100vh;
   position: fixed;
-  background-color: rgba(130,111,182, 0.80);
+  background-color: rgba(76,76,255, 0.99);
+  padding: 40px 0;
+  
   @media (min-width: ${768}px) {
     background: none;
     height: auto;
@@ -29,12 +33,21 @@ const NavLinks = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  font-family: "Open sans", sans-serif;
+ font-family: "Open sans", sans-serif;
+  padding: 5px;
+  font-size: 20px;
+  color: ${(props) => (props.profileuser) ? 'black' : 'white' };
+  margin: 10px auto;
+  
+  &::first{
+    margin-top: 25px;
+  }
+  @media (min-width: ${768}px) {
+    font-family: "Open sans", sans-serif;
   margin-left: 50px;
   font-size: 14px;
   color: white;
   margin: 10px auto;
-  @media (min-width: ${768}px) {
     margin-left: 50px;
   }
 
@@ -45,10 +58,9 @@ const Wrapper = styled.ul`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
   @media (min-width: ${768}px) {
-      background: none;
-      flex-direction: row;
+    background: none;
+    flex-direction: row;
     position: sticky;
     display: flex;
     align-items: center;
@@ -56,12 +68,29 @@ const Wrapper = styled.ul`
   }
 `;
 
+const AccountWrapper = styled.div`
+display: flex;
+flex-direction: column;
+   @media (min-width: ${768}px) {
+display: none;
+width: 100%;
+margin-top: 20px;
+   }
+`
+
 const SmallWrapper = styled.div`
-  height: 100%;
-  background-color: #1825aa;
+
 `;
 
-const Menu = ({ loggedIn, open }) => {
+const Text = styled.p`
+font-size: 25px;
+margin: 30px 0 10px;
+text-align: center;
+color: black;
+font-weight: 600;
+
+`
+const Menu = ({ loggedIn, open}) => {
   const { t } = useTranslation();
 
   let links;
@@ -82,6 +111,13 @@ const Menu = ({ loggedIn, open }) => {
             <NavLink offer text={t("NavLinks.add")} to="/addjob" />
           </SmallWrapper>
         </Wrapper>
+        <AccountWrapper>
+      <Text> User settings</Text>
+        <StyledLink profileuser to="/profile-jobs">Moje oferty pracy</StyledLink>
+        <StyledLink profileuser to="/profile-settings">Ustawienia konta</StyledLink>
+        <StyledLink profileuser to="/profile">Ustawienia profilu</StyledLink>
+
+        </AccountWrapper>
       </NavLinks>
     );
   } else {
@@ -108,4 +144,9 @@ const Menu = ({ loggedIn, open }) => {
   return <>{links}</>;
 };
 
-export default Menu;
+const mapStateToProps = ({firebase}) => ({
+  loggedIn: firebase.auth.uid
+})
+
+
+export default connect(mapStateToProps)(Menu);

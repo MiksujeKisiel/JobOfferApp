@@ -1,11 +1,10 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Navbar';
 import GlobalStyle from '../assets/style/GlobalStyle';
-import { connect } from 'react-redux'
 // import Footer from '../components/Items/Footer/Footer';
 
 
-const Layout = ({children, loggedIn}) =>{
+const Layout = ({children, loggedIn, user}) =>{
     return(
         <>
        <Navbar loggedIn={loggedIn}/>
@@ -16,12 +15,9 @@ const Layout = ({children, loggedIn}) =>{
     )
 }
 
-const mapStateToProps = ({firebase}) => ({
-    loggedIn: firebase.auth.uid
-})
 
 
 
 
-export default connect(mapStateToProps)(Layout)
+export default Layout
 

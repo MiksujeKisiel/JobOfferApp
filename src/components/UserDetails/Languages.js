@@ -17,15 +17,15 @@ const Wrapper = styled.div`
 `;
 
 
-const Text = styled.li`
-  font-weight: 400;
-  margin-right: 25px;
-  font-size: 14px;
-  margin: 5px 25px 5px 0;
-  @media (min-width: ${768}px) {
-    font-size: 15px;
-  }
-`;
+// const Text = styled.li`
+//   font-weight: 400;
+//   margin-right: 25px;
+//   font-size: 14px;
+//   margin: 5px 25px 5px 0;
+//   @media (min-width: ${768}px) {
+//     font-size: 15px;
+//   }
+// `;
 const SmallWrapper = styled.ul`
   margin-top: 10px;
   display: flex;
@@ -37,14 +37,12 @@ const SmallWrapper = styled.ul`
 
 
 export const Languages = ({languages}) => {
-    const listItems = languages.slice(0).map((text) => (
-        <Text>{text} B2</Text>
-       ));
+ 
     return (
         <Wrapper>
             Języki
             <SmallWrapper>
-            {listItems}
+         
             </SmallWrapper>
         </Wrapper>
     )

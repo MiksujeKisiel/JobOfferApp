@@ -16,10 +16,12 @@ const Wrapper = styled.div`
   }
 `;
 const BigWrapper = styled.div`
+min-height: 100vh;
+
   @media (min-width: ${768}px) {
     display: flex;
     background: #f1f1f1;
-    min-height: calc(100vh - 80px);
+    
   }
 `;
 
@@ -38,6 +40,7 @@ const Text = styled.p`
   margin-top: 20px;
   color: white;
 `;
+
 const Image = styled.img`
   width: 120px;
   height: 120px;

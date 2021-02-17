@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import Logo from "../../components/Navbar/Logo";
 import { Form, FormWrapper, Wrapper, Text } from "../../components/Form/FormStyles";
 import { Message, Reference, Button, Input, BackgroundImage} from '../../components/Form';
-
 import loginimage from "../../assets/images/loginimage.jpg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
@@ -101,4 +100,5 @@ const StyledLink = styled(Link)`
 
   margin: 20px 0 0 50px;
 `;
+
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

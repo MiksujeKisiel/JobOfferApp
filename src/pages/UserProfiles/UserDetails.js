@@ -3,9 +3,12 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { Data, Experience, Languages, Skills } from "../UserDetails";
-
-
+import {
+  Data,
+  Experience,
+  Languages,
+  Skills,
+} from "../../components/UserDetails";
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 90px);
@@ -32,31 +35,31 @@ const SmallWrapper = styled.div`
   }
 `;
 
-const UserDetails = ({ user }) => {
-  console.log(user);
-  if (!user) {
-    return null;
-  } else {
+const UserDetails = ({users, id} ) => {
+  console.log(id)
+  console.log(users)
+  if (users) {
     return (
       <Wrapper>
         <SmallWrapper>
           <Data
-            age={user.age}
-            location={user.location}
-            payment={user.payment}
-            phone={user.phone}
-            email={user.email}
-            firstName={user.firstName}
-            lastName={user.lastName}
-            profession={user.profession}
+            age={users.age}
+            location={users.location}
+            payment={users.payment}
+            phone={users.phone}
+            email={users.email}
+            firstName={users.firstName}
+            lastName={users.lastName}
+            profession={users.profession}
           />
-          <Languages languages={user.languages} />
-          <Skills skills={user.skills} />
-     
-          <Experience experience={user.experience} />
+          <Languages language={users.language} />
+          <Skills skills={users.skills} />
+          <Experience experience={users.experience} />
         </SmallWrapper>
       </Wrapper>
     );
+  } else if (!users) {
+    return <p>nie ma</p>;
   }
 };
 
@@ -64,15 +67,13 @@ const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const user = state.firestore.data.users;
   const userdetails = user ? user[id] : null;
-
   return {
-    user: userdetails,
+    users: userdetails,
+    userid: id
   };
 };
 
-const mapDispatchToProps = {};
-
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{ collection: "jobs" }])
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "users" }])
 )(UserDetails);

@@ -54,8 +54,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   }, [cleanUp]);
 
   if (!firebase.profile.isLoaded) return null;
-  console.log(firebase.profile.experience);
-  console.log(firebase.profile.language)
+
   return (
     <Router>
       <Wrapper>

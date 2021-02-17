@@ -1,8 +1,40 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Menu from './Menu';
 
+const StyledBurger = styled.div`
+  width: 2rem;
+  height: 2rem;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 20;
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+  }
+  div {
+    width: 2rem;
+    height: 0.25rem;
+    background-color: ${({ open }) => open ? '#ccc' : 'white'};
+    border-radius: 10px;
+    transform-origin: 1px;
+    transition: all 0.3s linear;
+    &:nth-child(1) {
+      transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
+    }
+    &:nth-child(2) {
+      transform: ${({ open }) => open ? 'translateX(100%)' : 'translateX(0)'};
+      opacity: ${({ open }) => open ? 0 : 1};
+    }
+    &:nth-child(3) {
+      transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+    }
+  }
+`;
 
-import Burger from "./Burger";
 const Nav = styled.nav`
   position: absolute;
   z-index: 10;
@@ -13,12 +45,23 @@ const Nav = styled.nav`
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
 `;
 
+
 const Navbar = ({loggedIn}) => {
+  const [open, setOpen] = useState(false)
+  
   return (
     <Nav>
-      <Burger loggedIn={loggedIn} />
+      <StyledBurger open={open} onClick={() => setOpen(!open)}>
+        <div />
+        <div />
+        <div />
+      </StyledBurger>
+      <Menu loggedIn={loggedIn} open={open}/>
     </Nav>
-  );
-};
+  )
 
-export default Navbar;
+}
+
+
+
+export default Navbar

@@ -9,22 +9,29 @@ import {
 import { createBrowserHistory } from "history";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import GlobalStyle from "./assets/style/GlobalStyle";
-import Login from "./pages/User/Login";
-import Signup from "./pages/User/Signup";
 import Layout from "./layout/Layout";
-import Logout from "./pages/User/Logout";
-import VerifyEmail from "./pages/User/VerifyEmail";
-import RecoverPassword from "./pages/User/RecoverPassword";
-import Settings from "./pages/User/Settings";
-import AddJob from "./pages/JobActions/AddJob";
-import Dashboard from "./pages/Dashboard";
-import UserDashboard from "./pages/UserDashboard";
-import JobDetails from "./pages/JobDetails";
+import GlobalStyle from "./assets/style/GlobalStyle";
+//login
+import Login from "./pages/UserActions/Login";
+import Signup from "./pages/UserActions/Signup";
+import Logout from "./pages/UserActions/Logout";
+import VerifyEmail from "./pages/UserActions/VerifyEmail";
+import RecoverPassword from "./pages/UserActions/RecoverPassword";
+//user settings
+import Settings from "./pages/UserPages/Settings";
+import Profile from "./pages/UserPages/Profile";
+import UserDashboard from "./pages/UserPages/UserJobs";
+//main site
+import Dashboard from "./pages/Jobs/Jobs";
+import JobDetails from "./pages/Jobs/JobDetails";
+//user profiles
+import UserProfiles from "./pages/UserProfiles/UserProfiles";
+import UserDetails from "./pages/UserProfiles/UserDetails";
+//job actions
 import JobEditor from "./components/Jobs/JobEditor";
-import Profile from "./pages/User/Profile";
-import UserProfiles from "./pages/UserProfiles";
-import UserDetails from "./components/UserList/UserDetails";
+import AddJob from "./pages/JobActions/AddJob";
+
+
 const App = ({ loggedIn, emailVerified }) => {
   let routes;
 
@@ -56,10 +63,14 @@ const App = ({ loggedIn, emailVerified }) => {
           <Route exact path="/profile-jobs" component={UserDashboard} />
           <Route exact path="/profile-settings" component={Settings} />
           <Route exact path="/profile" component={Profile} />
-          <Redirect to="/" />
+        </Layout>   
+        <Layout> 
+        <Route exact path="/profile-jobs" component={UserDashboard} />
+        <Route exact path="/profile-settings" component={Settings} />
+        <Route exact path="/profile" component={Profile} />
         </Layout>
-        
-      </Switch>
+        <Redirect to="/" />
+          </Switch>
     );
   } else {
     routes = (

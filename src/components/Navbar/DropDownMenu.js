@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import UserRouter from "./User/UserRouter";
 
 const Nav = styled.div`
+ 
   z-index: 200;
   display: ${({ showNav }) =>
     showNav ? "flex" : "none"};
@@ -20,10 +21,17 @@ const Nav = styled.div`
   max-height: 600px;
 `
 
+const Wrapper = styled.div`
+display: none;
+@media (min-width: ${768}px) {
+display: block;
+}
+`
+
 const DropDownMenu = ({ firebase }) => {
   const [menu, showMenu] = useState(false);
   return (
-    <>
+    <Wrapper>
       <Nav showNav={menu}>
         <AccountMenu
           firstName={firebase.profile.firstName}
@@ -41,7 +49,7 @@ const DropDownMenu = ({ firebase }) => {
         {firebase.profile.firstName}
         <Arrow showNav={menu} className="arrow" />
       </StyledBurger>
-    </>
+    </Wrapper>
   );
 };
 const mapStateToProps = ({ firebase, auth }) => ({

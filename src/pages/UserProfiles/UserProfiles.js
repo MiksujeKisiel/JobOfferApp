@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import Loader from "../components/Loader/Loader";
-import UserList from "../components/UserList/UserList";
-import main from "../assets/images/users.jpg";
+import Loader from "../../components/Loader/Loader";
+import UserList from "../../components/UserList/UserList";
+import main from "../../assets/images/users.jpg";
+
+
 const Wrapper = styled.div`
   margin-top: -150px;
    display: grid;
@@ -86,21 +88,36 @@ const Background = styled.div`
 `;
 
 const UserProfiles = ({ users }) => {
+  let content;
+  
   if (!users) {
-    return <Loader />;
+    content = <Loader />;
+  } else if (users.length === 0) {
+    content = (
+      <div>
+        <p>Nie ma użytkowników</p>
+      </div>
+    );
   } else {
-    return (
+    content = (
       <>
-      <Background src={main}>
-      <BigText>Znajdź wymarzoną pracę</BigText>
-      </Background>
-      <Wrapper>
-        {users && users.map((users) => <UserList users={users} userid={users.id} />)}
-      </Wrapper>
+           {users && users.map((users) => <UserList users={users} userid={users.id} />)}
+      
       </>
     );
   }
-};
+  return (
+    <>
+       <Background src={main}>
+       <BigText>Znajdź wymarzoną pracę</BigText>
+       </Background>
+      <Wrapper>
+     {content}
+    </Wrapper>
+    </>
+  );
+}
+
 
 const mapStateToProps = ({ firestore }) => {
   return {
