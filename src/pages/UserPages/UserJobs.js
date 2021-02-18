@@ -7,15 +7,15 @@ import UserJobList from "../../components/UserJob/UserJobList";
 import Loader from "../../components/Loader/Loader";
 import Router from "../../components/UserSettings/Router";
 import TopText from "../../components/UserSettings/Text";
+
 const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  max-width: 1100px;
+  padding-bottom: 40px;
   @media (min-width: ${768}px) {
-    margin-left: 50px;
+    margin-left: 20px;
   }
   @media (min-width: ${1440}px) {
-    margin-left: 150px;
+    margin-left: 100px;
   }
 `;
 
@@ -57,8 +57,8 @@ const mapStateToProps = ({ firestore }) => {
   };
 };
 
-const mapDispatchToProps = {};
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "jobs" }])
 )(Dashboard);

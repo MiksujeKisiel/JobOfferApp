@@ -10,10 +10,10 @@ import About from "../../components/JobDetails/About";
 import Requirements from "../../components/JobDetails/Requirements";
 import UserJob from "../../components/JobDetails/UserJob";
 import details from '../../assets/images/details.jpg'
-
 const Background = styled.div`
   width: 100%;
   height: 300px;
+  display: flex;
   background-image: url(${({ src }) => src});
   background-repeat: no-repeat;
   background-position: center;
@@ -34,9 +34,9 @@ const Background = styled.div`
     position: absolute;
   }
   @media (min-width: ${1280}px) {
-    height: 450px;
+    height: 500px;
   }
-`
+`;
 
 const JobDetails = (props) => {
   const { job } = props;

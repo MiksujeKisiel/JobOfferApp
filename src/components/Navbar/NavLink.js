@@ -5,7 +5,7 @@ import { NavLink as Link } from "react-router-dom";
 const StyledLink = styled(Link)`
   color: yellow;
   font-size: 20px;
-  margin: ${(props) => (props.offer ? "15px 25px" : "20px 25px")};
+  margin: ${(props) => (props.offer ? "10px 25px" : "20px 25px")};
   font-weight: 600;
   border: ${(props) => (props.signup ? "2px solid #C2C2C2" : "")};
   padding: ${(props) => (props.signup ? "10px 26px" : "")};

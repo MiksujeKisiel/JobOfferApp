@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
 import { connect } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import UserList from "../../components/UserList/UserList";
 import main from "../../assets/images/users.jpg";
+import { useFirestoreConnect } from 'react-redux-firebase'
 
 
 const Wrapper = styled.div`
@@ -88,6 +87,12 @@ const Background = styled.div`
 `;
 
 const UserProfiles = ({ users }) => {
+  
+  useFirestoreConnect([
+    { collection: 'users' }
+  ])
+
+
   let content;
   
   if (!users) {
@@ -101,8 +106,7 @@ const UserProfiles = ({ users }) => {
   } else {
     content = (
       <>
-           {users && users.map((users) => <UserList users={users} userid={users.id} />)}
-      
+           {users && users.map((users) => <UserList user={users} userid={users.id} />)}
       </>
     );
   }
@@ -127,7 +131,4 @@ const mapStateToProps = ({ firestore }) => {
 
 const mapDispatchToProps = {};
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{ collection: "users" }])
-)(UserProfiles);
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfiles);

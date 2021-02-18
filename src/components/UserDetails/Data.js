@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import UserBackground from "../../assets/images/userbackground.jpg";
+
 
 const Wrapper = styled.div`
   width: 100%;
@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   background: white;
-  padding: 0 0 30px;
+  padding: 30px;
   margin-bottom: 10px;
   @media (min-width: ${768}px) {
     border: 1px solid #deddda;
@@ -16,19 +16,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Background = styled.div`
-  width: 100%;
-  height: 130px;
-  display: flex;
-  background-image: url(${({ src }) => src});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  margin-bottom: 30px;
-  @media (min-width: ${768}px) {
-    height: 170px;
-  }
-`;
+
 
 const Text = styled.p`
   font-weight: 400;
@@ -62,7 +50,6 @@ export const Data = ({
 }) => {
   return (
     <Wrapper>
-      <Background src={UserBackground} />
       <SmallWrapper>
         <Name>{firstName} {lastName}</Name>
       </SmallWrapper>

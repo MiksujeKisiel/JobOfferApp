@@ -10,11 +10,12 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   max-width: 1100px;
+  padding-bottom: 40px;
   @media (min-width: ${768}px) {
-    margin-left: 50px;
+    margin-left: 20px;
   }
   @media (min-width: ${1440}px) {
-    margin-left: 150px;
+    margin-left: 100px;
   }
 `;
 
@@ -26,11 +27,12 @@ const FormWrapper = styled(Form)`
 
 const BigText = styled.p`
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 200;
   margin-bottom: 15px;
 `;
 const Text = styled.p`
   max-width: 1100px;
+  font-weight: 200;
   font-size: 15px;
   margin-bottom: 50px;
 `;

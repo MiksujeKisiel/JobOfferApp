@@ -16,7 +16,7 @@ const NavLinks = styled.div`
   position: fixed;
   background-color: rgba(76,76,255, 0.99);
   padding: 40px 0;
-  
+  font-family: "Poppins", sans-serif;
   @media (min-width: ${768}px) {
     background: none;
     height: auto;
@@ -33,17 +33,17 @@ const NavLinks = styled.div`
 `;
 
 const StyledLink = styled(Link)`
- font-family: "Open sans", sans-serif;
+ 
   padding: 5px;
-  font-size: 20px;
-  color: ${(props) => (props.profileuser) ? 'black' : 'white' };
+  font-size:  ${(props) => (props.profileuser) ? '16px' : '20px' };
+  color: ${(props) => (props.profileuser) ? 'white' : 'white' };
   margin: 10px auto;
   
   &::first{
     margin-top: 25px;
   }
   @media (min-width: ${768}px) {
-    font-family: "Open sans", sans-serif;
+  font-family: "Open sans", sans-serif;
   margin-left: 50px;
   font-size: 14px;
   color: white;
@@ -80,13 +80,19 @@ margin-top: 20px;
 
 const SmallWrapper = styled.div`
 
+
+   @media (min-width: ${768}px) {
+    background: #1D71B8;
+height: 100%;
+   }
+
 `;
 
 const Text = styled.p`
-font-size: 25px;
-margin: 30px 0 10px;
+font-size: 18px;
+margin: 70px 0 10px;
 text-align: center;
-color: black;
+color: burlywood;
 font-weight: 600;
 
 `
@@ -112,11 +118,10 @@ const Menu = ({ loggedIn, open}) => {
           </SmallWrapper>
         </Wrapper>
         <AccountWrapper>
-      <Text> User settings</Text>
+      <Text>Ustawienia użytkownika</Text>
         <StyledLink profileuser to="/profile-jobs">Moje oferty pracy</StyledLink>
         <StyledLink profileuser to="/profile-settings">Ustawienia konta</StyledLink>
         <StyledLink profileuser to="/profile">Ustawienia profilu</StyledLink>
-
         </AccountWrapper>
       </NavLinks>
     );

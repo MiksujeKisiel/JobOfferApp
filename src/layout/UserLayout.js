@@ -1,16 +1,17 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Navbar';
 import GlobalStyle from '../assets/style/GlobalStyle';
-// import Footer from '../components/Items/Footer/Footer';
 
 
-const Layout = ({children, loggedIn}) =>{
+
+const UserLayout = ({children, loggedIn, user}) =>{
     return(
         <>
-       <Navbar loggedIn={loggedIn}/>
+       <Navbar />
+       <p>xdcsadsafasfgsa</p>
        <GlobalStyle/>
-       {children}
-    
+  
+   
         </>
     )
 }
@@ -19,5 +20,4 @@ const Layout = ({children, loggedIn}) =>{
 
 
 
-export default Layout
-
+export default UserLayout

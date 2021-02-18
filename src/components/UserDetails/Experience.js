@@ -6,9 +6,20 @@ const Text = styled.p`
 `;
 
 export const Experience = ({ experience }) => {
-  const listItems = experience.slice(0).map((text) => <Text>{text.name} {text.type}</Text>);
+  // const listItems = experience.slice(0).map((text) => <Text>{text.name} {text.type}</Text>);
   console.log(experience)
-  return <div>
-  {listItems}
+
+
+
+return <div>
+  {/* {listItems} */}
+  {experience.map((item, i) => {
+      return (
+        <Text key={i} value={item}>
+          {item.name} {item.type}
+        </Text>
+      );
+    })}
+      
   </div>;
 };

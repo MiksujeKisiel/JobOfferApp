@@ -9,13 +9,44 @@ import {
   Languages,
   Skills,
 } from "../../components/UserDetails";
+import details from '../../assets/images/details.jpg'
+
+
+const Background = styled.div`
+  width: 100%;
+  height: 300px;
+  display: flex;
+  background-image: url(${({ src }) => src});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  ::after {
+    background: linear-gradient(180deg, #0f0b2e, rgba(34, 26, 90, 0) 80%);
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+  }
+  ::before{
+    background: linear-gradient(360deg, #0f0b2e, rgba(34, 26, 90, 0) 80%);
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+  }
+  @media (min-width: ${1280}px) {
+    height: 500px;
+  }
+`;
 
 const Wrapper = styled.div`
-  min-height: calc(100vh - 90px);
+  min-height: 100vh;
+  margin-top: -200px;
   align-items: center;
   flex-direction: column;
   display: flex;
-  background: #f3f2ef;
+  background: #F5F5F5;
   @media (min-width: ${768}px) {
     padding: 40px 0;
   }
@@ -40,6 +71,8 @@ const UserDetails = ({users, id} ) => {
   console.log(users)
   if (users) {
     return (
+      <>
+      <Background src={details}/>
       <Wrapper>
         <SmallWrapper>
           <Data
@@ -57,6 +90,8 @@ const UserDetails = ({users, id} ) => {
           <Experience experience={users.experience} />
         </SmallWrapper>
       </Wrapper>
+
+      </>
     );
   } else if (!users) {
     return <p>nie ma</p>;

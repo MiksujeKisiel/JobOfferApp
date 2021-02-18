@@ -16,14 +16,14 @@ const Wrapper = styled.div`
   }
 `;
 
-const Text = styled.li`
-   font-weight: 400;
-  margin-right: 25px;
-  font-size: 14px;
-  @media (min-width: ${768}px) {
-    font-size: 15px;
-  }
-`;
+// const Text = styled.li`
+//    font-weight: 400;
+//   margin-right: 25px;
+//   font-size: 14px;
+//   @media (min-width: ${768}px) {
+//     font-size: 15px;
+//   }
+// `;
 
 const SmallWrapper = styled.ul`
   margin-top: 10px;
@@ -31,11 +31,15 @@ const SmallWrapper = styled.ul`
 `;
 
 export const Skills = ({ skills }) => {
-  const listItems = skills.slice(0).map((text) => <Text>{text}</Text>);
+  // console.log(skills)
+  // const listItems = skills.slice(0).map((text) => <Text>{text}</Text>);
   return (
     <Wrapper>
       Umiejętności
-      <SmallWrapper>{listItems}</SmallWrapper>
+      <SmallWrapper>
+        {/* {listItems} */}
+ 
+      </SmallWrapper>
     </Wrapper>
   );
 };

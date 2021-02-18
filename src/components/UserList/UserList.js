@@ -4,6 +4,7 @@ import { ReactComponent as Suitcase } from "../../assets/svg/suitcase.svg";
 import { ReactComponent as Mail } from "../../assets/svg/mail.svg";
 import { Link } from "react-router-dom";
 
+
 const Wrapper = styled(Link)`
   background: white;
   display: flex;
@@ -51,9 +52,9 @@ const UserType = styled.p`
   font-weight: 500;
 `;
 
-const UserList = ({ users, userid }) => {
+const UserList = ({ user, userid }) => {
 
-  const { firstName, lastName, userType, profession, email, phone, show } = users
+  const { firstName, lastName, userType, profession, email, phone, show } = user
 
   if (show === false) {
     return null;

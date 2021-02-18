@@ -36,8 +36,11 @@ const Background = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background: #f5f5f5;
-  height: 100%;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  background: #F5F5F5;
 `;
 
 const BigText = styled.p`
@@ -62,6 +65,7 @@ const BigText = styled.p`
 const SmallWrapper = styled.div`
   display: grid;
   width: 100%;
+  
   justify-content: center;
   align-items: center;
   justify-items: center;

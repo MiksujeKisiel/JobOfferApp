@@ -10,6 +10,7 @@ import { createBrowserHistory } from "history";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import Layout from "./layout/Layout";
+// import UserLayout from './layout/UserLayout'
 import GlobalStyle from "./assets/style/GlobalStyle";
 //login
 import Login from "./pages/UserActions/Login";
@@ -60,15 +61,12 @@ const App = ({ loggedIn, emailVerified }) => {
             path="/user-profile-details/:id"
             component={UserDetails}
           />
-          <Route exact path="/profile-jobs" component={UserDashboard} />
-          <Route exact path="/profile-settings" component={Settings} />
-          <Route exact path="/profile" component={Profile} />
-        </Layout>   
-        <Layout> 
+          
         <Route exact path="/profile-jobs" component={UserDashboard} />
         <Route exact path="/profile-settings" component={Settings} />
         <Route exact path="/profile" component={Profile} />
-        </Layout>
+      </Layout>
+    
         <Redirect to="/" />
           </Switch>
     );

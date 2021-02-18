@@ -1,85 +1,57 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import UserImage from "../../assets/images/user.png";
+
 import UserRouter from "../Navbar/User/UserRouter";
-const Wrapper = styled.div`
-  display: none;
-  @media (min-width: ${768}px) {
-    display: block;
-    z-index: 5;
-    background: #1b75bc;
-    min-width: 250px;
+import AccountMenu from "../Navbar/User/AccountMenu";
 
-    @media (min-width: ${1024}px) {
-    }
-  }
-`;
 const BigWrapper = styled.div`
-min-height: 100vh;
-
+  min-height: 100vh;
+  background: #40b4e5;
+  padding-top: 80px;
+  position: relative;
+  overflow-y: hidden;
+  &::before{
+    
+    content: "";
+    width: 100%;
+    height: 80px;
+    top: 0;
+    position: absolute;
+  }
   @media (min-width: ${768}px) {
     display: flex;
-    background: #f1f1f1;
-    
   }
 `;
 
-const NameWrapper = styled.div`
-  padding: 50px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-height: 250px;
-  max-width: 250px;
-`;
 
-const Text = styled.p`
-  font-size: 16px;
-  margin-top: 20px;
-  color: white;
-`;
 
-const Image = styled.img`
-  width: 120px;
-  height: 120px;
+const SmallWrapper = styled.div`
+  display: none;
+
+  @media (min-width: ${768}px) {
+    min-width: 250px;
+    padding: 100px 0;
+    display: flex;
+    background: #1b75bc;
+    flex-direction: column;
+  }
 `;
 
 const Router = ({ children, firebase }) => {
   return (
     <BigWrapper>
-      <Wrapper>
-        <NameWrapper>
-          <Image src={UserImage} />
-          <Text>
-            {firebase.profile.firstName} {firebase.profile.lastName}
-          </Text>
-        </NameWrapper>
+      <SmallWrapper>
+        <AccountMenu left={true} />
         <UserRouter left={true} />
-      </Wrapper>
+      </SmallWrapper>
       <ChildrenWrapper>{children}</ChildrenWrapper>
     </BigWrapper>
   );
 };
 
 const ChildrenWrapper = styled.div`
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
-  width: 100%;
-  @media (min-width: ${1024}px) {
-    width: calc(100% - 250px);
-  }
-  :before {
-    content: "";
-    width: 100%;
-    height: 250px;
-    background-color: #40b4e5;
-    position: absolute;
-    top: 0;
-    z-index: -1;
-  }
+font-family: "Poppins", sans-serif;
 `;
 
 const mapStateToProps = ({ firebase, auth }) => ({

@@ -36,13 +36,19 @@ const SmallWrapper = styled.ul`
 
 
 
-export const Languages = ({languages}) => {
- 
+export const Languages = ({language}) => {
+ console.log(language)
     return (
         <Wrapper>
             Języki
             <SmallWrapper>
-         
+          {language ? <>{language.map((item, i) => {
+      return (
+        <option key={i} value={item}>
+          {item.name} {item.type}
+        </option>
+      );
+    })}</> : "nie ma"}  
             </SmallWrapper>
         </Wrapper>
     )

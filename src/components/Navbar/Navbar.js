@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Menu from './Menu';
 
 const StyledBurger = styled.div`
-  width: 2rem;
+  width: 3rem;
   height: 2rem;
   position: fixed;
   top: 15px;
@@ -18,7 +18,7 @@ const StyledBurger = styled.div`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => open ? '#ccc' : 'white'};
+    background-color: ${({ open }) => open ? '#ccc' : '#ccc'};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
@@ -37,7 +37,7 @@ const StyledBurger = styled.div`
 
 const Nav = styled.nav`
   position: absolute;
-  z-index: 10;
+  z-index: 200;
   width: 100%;
   padding: 0;
   display: flex;

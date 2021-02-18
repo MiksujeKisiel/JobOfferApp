@@ -167,3 +167,38 @@ export const editProfileTwo = (data) => async (
     dispatch({ type: actions.PROFILE_EDIT_FAIL, payload: err.message });
   }
 };
+
+// export const editProfileTwo = (data) => async (
+//   dispatch,
+//   getState,
+//   { getFirebase, getFirestore }
+// ) => {
+//   const firestore = getFirestore();
+
+//   // const { uid: userId } = getState().firebase.auth;
+//   dispatch({ type: actions.PROFILE_EDIT_START });
+//   try {
+//     await firestore.collection("users").add({
+//       firstName: data.firstName,
+//       lastName: data.lastName,
+//       location: data.location,
+//       age: data.age,
+//       email: data.email,
+//       phone: data.phone,
+//       payment: data.payment,
+//       experience: data.experience,
+//       profession: data.profession,
+//       // education: data.education,
+//       language: data.language,
+//       // skills: data.skills,
+//       // certificates: data.certificates,
+//       // hobby: data.hobby,
+//       // links: data.links,
+//       userType: data.userType,
+//       // show: boolean,
+//     });
+//     dispatch({ type: actions.PROFILE_EDIT_SUCCESS });
+//   } catch (err) {
+//     dispatch({ type: actions.PROFILE_EDIT_FAIL, payload: err.message });
+//   }
+// };

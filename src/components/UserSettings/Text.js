@@ -15,8 +15,12 @@ const BigText = styled.p`
 `;
 
 const TextWrapper = styled.div`
-  margin-bottom: 100px;
+  padding: 40px 30px 30px;
   z-index: 10;
+
+  @media (min-width: ${768}px) {
+    padding: 00px 0 30px;
+  }
 `;
 
 const TopText = ({ bigText, smallText }) => {
