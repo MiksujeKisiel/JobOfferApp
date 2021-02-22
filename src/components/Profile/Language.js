@@ -14,9 +14,7 @@ import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 
 const Wrapper = styled.div`
-  max-width: 1100px;
-  padding-bottom: 40px;
-  
+  width: 90%;
 `;
 
 const FormWrapper = styled(Form)`

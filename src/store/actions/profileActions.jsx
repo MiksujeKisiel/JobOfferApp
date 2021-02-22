@@ -63,3 +63,22 @@ export const editData = (data) => async (
     dispatch({ type: actions.PROFILE_EDIT_FAIL, payload: err.message });
   }
 };
+
+export const showProfile= (data) => async (
+  dispatch,
+  getState,
+  { getFirebase, getFirestore }
+) => {
+  const firestore = getFirestore();
+
+  const { uid: userId } = getState().firebase.auth;
+  dispatch({ type: actions.PROFILE_EDIT_START });
+  try {
+    await firestore.collection("users").doc(userId).update({
+      show: data.show,
+    });
+    dispatch({ type: actions.PROFILE_EDIT_SUCCESS });
+  } catch (err) {
+    dispatch({ type: actions.PROFILE_EDIT_FAIL, payload: err.message });
+  }
+};

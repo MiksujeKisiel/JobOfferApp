@@ -19,8 +19,7 @@ import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 
 const Wrapper = styled.div`
-  max-width: 1100px;
-  padding-bottom: 40px;
+  width: 90%;
   @media (min-width: ${768}px) {
   }
   @media (min-width: ${1440}px) {
