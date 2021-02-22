@@ -70,7 +70,14 @@ const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
       <Wrapper>
         <Formik
           initialValues={{
-            experience: firebase.profile.experience
+            firstName: firebase.profile.firstName,
+            lastName: firebase.profile.lastName,
+            location: firebase.profile.location,
+            age: firebase.profile.age,
+            email: firebase.profile.email,
+            phone: firebase.profile.phone,
+            payment: firebase.profile.payment,
+            profession: firebase.profile.profession,
           }}
           validationSchema={ProfileSchema}
           onSubmit={async (values, { setSubmitting }) => {
