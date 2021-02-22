@@ -160,7 +160,7 @@ export const editProfileTwo = (data) => async (
       // hobby: data.hobby,
       // links: data.links,
       userType: data.userType,
-      // show: boolean,
+      show: data.toggle
     });
     dispatch({ type: actions.PROFILE_EDIT_SUCCESS });
   } catch (err) {

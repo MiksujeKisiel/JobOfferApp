@@ -15,6 +15,18 @@ const initialState = {
     error: null,
     loading: false,
   },
+  // profileEditExperience: {
+  //   error: null,
+  //   loading: false,
+  // }
+  // profileEditLanguage: {
+  //   error: null,
+  //   loading: false,
+  // }
+  // profileEdit: {
+  //   error: null,
+  //   loading: false,
+  // }
 };
 // eslint-disable-next-line
 export default (state = initialState, { type, payload }) => {
@@ -121,3 +133,81 @@ export default (state = initialState, { type, payload }) => {
       return state;
   }
 };
+
+// case actions.PROFILE_EDIT_START:
+//   return { ...state, profileEdit: { ...state.profileEdit, loading: true } };
+
+// case actions.PROFILE_EDIT_SUCCESS:
+//   return {
+//     ...state,
+//     profileEdit: { ...state.profileEdit, loading: false, error: false },
+//   };
+
+// case actions.PROFILE_EDIT_FAIL:
+//   return {
+//     ...state,
+//     profileEdit: { ...state.profileEdit, loading: false, error: payload },
+//   };
+// default:
+//   return state;
+// }
+// };
+
+
+// case actions.PROFILE_EDIT_START:
+//   return { ...state, profileEdit: { ...state.profileEdit, loading: true } };
+
+// case actions.PROFILE_EDIT_SUCCESS:
+//   return {
+//     ...state,
+//     profileEdit: { ...state.profileEdit, loading: false, error: false },
+//   };
+
+// case actions.PROFILE_EDIT_FAIL:
+//   return {
+//     ...state,
+//     profileEdit: { ...state.profileEdit, loading: false, error: payload },
+//   };
+// default:
+//   return state;
+// }
+// };
+
+
+// case actions.PROFILE_EDIT_START:
+//   return { ...state, profileEdit: { ...state.profileEdit, loading: true } };
+
+// case actions.PROFILE_EDIT_SUCCESS:
+//   return {
+//     ...state,
+//     profileEdit: { ...state.profileEdit, loading: false, error: false },
+//   };
+
+// case actions.PROFILE_EDIT_FAIL:
+//   return {
+//     ...state,
+//     profileEdit: { ...state.profileEdit, loading: false, error: payload },
+//   };
+// default:
+//   return state;
+// }
+// };
+
+// case actions.PROFILE_EDIT_START:
+//   return { ...state, profileEdit: { ...state.profileEdit, loading: true } };
+
+// case actions.PROFILE_EDIT_SUCCESS:
+//   return {
+//     ...state,
+//     profileEdit: { ...state.profileEdit, loading: false, error: false },
+//   };
+
+// case actions.PROFILE_EDIT_FAIL:
+//   return {
+//     ...state,
+//     profileEdit: { ...state.profileEdit, loading: false, error: payload },
+//   };
+// default:
+//   return state;
+// }
+// };

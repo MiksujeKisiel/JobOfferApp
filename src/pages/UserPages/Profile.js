@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Formik, Field, Form, FieldArray } from "formik";
-import * as Yup from "yup";
-import { Message, Button, Input, Select } from "../../components/Form";
+// import { Formik, Field, Form, FieldArray, getIn } from "formik";
+// import * as Yup from "yup";
+import {
+  Message,
+
+} from "../../components/Form";
 import Router from "../../components/UserSettings/Router";
 import TopText from "../../components/UserSettings/Text";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
-
+import Experience from '../../components/Profile/Experience';
+import Language from '../../components/Profile/Language';
+import Data from '../../components/Profile/Data';
 const Wrapper = styled.div`
   max-width: 1100px;
   padding-bottom: 40px;
@@ -19,51 +24,70 @@ const Wrapper = styled.div`
   }
 `;
 
-const FormWrapper = styled(Form)`
-  background: white;
-  padding: 30px 40px;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-`;
+// const FormWrapper = styled(Form)`
+//   background: white;
+//   padding: 30px 40px;
+//   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+// `;
 
-const BigText = styled.p`
-  font-size: 24px;
-  font-weight: 200;
-  margin-bottom: 15px;
-`;
+// const BigText = styled.p`
+//   font-size: 24px;
+//   font-weight: 200;
+//   margin-bottom: 15px;
+// `;
 
 const TopWrapper = styled.div`
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
-  max-width: 900px;
+  max-width: 900px; */
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: blue;
+  z-index: 200;
 `;
 
-
-const Name = styled.p`
-font-size: 20px;
-margin: 50px 0 0;
-font-weight: 200;
-`
-const ProfileSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .required("Your first name is required.")
-    .min(3, "Too short.")
-    .max(25, "Too long."),
-  lastName: Yup.string()
-    .required("Your last name is required.")
-    .min(3, "Too short.")
-    .max(25, "Too long."),
-});
+// const Name = styled.p`
+//   font-size: 20px;
+//   margin: 50px 0 0;
+//   font-weight: 200;
+// `;
+// const ProfileSchema = Yup.object().shape({
+//   firstName: Yup.string()
+//     .required("Your first name is required.")
+//     .min(3, "Too short.")
+//     .max(25, "Too long."),
+//   lastName: Yup.string()
+//     .required("Your last name is required.")
+//     .min(3, "Too short.")
+//     .max(25, "Too long."),
+//   language: Yup.array().of(
+//     Yup.object().shape({
+//       name: Yup.string().min(4, "too short").required("Required"), // these constraints take precedence
+//       type: Yup.string().min(1, "cmon").required("Required"), // these constraints take precedence
+//     })
+//   ),
+// });
 const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
- 
- 
   useEffect(() => {
     return () => {
       cleanUp();
     };
   }, [cleanUp]);
-
   if (!firebase.profile.isLoaded) return null;
-
+  
+  // const ErrorMessage = ({ name }) => (
+  //   <Field
+  //     name={name}
+  //     render={({ form }) => {
+  //       const error = getIn(form.errors, name);
+  //       const touch = getIn(form.touched, name);
+  //       return touch && error ? error : null;
+  //     }}
+  //   />
+  // );
   return (
     <Router>
       <Wrapper>
@@ -71,7 +95,14 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
           bigText="Profil"
           smallText="Dzięki dodawaniu informacji na swój temat możesz łatwiej znaleźć pracę!"
         />
-        <Formik
+        <Data/>
+        <Experience/>
+        <Language/>
+        {loading ? <TopWrapper/> : ""}
+   
+      
+             
+        {/* <Formik
           initialValues={{
             firstName: firebase.profile.firstName,
             lastName: firebase.profile.lastName,
@@ -89,6 +120,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
             // links: firebase.profile.links, //array
             userType: firebase.profile.userType, //option
             // show: firebase.profile.show, //boolean
+            toggle: firebase.profile.show,
           }}
           validationSchema={ProfileSchema}
           onSubmit={async (values, { setSubmitting }) => {
@@ -99,6 +131,12 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
         >
           {({ isSubmitting, isValid, values }) => (
             <FormWrapper>
+              <label>
+                <Field type="checkbox" name="toggle" />
+                {`${values.toggle}` === "true"
+                  ? "Udostępniam profil"
+                  : "Nie udostępniam profilu"}
+              </label>
               <BigText>Edytuj swój profil, żeby łatwiej znaleźć pracę!</BigText>
               <TopWrapper>
                 <Field
@@ -115,6 +153,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                   name="lastName"
                   component={Input}
                 />
+
                 <Field
                   profile
                   word="Miejsce zamieszkania"
@@ -163,7 +202,6 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                   type="text"
                   name="userType"
                   component={Select}
-               
                 >
                   <option value="Pracodawca">Pracodawca</option>
                   <option value="Poszukiwacz pracy">Poszukiwacz pracy</option>
@@ -189,14 +227,10 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                             word="xdxd"
                             component={Input}
                           />
-                          <ButtonWrapper>
-                            <ActionButton
-                              type="button"
-                              onClick={() => arrayHelpers.remove(index)} // remove a friend from the list
-                            >
-                              -
-                            </ActionButton>
-                          </ButtonWrapper>
+
+                          <DeleteButton
+                            onClick={() => arrayHelpers.remove(index)}
+                          />
                         </FieldArrayWrapper>
                       ))
                     ) : (
@@ -212,7 +246,6 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                 )}
               />
 
-
               <FieldArray
                 name="language"
                 render={(arrayHelpers) => (
@@ -221,7 +254,6 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                       values.language.map((language, index) => (
                         <FieldArrayWrapper key={index}>
                           <Field
-                            long
                             name={`language.${index}.name`}
                             word="Języki"
                             component={Input}
@@ -231,7 +263,11 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                             type="text"
                             name={`language.${index}.type`}
                             component={Select}
+                            defaultValue="A1"
                           >
+                            <option value="" selected disabled hidden>
+                              Choose here
+                            </option>
                             <option value="A1">A1</option>
                             <option value="A2">A2</option>
                             <option value="B1">B1</option>
@@ -239,14 +275,10 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                             <option value="C1">C1</option>
                             <option value="C2">C2</option>
                           </Field>
-                          <ButtonWrapper>
-                            <ActionButton
-                              type="button"
-                              onClick={() => arrayHelpers.remove(index)} // remove a friend from the list
-                            >
-                              -
-                            </ActionButton>
-                          </ButtonWrapper>
+                          <ErrorMessage name={`language.${index}.type`} />
+                          <DeleteButton
+                            onClick={() => arrayHelpers.remove(index)}
+                          />
                         </FieldArrayWrapper>
                       ))
                     ) : (
@@ -270,7 +302,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
               </Button>
             </FormWrapper>
           )}
-        </Formik>
+        </Formik> */}
         <Message error show={error}>
           {error}
         </Message>
@@ -282,38 +314,31 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   );
 };
 
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-  @media (min-width: ${768}px) {
-    margin-left: 40px;
-  }
-`;
-const ActionButton = styled.button`
-  border: none;
-  background-color: #3c3c3c;
-  padding: 5px 10px;
-  margin: 5px 0;
-  color: white;
-  display: block;
-  outline: none;
-`;
+// const ActionButton = styled.button`
+//   border: none;
+//   background-color: #259dd2;
+//   padding: 15px 10px;
+//   margin: 5px 0 5px auto;
+//   color: white;
+//   display: block;
+//   outline: none;
+//   width: 200px;
+// `;
 
-const FieldArrayWrapper = styled.div`
-  display: flex;
-  margin: 10px 0;
-`;
+// const FieldArrayWrapper = styled.div`
+//   display: flex;
+//   margin: 10px 0;
+// `;
 
-const ArrayWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 20px 0;
-
-  @media (min-width: ${768}px) {
-    padding: 0;
-  }
-`;
+// const ArrayWrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   margin: 20px 0;
+//   max-width: 700px;
+//   @media (min-width: ${768}px) {
+//     padding: 0;
+//   }
+// `;
 
 const mapStateToProps = ({ firebase, auth }) => ({
   firebase,
@@ -532,7 +557,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(Profile);
 //                   </ArrayWrapper>
 //                 )}
 //               />
-
 
 //               <FieldArray
 //                 name="language"

@@ -5,5 +5,7 @@ export { Message } from './Message';
 export { Reference} from './Reference';
 export { Select } from './Select';
 export { TextArea } from './TextArea';
+export { DeleteButton } from './DeleteButton';
+
 
 

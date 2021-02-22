@@ -86,3 +86,29 @@ export const Label = styled.label`
   font-size: 14px;
   color: #7481a1;
 `;
+
+export const ActionButton = styled.button`
+  border: none;
+  background-color: #259dd2;
+  padding: 15px 10px;
+  margin: 5px 0 5px auto;
+  color: white;
+  display: block;
+  outline: none;
+  width: 200px;
+`;
+
+export const FieldArrayWrapper = styled.div`
+  display: flex;
+  margin: 10px 0;
+`;
+
+export const ArrayWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  max-width: 700px;
+  @media (min-width: ${768}px) {
+    padding: 0;
+  }
+`;

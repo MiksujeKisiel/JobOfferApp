@@ -6,7 +6,7 @@ const StyledSelect = styled.select`
   width: 100%;
   border: none;
   border-bottom: #d3d3d3 2px solid;
-  padding: 10px 0px;
+  padding: 9px 0px;
   &:focus {
     border-bottom: #1b75bc 2px solid;
     outline: none;

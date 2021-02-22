@@ -49,9 +49,7 @@ const UserJobList = ({ jobs, loggedIn }) => {
               <AttributeText>{employmentType}</AttributeText>
             </SmallWrapper>
           </AttributeLocationWrapper>
-          <DateWrapper>
-            <Date>Opublikowana: 26 grudnia 2020</Date>
-          </DateWrapper>
+      
         </Wrapper>
       </StyledLink>
     );
@@ -139,18 +137,19 @@ const SmallWrapper = styled.div`
     margin: 5px 20px 5px 0;
   }
 `;
-const DateWrapper = styled.div`
-  margin-top: 10px;
-  width: 100%;
-  @media (min-width: ${768}px) {
-    padding-left: 90px;
-    border-top: 1px solid #f1f1f1;
-  }
-`;
-const Date = styled.p`
-  font-size: 14px;
-  margin-top: 15px;
-`;
+// const DateWrapper = styled.div`
+//   margin-top: 10px;
+//   width: 100%;
+//   @media (min-width: ${768}px) {
+//     padding-left: 90px;
+//     border-top: 1px solid #f1f1f1;
+//   }
+// `;
+// const Date = styled.p`
+//   font-size: 14px;
+//   margin-top: 15px;
+// `;
+
 
 const Wrapper = styled.div`
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 15px;

@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   grid-template-columns: 95%;
   padding-bottom: 100px;
   @media (min-width: ${768}px) {
-    grid-template-columns: 230px 230px 230px;
+    grid-template-columns: 320px 320px;
     grid-gap: 20px 20px;
     padding: none;
     
@@ -34,7 +34,7 @@ const Wrapper = styled.div`
     grid-gap: 10px 20px;
   }
   @media (min-width: ${1440}px) {
-    grid-template-columns: 350px 350px 350px 350px;
+    grid-template-columns: 330px 330px 330px 330px;
     grid-gap: 30px 30px;
   }
 `;
