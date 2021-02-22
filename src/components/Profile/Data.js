@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { Formik, Field, Form, 
-  // getIn 
+import {
+  Formik,
+  Field,
+  Form,
+  // getIn
 } from "formik";
 import * as Yup from "yup";
 import {
@@ -19,10 +22,8 @@ const Wrapper = styled.div`
   max-width: 1100px;
   padding-bottom: 40px;
   @media (min-width: ${768}px) {
-
   }
   @media (min-width: ${1440}px) {
-
   }
 `;
 
@@ -36,9 +37,7 @@ const TopWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 900px;
- 
 `;
-
 
 const BigText = styled.p`
   font-size: 24px;
@@ -46,8 +45,7 @@ const BigText = styled.p`
   margin-bottom: 15px;
 `;
 
-const ProfileSchema = Yup.object().shape({
-});
+const ProfileSchema = Yup.object().shape({});
 const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   useEffect(() => {
     return () => {
@@ -67,121 +65,108 @@ const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   //   />
   // );
   return (
-      <Wrapper>
-        <Formik
-          initialValues={{
-            firstName: firebase.profile.firstName,
-            lastName: firebase.profile.lastName,
-            location: firebase.profile.location,
-            age: firebase.profile.age,
-            email: firebase.profile.email,
-            phone: firebase.profile.phone,
-            payment: firebase.profile.payment,
-            profession: firebase.profile.profession,
-          }}
-          validationSchema={ProfileSchema}
-          onSubmit={async (values, { setSubmitting }) => {
-            await editProfileTwo(values);
-            console.log(values);
-            setSubmitting(false);
-          }}
-        >
-          {({ isSubmitting, isValid, values }) => (
-            <FormWrapper>
-                          <BigText>Edytuj swój profil, żeby łatwiej znaleźć pracę!</BigText>
-      <TopWrapper>
-                <Field
-                  profile
-                  word="Imię"
-                  type="text"
-                  name="firstName"
-                  component={Input}
-                />
-                <Field
-                  profile
-                  word="Nazwisko"
-                  type="text"
-                  name="lastName"
-                  component={Input}
-                />
+    <Wrapper>
+      <Formik
+        initialValues={{
+          firstName: firebase.profile.firstName,
+          lastName: firebase.profile.lastName,
+          location: firebase.profile.location,
+          age: firebase.profile.age,
+          email: firebase.profile.email,
+          phone: firebase.profile.phone,
+          payment: firebase.profile.payment,
+          profession: firebase.profile.profession,
+        }}
+        validationSchema={ProfileSchema}
+        onSubmit={async (values, { setSubmitting }) => {
+          await editProfileTwo(values);
+          console.log(values);
+          setSubmitting(false);
+        }}
+      >
+        {({ isSubmitting, isValid, values }) => (
+          <FormWrapper>
+            <BigText>Edytuj swój profil, żeby łatwiej znaleźć pracę!</BigText>
+            <TopWrapper>
+              <Field
+                profile
+                word="Imię"
+                type="text"
+                name="firstName"
+                component={Input}
+              />
+              <Field
+                profile
+                word="Nazwisko"
+                type="text"
+                name="lastName"
+                component={Input}
+              />
 
-                <Field
-                  profile
-                  word="Miejsce zamieszkania"
-                  type="text"
-                  name="location"
-                  component={Input}
-                />
-                <Field
-                  profile
-                  word="Data urodzenia"
-                  type="text"
-                  name="age"
-                  component={Input}
-                />
+              <Field
+                profile
+                word="Miejsce zamieszkania"
+                type="text"
+                name="location"
+                component={Input}
+              />
+              <Field
+                profile
+                word="Data urodzenia"
+                type="text"
+                name="age"
+                component={Input}
+              />
 
-                <Field
-                  profile
-                  word="E-mail"
-                  type="text"
-                  name="email"
-                  component={Input}
-                />
-                <Field
-                  profile
-                  word="Numer telefonu"
-                  type="text"
-                  name="phone"
-                  component={Input}
-                />
-                <Field
-                  profile
-                  word="Oczekiwana płaca"
-                  type="text"
-                  name="payment"
-                  component={Input}
-                />
-                <Field
-                  profile
-                  word="Profesja"
-                  type="text"
-                  name="profession"
-                  component={Input}
-                />
-                <Field
-                  word="Pracownik"
-                  type="text"
-                  name="userType"
-                  component={Select}
-                >
-                  <option value="Pracodawca">Pracodawca</option>
-                  <option value="Poszukiwacz pracy">Poszukiwacz pracy</option>
-                </Field>
-              </TopWrapper>
-               
-             
-                    <Button
-                disabled={!isValid || isSubmitting}
-               
-                type="submit"
+              <Field
+                profile
+                word="E-mail"
+                type="text"
+                name="email"
+                component={Input}
+              />
+              <Field
+                profile
+                word="Numer telefonu"
+                type="text"
+                name="phone"
+                component={Input}
+              />
+              <Field
+                profile
+                word="Oczekiwana płaca"
+                type="text"
+                name="payment"
+                component={Input}
+              />
+              <Field
+                profile
+                word="Profesja"
+                type="text"
+                name="profession"
+                component={Input}
+              />
+              <Field
+                word="Pracownik"
+                type="text"
+                name="userType"
+                component={Select}
               >
-                Edytuj
-              </Button>
-            </FormWrapper>
-          )}
-        </Formik>
-        <Message error show={error}>
-          {error}
-        </Message>
-        <Message error show={error === false}>
-          Profile updated
-        </Message>
-      </Wrapper>
+                <option value="Pracodawca">Pracodawca</option>
+                <option value="Poszukiwacz pracy">Poszukiwacz pracy</option>
+              </Field>
+            </TopWrapper>
+
+            <Button disabled={!isValid || isSubmitting} type="submit">
+              Edytuj
+            </Button>
+          </FormWrapper>
+        )}
+      </Formik>
   
+    </Wrapper>
   );
 };
-
-
 
 const mapStateToProps = ({ firebase, auth }) => ({
   firebase,

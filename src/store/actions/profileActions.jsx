@@ -56,7 +56,6 @@ export const editData = (data) => async (
       location: data.location,
       phone: data.phone,
       payment: data.payment,
-      experience: data.experience,
       profession: data.profession,
     });
     dispatch({ type: actions.PROFILE_EDIT_SUCCESS });
