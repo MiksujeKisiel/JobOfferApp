@@ -55,7 +55,7 @@ const StyledButton = styled.button`
 
 const SmallWrapper = styled.div`
 display: flex;
-git init; git add .; git commit -m "Add new"; git push -u origin main
+
 align-items: center;
 
 `
