@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 const FormWrapper = styled(Form)`
   background: white;
   padding: 30px 40px;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+
 `;
 
 const TopWrapper = styled.div`

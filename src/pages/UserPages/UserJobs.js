@@ -10,7 +10,7 @@ import TopText from "../../components/UserSettings/Text";
 
 const Wrapper = styled.div`
   max-width: 1100px;
-  padding-bottom: 40px;
+ 
   @media (min-width: ${768}px) {
     margin-left: 20px;
   }

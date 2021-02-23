@@ -7,11 +7,8 @@ import {
   // getIn
 } from "formik";
 import * as Yup from "yup";
-import {
-
-
-  // DeleteButton,
-} from "../../components/Form";
+import // DeleteButton,
+"../../components/Form";
 // import { ArrayWrapper, FieldArrayWrapper, ActionButton } from '../../components/Form/FormStyles';
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
@@ -27,38 +24,34 @@ const Wrapper = styled.div`
 const FormWrapper = styled(Form)`
   background: white;
   padding: 30px 40px;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+ 
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 `;
 
-
-
-
-
 const Toggle = styled(Field)`
-width: 30px;
-height: 30px;
-background: yellow;
-
-`
+  width: 30px;
+  height: 30px;
+  background: yellow;
+`;
 const StyledButton = styled.button`
-    width: 150px;
-    height: 50px;
-    color: yellow;
-  border:  none;
-  border-radius: 30px;
-    background: blue;
-    margin: 10px 0 0 0 ;
-`
+  width: 100px;
+  font-size: 16px;
+  height: 50px;
+  color: white;
+  border: none;
+  text-align: center;
+  border-radius: 3px;
+  background: #007bff;
+  margin: 10px 0 0 0;
+`;
 
 const SmallWrapper = styled.div`
-display: flex;
+  display: flex;
 
-align-items: center;
-
-`
+  align-items: center;
+`;
 const ProfileSchema = Yup.object().shape({});
 const Show = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   useEffect(() => {
@@ -82,7 +75,7 @@ const Show = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
     <Wrapper>
       <Formik
         initialValues={{
-            show: firebase.profile.show
+          show: firebase.profile.show,
         }}
         validationSchema={ProfileSchema}
         onSubmit={async (values, { setSubmitting }) => {
@@ -91,26 +84,26 @@ const Show = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
           setSubmitting(false);
         }}
       >
-        {({ isSubmitting, isValid, values }) => (
-          <FormWrapper>   
-              <SmallWrapper>
+        {({ isSubmitting, isValid, values, handleSubmit }) => (
+          <FormWrapper>
+            <SmallWrapper>
               {`${values.show}` === "true"
-            ? "Udostępniam profil"
-            : "Nie udostępniam profilu"}
-              <Toggle    className="blue"
-          type="checkbox" name="show" />
-        
-      </SmallWrapper>
-  
-       
+                ? "Udostępniam profil"
+                : "Nie udostępniam profilu"}
+              <Toggle
+          
+                className="blue"
+                type="checkbox"
+                name="show"
+              />
+            </SmallWrapper>
 
             <StyledButton disabled={!isValid || isSubmitting} type="submit">
-             Zapisz
+              Zapisz
             </StyledButton>
           </FormWrapper>
         )}
       </Formik>
-  
     </Wrapper>
   );
 };

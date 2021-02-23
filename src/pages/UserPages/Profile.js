@@ -4,7 +4,6 @@ import styled from "styled-components";
 // import * as Yup from "yup";
 import {
   Message,
-
 } from "../../components/Form";
 import Router from "../../components/UserSettings/Router";
 import TopText from "../../components/UserSettings/Text";
@@ -15,13 +14,12 @@ import Language from '../../components/Profile/Language';
 import Data from '../../components/Profile/Data';
 import Show from '../../components/Profile/Show';
 const Wrapper = styled.div`
-  max-width: 1300px;
-  padding-bottom: 40px;
+
   justify-content: center;
   align-items: center;
 ;
   @media (min-width: ${768}px) {
-    margin-left: 20px;
+    
   }
   @media (min-width: ${1440}px) {
     margin-left: 100px;
@@ -46,10 +44,15 @@ const TopWrapper = styled.div`
   max-width: 900px; */
   position: fixed;
   right: 20px;
-  top: 20px;
-  width: 40px;
+  bottom: 200px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   height: 40px;
-  background-color: blue;
+  background-color: rgba(100,149,15, 0.7);
+  border-radius: 20px;
   z-index: 200;
 `;
 
@@ -103,7 +106,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
         <Data/>
         <Experience/>
         <Language/>
-        {loading ? <TopWrapper/> : ""}
+        {loading ? <TopWrapper>Zapisywanie</TopWrapper> : ""}
    
       
              

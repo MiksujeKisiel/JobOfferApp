@@ -43,14 +43,17 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  @media (min-width: 768px) {
+    display: ${({ dashboard }) => dashboard ? 'none' : 'flex'};
+  }
 `;
 
 
-const Navbar = ({loggedIn}) => {
+const Navbar = ({loggedIn, dashboard}) => {
   const [open, setOpen] = useState(false)
   
   return (
-    <Nav>
+    <Nav dashboard={dashboard}>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
         <div />
         <div />

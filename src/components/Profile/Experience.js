@@ -16,14 +16,14 @@ import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 
 const Wrapper = styled.div`
-  width: 90%;
+  
 
 `;
 
 const FormWrapper = styled(Form)`
   background: white;
   padding: 30px 40px;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+
 `;
 
 

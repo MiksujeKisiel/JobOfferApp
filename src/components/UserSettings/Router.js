@@ -1,57 +1,80 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-
+import Navbar from "../Navbar/Navbar";
 import UserRouter from "../Navbar/User/UserRouter";
 import AccountMenu from "../Navbar/User/AccountMenu";
-
+import { NavLink as Link } from "react-router-dom";
 const BigWrapper = styled.div`
   min-height: 100vh;
-  background: #40b4e5;
-  padding-top: 80px;
-  position: relative;
-  overflow-y: hidden;
-  &::before{
-    
-    content: "";
-    width: 100%;
-    height: 80px;
-    top: 0;
-    position: absolute;
-  }
+
   @media (min-width: ${768}px) {
-    display: flex;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+  }
+  @media (min-width: ${1280}px) {
+    grid-template-columns: 270px 1fr;
   }
 `;
-
-
+const StyledLink = styled(Link)`
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #3f87f5;
+  color: white;
+  margin: 0 50px;
+`;
+const Nav = styled.div`
+  display: none;
+  @media (min-width: ${768}px) {
+    width: 100%;
+    height: 70px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid #ededee;
+  }
+`;
 
 const SmallWrapper = styled.div`
   display: none;
 
   @media (min-width: ${768}px) {
-    min-width: 250px;
     padding: 100px 0;
     display: flex;
-    background: #1b75bc;
+    background: #3f87f5;
     flex-direction: column;
+  }
+
+  @media (min-width: ${1280}px) {
+    min-width: 270px;
   }
 `;
 
 const Router = ({ children, firebase }) => {
   return (
-    <BigWrapper>
-      <SmallWrapper>
-        <AccountMenu left={true} />
-        <UserRouter left={true} />
-      </SmallWrapper>
-      <ChildrenWrapper>{children}</ChildrenWrapper>
-    </BigWrapper>
+    <>
+      <Navbar dashboard="dashboard" />
+      <BigWrapper>
+        <SmallWrapper>
+          <AccountMenu left={true} />
+          <UserRouter left={true} />
+        </SmallWrapper>
+        <ChildrenWrapper>
+          <Nav>
+            <StyledLink to="/">Strona główna</StyledLink>
+          </Nav>
+
+          {children}
+        </ChildrenWrapper>
+      </BigWrapper>
+    </>
   );
 };
 
 const ChildrenWrapper = styled.div`
-font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 `;
 
 const mapStateToProps = ({ firebase, auth }) => ({
