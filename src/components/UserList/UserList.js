@@ -54,7 +54,7 @@ const UserType = styled.p`
 
 const UserList = ({ user, userid }) => {
 
-  const { firstName, lastName, userType, profession, email, phone, show } = user
+  const { firstName, lastName, userType, profession, email, show } = user
 
   if (show === false) {
     return null;
@@ -69,7 +69,6 @@ const UserList = ({ user, userid }) => {
           {!userType ? <UserType>Brak informacji</UserType> : <UserType>{userType}</UserType>}
           {!profession ? null : <SmallWrapper><Suitcase className="svg" /> <Text>{profession}</Text></SmallWrapper>}
           {!email ? null : <SmallWrapper><Mail className="svg" /> <Text>{email}</Text></SmallWrapper> }
-          {!phone ? null : <SmallWrapper><Mail className="svg" /> <Text>{phone}  </Text></SmallWrapper>}
       </Wrapper>
     );
   }

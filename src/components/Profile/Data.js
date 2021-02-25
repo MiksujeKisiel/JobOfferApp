@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import {
-  Formik,
-  Field,
-} from "formik";
+import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import {
   Button,
@@ -13,8 +10,7 @@ import {
 } from "../../components/Form";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
-import { FormWrapper } from './ProfileStyles'
-
+import { FormWrapper } from "./ProfileStyles";
 
 const TopWrapper = styled.div`
   @media (min-width: ${768}px) {
@@ -26,7 +22,6 @@ const TopWrapper = styled.div`
   }
   @media (min-width: ${1024}px) {
     grid-template-columns: 1fr 1fr 1fr;
-
   }
 `;
 
@@ -93,13 +88,6 @@ const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
               name="location"
               component={Input}
             />
-            <Field
-              profile
-              word="Data urodzenia"
-              type="text"
-              name="age"
-              component={Input}
-            />
 
             <Field
               profile
@@ -108,20 +96,7 @@ const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
               name="email"
               component={Input}
             />
-            <Field
-              profile
-              word="Numer telefonu"
-              type="text"
-              name="phone"
-              component={Input}
-            />
-            <Field
-              profile
-              word="Oczekiwana płaca"
-              type="text"
-              name="payment"
-              component={Input}
-            />
+
             <Field
               profile
               word="Profesja"
@@ -136,8 +111,8 @@ const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
               component={Select}
               profile
             >
+              <option value="Bezrobotny">Bezrobotny</option>
               <option value="Pracodawca">Pracodawca</option>
-              <option value="Poszukiwacz pracy">Poszukiwacz pracy</option>
             </Field>
           </TopWrapper>
 

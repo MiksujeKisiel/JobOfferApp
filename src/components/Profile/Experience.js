@@ -1,12 +1,7 @@
 import React, { useEffect } from "react";
 import { Formik, Field, FieldArray } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  Input,
-  // Select,
-  DeleteButton,
-} from "../../components/Form";
+import { Button, Input, Select, DeleteButton } from "../../components/Form";
 import {
   ArrayWrapper,
   FieldArrayWrapper,
@@ -58,16 +53,27 @@ const Experience = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                       <Field
                         profile
                         name={`experience.${index}.name`}
-                        word="zadania"
+                        word="Stanowisko"
                         component={Input}
                       />
                       <Field
                         profile
+                        word="Rodzaj zatrudnienia"
+                        type="text"
                         name={`experience.${index}.type`}
-                        word="xdxd"
-                        component={Input}
-                      />
-
+                        component={Select}
+                      >
+                        <option value="" defaultValue disabled hidden>
+                          rodzaj zatrudnienia
+                        </option>
+                        <option value="Freelancing">Freelancing</option>
+                        <option value="Samozatrudnienie">Samozatrudnienie</option>
+                        <option value="Pełny etat">
+                          Pełny etat
+                        </option>
+                        <option value="Niepełny etat">Niepełny etat</option>
+                   
+                      </Field>
                       <DeleteButton
                         onClick={() => arrayHelpers.remove(index)}
                       />

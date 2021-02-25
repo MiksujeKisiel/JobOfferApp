@@ -23,7 +23,7 @@ const StyledLink = styled(Link)`
   border-radius: 5px;
   background-color: #3f87f5;
   color: white;
-  margin: 0 50px;
+  margin: 0 100px;
 `;
 const Nav = styled.div`
   display: none;
@@ -33,7 +33,7 @@ const Nav = styled.div`
     align-items: center;
     display: flex;
     background-color: white;
-    justify-content: flex-end;
+    justify-content: flex-start;
     border-bottom: 1px solid #ededee;
   }
 `;

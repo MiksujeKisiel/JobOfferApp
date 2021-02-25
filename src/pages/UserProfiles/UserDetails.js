@@ -9,8 +9,7 @@ import {
   Languages,
   Skills,
 } from "../../components/UserDetails";
-import details from '../../assets/images/details.jpg'
-
+import details from "../../assets/images/details.jpg";
 
 const Background = styled.div`
   width: 100%;
@@ -28,7 +27,7 @@ const Background = styled.div`
     content: "";
     position: absolute;
   }
-  ::before{
+  ::before {
     background: linear-gradient(360deg, #0f0b2e, rgba(34, 26, 90, 0) 80%);
     width: 100%;
     height: 100%;
@@ -46,7 +45,7 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   display: flex;
-  background: #F5F5F5;
+  background: #f5f5f5;
   @media (min-width: ${768}px) {
     padding: 40px 0;
   }
@@ -66,31 +65,30 @@ const SmallWrapper = styled.div`
   }
 `;
 
-const UserDetails = ({users, id} ) => {
-  console.log(id)
-  console.log(users)
+const UserDetails = ({ users, id }) => {
+  console.log(id);
+  console.log(users);
   if (users) {
     return (
       <>
-      <Background src={details}/>
-      <Wrapper>
-        <SmallWrapper>
-          <Data
-            age={users.age}
-            location={users.location}
-            payment={users.payment}
-            phone={users.phone}
-            email={users.email}
-            firstName={users.firstName}
-            lastName={users.lastName}
-            profession={users.profession}
-          />
-          <Languages language={users.language} />
-          <Skills skills={users.skills} />
-          <Experience experience={users.experience} />
-        </SmallWrapper>
-      </Wrapper>
-
+        <Background src={details} />
+        <Wrapper>
+          <SmallWrapper>
+            <Data
+              age={users.age}
+              location={users.location}
+              payment={users.payment}
+              phone={users.phone}
+              email={users.email}
+              firstName={users.firstName}
+              lastName={users.lastName}
+              profession={users.profession}
+            />
+            <Experience experience={users.experience} />
+            <Languages language={users.language} />
+            <Skills skills={users.skills} />
+          </SmallWrapper>
+        </Wrapper>
       </>
     );
   } else if (!users) {
@@ -104,7 +102,7 @@ const mapStateToProps = (state, ownProps) => {
   const userdetails = user ? user[id] : null;
   return {
     users: userdetails,
-    userid: id
+    userid: id,
   };
 };
 

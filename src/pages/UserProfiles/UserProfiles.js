@@ -113,7 +113,7 @@ const UserProfiles = ({ users }) => {
   return (
     <>
        <Background src={main}>
-       <BigText>Znajdź wymarzoną pracę</BigText>
+       <BigText>Znajdź pracownika IT</BigText>
        </Background>
       <Wrapper>
      {content}

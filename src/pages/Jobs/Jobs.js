@@ -116,7 +116,7 @@ const Dashboard = ({ jobs }) => {
   return (
     <>
       <Background src={main}>
-      <BigText>Znajdź wymarzoną pracę</BigText>
+      <BigText>Znajdź wymarzoną pracę IT</BigText>
       </Background>
       <Wrapper>
       <SmallWrapper>{content}</SmallWrapper>

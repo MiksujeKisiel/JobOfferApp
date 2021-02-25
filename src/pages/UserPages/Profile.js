@@ -2,28 +2,25 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 // import { Formik, Field, Form, FieldArray, getIn } from "formik";
 // import * as Yup from "yup";
-import {
-
-} from "../../components/Form";
+import {} from "../../components/Form";
 import Router from "../../components/UserSettings/Router";
 import TopText from "../../components/UserSettings/Text";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
-import Experience from '../../components/Profile/Experience';
-import Language from '../../components/Profile/Language';
-import Data from '../../components/Profile/Data';
-import Show from '../../components/Profile/Show';
+import Experience from "../../components/Profile/Experience";
+import Language from "../../components/Profile/Language";
+import Data from "../../components/Profile/Data";
+import Show from "../../components/Profile/Show";
 
 const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
-git init; git add .; git commit -m "Add new"; git push -u origin main
 
-@media (min-width: ${768}px) {
-  padding-left: 10px;
-  max-width: 600px;
-}
+  @media (min-width: ${768}px) {
+    padding-left: 10px;
+    max-width: 600px;
+  }
   @media (min-width: ${1024}px) {
     max-width: 800px;
     padding-left: 50px;
@@ -48,7 +45,7 @@ const BigText = styled.p`
   font-size: 24px;
   font-weight: 200;
   margin: 30px 0 10px;
-text-align: center;
+  text-align: center;
 `;
 
 const TopWrapper = styled.div`
@@ -61,7 +58,7 @@ const TopWrapper = styled.div`
   align-items: center;
   padding: 20px;
   height: 40px;
-  background-color: rgba(100,149,15, 0.7);
+  background-color: rgba(100, 149, 15, 0.7);
   border-radius: 20px;
   z-index: 200;
 `;
@@ -94,7 +91,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
     };
   }, [cleanUp]);
   if (!firebase.profile.isLoaded) return null;
-  
+
   // const ErrorMessage = ({ name }) => (
   //   <Field
   //     name={name}
@@ -108,20 +105,18 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   return (
     <Router>
       <Wrapper>
-      
         <TopText
           bigText="Profil"
           smallText="Dzięki dodawaniu informacji na swój temat możesz łatwiej znaleźć pracę!"
         />
-          <BigText>Podstawowe dane</BigText>
-        <Show/>
-        <Data/>
+        <BigText>Podstawowe dane</BigText>
+        <Show />
+        <Data />
         <BigText>Doświadczenie</BigText>
-        <Experience/>
+        <Experience />
         <BigText>Język</BigText>
-        <Language/>
+        <Language />
         {loading ? <TopWrapper>Zapisywanie</TopWrapper> : ""}
-  
       </Wrapper>
     </Router>
   );
@@ -165,4 +160,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
-
