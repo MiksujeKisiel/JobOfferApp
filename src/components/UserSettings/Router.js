@@ -10,7 +10,7 @@ const BigWrapper = styled.div`
 
   @media (min-width: ${768}px) {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 220px 1fr;
     grid-template-rows: 1fr;
     gap: 0px 0px;
   }
@@ -32,6 +32,7 @@ const Nav = styled.div`
     height: 70px;
     align-items: center;
     display: flex;
+    background-color: white;
     justify-content: flex-end;
     border-bottom: 1px solid #ededee;
   }
@@ -75,6 +76,7 @@ const Router = ({ children, firebase }) => {
 
 const ChildrenWrapper = styled.div`
   font-family: "Poppins", sans-serif;
+  background-color: #F2F1F3;
 `;
 
 const mapStateToProps = ({ firebase, auth }) => ({

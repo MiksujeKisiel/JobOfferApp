@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Form as FormFormik } from "formik";
 
 export const Form = styled(FormFormik)`
@@ -28,10 +28,12 @@ export const FormWrapper = styled.div`
   }
   @media (min-width: ${1024}px) {
     box-shadow: ${(props) =>
-      props.profile ? "none" : " 6px 0 35px 0 rgba(0, 0, 0, 0.75)"};
+      props.profile
+        ? "6px 0 20px rgba(0, 0, 0, 0.75)"
+        : " 6px 0 35px 0 rgba(0, 0, 0, 0.75)"};
     z-index: 2;
     height: ${(props) => (props.profile ? "" : "100%")};
-    padding: ${(props) => (props.profile ? "20px 0" : "10px 0")};
+    padding: ${(props) => (props.profile ? "40px 0" : "10px 0")};
   }
 `;
 
@@ -45,9 +47,14 @@ export const Wrapper = styled.div`
     min-height: 900px;
     padding: 0;
     @media (min-width: ${1024}px) {
-      height: 100vh;
     }
   }
+`;
+
+export const ProfileWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Text = styled.p`
@@ -76,15 +83,25 @@ export const Group = styled.div`
   position: relative;
   width: 100%;
   @media (min-width: ${768}px) {
-    width: ${(props) => (props.long ? "100%" : "250px")};
-    margin: ${(props) => (props.profile ? "15px 50px 15px 0" : "15px 0")};
+    margin: 15px 0;
     max-width: 500px;
   }
+  ${(props) =>
+    props.profile &&
+    css`
+      margin: 20px 0;
+    `}
 `;
 
 export const Label = styled.label`
   font-size: 14px;
   color: #7481a1;
+  ${(props) =>
+    props.profile &&
+    css`
+      font-weight: 300;
+      color: black;
+    `}
 `;
 
 export const ActionButton = styled.button`
@@ -99,16 +116,28 @@ export const ActionButton = styled.button`
 `;
 
 export const FieldArrayWrapper = styled.div`
-  display: flex;
-  margin: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 80px;
+  align-items: center;
+  align-content: center;
+  gap: 10px;
+  @media (min-width: ${768}px) {
+    grid-template-columns: 200px 200px 80px;
+    max-width: none;
+  }
+  @media (min-width: ${1024}px) {
+    grid-template-columns: 300px 250px 80px;
+    max-width: none;
+    
+  }
 `;
 
 export const ArrayWrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 20px 0;
-  max-width: 700px;
-  @media (min-width: ${768}px) {
+  @media (min-width: ${1280}px) {
     padding: 0;
+    
   }
 `;

@@ -13,9 +13,9 @@ const StyledSelect = styled.select`
   }
 `;
 
-export const Select = ({ field, children, form: { touched, errors }, ...props }) => {
+export const Select = ({ profile, field, children, form: { touched, errors }, ...props }) => {
   return (
-    <Group>
+    <Group profile={profile}>
       <Label>{props.word}</Label>
       <StyledSelect {...field} {...props}>
         {children}

@@ -13,44 +13,32 @@ import // DeleteButton,
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
 
-const Wrapper = styled.div`
-  width: 90%;
-  @media (min-width: ${768}px) {
-  }
-  @media (min-width: ${1440}px) {
-  }
-`;
+
 
 const FormWrapper = styled(Form)`
-  background: white;
-  padding: 30px 40px;
- 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+   background: white;
+  padding: 10px 15px 0;
+  @media (min-width: ${768}px) {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 0;
+  }
+  @media (min-width: ${1280}px) {
+    padding: 40px 40px 0;
+  }
 `;
 
 const Toggle = styled(Field)`
   width: 30px;
   height: 30px;
   background: yellow;
-`;
-const StyledButton = styled.button`
-  width: 100px;
-  font-size: 16px;
-  height: 50px;
-  color: white;
-  border: none;
-  text-align: center;
-  border-radius: 3px;
-  background: #007bff;
-  margin: 10px 0 0 0;
+  margin-right: 15px;
 `;
 
 const SmallWrapper = styled.div`
   display: flex;
-
   align-items: center;
+  font-weight: 300;
 `;
 const ProfileSchema = Yup.object().shape({});
 const Show = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
@@ -72,39 +60,28 @@ const Show = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   //   />
   // );
   return (
-    <Wrapper>
-      <Formik
-        initialValues={{
-          show: firebase.profile.show,
-        }}
-        validationSchema={ProfileSchema}
-        onSubmit={async (values, { setSubmitting }) => {
-          await editProfileTwo(values);
-          console.log(values);
-          setSubmitting(false);
-        }}
-      >
-        {({ isSubmitting, isValid, values, handleSubmit }) => (
-          <FormWrapper>
-            <SmallWrapper>
-              {`${values.show}` === "true"
-                ? "Udostępniam profil"
-                : "Nie udostępniam profilu"}
-              <Toggle
-          
-                className="blue"
-                type="checkbox"
-                name="show"
-              />
-            </SmallWrapper>
-
-            <StyledButton disabled={!isValid || isSubmitting} type="submit">
-              Zapisz
-            </StyledButton>
-          </FormWrapper>
-        )}
-      </Formik>
-    </Wrapper>
+    <Formik
+      initialValues={{
+        show: firebase.profile.show,
+      }}
+      validationSchema={ProfileSchema}
+      onSubmit={async (values, { setSubmitting }) => {
+        await editProfileTwo(values);
+        console.log(values);
+        setSubmitting(false);
+      }}
+    >
+      {({ isSubmitting, isValid, values, handleSubmit }) => (
+        <FormWrapper onChange={handleSubmit}>
+          <SmallWrapper>
+            <Toggle className="blue" type="checkbox" name="show" />
+            {`${values.show}` === "true"
+              ? "Udostępniam profil"
+              : "Nie udostępniam profilu"}
+          </SmallWrapper>
+        </FormWrapper>
+      )}
+    </Formik>
   );
 };
 

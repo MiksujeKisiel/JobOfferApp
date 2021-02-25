@@ -1,34 +1,21 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
-import { Formik, Field, Form, FieldArray
-  // getIn
-} from "formik";
+import { Formik, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 import {
-  Message,
   Button,
   Input,
   // Select,
   DeleteButton,
 } from "../../components/Form";
-import { ArrayWrapper, FieldArrayWrapper, ActionButton } from '../../components/Form/FormStyles';
+import {
+  ArrayWrapper,
+  FieldArrayWrapper,
+} from "../../components/Form/FormStyles";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
+import { FormWrapper } from "./ProfileStyles";
 
-const Wrapper = styled.div`
-  
-
-`;
-
-const FormWrapper = styled(Form)`
-  background: white;
-  padding: 30px 40px;
-
-`;
-
-
-const ProfileSchema = Yup.object().shape({
-});
+const ProfileSchema = Yup.object().shape({});
 const Experience = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   useEffect(() => {
     return () => {
@@ -48,81 +35,65 @@ const Experience = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   //   />
   // );
   return (
-      <Wrapper>
-        <Formik
-          initialValues={{
-            experience: firebase.profile.experience
-          }}
-          validationSchema={ProfileSchema}
-          onSubmit={async (values, { setSubmitting }) => {
-            await editProfileTwo(values);
-            console.log(values);
-            setSubmitting(false);
-          }}
-        >
-          {({ isSubmitting, isValid, values }) => (
-            <FormWrapper>
-               <FieldArray
-                name="experience"
-                render={(arrayHelpers) => (
-                  <ArrayWrapper>
-                    {values.experience && values.experience.length > 0 ? (
-                      values.experience.map((experience, index) => (
-                        <FieldArrayWrapper key={index}>
-                          <Field
-                            long
-                            name={`experience.${index}.name`}
-                            word="zadania"
-                            component={Input}
-                          />
-                          <Field
-                            long
-                            name={`experience.${index}.type`}
-                            word="xdxd"
-                            component={Input}
-                          />
+    <Formik
+      initialValues={{
+        experience: firebase.profile.experience,
+      }}
+      validationSchema={ProfileSchema}
+      onSubmit={async (values, { setSubmitting }) => {
+        await editProfileTwo(values);
+        console.log(values);
+        setSubmitting(false);
+      }}
+    >
+      {({ isSubmitting, isValid, values }) => (
+        <FormWrapper>
+          <FieldArray
+            name="experience"
+            render={(arrayHelpers) => (
+              <ArrayWrapper>
+                {values.experience && values.experience.length > 0 ? (
+                  values.experience.map((experience, index) => (
+                    <FieldArrayWrapper key={index}>
+                      <Field
+                        profile
+                        name={`experience.${index}.name`}
+                        word="zadania"
+                        component={Input}
+                      />
+                      <Field
+                        profile
+                        name={`experience.${index}.type`}
+                        word="xdxd"
+                        component={Input}
+                      />
 
-                          <DeleteButton
-                            onClick={() => arrayHelpers.remove(index)}
-                          />
-                        </FieldArrayWrapper>
-                      ))
-                    ) : (
-                      <></>
-                    )}
-                    <ActionButton
-                      type="button"
-                      onClick={() => arrayHelpers.push("")}
-                    >
-                      Dodaj oferowanie
-                    </ActionButton>
-                 
-                    <Button
-                disabled={!isValid || isSubmitting}
-               
-                type="submit"
-              >
-                Edytuj
-              </Button>
-                  </ArrayWrapper>
+                      <DeleteButton
+                        onClick={() => arrayHelpers.remove(index)}
+                      />
+                    </FieldArrayWrapper>
+                  ))
+                ) : (
+                  <></>
                 )}
-              />
-              
-            </FormWrapper>
-          )}
-        </Formik>
-        <Message error show={error}>
-          {error}
-        </Message>
-        <Message error show={error === false}>
-          Profile updated
-        </Message>
-      </Wrapper>
-  
+                <Button
+                  type="button"
+                  profile
+                  onClick={() => arrayHelpers.push("")}
+                >
+                  Dodaj oferowanie
+                </Button>
+              </ArrayWrapper>
+            )}
+          />
+          <Button disabled={!isValid || isSubmitting} profile type="submit">
+            Edytuj
+          </Button>
+        </FormWrapper>
+      )}
+    </Formik>
   );
 };
-
-
 
 const mapStateToProps = ({ firebase, auth }) => ({
   firebase,
