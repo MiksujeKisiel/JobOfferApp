@@ -1,12 +1,15 @@
 import { useEffect } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../store/actions';
-
-const Logout = ({ logout}) => {
+import { useHistory } from "react-router";
+const Logout = ({ logout}, props) => {
+    let history = useHistory()
     useEffect(() =>{
         logout();
-    }, [logout]);
-    return null;
+        history.push("/");
+    }, [logout, history]);
+    return null
+    
 };
  
 

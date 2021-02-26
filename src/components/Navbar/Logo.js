@@ -8,9 +8,10 @@ display: flex;
 justify-content: center;
 align-items: center;
 border-radius: 50px;
+max-width: 220px;
 margin: ${(props) => (props.navbar) ? '0 0 30px 30px' : '30px 0' };
 @media (min-width: ${768}px) {
-    margin: ${(props) => (props.navbar) ? '0 0 0 30px' : '30px 0' };
+    margin: ${(props) => (props.navbar) ? '0 0 0 30px' : '30px auto' };
 }
 `
 const Text = styled.p`

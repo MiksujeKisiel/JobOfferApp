@@ -36,7 +36,7 @@ export const signUp = (data) => async (
       hobby: [],
       links: [],
       userType: "",
-      show: true,
+      show: false,
       // id: new Date().valueOf()
     });
     dispatch({

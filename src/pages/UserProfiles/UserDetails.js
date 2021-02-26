@@ -66,8 +66,7 @@ const SmallWrapper = styled.div`
 `;
 
 const UserDetails = ({ users, id }) => {
-  console.log(id);
-  console.log(users);
+
   if (users) {
     return (
       <>

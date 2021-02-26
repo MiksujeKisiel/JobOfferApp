@@ -33,18 +33,15 @@ import UserDetails from "./pages/UserProfiles/UserDetails";
 import JobEditor from "./components/Jobs/JobEditor";
 import AddJob from "./pages/JobActions/AddJob";
 
-
 const App = ({ loggedIn, emailVerified }) => {
   let routes;
 
   if (loggedIn && !emailVerified) {
     routes = (
       <Switch>
-        <Layout>
           <Route exact path="/verify-email" component={VerifyEmail} />
-          <Route exact path="/logout" component={Logout} />
+          <Route path="/logout" component={Logout} />
           <Redirect to="/verify-email" />
-        </Layout>
       </Switch>
     );
   } else if (loggedIn && emailVerified) {
@@ -53,6 +50,8 @@ const App = ({ loggedIn, emailVerified }) => {
         <Route exact path="/profile-jobs" component={UserDashboard} />
         <Route exact path="/profile-settings" component={Settings} />
         <Route exact path="/profile" component={Profile} />
+        <Route path="/addjob" component={AddJob} />
+        <Route exact path="/editjob/:id" component={JobEditor} />
         <Layout>
           <Route path="/logout" component={Logout} />
           <Route path="/addjob" component={AddJob} />
@@ -65,11 +64,10 @@ const App = ({ loggedIn, emailVerified }) => {
             path="/user-profile-details/:id"
             component={UserDetails}
           />
-           
-      </Layout>
-        
+        </Layout>
+
         <Redirect to="/" />
-          </Switch>
+      </Switch>
     );
   } else {
     routes = (

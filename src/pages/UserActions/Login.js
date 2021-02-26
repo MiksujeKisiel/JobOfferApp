@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import { useHistory } from "react-router";
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email("Zły e-mail")
@@ -19,6 +19,7 @@ const LoginSchema = Yup.object().shape({
 });
 
 function Login({ login, loading, error, cleanUp }) {
+  let history = useHistory()
   useEffect(() => {
     return () => {
       cleanUp();
@@ -39,6 +40,9 @@ function Login({ login, loading, error, cleanUp }) {
           onSubmit={async (values, { setSubmitting }) => {
             await login(values);
             setSubmitting(false);
+            history.push("/");
+            
+            
           }}
         >
           {({ isSubmitting, isValid }) => (

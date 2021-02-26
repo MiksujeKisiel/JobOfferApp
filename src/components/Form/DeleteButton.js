@@ -13,7 +13,6 @@ const ButtonWrapper = styled.div`
   cursor: pointer;
   justify-content: center;
   align-items: flex-end;
-  
   font-size: 13px;
   font-weight: 300;
   margin-left: 10px;

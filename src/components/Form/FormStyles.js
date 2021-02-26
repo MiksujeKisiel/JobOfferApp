@@ -22,9 +22,10 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 20px;
-  align-items: center;
+
   @media (min-width: ${768}px) {
     padding: 10px;
+ 
   }
   @media (min-width: ${1024}px) {
     box-shadow: ${(props) =>
@@ -32,7 +33,7 @@ export const FormWrapper = styled.div`
         ? "6px 0 20px rgba(0, 0, 0, 0.75)"
         : " 6px 0 35px 0 rgba(0, 0, 0, 0.75)"};
     z-index: 2;
-    height: ${(props) => (props.profile ? "" : "100%")};
+    height: 100vh;
     padding: ${(props) => (props.profile ? "40px 0" : "10px 0")};
   }
 `;
@@ -46,8 +47,7 @@ export const Wrapper = styled.div`
   @media (min-width: ${768}px) {
     min-height: 900px;
     padding: 0;
-    @media (min-width: ${1024}px) {
-    }
+  
   }
 `;
 
@@ -84,12 +84,25 @@ export const Group = styled.div`
   width: 100%;
   @media (min-width: ${768}px) {
     margin: 15px 0;
-    max-width: 500px;
+    max-width: 300px;
   }
   ${(props) =>
     props.profile &&
     css`
       margin: 20px 0;
+    `}
+    ${(props) =>
+    props.job &&
+    css`
+      width: 80%;
+      margin: 15px auto;
+      max-width: 300px;
+      @media (min-width: ${768}px) {
+    margin: 5px 0;
+    max-width: 300px;
+    width: 100%;
+
+  }
     `}
 `;
 
