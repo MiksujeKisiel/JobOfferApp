@@ -41,8 +41,6 @@ function Login({ login, loading, error, cleanUp }) {
             await login(values);
             setSubmitting(false);
             history.push("/");
-            
-            
           }}
         >
           {({ isSubmitting, isValid }) => (

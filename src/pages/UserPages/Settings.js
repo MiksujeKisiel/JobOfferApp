@@ -5,7 +5,7 @@ import { Message, Button, Input } from "../../components/Form";
 import * as Yup from "yup";
 import * as actions from "../../store/actions";
 import Router from "../../components/UserSettings/Router";
-import TopText from "../../components/UserSettings/Text";
+
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -16,12 +16,15 @@ const Wrapper = styled.div`
   }
   @media (min-width: ${1440}px) {
     margin-left: 100px;
+    
   }
 `;
 
 const FormWrapper = styled(Form)`
   background: white;
   padding: 30px 40px;
+  margin: 40px 0 0;
+  position: relative;
 
 `;
 
@@ -61,10 +64,6 @@ const Profile = ({ firebase, loading, error, editProfile, cleanUp }) => {
   return (
     <Router>
       <Wrapper>
-        <TopText
-          bigText="Ustawienia"
-          smallText="Możesz zmieniać tu email oraz hasło"
-        />
         <Formik
           initialValues={{
             email: firebase.auth.email,
@@ -108,6 +107,14 @@ const Profile = ({ firebase, loading, error, editProfile, cleanUp }) => {
                 component={Input}
                 long
               />
+              <SmallWrapper>
+                   <Message error show={error}>
+          {error}
+        </Message>
+        <Message error show={error === false}>
+          Profile updated
+        </Message>
+        </SmallWrapper>
               <Button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Edytowanie" : null}
@@ -115,19 +122,19 @@ const Profile = ({ firebase, loading, error, editProfile, cleanUp }) => {
               >
                 Edytuj
               </Button>
+         
             </FormWrapper>
           )}
         </Formik>
-        <Message error show={error}>
-          {error}
-        </Message>
-        <Message error show={error === false}>
-          Profile updated
-        </Message>
+      
       </Wrapper>
     </Router>
   );
 };
+
+const SmallWrapper = styled.div`
+  position: absolute;
+`
 
 const mapStateToProps = ({ firebase, auth }) => ({
   firebase,

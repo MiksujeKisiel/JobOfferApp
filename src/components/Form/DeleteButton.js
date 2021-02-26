@@ -28,9 +28,9 @@ const ButtonWrapper = styled.div`
 `;
 
 
-export const DeleteButton = ({onClick}) => {
+export const DeleteButton = ({job, onClick}) => {
     return (
-        <ButtonWrapper onClick={onClick}>
+        <ButtonWrapper job={job} onClick={onClick}>
              <StyledIcon/>usuń 
         </ButtonWrapper>
     )

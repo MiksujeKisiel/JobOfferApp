@@ -15,7 +15,7 @@ const StyledSelect = styled.select`
         props.job &&
         css`
       width: 100%;
-    padding: 9px 20px;
+    padding: 9px 10px;
     text-align: left;
     border: 0;
     outline: 0;
@@ -38,7 +38,7 @@ export const Select = ({ job, profile, field, children, form: { touched, errors 
       <StyledSelect job={job} {...field} {...props}>
         {children}
       </StyledSelect>
-      <Error show={errors[field.name] && touched[field.name]}>
+      <Error job={job} show={errors[field.name] && touched[field.name]}>
         {errors[field.name]}
       </Error>
     </Group>

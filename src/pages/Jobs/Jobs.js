@@ -31,7 +31,7 @@ const Background = styled.div`
     position: absolute;
   }
   @media (min-width: ${1280}px) {
-    height: 650px;
+    
   }
 `;
 
@@ -41,7 +41,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   display: flex;
   background: #F5F5F5;
+
 `;
+
 
 const BigText = styled.p`
   font-size: 32px;
@@ -65,11 +67,10 @@ const BigText = styled.p`
 const SmallWrapper = styled.div`
   display: grid;
   width: 100%;
-  
+  z-index: 50;
   justify-content: center;
   align-items: center;
   justify-items: center;
-  position: absolute;
   margin-top: -100px;
   padding-bottom: 100px;
 

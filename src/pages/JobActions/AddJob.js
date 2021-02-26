@@ -41,6 +41,7 @@ const Wrapper = styled.div`
   @media (min-width: ${1024}px) {
     display: flex;
     align-items: stretch;
+ 
   }
 `;
 
@@ -115,13 +116,15 @@ const SmallText = styled.p`
 
 const Text = styled.p`
   color: #1c1c1c;
-  font-size: 20px;
+  font-size: 24px;
   margin: 0 auto;
   text-align: center;
   margin: 20px 0;
-
-  @media (min-width: ${1024}px) {
-    margin: 80px 0 20px;
+  @media (min-width: ${768}px) {
+    margin: 60px 0 30px;
+  }
+    @media (min-width: ${1024}px) {
+    margin: 100px 0 20px;
   }
 `;
 const BigText = styled.p`
@@ -160,8 +163,11 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
         <StyledLink to="/">Strona główna</StyledLink>
         <SmallWrapper>
           <Xd />
-          <BigText>{jobEditing ? "Edytuj swoją ofertę pracy" : "We’re Accepting applications!"}
-           </BigText>
+          <BigText>
+            {jobEditing
+              ? "Edytuj swoją ofertę pracy"
+              : "We’re Accepting applications!"}
+          </BigText>
           <SmallText>
             Fill the form, attach your latest CV and portfolio to get listed.
           </SmallText>
@@ -180,9 +186,9 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
           interview: jobEditing ? jobs.interview : "Rozmowa o pracę",
           timelapse: jobEditing ? jobs.timelapse : "Pełny etat",
           level: jobEditing ? jobs.level : "Junior",
-          responsibility: jobEditing ? jobs.responsibility : [],
-          requirement: jobEditing ? jobs.requirement : [],
-          offer: jobEditing ? jobs.offer : [],
+          responsibility: jobEditing ? jobs.responsibility : ["", "", ""],
+          requirement: jobEditing ? jobs.requirement : ["", "", ""],
+          offer: jobEditing ? jobs.offer : ["", "", ""],
           about: jobEditing ? jobs.about : "",
         }}
         validationSchema={JobSchema}
@@ -274,24 +280,26 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
             <FieldArray
               name="requirement"
               render={(arrayHelpers) => (
-                <ArrayWrapper>
-                  {values.requirement && values.requirement.length > 0 ? (
-                    values.requirement.map((requirement, index) => (
-                      <FieldArrayWrapper key={index}>
-                        <Field
-                          job
-                          name={`requirement.${index}.name`}
-                          word="Stanowisko"
-                          component={Input}
-                        />
-                        <DeleteButton
-                          onClick={() => arrayHelpers.remove(index)}
-                        />
-                      </FieldArrayWrapper>
-                    ))
-                  ) : (
-                    <></>
-                  )}
+                <BigWrapper>
+                  <ArrayWrapper>
+                    {values.requirement && values.requirement.length > 0 ? (
+                      values.requirement.map((requirement, index) => (
+                        <FieldArrayWrapper key={index}>
+                          <Field
+                            job
+                            name={`requirement.${index}.name`}
+                            word="Stanowisko"
+                            component={Input}
+                          />
+                          <DeleteButton
+                            onClick={() => arrayHelpers.remove(index)}
+                          />
+                        </FieldArrayWrapper>
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                  </ArrayWrapper>
                   <Button
                     type="button"
                     profile
@@ -299,7 +307,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                   >
                     Dodaj oferowanie
                   </Button>
-                </ArrayWrapper>
+                </BigWrapper>
               )}
             />
 
@@ -309,24 +317,27 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
             <FieldArray
               name="responsibility"
               render={(arrayHelpers) => (
-                <ArrayWrapper>
-                  {values.responsibility && values.responsibility.length > 0 ? (
-                    values.responsibility.map((responsibility, index) => (
-                      <FieldArrayWrapper key={index}>
-                        <Field
-                          job
-                          name={`responsibility.${index}`}
-                          word="zadania"
-                          component={Input}
-                        />
-                        <DeleteButton
-                          onClick={() => arrayHelpers.remove(index)}
-                        />
-                      </FieldArrayWrapper>
-                    ))
-                  ) : (
-                    <></>
-                  )}
+                <BigWrapper>
+                  <ArrayWrapper>
+                    {values.responsibility &&
+                    values.responsibility.length > 0 ? (
+                      values.responsibility.map((responsibility, index) => (
+                        <FieldArrayWrapper key={index}>
+                          <Field
+                            job
+                            name={`responsibility.${index}`}
+                            word="zadania"
+                            component={Input}
+                          />
+                          <DeleteButton
+                            onClick={() => arrayHelpers.remove(index)}
+                          />
+                        </FieldArrayWrapper>
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                  </ArrayWrapper>
                   <Button
                     type="button"
                     profile
@@ -334,34 +345,36 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                   >
                     Dodaj oferowanie
                   </Button>
-                </ArrayWrapper>
+                </BigWrapper>
               )}
             />
 
             <TextWrapper>
-              <Text>Oferujemy</Text>
+              <Text>co oferujemy</Text>
             </TextWrapper>
             <FieldArray
               name="offer"
               render={(arrayHelpers) => (
-                <ArrayWrapper>
-                  {values.offer && values.offer.length > 0 ? (
-                    values.offer.map((offer, index) => (
-                      <FieldArrayWrapper key={index}>
-                        <Field
-                          job
-                          name={`offer.${index}`}
-                          word="zadania"
-                          component={Input}
-                        />
-                        <DeleteButton
-                          onClick={() => arrayHelpers.remove(index)}
-                        />
-                      </FieldArrayWrapper>
-                    ))
-                  ) : (
-                    <></>
-                  )}
+                <BigWrapper>
+                  <ArrayWrapper>
+                    {values.offer && values.offer.length > 0 ? (
+                      values.offer.map((offer, index) => (
+                        <FieldArrayWrapper key={index}>
+                          <Field
+                            job
+                            name={`offer.${index}`}
+                            word="zadania"
+                            component={Input}
+                          />
+                          <DeleteButton
+                            onClick={() => arrayHelpers.remove(index)}
+                          />
+                        </FieldArrayWrapper>
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                  </ArrayWrapper>
                   <Button
                     type="button"
                     profile
@@ -369,37 +382,39 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                   >
                     Dodaj oferowanie
                   </Button>
-                </ArrayWrapper>
+                </BigWrapper>
               )}
             />
 
             <TextWrapper>
               <Text>O firmie/pracodawcy</Text>
             </TextWrapper>
-            <InputWrapper>
+          
               <Field
-                about
                 word="O firmie"
                 type="text"
                 name="about"
                 component={TextArea}
               />
-            </InputWrapper>
+           
             <SubmitButtonWrapper>
               <Button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Adding job" : null}
                 type="submit"
-              >
+                profile 
+                >
                 {jobEditing ? "Edytuj" : "Dodaj oferte"}
               </Button>
+              <MessegeWrapper>
+                <Message error show={error}>
+                  {error}
+                </Message>
+                <Message error show={error === false}>
+                  Oferta pracy została dodana
+                </Message>
+              </MessegeWrapper>
             </SubmitButtonWrapper>
-            <Message error show={error}>
-              {error}
-            </Message>
-            <Message error show={error === false}>
-              Job added
-            </Message>
           </Form>
         )}
       </Formik>
@@ -418,24 +433,60 @@ const Form = styled(FormFormik)`
   }
   @media (min-width: ${1280}px) {
     padding-left: 50px;
+    padding: 0 0 100px 50px;
   }
 `;
 
-
+const MessegeWrapper = styled.div`
+  position: absolute;
+  top: -20px;
+  width: 100%;
+`;
 
 const TextWrapper = styled.div``;
 
-const SubmitButtonWrapper = styled.div``;
-
-
-
-const FieldArrayWrapper = styled.div`
-display: flex;
-
+const SubmitButtonWrapper = styled.div`
+  overflow: hidden;
+  position: relative;
 `;
 
-const ArrayWrapper = styled.div``;
+const FieldArrayWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
 
+const ArrayWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 300px;
+  justify-content: center;
+  @media (min-width: ${768}px) {
+    grid-template-columns: 300px 300px;
+    gap: 0 10px;
+  }
+  @media (min-width: ${1024}px) {
+    gap: 0 20px;
+    justify-content: start;
+    grid-template-columns: 280px 280px;
+  }
+  @media (min-width: ${1440}px) {
+    grid-template-columns: 255px 255px 255px;
+  }
+`;
+const BigWrapper = styled.div`
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: ${1024}px) {
+    justify-content: flex-start;
+    align-items: flex-start;
+width: auto;
+max-width: none;
+  }
+`
 const mapStateToProps = ({ job }) => ({
   loading: job.loading,
   error: job.error,

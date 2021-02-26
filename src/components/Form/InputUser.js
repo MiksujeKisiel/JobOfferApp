@@ -15,7 +15,7 @@ const StyledInput = styled.input`
         props.job &&
         css`
       width: 100%;
-    padding: 9px 20px;
+    padding: 9px 10px;
     text-align: left;
     border: 0;
     outline: 0;
@@ -40,7 +40,7 @@ export const Input = ({ job, field, long, profile, form: { touched, errors }, ..
     <Group job={job} profile={profile} long={long}>
       <Label profile={profile}>{props.word}</Label>
       <StyledInput job={job}  profile={profile}  {...field} {...props}></StyledInput>
-      <Error show={errors[field.name] && touched[field.name]}>
+      <Error job={job} show={errors[field.name] && touched[field.name]}>
         {errors[field.name]}
       </Error>
     </Group>

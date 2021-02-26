@@ -122,31 +122,6 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   );
 };
 
-// const ActionButton = styled.button`
-//   border: none;
-//   background-color: #259dd2;
-//   padding: 15px 10px;
-//   margin: 5px 0 5px auto;
-//   color: white;
-//   display: block;
-//   outline: none;
-//   width: 200px;
-// `;
-
-// const FieldArrayWrapper = styled.div`
-//   display: flex;
-//   margin: 10px 0;
-// `;
-
-// const ArrayWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   margin: 20px 0;
-//   max-width: 700px;
-//   @media (min-width: ${768}px) {
-//     padding: 0;
-//   }
-// `;
 
 const mapStateToProps = ({ firebase, auth }) => ({
   firebase,

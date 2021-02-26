@@ -22,10 +22,8 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 20px;
-
   @media (min-width: ${768}px) {
     padding: 10px;
- 
   }
   @media (min-width: ${1024}px) {
     box-shadow: ${(props) =>
@@ -33,19 +31,20 @@ export const FormWrapper = styled.div`
         ? "6px 0 20px rgba(0, 0, 0, 0.75)"
         : " 6px 0 35px 0 rgba(0, 0, 0, 0.75)"};
     z-index: 2;
-    height: 100vh;
     padding: ${(props) => (props.profile ? "40px 0" : "10px 0")};
   }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 30px 0 0;
-  min-height: 700px;
+  height: 100vh;
   @media (min-width: ${768}px) {
-    min-height: 900px;
+    align-items: stretch;
+    justify-content: flex-start;
+    min-height: 800px;
     padding: 0;
   
   }
@@ -72,10 +71,10 @@ export const Error = styled.div`
   transform: translateY(${({ show }) => (show ? "20px" : "10px")});
   transition: all 0.1s;
   position: absolute;
-  bottom: 0;
+  bottom: ${({ job }) => (job ? "15px" : "0")};
   left: 0;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 12px;
 `;
 
 export const Group = styled.div`
@@ -101,8 +100,12 @@ export const Group = styled.div`
     margin: 5px 0;
     max-width: 300px;
     width: 100%;
-
   }
+  ${(props) =>
+    props.long &&
+    css`
+      max-width: none;
+    `}
     `}
 `;
 
