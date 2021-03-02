@@ -106,7 +106,7 @@ const UserProfiles = ({ users }) => {
   } else {
     content = (
       <>
-           {users && users.map((users) => <UserList user={users} userid={users.id} />)}
+           {users && users.map((users) => <UserList key={users.id} user={users} userid={users.id} />)}
       </>
     );
   }

@@ -170,10 +170,7 @@ const JobSchema = Yup.object().shape({
     .required("Musisz podać na jaki poziom rekrutujesz")
     .min(3, "Zbyt krótko")
     .max(15, "Zbyt długie"),
-  employmentType: Yup.string()
-    .required("Musisz podać sposób zatrudnienia")
-    .min(3, "Zbyt krótko")
-    .max(50, "Zbyt długie"),
+
   about: Yup.string()
     .required("Musisz opisać swoją firmę")
     .min(3, "Zbyt krótko")

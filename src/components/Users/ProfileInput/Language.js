@@ -53,7 +53,7 @@ const Language = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                         type="text"
                         name={`language.${index}.name`}
                         component={Select}
-                        defaultValue="A1"
+                      
                       >
                         <option defaultValue value="" disabled hidden>
                           Język

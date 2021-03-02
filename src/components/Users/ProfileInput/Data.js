@@ -55,6 +55,7 @@ const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
         phone: firebase.profile.phone,
         payment: firebase.profile.payment,
         profession: firebase.profile.profession,
+        userType: firebase.profile.userType
       }}
       validationSchema={ProfileSchema}
       onSubmit={async (values, { setSubmitting }) => {
