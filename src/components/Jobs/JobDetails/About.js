@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   background: white;
   width: 90%;
   box-shadow: 0 0 10px rgba(21, 21, 21, 0.3);
@@ -15,14 +15,18 @@ const Wrapper = styled.div`
     width: 100%;
   }
   .companyName {
-    width: 40%;
+    width: auto;
+    margin: 0 40px 30px 0;
   }
 `;
 
 const Company = styled.h2``;
 const Text = styled.p`
-  width: 60%;
-`;
+  width: 100%;
+  @media (min-width: ${600}px) {
+    width: 60%;
+  }
+  `;
 
 const About = ({ about, companyName }) => {
   if (about || companyName)

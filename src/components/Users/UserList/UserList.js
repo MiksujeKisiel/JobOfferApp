@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Suitcase } from "../../assets/svg/suitcase.svg";
-import { ReactComponent as Mail } from "../../assets/svg/mail.svg";
+import { ReactComponent as Suitcase } from "../../../assets/svg/suitcase.svg";
+import { ReactComponent as Mail } from "../../../assets/svg/mail.svg";
 import { Link } from "react-router-dom";
 
 

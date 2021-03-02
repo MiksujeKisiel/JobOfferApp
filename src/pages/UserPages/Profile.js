@@ -7,10 +7,11 @@ import Router from "../../components/UserSettings/Router";
 import TopText from "../../components/UserSettings/Text";
 import * as actions from "../../store/actions";
 import { connect } from "react-redux";
-import Experience from "../../components/Profile/Experience";
-import Language from "../../components/Profile/Language";
-import Data from "../../components/Profile/Data";
-import Show from "../../components/Profile/Show";
+import Experience from "../../components/Users/ProfileInput/Experience";
+import Language from "../../components/Users/ProfileInput/Language";
+import Data from "../../components/Users/ProfileInput/Data";
+import Show from "../../components/Users/ProfileInput/Show";
+import Skills from '../../components/Users/ProfileInput/Skills';
 
 const Wrapper = styled.div`
   justify-content: center;
@@ -116,6 +117,8 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
         <Experience />
         <BigText>Język</BigText>
         <Language />
+        <BigText>Umiejętności</BigText>
+        <Skills/>
         {loading ? <TopWrapper>Zapisywanie</TopWrapper> : ""}
       </Wrapper>
     </Router>

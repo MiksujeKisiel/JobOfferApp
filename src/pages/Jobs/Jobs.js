@@ -31,7 +31,7 @@ const Background = styled.div`
     position: absolute;
   }
   @media (min-width: ${1280}px) {
-    
+    height: 650px;
   }
 `;
 
@@ -40,10 +40,8 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   display: flex;
-  background: #F5F5F5;
-
+  background: #f5f5f5;
 `;
-
 
 const BigText = styled.p`
   font-size: 32px;
@@ -117,15 +115,14 @@ const Dashboard = ({ jobs }) => {
   return (
     <>
       <Background src={main}>
-      <BigText>Znajdź wymarzoną pracę IT</BigText>
+        <BigText>Znajdź wymarzoną pracę IT</BigText>
       </Background>
       <Wrapper>
-      <SmallWrapper>{content}</SmallWrapper>
+        <SmallWrapper>{content}</SmallWrapper>
       </Wrapper>
     </>
   );
 };
-
 
 const mapStateToProps = ({ firestore }) => {
   return {

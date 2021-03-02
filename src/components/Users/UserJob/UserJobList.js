@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { ReactComponent as JobType } from "../../assets/svg/jobtype.svg";
-import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
-import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
-import { ReactComponent as Suitcase } from "../../assets/svg/suitcase.svg";
-import { ReactComponent as Office } from "../../assets/svg/office.svg";
+import { ReactComponent as JobType } from "../../../assets/svg/jobtype.svg";
+import { ReactComponent as JobLevel } from "../../../assets/svg/joblvl.svg";
+import { ReactComponent as Marker } from "../../../assets/svg/marker.svg";
+import { ReactComponent as Suitcase } from "../../../assets/svg/suitcase.svg";
+import { ReactComponent as Office } from "../../../assets/svg/office.svg";
 
 import { Link } from "react-router-dom";
 

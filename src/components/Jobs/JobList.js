@@ -5,6 +5,7 @@ import { compose } from "redux";
 import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
 import { ReactComponent as Wallet } from "../../assets/svg/wallet.svg";
 import { Link } from "react-router-dom";
+import Icon from '../../assets/images/Icon.png'
 // import Attribute from "./Attribute";
 // import Attribute from "./Attribute";
 
@@ -13,7 +14,7 @@ const JobList = ({ jobs, id }) => {
 
   return (
     <Wrapper to={"job/" + id} key={id}>
-      <Image />
+      <Image src={Icon} />
       <TopWrapper>
         <Name>{name}</Name>
         <Company>{companyName}</Company>
@@ -31,6 +32,7 @@ const JobList = ({ jobs, id }) => {
     </Wrapper>
   );
 };
+
 
 const Wrapper = styled(Link)`
   display: flex;
@@ -55,13 +57,13 @@ const Wrapper = styled(Link)`
   }
   
 `;
-const Image = styled.div`
+const Image = styled.img`
   width: 50px;
   height: 40px;
-  background: blue;
+ 
   @media (min-width: ${1440}px) {
   width: 60px;
-  height: 50px;
+  height: 60px;
   }
 `;
 const Name = styled.p`
@@ -72,10 +74,10 @@ const Name = styled.p`
     font-size: 20px;
   }
   @media (min-width: ${1280}px) {
-  font-size: 22px;
+  font-size: 21px;
   }
   @media (min-width: ${1440}px) {
-  font-size: 24px;
+  font-size: 22px;
   }
 `;
 const Company = styled.p`

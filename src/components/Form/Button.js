@@ -25,7 +25,7 @@ const StyledButton = styled.button`
       border-radius: 3px;
       background: #1ab394;
       margin: 10px auto 0 auto;
-      max-width: 350px;
+      max-width: 200px;
       @media (min-width: ${768}px) {
         max-width: 200px;
         margin: 30px 0 0 0;

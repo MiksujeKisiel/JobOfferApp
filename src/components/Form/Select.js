@@ -28,6 +28,10 @@ const StyledSelect = styled.select`
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     margin-bottom: 14px;
+    &:focus {
+    border-bottom: #1b75bc 1px solid;
+    outline: none;
+  }
         `}
 `;
 

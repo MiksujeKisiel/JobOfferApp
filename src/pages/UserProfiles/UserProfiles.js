@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import Loader from "../../components/Loader/Loader";
-import UserList from "../../components/UserList/UserList";
+import UserList from "../../components/Users/UserList/UserList";
 import main from "../../assets/images/users.jpg";
 import { useFirestoreConnect } from 'react-redux-firebase'
 

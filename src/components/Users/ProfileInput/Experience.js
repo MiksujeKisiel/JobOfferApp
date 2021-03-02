@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { Formik, Field, FieldArray } from "formik";
 import * as Yup from "yup";
-import { Button, Input, Select, DeleteButton } from "../../components/Form";
+import { Button, Input, Select, DeleteButton } from "../../Form";
 import {
   ArrayWrapper,
   FieldArrayWrapper,
-} from "../../components/Form/FormStyles";
-import * as actions from "../../store/actions";
+} from "../../Form/FormStyles";
+import * as actions from "../../../store/actions";
 import { connect } from "react-redux";
 import { FormWrapper } from "./ProfileStyles";
 
@@ -58,7 +58,7 @@ const Experience = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
                       />
                       <Field
                         profile
-                        word="Rodzaj zatrudnienia"
+                        word="Zatrudnienie"
                         type="text"
                         name={`experience.${index}.type`}
                         component={Select}

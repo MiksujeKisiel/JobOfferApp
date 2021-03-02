@@ -41,7 +41,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   padding: 30px 0 0;
   height: 100vh;
-  @media (min-width: ${768}px) {
+  @media (min-width: ${1024}px) {
     align-items: stretch;
     justify-content: flex-start;
     min-height: 800px;
@@ -133,7 +133,7 @@ export const ActionButton = styled.button`
 
 export const FieldArrayWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 80px;
+  grid-template-columns: 1fr 1fr 60px;
   align-items: center;
   align-content: center;
   gap: 10px;

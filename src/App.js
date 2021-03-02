@@ -65,7 +65,6 @@ const App = ({ loggedIn, emailVerified }) => {
             component={UserDetails}
           />
         </Layout>
-
         <Redirect to="/" />
       </Switch>
     );

@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import Header from "../../components/JobDetails/Header";
-import Responsibilities from "../../components/JobDetails/Responsibilities";
-import Technologies from "../../components/JobDetails/Technologies";
-import About from "../../components/JobDetails/About";
-import Requirements from "../../components/JobDetails/Requirements";
-import UserJob from "../../components/JobDetails/UserJob";
+import Header from "../../components/Jobs/JobDetails/Header";
+import Responsibilities from "../../components/Jobs/JobDetails/Responsibilities";
+import Technologies from "../../components/Jobs/JobDetails/Technologies";
+import About from "../../components/Jobs/JobDetails/About";
+import Requirements from "../../components/Jobs/JobDetails/Requirements";
+import UserJob from "../../components/Jobs/JobDetails/UserJob";
 import details from '../../assets/images/details.jpg'
 const Background = styled.div`
   width: 100%;
@@ -58,7 +58,7 @@ const JobDetails = (props) => {
             timelapse={job.timelapse}
             employmentType={job.employmentType}
           />
-          <Technologies requirement={job.requirement} />
+          <Technologies offer={job.offer} />
           <Responsibilities responsibility={job.responsibility} />
           <Requirements requirement={job.requirement} />
           <About about={job.about} companyName={job.companyName} />
@@ -93,10 +93,15 @@ export default compose(
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   padding-top: 30px;
   position: relative;
   margin-top: -200px;
+  @media (min-width: ${768}px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
   .background {
     background-color: #40b4e5;
     width: 100%;
@@ -118,7 +123,5 @@ const ContentWrapper = styled.div`
   @media (min-width: ${768}px) {
     max-width: 850px;
   }
-  @media (min-width: ${1280}px) {
-    margin-right: 320px;
-  }
+ 
 `;

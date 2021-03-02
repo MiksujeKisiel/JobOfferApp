@@ -8,9 +8,9 @@ import {
 } from "formik";
 import * as Yup from "yup";
 import // DeleteButton,
-"../../components/Form";
+"../../../components/Form";
 // import { ArrayWrapper, FieldArrayWrapper, ActionButton } from '../../components/Form/FormStyles';
-import * as actions from "../../store/actions";
+import * as actions from "../../../store/actions";
 import { connect } from "react-redux";
 
 

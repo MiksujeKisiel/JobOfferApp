@@ -8,7 +8,7 @@ import {
   Experience,
   Languages,
   Skills,
-} from "../../components/UserDetails";
+} from "../../components/Users/UserDetails";
 import details from "../../assets/images/details.jpg";
 
 const Background = styled.div`

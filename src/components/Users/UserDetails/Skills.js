@@ -38,30 +38,14 @@ const Header = styled.p`
   margin-left: 40px;
 `;
 
-
-
-// const Skills = styled.p`
-//   background: #e7e9f6;
-//   border-radius: 15px;
-//   padding: 10px 15px;
-//   color: #1c1c1c;
-//   font-size: 14px;
-//   margin: 10px 0 0 5px;
-//   transition: all 0.3 ease-in;
-// `;
 export const Skills = ({ skills }) => {
   return (
     <Wrapper>
-     <Header>Umiejętności i technologie</Header>
+      <Header>Umiejętności i technologie</Header>
       <SmallWrapper>
-      {/* {skills.map((item, i) => {
-              return (
-                <ExperienceWrapper key={i} value={item}>
-                  <Text>{item.name}</Text> <SmallText>{item.type}</SmallText>
-                </ExperienceWrapper>
-              );
-            })} */}
-        <Text>React</Text> <Text>React</Text><Text>React</Text><Text>React</Text><Text>React</Text><Text>React</Text><Text>React</Text><Text>React</Text>
+        {skills.map((item, i) => {
+          return <Text>{item.name}</Text>;
+        })}
       </SmallWrapper>
     </Wrapper>
   );

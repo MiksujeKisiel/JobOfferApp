@@ -7,8 +7,8 @@ import {
   Input,
   Select,
   // DeleteButton,
-} from "../../components/Form";
-import * as actions from "../../store/actions";
+} from "../../../components/Form";
+import * as actions from "../../../store/actions";
 import { connect } from "react-redux";
 import { FormWrapper } from "./ProfileStyles";
 

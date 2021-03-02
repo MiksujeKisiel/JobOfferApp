@@ -65,11 +65,6 @@ export const Data = ({
           <span>{!location ? "Brak informacji" : location}</span>
         </Text>
       </SmallWrapper>
-      {/* <SmallWrapper>
-        <Text>
-          Numer telefonu: <span>{!phone ? "Brak informacji" : phone}</span>
-        </Text>
-      </SmallWrapper> */}
       <SmallWrapper>
         <Text>
           E-mail: <span>{!email ? "Brak informacji" : email}</span>

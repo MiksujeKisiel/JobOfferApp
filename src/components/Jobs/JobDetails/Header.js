@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
-import { ReactComponent as JobTime } from "../../assets/svg/jobtime.svg";
-import { ReactComponent as JobType } from "../../assets/svg/jobtype.svg";
-import { ReactComponent as JobLevel } from "../../assets/svg/joblvl.svg";
-import { ReactComponent as Money } from "../../assets/svg/money.svg";
-import { ReactComponent as Talk } from "../../assets/svg/talk.svg";
-import { ReactComponent as Office } from "../../assets/svg/office.svg";
+import { ReactComponent as Marker } from "../../../assets/svg/marker.svg";
+import { ReactComponent as JobTime } from "../../../assets/svg/jobtime.svg";
+import { ReactComponent as JobType } from "../../../assets/svg/jobtype.svg";
+import { ReactComponent as JobLevel } from "../../../assets/svg/joblvl.svg";
+import { ReactComponent as Money } from "../../../assets/svg/money.svg";
+import { ReactComponent as Talk } from "../../../assets/svg/talk.svg";
+import { ReactComponent as Office } from "../../../assets/svg/office.svg";
 
 const OfferHeader = styled.div`
   display: flex;
@@ -199,18 +199,17 @@ const Header = ({
             <span>{companyName}</span>
           </Title>
         </TopWrapper>
-          {!earnings ? null : (
-               <MoneyWrapper>
-               <SvgWrapper>
-                 <Money className="money" />
-               </SvgWrapper>
-               <div>
-                   <BigText>{earnings}</BigText>
-                   <MoneyText>brutto / mies.</MoneyText>
-                 </div>
-             </MoneyWrapper>
-  
-          )}
+        {!earnings ? null : (
+          <MoneyWrapper>
+            <SvgWrapper>
+              <Money className="money" />
+            </SvgWrapper>
+            <div>
+              <BigText>{earnings}</BigText>
+              <MoneyText>brutto / mies.</MoneyText>
+            </div>
+          </MoneyWrapper>
+        )}
       </GridWrapper>
       {!location ? null : (
         <InfoWrapper>

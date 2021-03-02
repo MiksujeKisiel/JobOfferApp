@@ -14,34 +14,11 @@ import styled from "styled-components";
 import * as Yup from "yup";
 import * as actions from "../../store/actions";
 import { ReactComponent as JobOffer } from "../../assets/svg/jobedit.svg";
-const JobSchema = Yup.object().shape({
-  name: Yup.string()
-    .required("name is required.")
-    .min(3, "Too short.")
-    .max(50, "Too long."),
-  company: Yup.string()
-    .required("company name is required")
-    .min(3, "Too short.")
-    .max(50, "Too long."),
-  earnings: Yup.string()
-    .required("earnings required.")
-    .min(3, "Too short.")
-    .max(50, "Too long."),
-  location: Yup.string()
-    .required("location is required")
-    .min(3, "Too short.")
-    .max(50, "Too long."),
-  employmentType: Yup.string()
-    .required("joblevel is required")
-    .min(3, "Too short.")
-    .max(50, "Too long."),
-});
 
 const Wrapper = styled.div`
   @media (min-width: ${1024}px) {
     display: flex;
     align-items: stretch;
- 
   }
 `;
 
@@ -123,7 +100,7 @@ const Text = styled.p`
   @media (min-width: ${768}px) {
     margin: 60px 0 30px;
   }
-    @media (min-width: ${1024}px) {
+  @media (min-width: ${1024}px) {
     margin: 100px 0 20px;
   }
 `;
@@ -156,6 +133,68 @@ const InputWrapper = styled.div`
   }
 `;
 
+const JobSchema = Yup.object().shape({
+  company: Yup.string()
+    .required("Musisz podać nazwe firmy")
+    .min(3, "Zbyt krótko")
+    .max(35, "Zbyt długie"),
+  employees: Yup.string()
+    .required("Musisz podać liczbe pracowników")
+    .min(3, "Zbyt krótko")
+    .max(50, "Zbyt długie"),
+  location: Yup.string()
+    .required("Musisz podać lokalizacje")
+    .min(3, "Zbyt krótko")
+    .max(50, "Zbyt długie"),
+  name: Yup.string()
+    .required("Musisz podać nazwę stanowiska")
+    .min(3, "Zbyt krótko")
+    .max(50, "Zbyt długie"),
+  earnings: Yup.string()
+    .required("Musisz podać zarobki")
+    .min(3, "Zbyt krótko")
+    .max(15, "Zbyt długie"),
+  earningsType: Yup.string()
+    .required("Musisz podać rodzaj wypłaty")
+    .min(3, "Zbyt krótko")
+    .max(20, "Zbyt długie"),
+  interview: Yup.string()
+    .required("Musisz podać miejsce rozmowy o prace")
+    .min(3, "Zbyt krótko")
+    .max(15, "Zbyt długie"),
+  timelapse: Yup.string()
+    .required("Musisz podać na jaki etat rekrutujesz")
+    .min(3, "Zbyt krótko")
+    .max(15, "Zbyt długie"),
+  level: Yup.string()
+    .required("Musisz podać na jaki poziom rekrutujesz")
+    .min(3, "Zbyt krótko")
+    .max(15, "Zbyt długie"),
+  employmentType: Yup.string()
+    .required("Musisz podać sposób zatrudnienia")
+    .min(3, "Zbyt krótko")
+    .max(50, "Zbyt długie"),
+  about: Yup.string()
+    .required("Musisz opisać swoją firmę")
+    .min(3, "Zbyt krótko")
+    .max(300, "Zbyt długie"),
+  requirement: Yup.array().of(
+    Yup.object().shape({
+      requirement: Yup.string().required("..."),
+    })
+  ),
+  offer: Yup.array().of(
+    Yup.object().shape({
+      offer: Yup.string().required("..."),
+    })
+  ),
+  responsibility: Yup.array().of(
+    Yup.object().shape({
+      responsibility: Yup.string().required("..."),
+    })
+    ),
+});
+
 const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
   return (
     <Wrapper>
@@ -164,12 +203,12 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
         <SmallWrapper>
           <Xd />
           <BigText>
-            {jobEditing
-              ? "Edytuj swoją ofertę pracy"
-              : "We’re Accepting applications!"}
+            {jobEditing ? "Edytuj swoją ofertę pracy" : "Dodaj ofertę pracy"}
           </BigText>
           <SmallText>
-            Fill the form, attach your latest CV and portfolio to get listed.
+            {jobEditing
+              ? "Edytuj swoją ofertę pracy jeśli musisz a jeśli nie musisz to nie edytuj"
+              : "Dodaj oferte pracy żeby znaleźć najbardziej wykwalifikowanych ludzi"}
           </SmallText>
         </SmallWrapper>
       </Sidebar>
@@ -179,21 +218,21 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
           company: jobEditing ? jobs.companyName : "",
           employees: jobEditing ? jobs.employees : "",
           earnings: jobEditing ? jobs.earnings : "",
-          earningsType: jobEditing ? jobs.earningsType : "",
+          earningsType: jobEditing ? jobs.earningsType : "Brutto / mies",
           location: jobEditing ? jobs.location : "",
           contract: jobEditing ? jobs.contract : "Umowa o pracę",
-          employmentType: jobEditing ? jobs.employmentType : "",
           interview: jobEditing ? jobs.interview : "Rozmowa o pracę",
           timelapse: jobEditing ? jobs.timelapse : "Pełny etat",
           level: jobEditing ? jobs.level : "Junior",
-          responsibility: jobEditing ? jobs.responsibility : ["", "", ""],
-          requirement: jobEditing ? jobs.requirement : ["", "", ""],
-          offer: jobEditing ? jobs.offer : ["", "", ""],
+          responsibility: jobEditing ? jobs.responsibility : [],
+          requirement: jobEditing ? jobs.requirement : [],
+          offer: jobEditing ? jobs.offer : [],
           about: jobEditing ? jobs.about : "",
         }}
         validationSchema={JobSchema}
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async (values, { resetForm, setSubmitting }) => {
           jobEditing ? await editJob(id, values) : await addJob(values);
+          jobEditing ? console.log("xd") : resetForm({});
           setSubmitting(false);
         }}
       >
@@ -232,7 +271,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
               </Field>
               <Field
                 job
-                word="Rozmowa o pracę"
+                word="Miejsce pracy"
                 name="interview"
                 component={Select}
               >
@@ -266,12 +305,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                 <option value="Senior">Senior</option>
                 <option value="Expert">Expert</option>
               </Field>
-              <Field
-                job
-                word="Posada"
-                name="employmentType"
-                component={Input}
-              />
+
             </InputWrapper>
             <TextWrapper>
               <Text>wymagania</Text>
@@ -287,10 +321,11 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                         <FieldArrayWrapper key={index}>
                           <Field
                             job
-                            name={`requirement.${index}.name`}
-                            word="Stanowisko"
+                            name={`requirement.${index}.requirement`}
+                            word="wymagania"
                             component={Input}
                           />
+
                           <DeleteButton
                             onClick={() => arrayHelpers.remove(index)}
                           />
@@ -325,7 +360,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                         <FieldArrayWrapper key={index}>
                           <Field
                             job
-                            name={`responsibility.${index}`}
+                            name={`responsibility.${index}.responsibility`}
                             word="zadania"
                             component={Input}
                           />
@@ -362,7 +397,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                         <FieldArrayWrapper key={index}>
                           <Field
                             job
-                            name={`offer.${index}`}
+                            name={`offer.${index}.offer`}
                             word="zadania"
                             component={Input}
                           />
@@ -389,21 +424,21 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
             <TextWrapper>
               <Text>O firmie/pracodawcy</Text>
             </TextWrapper>
-          
-              <Field
-                word="O firmie"
-                type="text"
-                name="about"
-                component={TextArea}
-              />
-           
+
+            <Field
+              word="O firmie"
+              type="text"
+              name="about"
+              component={TextArea}
+            />
+
             <SubmitButtonWrapper>
               <Button
                 disabled={!isValid || isSubmitting}
-                loading={loading ? "Adding job" : null}
+                loading={loading ? "..." : null}
                 type="submit"
-                profile 
-                >
+                profile
+              >
                 {jobEditing ? "Edytuj" : "Dodaj oferte"}
               </Button>
               <MessegeWrapper>
@@ -411,8 +446,11 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                   {error}
                 </Message>
                 <Message error show={error === false}>
-                  Oferta pracy została dodana
+                  {jobEditing
+                    ? "Oferta pracy została edytowana"
+                    : "Oferta pracy została dodana"}
                 </Message>
+                {/* {!isValid ? "hahaha" : null} */}
               </MessegeWrapper>
             </SubmitButtonWrapper>
           </Form>
@@ -439,15 +477,19 @@ const Form = styled(FormFormik)`
 
 const MessegeWrapper = styled.div`
   position: absolute;
-  top: -20px;
-  width: 100%;
+  top: -25px;
+  display: flex;
+  justify-content: flex-end;
+  width: 250px;
 `;
 
 const TextWrapper = styled.div``;
 
 const SubmitButtonWrapper = styled.div`
-  overflow: hidden;
+  margin: 30px 0;
   position: relative;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const FieldArrayWrapper = styled.div`
@@ -483,10 +525,10 @@ const BigWrapper = styled.div`
   @media (min-width: ${1024}px) {
     justify-content: flex-start;
     align-items: flex-start;
-width: auto;
-max-width: none;
+    width: auto;
+    max-width: none;
   }
-`
+`;
 const mapStateToProps = ({ job }) => ({
   loading: job.loading,
   error: job.error,

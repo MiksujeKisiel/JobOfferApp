@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Formik, Field, FieldArray} from "formik";
 import * as Yup from "yup";
-import { Button, Select, DeleteButton } from "../../components/Form";
+import { Button, Select, DeleteButton } from "../../../components/Form";
 import {
   ArrayWrapper,
   FieldArrayWrapper,
-} from "../../components/Form/FormStyles";
+} from "../../../components/Form/FormStyles";
 
-import * as actions from "../../store/actions";
+import * as actions from "../../../store/actions";
 import { connect } from "react-redux";
 import { FormWrapper } from "./ProfileStyles";
 

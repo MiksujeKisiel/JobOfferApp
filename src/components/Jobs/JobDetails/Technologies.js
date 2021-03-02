@@ -4,19 +4,21 @@ import { Wrapper, Header } from './JobDetailStyles';
 
 const Text = styled.p``;
 
-const Technologies = ({ requirement }) => {
-  const listItems = requirement
+const Technologies = ({ offer}) => {
+  const listItems = offer
     .slice(0)
-    .map((text) => <Technology>{text.length === 0 ? null : text}</Technology>);
-  if (requirement.length > 0)
+    .map((text) => <Technology key={text.offer}>{text.offer}</Technology>);
+  if (offer.length > 0)
     return (
       <Wrapper>
         <Header>Technologie, których używamy</Header>
         <Text>Wymagane</Text>
-        <SmallWrapper>{listItems}</SmallWrapper>
+        <SmallWrapper>
+          {listItems}
+        </SmallWrapper>
       </Wrapper>
     );
-  else if (requirement.length === 0) {
+  else if (offer.length === 0) {
     return null;
   }
 };

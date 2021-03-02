@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import UserJobList from "../../components/UserJob/UserJobList";
+import UserJobList from "../../components/Users/UserJob/UserJobList";
 import Loader from "../../components/Loader/Loader";
 import Router from "../../components/UserSettings/Router";
 import TopText from "../../components/UserSettings/Text";
