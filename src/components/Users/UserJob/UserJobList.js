@@ -14,13 +14,12 @@ import { Link } from "react-router-dom";
 const UserJobList = ({ jobs, loggedIn }) => {
   const {
     location,
-
     contract,
     companyName,
     name,
     userid,
   } = jobs;
-git init; git add .; git commit -m "Add new"; git push -u origin main
+
   if (userid === loggedIn) {
     return (
       <StyledLink to={"job/" + jobs.id}>
