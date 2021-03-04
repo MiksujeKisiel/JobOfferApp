@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { ReactComponent as JobType } from "../../../assets/svg/jobtype.svg";
-import { ReactComponent as JobLevel } from "../../../assets/svg/joblvl.svg";
+// import { ReactComponent as JobLevel } from "../../../assets/svg/joblvl.svg";
 import { ReactComponent as Marker } from "../../../assets/svg/marker.svg";
 import { ReactComponent as Suitcase } from "../../../assets/svg/suitcase.svg";
 import { ReactComponent as Office } from "../../../assets/svg/office.svg";
@@ -14,13 +14,13 @@ import { Link } from "react-router-dom";
 const UserJobList = ({ jobs, loggedIn }) => {
   const {
     location,
-    employmentType,
+
     contract,
     companyName,
     name,
     userid,
   } = jobs;
-
+git init; git add .; git commit -m "Add new"; git push -u origin main
   if (userid === loggedIn) {
     return (
       <StyledLink to={"job/" + jobs.id}>
@@ -44,10 +44,7 @@ const UserJobList = ({ jobs, loggedIn }) => {
               <JobType className="svg" />
               <AttributeText>{contract}</AttributeText>
             </SmallWrapper>
-            <SmallWrapper>
-              <JobLevel className="svg" />
-              <AttributeText>{employmentType}</AttributeText>
-            </SmallWrapper>
+     
           </AttributeLocationWrapper>
       
         </Wrapper>

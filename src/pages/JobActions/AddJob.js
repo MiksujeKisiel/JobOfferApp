@@ -170,11 +170,10 @@ const JobSchema = Yup.object().shape({
     .required("Musisz podać na jaki poziom rekrutujesz")
     .min(3, "Zbyt krótko")
     .max(15, "Zbyt długie"),
-
   about: Yup.string()
     .required("Musisz opisać swoją firmę")
     .min(3, "Zbyt krótko")
-    .max(300, "Zbyt długie"),
+    .max(2000, "Zbyt długie"),
   requirement: Yup.array().of(
     Yup.object().shape({
       requirement: Yup.string().required("..."),
@@ -189,7 +188,7 @@ const JobSchema = Yup.object().shape({
     Yup.object().shape({
       responsibility: Yup.string().required("..."),
     })
-    ),
+  ),
 });
 
 const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
@@ -218,25 +217,25 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
           earningsType: jobEditing ? jobs.earningsType : "Brutto / mies",
           location: jobEditing ? jobs.location : "",
           contract: jobEditing ? jobs.contract : "Umowa o pracę",
-          interview: jobEditing ? jobs.interview : "Rozmowa o pracę",
+          interview: jobEditing ? jobs.interview : "Zdalnie",
           timelapse: jobEditing ? jobs.timelapse : "Pełny etat",
           level: jobEditing ? jobs.level : "Junior",
-          responsibility: jobEditing ? jobs.responsibility : [],
-          requirement: jobEditing ? jobs.requirement : [],
-          offer: jobEditing ? jobs.offer : [],
+          responsibility: jobEditing ? jobs.responsibility : ["", "", ""],
+          requirement: jobEditing ? jobs.requirement : ["", "", ""],
+          offer: jobEditing ? jobs.offer : ["", "", ""],
           about: jobEditing ? jobs.about : "",
         }}
         validationSchema={JobSchema}
         onSubmit={async (values, { resetForm, setSubmitting }) => {
           jobEditing ? await editJob(id, values) : await addJob(values);
-          jobEditing ? console.log("xd") : resetForm({});
+          // jobEditing ? console.log("xd") : resetForm({});
           setSubmitting(false);
         }}
       >
         {({ isSubmitting, isValid, values }) => (
           <Form>
             <TextWrapper>
-              <Text>informacje o firmie</Text>
+              <Text>informacje o firmie*</Text>
             </TextWrapper>
             <InputWrapper>
               <Field job word="Nazwa firmy" name="company" component={Input} />
@@ -250,7 +249,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
             </InputWrapper>
 
             <TextWrapper>
-              <Text>informacje o stanowisku</Text>
+              <Text>informacje o stanowisku*</Text>
             </TextWrapper>
             <InputWrapper>
               <Field job word="Stanowisko" name="name" component={Input} />
@@ -302,10 +301,9 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                 <option value="Senior">Senior</option>
                 <option value="Expert">Expert</option>
               </Field>
-
             </InputWrapper>
             <TextWrapper>
-              <Text>wymagania</Text>
+              <Text>wymagania*</Text>
             </TextWrapper>
 
             <FieldArray
@@ -344,7 +342,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
             />
 
             <TextWrapper>
-              <Text>obowiązki</Text>
+              <Text>obowiązki*</Text>
             </TextWrapper>
             <FieldArray
               name="responsibility"
@@ -382,7 +380,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
             />
 
             <TextWrapper>
-              <Text>co oferujemy</Text>
+              <Text>co oferujemy*</Text>
             </TextWrapper>
             <FieldArray
               name="offer"
@@ -419,7 +417,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
             />
 
             <TextWrapper>
-              <Text>O firmie/pracodawcy</Text>
+              <Text>O firmie/pracodawcy*</Text>
             </TextWrapper>
 
             <Field

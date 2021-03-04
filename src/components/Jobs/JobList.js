@@ -10,7 +10,7 @@ import Icon from '../../assets/images/Icon.png'
 // import Attribute from "./Attribute";
 
 const JobList = ({ jobs, id }) => {
-  const { location, companyName, name, level, earnings } = jobs;
+  const { location, companyName, name, level, earnings, requirement } = jobs;
 
   return (
     <Wrapper to={"job/" + id} key={id}>
@@ -25,9 +25,12 @@ const JobList = ({ jobs, id }) => {
         <Marker className="svg" /> {location}
       </MidWrapper>
       <BottomWrapper>
-        <Attribute>{location}</Attribute>
-        <Attribute>{location}</Attribute>
-        <Attribute>{location}</Attribute>
+      {requirement.slice(0, 3).map((text) => (
+        <Attribute>{text.requirement}</Attribute>
+  ))}
+  
+
+  
       </BottomWrapper>
     </Wrapper>
   );
@@ -139,9 +142,9 @@ const MidWrapper = styled.div`
     .svg {
     width: 19px;
     height: 19px;
-    margin: 0 8px 0 40px;
+    margin: 0 8px 0 30px;
   }
-  font-size: 15px;
+  font-size: 14px;
   }
 `;
 

@@ -67,7 +67,8 @@ const SmallWrapper = styled.div`
   width: 100%;
   z-index: 50;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+
   justify-items: center;
   margin-top: -100px;
   padding-bottom: 100px;
