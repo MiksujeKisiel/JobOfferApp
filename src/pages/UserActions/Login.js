@@ -5,12 +5,14 @@ import * as Yup from "yup";
 import Logo from "../../components/Navbar/Logo";
 import { Form, FormWrapper, Wrapper, Text } from "../../components/Form/FormStyles";
 import { Message, Reference, Button, Input, BackgroundImage} from '../../components/Form';
-import loginimage from "../../assets/images/loginimage.jpg";
+import loginimage from "../../assets/images/loginimage-min.jpg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
+
+
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email("Zły e-mail")

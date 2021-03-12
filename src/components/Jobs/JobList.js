@@ -77,7 +77,7 @@ const Name = styled.p`
     font-size: 20px;
   }
   @media (min-width: ${1280}px) {
-  font-size: 21px;
+  font-size: 20px;
   }
   @media (min-width: ${1440}px) {
   font-size: 22px;
@@ -95,6 +95,7 @@ const Company = styled.p`
   font-size: 15px;
   }
 `;
+
 
 const Level = styled.p`
   background: #D1EFFC;

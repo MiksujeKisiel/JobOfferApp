@@ -9,7 +9,7 @@ import {
   Languages,
   Skills,
 } from "../../components/Users/UserDetails";
-import details from "../../assets/images/details.jpg";
+import details from "../../assets/images/details-min.jpg";
 
 const Background = styled.div`
   width: 100%;

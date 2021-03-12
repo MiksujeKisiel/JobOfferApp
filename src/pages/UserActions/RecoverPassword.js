@@ -4,7 +4,7 @@ import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import { Message, Button, Input, BackgroundImage} from '../../components/Form';
 import { FormWrapper, Form, Wrapper } from "../../components/Form/FormStyles";
-import forgetpasswords from "../../assets/images/forgetpasswords.jpg";
+import forgetpasswords from "../../assets/images/forgetpasswords-min.jpg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 

@@ -41,6 +41,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   padding: 30px 0 0;
   height: 100vh;
+  min-height: 800px;
   @media (min-width: ${1024}px) {
     align-items: stretch;
     justify-content: flex-start;

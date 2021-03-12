@@ -5,7 +5,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import JobList from "../../components/Jobs/JobList";
 import Loader from "../../components/Loader/Loader";
-import main from "../../assets/images/header.jpg";
+import main from "../../assets/images/header-min.jpg";
 
 const Background = styled.div`
   width: 100%;
@@ -79,12 +79,12 @@ const SmallWrapper = styled.div`
     padding: none;
   }
   @media (min-width: ${1024}px) {
-    grid-template-columns: 32% 32% 32%;
+    grid-template-columns: 45% 45%;
     margin-top: -100px;
   }
   @media (min-width: ${1280}px) {
-    grid-template-columns: 400px 400px 400px;
-    grid-gap: 10px 20px;
+    grid-template-columns: 410px 410px 410px;
+    grid-gap: 10px 10px;
   }
   @media (min-width: ${1440}px) {
     grid-template-columns: 450px 450px 450px;

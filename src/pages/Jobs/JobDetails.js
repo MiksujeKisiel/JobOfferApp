@@ -9,7 +9,7 @@ import Technologies from "../../components/Jobs/JobDetails/Technologies";
 import About from "../../components/Jobs/JobDetails/About";
 import Requirements from "../../components/Jobs/JobDetails/Requirements";
 import UserJob from "../../components/Jobs/JobDetails/UserJob";
-import details from '../../assets/images/details.jpg'
+import details from '../../assets/images/details-min.jpg'
 const Background = styled.div`
   width: 100%;
   height: 300px;

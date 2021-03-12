@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Formik, Field } from "formik";
-import register from "../../assets/images/register.jpg";
+import register from "../../assets/images/register-min.jpg";
 import {
   Message,
   Reference,
