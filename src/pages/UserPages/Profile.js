@@ -64,27 +64,6 @@ const TopWrapper = styled.div`
   z-index: 200;
 `;
 
-// const Name = styled.p`
-//   font-size: 20px;
-//   margin: 50px 0 0;
-//   font-weight: 200;
-// `;
-// const ProfileSchema = Yup.object().shape({
-//   firstName: Yup.string()
-//     .required("Your first name is required.")
-//     .min(3, "Too short.")
-//     .max(25, "Too long."),
-//   lastName: Yup.string()
-//     .required("Your last name is required.")
-//     .min(3, "Too short.")
-//     .max(25, "Too long."),
-//   language: Yup.array().of(
-//     Yup.object().shape({
-//       name: Yup.string().min(4, "too short").required("Required"), // these constraints take precedence
-//       type: Yup.string().min(1, "cmon").required("Required"), // these constraints take precedence
-//     })
-//   ),
-// });
 const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   useEffect(() => {
     return () => {
@@ -93,16 +72,7 @@ const Profile = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   }, [cleanUp]);
   if (!firebase.profile.isLoaded) return null;
 
-  // const ErrorMessage = ({ name }) => (
-  //   <Field
-  //     name={name}
-  //     render={({ form }) => {
-  //       const error = getIn(form.errors, name);
-  //       const touch = getIn(form.touched, name);
-  //       return touch && error ? error : null;
-  //     }}
-  //   />
-  // );
+
   return (
     <Router>
       <Wrapper>
