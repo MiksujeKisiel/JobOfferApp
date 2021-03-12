@@ -64,7 +64,7 @@ const UserJob = ({ loggedIn, userId, jobId }) => {
   }
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     loggedIn: state.firebase.auth.uid,
   };

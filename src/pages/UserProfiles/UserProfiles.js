@@ -4,12 +4,11 @@ import { connect } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import UserList from "../../components/Users/UserList/UserList";
 import main from "../../assets/images/users-min.jpg";
-import { useFirestoreConnect } from 'react-redux-firebase'
-
+import { useFirestoreConnect } from "react-redux-firebase";
 
 const Wrapper = styled.div`
   margin-top: -150px;
-   display: grid;
+  display: grid;
   width: 100%;
   justify-content: center;
   align-items: stretch;
@@ -23,7 +22,6 @@ const Wrapper = styled.div`
     grid-template-columns: 320px 320px;
     grid-gap: 20px 20px;
     padding: none;
-    
   }
   @media (min-width: ${1024}px) {
     grid-template-columns: 300px 300px 300px;
@@ -74,7 +72,7 @@ const Background = styled.div`
     content: "";
     position: absolute;
   }
-  ::before{
+  ::before {
     background: linear-gradient(360deg, #0f0b2e, rgba(34, 26, 90, 0) 80%);
     width: 100%;
     height: 100%;
@@ -87,14 +85,10 @@ const Background = styled.div`
 `;
 
 const UserProfiles = ({ users }) => {
-  
-  useFirestoreConnect([
-    { collection: 'users' }
-  ])
-
+  useFirestoreConnect([{ collection: "users" }]);
 
   let content;
-  
+
   if (!users) {
     content = <Loader />;
   } else if (users.length === 0) {
@@ -106,22 +100,22 @@ const UserProfiles = ({ users }) => {
   } else {
     content = (
       <>
-           {users && users.map((users) => <UserList key={users.id} user={users} userid={users.id} />)}
+        {users &&
+          users.map((users) => (
+            <UserList key={users.id} user={users} userid={users.id} />
+          ))}
       </>
     );
   }
   return (
     <>
-       <Background src={main}>
-       <BigText>Znajdź pracownika IT</BigText>
-       </Background>
-      <Wrapper>
-     {content}
-    </Wrapper>
+      <Background src={main}>
+        <BigText>Znajdź pracownika IT</BigText>
+      </Background>
+      <Wrapper>{content}</Wrapper>
     </>
   );
-}
-
+};
 
 const mapStateToProps = ({ firestore }) => {
   return {

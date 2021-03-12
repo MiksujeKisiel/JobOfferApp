@@ -7,7 +7,6 @@ import { ReactComponent as Wallet } from "../../assets/svg/wallet.svg";
 import { Link } from "react-router-dom";
 import Icon from "../../assets/images/Icon.png";
 
-
 const JobList = ({ jobs, id }) => {
   const { location, companyName, name, level, earnings, requirement } = jobs;
 

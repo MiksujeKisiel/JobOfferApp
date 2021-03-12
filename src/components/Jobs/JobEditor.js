@@ -21,12 +21,6 @@ const JobEditor = (props) => {
   return (
     <Wrapper>
       <AddJob jobEditing={true} jobs={job} id={jobId}/>
-      {/* <Control onClick={() => setisDeleting(true)}>delete</Control> */}
-      {/* <DeleteJob
-        jobs={jobId}
-        show={isDeleting}
-        close={() => setisDeleting(false)}
-      /> */}
     </Wrapper>
   );
 };
