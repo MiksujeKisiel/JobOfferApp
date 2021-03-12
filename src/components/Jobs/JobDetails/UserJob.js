@@ -44,7 +44,7 @@ margin: 10px 0;
 
 const UserJob = ({ loggedIn, userId, jobId }) => {
   const [isDeleting, setisDeleting] = useState(false);
-  console.log(jobId);
+
   if (userId === loggedIn)
     return (
       <Wrapper>

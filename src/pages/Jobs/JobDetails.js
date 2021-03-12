@@ -41,7 +41,7 @@ const Background = styled.div`
 const JobDetails = (props) => {
   const { job } = props;
   const { jobId } = props;
-  console.log(jobId)
+
   if (job) {
     return (
       <>

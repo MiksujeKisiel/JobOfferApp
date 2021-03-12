@@ -15,11 +15,7 @@ const Requirements = ({ requirement }) => {
     return (
       <Wrapper>
         <Header>Wymagania</Header>
-        <SmallWrapper>
-          
-          {listItems}
-        
-        </SmallWrapper>
+        <SmallWrapper>{listItems}</SmallWrapper>
       </Wrapper>
     );
   else if (requirement.length === 0) {

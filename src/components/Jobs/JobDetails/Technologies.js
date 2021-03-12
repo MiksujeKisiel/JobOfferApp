@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Wrapper, Header } from './JobDetailStyles';
+import { Wrapper, Header } from "./JobDetailStyles";
 
 const Text = styled.p``;
 
-const Technologies = ({ offer}) => {
+const Technologies = ({ offer }) => {
   const listItems = offer
     .slice(0)
     .map((text) => <Technology key={text.offer}>{text.offer}</Technology>);
@@ -13,9 +13,7 @@ const Technologies = ({ offer}) => {
       <Wrapper>
         <Header>Technologie, których używamy</Header>
         <Text>Wymagane</Text>
-        <SmallWrapper>
-          {listItems}
-        </SmallWrapper>
+        <SmallWrapper>{listItems}</SmallWrapper>
       </Wrapper>
     );
   else if (offer.length === 0) {
@@ -44,5 +42,3 @@ const Technology = styled.p`
   margin: 10px 0 0 5px;
   transition: all 0.3 ease-in;
 `;
-
-

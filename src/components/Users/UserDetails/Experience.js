@@ -51,7 +51,7 @@ const ExperienceWrapper = styled.div`
 `;
 
 export const Experience = ({ experience }) => {
-  console.log(experience);
+ 
   return (
     <Wrapper>
       <Header>Doświadczenie</Header>

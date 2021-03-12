@@ -53,7 +53,7 @@ border-bottom: 1px solid #deddda;
 `
 
 export const Languages = ({ language }) => {
-  console.log(language);
+
   return (
     <Wrapper>
   <Header>Języki</Header>   
