@@ -1,22 +1,15 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Navbar';
 
-// import Footer from '../components/Items/Footer/Footer';
 
-
-const Layout = ({children, loggedIn}) =>{
+const Layout = ({children}) =>{
     return(
         <>
-       <Navbar loggedIn={loggedIn}/>
-   
+       <Navbar />
        {children}
         </>
     )
 }
-
-
-
-
 
 export default Layout
 

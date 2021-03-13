@@ -1,10 +1,37 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { compose } from "redux";
-import { firestoreConnect } from "react-redux-firebase";
+import { useSelector } from "react-redux";
+import { useFirestoreConnect } from "react-redux-firebase";
 import DeleteJob from "../../../pages/JobActions/DeleteJob";
 import { Link } from "react-router-dom";
+
+const UserJob = ({ userId, jobId }) => {
+  useFirestoreConnect([{ collection: "jobs" }])
+
+  const loggedIn = useSelector((state) => state.firebase.auth.uid);
+  const [isDeleting, setisDeleting] = useState(false);
+
+  if (userId === loggedIn)
+    return (
+      <Wrapper>
+        <Control onClick={() => setisDeleting(true)}>Usuń oferte pracy</Control>
+        <DeleteJob
+          jobs={jobId}
+          show={isDeleting}
+          close={() => setisDeleting(false)}
+        />
+        <Link to={"/editjob/" + jobId}>
+          <Text>Edytuj oferte pracy</Text>
+        </Link>
+      </Wrapper>
+    );
+  else{
+    return null;
+  }
+ 
+};
+export default UserJob;
+
 const Wrapper = styled.div`
   z-index: 100;
   display: flex;
@@ -32,47 +59,13 @@ const Control = styled.p`
 `;
 const Text = styled.p`
 color: white;
-margin: 0 50px;
 padding: 10px;
 background-color: #1D71B8;
 border-radius: 10px;
-@media (min-width: ${768}px) {
-
-}
 margin: 10px 0;
+
 `
 
-const UserJob = ({ loggedIn, userId, jobId }) => {
-  const [isDeleting, setisDeleting] = useState(false);
 
-  if (userId === loggedIn)
-    return (
-      <Wrapper>
-        <Control onClick={() => setisDeleting(true)}>Usuń oferte pracy</Control>
-        <DeleteJob
-          jobs={jobId}
-          show={isDeleting}
-          close={() => setisDeleting(false)}
-        />
-        <Link to={"/editjob/" + jobId}>
-          <Text>Edytuj oferte pracy</Text>
-        </Link>
-      </Wrapper>
-    );
-  else{
-    return null;
-  }
-};
 
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: state.firebase.auth.uid,
-  };
-};
 
-const mapDispatchToProps = {};
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{ collection: "jobs" }])
-)(UserJob);

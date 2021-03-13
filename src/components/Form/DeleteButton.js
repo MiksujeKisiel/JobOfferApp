@@ -2,6 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { ReactComponent as TrashIcon } from "../../assets/svg/trash.svg";
 
+export const DeleteButton = ({job, onClick}) => {
+    return (
+        <ButtonWrapper job={job} onClick={onClick}>
+             <StyledIcon/>usuń 
+        </ButtonWrapper>
+    )
+}
+
 const StyledIcon = styled(TrashIcon)`
 width: 14px;
 height: 14px;
@@ -26,13 +34,3 @@ const ButtonWrapper = styled.div`
     margin-left: 20px;
   }
 `;
-
-
-export const DeleteButton = ({job, onClick}) => {
-    return (
-        <ButtonWrapper job={job} onClick={onClick}>
-             <StyledIcon/>usuń 
-        </ButtonWrapper>
-    )
-}
-

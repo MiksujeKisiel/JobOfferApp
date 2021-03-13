@@ -2,6 +2,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Backdrop = ({ opened, close }) => {
+  return <Wrapper onClick={close} opened={opened} />;
+};
+export default Backdrop;
+
 const Wrapper = styled.div`
   position: fixed;
   top: 0;
@@ -14,9 +19,3 @@ const Wrapper = styled.div`
   visibility: ${({ opened }) => (opened ? 'visible' : 'hidden')};
   transition: all 0.1s;
 `;
-
-const Backdrop = ({ opened, close }) => {
-  return <Wrapper onClick={close} opened={opened} />;
-};
-
-export default Backdrop;

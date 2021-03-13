@@ -2,12 +2,21 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
+const Option = ({ children, to, text, left }) => {
+  return (
+    <LinkWrapper to={to} left={left}>
+      {children}
+      <StyledLink left={left}>{text}</StyledLink>
+    </LinkWrapper>
+  );
+};
+export default Option;
+
 const StyledLink = styled.p`
   font-size: 14px;
   font-weight: 500;
   border-radius: 25px;
   font-family: "open sans";
-
   ${(props) =>
     props.left &&
     css`
@@ -58,13 +67,3 @@ const LinkWrapper = styled(Link)`
       `}
   }
 `;
-const Option = ({ children, to, text, left }) => {
-  return (
-    <LinkWrapper to={to} left={left}>
-      {children}
-      <StyledLink left={left}>{text}</StyledLink>
-    </LinkWrapper>
-  );
-};
-
-export default Option;

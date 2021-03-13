@@ -8,6 +8,83 @@ import { ReactComponent as Money } from "../../../assets/svg/money.svg";
 import { ReactComponent as Talk } from "../../../assets/svg/talk.svg";
 import { ReactComponent as Office } from "../../../assets/svg/office.svg";
 
+const Header = ({
+  name,
+  companyName,
+  earnings,
+  location,
+  interview,
+  contract,
+  timelapse,
+  employmentType,
+}) => {
+  return (
+    <OfferHeader>
+      <GridWrapper>
+        <Office className="office" />
+        <TopWrapper>
+          <Title company>
+            {name}
+            <span>{companyName}</span>
+          </Title>
+        </TopWrapper>
+        {!earnings ? null : (
+          <MoneyWrapper>
+            <SvgWrapper>
+              <Money className="money" />
+            </SvgWrapper>
+            <div>
+              <BigText>{earnings}</BigText>
+              <MoneyText>brutto / mies.</MoneyText>
+            </div>
+          </MoneyWrapper>
+        )}
+      </GridWrapper>
+      {!location ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <Marker className="svg" />
+          </SvgWrapper>
+          <Text>{location}</Text>
+        </InfoWrapper>
+      )}
+      {!interview ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <Talk className="svg" />
+          </SvgWrapper>
+          <Text>{interview}</Text>
+        </InfoWrapper>
+      )}
+      {!contract ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <JobType className="svg" />
+          </SvgWrapper>
+          <Text>{contract}</Text>
+        </InfoWrapper>
+      )}
+      {!timelapse ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <JobTime className="svg" />
+          </SvgWrapper>
+          <Text>{timelapse}</Text>
+        </InfoWrapper>
+      )}
+      {!employmentType ? null : (
+        <InfoWrapper>
+          <SvgWrapper>
+            <JobLevel className="svg" />
+          </SvgWrapper>
+          <Text>{employmentType}</Text>
+        </InfoWrapper>
+      )}
+    </OfferHeader>
+  );
+};
+export default Header;
+
 const OfferHeader = styled.div`
   display: flex;
   flex-direction: column;
@@ -178,81 +255,3 @@ const GridWrapper = styled.div`
     margin-bottom: 20px;
   }
 `;
-
-const Header = ({
-  name,
-  companyName,
-  earnings,
-  location,
-  interview,
-  contract,
-  timelapse,
-  employmentType,
-}) => {
-  return (
-    <OfferHeader>
-      <GridWrapper>
-        <Office className="office" />
-        <TopWrapper>
-          <Title company>
-            {name}
-            <span>{companyName}</span>
-          </Title>
-        </TopWrapper>
-        {!earnings ? null : (
-          <MoneyWrapper>
-            <SvgWrapper>
-              <Money className="money" />
-            </SvgWrapper>
-            <div>
-              <BigText>{earnings}</BigText>
-              <MoneyText>brutto / mies.</MoneyText>
-            </div>
-          </MoneyWrapper>
-        )}
-      </GridWrapper>
-      {!location ? null : (
-        <InfoWrapper>
-          <SvgWrapper>
-            <Marker className="svg" />
-          </SvgWrapper>
-          <Text>{location}</Text>
-        </InfoWrapper>
-      )}
-      {!interview ? null : (
-        <InfoWrapper>
-          <SvgWrapper>
-            <Talk className="svg" />
-          </SvgWrapper>
-          <Text>{interview}</Text>
-        </InfoWrapper>
-      )}
-      {!contract ? null : (
-        <InfoWrapper>
-          <SvgWrapper>
-            <JobType className="svg" />
-          </SvgWrapper>
-          <Text>{contract}</Text>
-        </InfoWrapper>
-      )}
-      {!timelapse ? null : (
-        <InfoWrapper>
-          <SvgWrapper>
-            <JobTime className="svg" />
-          </SvgWrapper>
-          <Text>{timelapse}</Text>
-        </InfoWrapper>
-      )}
-      {!employmentType ? null : (
-        <InfoWrapper>
-          <SvgWrapper>
-            <JobLevel className="svg" />
-          </SvgWrapper>
-          <Text>{employmentType}</Text>
-        </InfoWrapper>
-      )}
-    </OfferHeader>
-  );
-};
-
-export default Header;

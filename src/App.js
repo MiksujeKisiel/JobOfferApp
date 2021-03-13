@@ -34,8 +34,10 @@ import JobEditor from "./components/Jobs/JobEditor";
 import AddJob from "./pages/JobActions/AddJob";
 
 const App = ({ loggedIn, emailVerified }) => {
-  let routes;
 
+
+  
+  let routes;
   if (loggedIn && !emailVerified) {
     routes = (
       <Switch>

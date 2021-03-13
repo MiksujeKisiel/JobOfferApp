@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Formik, Field } from "formik";
 import register from "../../assets/images/register-min.jpg";
 import {
@@ -16,7 +16,7 @@ import {
   Text,
 } from "../../components/Form/FormStyles";
 import * as actions from "../../store/actions";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Logo from "../../components/Navbar/Logo";
 
 const LoginSchema = Yup.object().shape({
@@ -32,12 +32,14 @@ const LoginSchema = Yup.object().shape({
     .required("Musisz potwierdzić hasło"),
 });
 
-const Signup = ({ signUp, loading, error, cleanUp }) => {
-  useEffect(() => {
-    return () => {
-      cleanUp();
-    };
-  }, [cleanUp]);
+const Signup = () => {
+  const dispatch = useDispatch();
+
+  const [loading, error] = useSelector((state) => [
+    state.auth.loading,
+    state.auth.error,
+  ]);
+
   return (
     <Wrapper>
       <FormWrapper>
@@ -53,7 +55,7 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
           }}
           validationSchema={LoginSchema}
           onSubmit={async (values, { setSubmitting }) => {
-            await signUp(values);
+            await dispatch(actions.signUp(values));
             setSubmitting(false);
           }}
         >
@@ -65,7 +67,7 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
                 name="firstName"
                 component={Input}
               />
-                <Field
+              <Field
                 word="Nazwisko"
                 type="text"
                 name="lastName"
@@ -96,13 +98,14 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
               >
                 Zarejestruj się
               </Button>
+              <Message error show={error}>
+          {error}
+        </Message>
             </Form>
           )}
         </Formik>
         <Reference text="Masz konto?" link=" Zaloguj się" to="/login" />
-        <Message error show={error}>
-          {error}
-        </Message>
+      
       </FormWrapper>
       <BackgroundImage
         src={register}
@@ -113,14 +116,4 @@ const Signup = ({ signUp, loading, error, cleanUp }) => {
   );
 };
 
-const mapStateToProps = ({ auth }) => ({
-  loading: auth.loading,
-  error: auth.error,
-});
-
-const mapDispatchToProps = {
-  signUp: actions.signUp,
-  cleanUp: actions.clean,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default Signup;

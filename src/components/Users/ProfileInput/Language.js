@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Formik, Field, FieldArray} from "formik";
 import * as Yup from "yup";
 import { Button, Select, DeleteButton } from "../../../components/Form";
@@ -8,7 +8,7 @@ import {
 } from "../../../components/Form/FormStyles";
 
 import * as actions from "../../../store/actions";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { FormWrapper } from "./ProfileStyles";
 
 const ProfileSchema = Yup.object().shape({
@@ -19,13 +19,9 @@ const ProfileSchema = Yup.object().shape({
     })
   ),
 });
-const Language = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
-  useEffect(() => {
-    return () => {
-      cleanUp();
-    };
-  }, [cleanUp]);
-  if (!firebase.profile.isLoaded) return null;
+const Language = () => {
+  const dispatch = useDispatch();
+  const firebase = useSelector((state) => state.firebase);
 
   return (
     <Formik
@@ -34,7 +30,7 @@ const Language = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
       }}
       validationSchema={ProfileSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        await editProfileTwo(values);
+        await dispatch(actions.editLanguage(values));
         console.log(values);
         setSubmitting(false);
       }}
@@ -112,15 +108,5 @@ const Language = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   );
 };
 
-const mapStateToProps = ({ firebase, auth }) => ({
-  firebase,
-  loading: auth.profileEdit.loading,
-  error: auth.profileEdit.error,
-});
 
-const mapDispatchToProps = {
-  editProfileTwo: actions.editLanguage,
-  cleanUp: actions.clean,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Language);
+export default Language;

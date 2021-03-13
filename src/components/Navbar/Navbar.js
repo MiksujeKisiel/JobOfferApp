@@ -2,6 +2,21 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Menu from './Menu';
 
+const Navbar = ({dashboard}) => {
+  const [open, setOpen] = useState(false)
+  return (
+    <Nav dashboard={dashboard}>
+      <StyledBurger open={open} onClick={() => setOpen(!open)}>
+        <div />
+        <div />
+        <div />
+      </StyledBurger>
+      <Menu  open={open}/>
+    </Nav>
+  )
+}
+export default Navbar
+
 const StyledBurger = styled.div`
   width: 3rem;
   height: 2rem;
@@ -47,24 +62,3 @@ const Nav = styled.nav`
     display: ${({ dashboard }) => dashboard ? 'none' : 'flex'};
   }
 `;
-
-
-const Navbar = ({loggedIn, dashboard}) => {
-  const [open, setOpen] = useState(false)
-  
-  return (
-    <Nav dashboard={dashboard}>
-      <StyledBurger open={open} onClick={() => setOpen(!open)}>
-        <div />
-        <div />
-        <div />
-      </StyledBurger>
-      <Menu loggedIn={loggedIn} open={open}/>
-    </Nav>
-  )
-
-}
-
-
-
-export default Navbar

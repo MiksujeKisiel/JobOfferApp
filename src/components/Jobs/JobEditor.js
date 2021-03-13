@@ -1,29 +1,20 @@
-import React
-// , { useState }
- from "react";
-import styled from "styled-components";
+import React from "react";
 import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
+import { useFirestoreConnect } from "react-redux-firebase";
 import AddJob from "../../pages/JobActions/AddJob";
-// import DeleteJob from "../../pages/JobActions/DeleteJob";
-
-const Wrapper = styled.div``;
-// const Control = styled.p`
-//   cursor: pointer;
-//   font-size: 40px;
-// `;
 
 const JobEditor = (props) => {
+  useFirestoreConnect([{ collection: "jobs" }])
   const { job } = props;
   const { jobId } = props;
-  // const [isDeleting, setisDeleting] = useState(false);
   return (
-    <Wrapper>
+    <div>
       <AddJob jobEditing={true} jobs={job} id={jobId}/>
-    </Wrapper>
+    </div>
   );
 };
+
+
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const jobs = state.firestore.data.jobs;
@@ -35,9 +26,5 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = {};
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{ collection: "jobs" }])
-)(JobEditor);
+export default connect(mapStateToProps)(JobEditor);

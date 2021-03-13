@@ -1,17 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
+import { useSelector } from "react-redux";
+import { useFirestoreConnect } from "react-redux-firebase";
 import { ReactComponent as JobType } from "../../../assets/svg/jobtype.svg";
-// import { ReactComponent as JobLevel } from "../../../assets/svg/joblvl.svg";
 import { ReactComponent as Marker } from "../../../assets/svg/marker.svg";
 import { ReactComponent as Suitcase } from "../../../assets/svg/suitcase.svg";
 import { ReactComponent as Office } from "../../../assets/svg/office.svg";
 
 import { Link } from "react-router-dom";
 
-const UserJobList = ({ jobs, loggedIn }) => {
+const UserJobList = ({ jobs }) => {
+  useFirestoreConnect([{ collection: "jobs" }]);
+  const loggedIn = useSelector((state) => state.firebase.auth.uid);
+
   const {
     location,
     contract,
@@ -133,19 +134,6 @@ const SmallWrapper = styled.div`
     margin: 5px 20px 5px 0;
   }
 `;
-// const DateWrapper = styled.div`
-//   margin-top: 10px;
-//   width: 100%;
-//   @media (min-width: ${768}px) {
-//     padding-left: 90px;
-//     border-top: 1px solid #f1f1f1;
-//   }
-// `;
-// const Date = styled.p`
-//   font-size: 14px;
-//   margin-top: 15px;
-// `;
-
 
 const Wrapper = styled.div`
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 15px;
@@ -174,15 +162,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: state.firebase.auth.uid,
-  };
-};
 
-const mapDispatchToProps = {};
+ 
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{ collection: "jobs" }])
-)(UserJobList);
+export default UserJobList;

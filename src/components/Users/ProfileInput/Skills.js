@@ -2,9 +2,8 @@ import React from "react";
 import { Formik, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 import { Button, DeleteButton, Input } from "../../Form";
-import {} from "../../Form/FormStyles";
 import * as actions from "../../../store/actions";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FormWrapper } from "./ProfileStyles";
 import styled from "styled-components";
 
@@ -25,10 +24,11 @@ const ArrayWrapper = styled.div`
   }
   @media (min-width: ${1440}px) {
     grid-template-columns: 270px 270px 270px;
-  
+
     @media (min-width: ${1600}px) {
-    grid-template-columns: 285px 285px 285px;
-  }}
+      grid-template-columns: 285px 285px 285px;
+    }
+  }
 `;
 const FieldArrayWrapper = styled.div`
   display: flex;
@@ -37,14 +37,11 @@ const FieldArrayWrapper = styled.div`
   width: 100%;
 `;
 
-const ProfileSchema = Yup.object().shape({
-  skills: Yup.array().of(
-    Yup.object().shape({
-      name: Yup.string().min(4, "too short").required("Required"),
-    })
-  ),
-});
-const Skills = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
+
+const Skills = () => {
+  const dispatch = useDispatch();
+  const firebase = useSelector((state) => state.firebase);
+  
   return (
     <Formik
       initialValues={{
@@ -52,7 +49,7 @@ const Skills = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
       }}
       validationSchema={ProfileSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        await editProfileTwo(values);
+        await dispatch(actions.editSkills(values));
         console.log(values);
         setSubmitting(false);
       }}
@@ -96,15 +93,12 @@ const Skills = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   );
 };
 
-const mapStateToProps = ({ firebase, auth }) => ({
-  firebase,
-  loading: auth.profileEdit.loading,
-  error: auth.profileEdit.error,
+const ProfileSchema = Yup.object().shape({
+  skills: Yup.array().of(
+    Yup.object().shape({
+      name: Yup.string().min(4, "too short").required("Required"),
+    })
+  ),
 });
 
-const mapDispatchToProps = {
-  editProfileTwo: actions.editSkills,
-  cleanUp: actions.clean,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Skills);
+export default Skills;

@@ -1,6 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
+export const Message = ({ children, error, success, show }) => {
+  return (
+    <Wrapper>
+      <Text error={error} success={success} show={show}>
+        {children}
+      </Text>
+    </Wrapper>
+  );
+};
+
 const Wrapper = styled.div`
   position: absolute;
   bottom: -30px;
@@ -19,13 +29,3 @@ const Text = styled.p`
   text-align: center;
   transition: all 0.3s;
 `;
-
-export const Message = ({ children, error, success, show }) => {
-  return (
-    <Wrapper>
-      <Text error={error} success={success} show={show}>
-        {children}
-      </Text>
-    </Wrapper>
-  );
-};

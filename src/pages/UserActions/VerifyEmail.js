@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import * as actions from "../../store/actions";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Message, Button } from "../../components/Form";
 import { NavLink } from "react-router-dom";
+
 const Wrapper = styled.div`
   height: calc(100vh - 200px);
   display: flex;
@@ -32,12 +33,20 @@ const Text = styled.p`
   color: green;
 `;
 
-const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
+const VerifyEmail = () => {
   useEffect(() => {
     return () => {
-      cleanUp();
+      dispatch(actions.clean);
     };
-  }, [cleanUp]);
+  });
+
+  const dispatch = useDispatch();
+
+  const [loading, error] = useSelector((state) => [
+    state.auth.verifyEmail.loading,
+    state.auth.verifyEmail.error,
+  ]);
+
   return (
     <Wrapper>
       <SmallWrapper>
@@ -46,7 +55,7 @@ const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
           profile
           disabled={loading}
           loading={loading ? "Wysyłanie maila" : null}
-          onClick={() => sendVerification()}
+          onClick={() => dispatch(actions.verifyEmail)}
         >
           Wyślij ponowanie
         </Button>
@@ -63,14 +72,4 @@ const VerifyEmail = ({ sendVerification, error, loading, cleanUp }) => {
   );
 };
 
-const mapStateToProps = ({ auth }) => ({
-  loading: auth.verifyEmail.loading,
-  error: auth.verifyEmail.error,
-});
-
-const mapDispatchToProps = {
-  sendVerification: actions.verifyEmail,
-  cleanUp: actions.clean,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(VerifyEmail);
+export default VerifyEmail;

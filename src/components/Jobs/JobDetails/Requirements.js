@@ -10,7 +10,6 @@ const Requirements = ({ requirement }) => {
       <Done className="svg" />
     </Attribute>
   ));
-
   if (requirement.length > 0)
     return (
       <Wrapper>

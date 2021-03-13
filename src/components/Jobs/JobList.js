@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
+import { useFirestoreConnect } from "react-redux-firebase";
 import { ReactComponent as Marker } from "../../assets/svg/marker.svg";
 import { ReactComponent as Wallet } from "../../assets/svg/wallet.svg";
 import { Link } from "react-router-dom";
 import Icon from "../../assets/images/Icon.png";
 
 const JobList = ({ jobs, id }) => {
-  const { location, companyName, name, level, earnings, requirement } = jobs;
+  useFirestoreConnect([{ collection: "jobs" }])
 
+  const { location, companyName, name, level, earnings, requirement } = jobs;
   return (
     <Wrapper to={"job/" + id} key={id}>
       <Image src={Icon} />
@@ -30,6 +30,7 @@ const JobList = ({ jobs, id }) => {
     </Wrapper>
   );
 };
+export default JobList;
 
 const Wrapper = styled(Link)`
   display: flex;
@@ -166,4 +167,3 @@ const Attribute = styled.p`
   }
 `;
 
-export default compose(firestoreConnect([{ collection: "jobs" }]))(JobList);

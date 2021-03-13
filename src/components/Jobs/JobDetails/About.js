@@ -1,6 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
+const About = ({ about, companyName }) => {
+  if (about || companyName)
+    return (
+      <Wrapper>
+        <div className="companyName">
+          <Company>{companyName}</Company>
+        </div>
+        <Text>{about}</Text>
+      </Wrapper>
+    );
+  else if (!about || !companyName) {
+    return null;
+  }
+};
+export default About;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -27,20 +43,3 @@ const Text = styled.p`
     width: 60%;
   }
   `;
-
-const About = ({ about, companyName }) => {
-  if (about || companyName)
-    return (
-      <Wrapper>
-        <div className="companyName">
-          <Company>{companyName}</Company>
-        </div>
-        <Text>{about}</Text>
-      </Wrapper>
-    );
-  else if (!about || !companyName) {
-    return null;
-  }
-};
-
-export default About;

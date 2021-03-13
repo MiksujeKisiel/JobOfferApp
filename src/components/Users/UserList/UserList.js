@@ -5,6 +5,40 @@ import { ReactComponent as Mail } from "../../../assets/svg/mail.svg";
 import { Link } from "react-router-dom";
 
 
+const UserList = ({ user, userid }) => {
+  const { firstName, lastName, userType, profession, email, show } = user;
+  if (show === false) {
+    return null;
+  } else {
+    return (
+      <Wrapper to={"user-profile-details/" + userid}>
+        <SmallWrapper name>
+          <TopText>
+            {firstName} {lastName}
+          </TopText>
+        </SmallWrapper>
+        {!userType ? (
+          <UserType>Brak informacji</UserType>
+        ) : (
+          <UserType>{userType}</UserType>
+        )}
+        {!profession ? null : (
+          <SmallWrapper>
+            <Suitcase className="svg" /> <Text>{profession}</Text>
+          </SmallWrapper>
+        )}
+        {!email ? null : (
+          <SmallWrapper>
+            <Mail className="svg" /> <Text>{email}</Text>
+          </SmallWrapper>
+        )}
+      </Wrapper>
+    );
+  }
+};
+
+export default UserList;
+
 const Wrapper = styled(Link)`
   background: white;
   display: flex;
@@ -12,7 +46,6 @@ const Wrapper = styled(Link)`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  
   padding: 20px 0 20px 20px;
   border-radius: 20px;
   border: 1px solid #ededed;
@@ -52,26 +85,4 @@ const UserType = styled.p`
   font-weight: 500;
 `;
 
-const UserList = ({ user, userid }) => {
 
-  const { firstName, lastName, userType, profession, email, show } = user
-
-  if (show === false) {
-    return null;
-  } else {
-    return (
-      <Wrapper to={"user-profile-details/" + userid}>
-        <SmallWrapper name>
-          <TopText>
-            {firstName} {lastName}
-          </TopText>
-        </SmallWrapper>
-          {!userType ? <UserType>Brak informacji</UserType> : <UserType>{userType}</UserType>}
-          {!profession ? null : <SmallWrapper><Suitcase className="svg" /> <Text>{profession}</Text></SmallWrapper>}
-          {!email ? null : <SmallWrapper><Mail className="svg" /> <Text>{email}</Text></SmallWrapper> }
-      </Wrapper>
-    );
-  }
-};
-
-export default UserList;

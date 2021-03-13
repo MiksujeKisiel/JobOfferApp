@@ -1,6 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
+
+export const BackgroundImage = ({ src, bigText, text }) => {
+  return (
+    <Wrapper src={src}>
+      <TextWrapper>
+        <BigText>{bigText}</BigText>
+        <Text>{text}</Text>
+      </TextWrapper>
+      <StyledLink to="/">Strona główna </StyledLink>
+    </Wrapper>
+  );
+};
+
 const Wrapper = styled.div`
   display: none;
   @media (min-width: ${1024}px) {
@@ -58,16 +71,3 @@ const StyledLink = styled(Link)`
   margin-left: 150px;
   position: absolute;
 `;
-export const BackgroundImage = ({ src, bigText, text }) => {
-  return (
-    <Wrapper src={src}>
-      <TextWrapper>
-        <BigText>{bigText}</BigText>
-        <Text>{text}</Text>
-      </TextWrapper>
-      <StyledLink to="/">Strona główna </StyledLink>
-    </Wrapper>
-  );
-};
-
-

@@ -1,39 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
-import { connect } from "react-redux";
+import { useFirestoreConnect } from "react-redux-firebase";
+import { useSelector } from "react-redux";
 import JobList from "../../components/Jobs/JobList";
 import Loader from "../../components/Loader/Loader";
 import main from "../../assets/images/header-min.jpg";
-
-const Background = styled.div`
-  width: 100%;
-  height: 500px;
-  display: flex;
-  background-image: url(${({ src }) => src});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  ::after {
-    background: linear-gradient(180deg, #0f0b2e, rgba(34, 26, 90, 0) 80%);
-    width: 100%;
-    height: 100%;
-    content: "";
-    position: absolute;
-  }
-  ::before{
-    background: linear-gradient(360deg, #0f0b2e, rgba(34, 26, 90, 0) 80%);
-    width: 100%;
-    height: 100%;
-    content: "";
-    position: absolute;
-  }
-  @media (min-width: ${1280}px) {
-    height: 650px;
-  }
-`;
+import { Background } from "../../components/Background";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -92,7 +64,10 @@ const SmallWrapper = styled.div`
   }
 `;
 
-const Dashboard = ({ jobs }) => {
+const Dashboard = () => {
+  useFirestoreConnect([{ collection: "jobs" }]);
+  const jobs = useSelector((state) => state.firestore.ordered.jobs);
+
   let content;
   if (!jobs) {
     content = <Loader />;
@@ -112,7 +87,6 @@ const Dashboard = ({ jobs }) => {
       </>
     );
   }
-
   return (
     <>
       <Background src={main}>
@@ -125,15 +99,4 @@ const Dashboard = ({ jobs }) => {
   );
 };
 
-const mapStateToProps = ({ firestore }) => {
-  return {
-    jobs: firestore.ordered.jobs,
-  };
-};
-
-const mapDispatchToProps = {};
-
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{ collection: "jobs" }])
-)(Dashboard);
+export default Dashboard;

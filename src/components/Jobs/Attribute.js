@@ -1,6 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
+const Attribute = ({ children, text }) => {
+  if (text.length === 0) return null;
+  else{
+    return(
+      <Wrapper>
+      {children}
+      <Text>{text}</Text>
+    </Wrapper>
+    )
+  }
+};
+export default Attribute;
+
 const Wrapper = styled.li`
   display: flex;
   align-items: center;
@@ -13,17 +26,3 @@ const Wrapper = styled.li`
 const Text = styled.p`
   font-size: 13px;
 `;
-
-const Attribute = ({ children, text }) => {
-  if (text.length === 0) return null;
-  else{
-    return(
-      <Wrapper>
-      {children}
-      <Text>{text}</Text>
-    </Wrapper>
-    )
-  }
-};
-
-export default Attribute;

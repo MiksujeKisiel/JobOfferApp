@@ -1,7 +1,23 @@
 import React from "react";
-import styled, { css }from "styled-components";
+import styled, { css } from "styled-components";
 import { ReactComponent as account } from "../../../assets/svg/account.svg";
-import { connect } from 'react-redux'
+import { useSelector } from "react-redux";
+
+const AccountMenu = ({ left }) => {
+  const firebase = useSelector((state) => state.firebase);
+  return (
+    <Wrapper left={left}>
+      <Account left={left} />
+      <div>
+        <BigText left={left}>
+          {firebase.profile.firstName} {firebase.profile.lastName}
+        </BigText>
+        <Text left={left}>{firebase.auth.email}</Text>
+      </div>
+    </Wrapper>
+  );
+};
+export default AccountMenu;
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,11 +27,11 @@ const Wrapper = styled.div`
   margin-bottom: 5px;
   align-items: center;
   ${(props) =>
-        props.left &&
-        css`
-         flex-direction: column;
-         border: none;
-        `}
+    props.left &&
+    css`
+      flex-direction: column;
+      border: none;
+    `}
   .div {
     display: flex;
     flex-direction: column;
@@ -23,56 +39,38 @@ const Wrapper = styled.div`
 `;
 
 const Account = styled(account)`
-    width: 40px;
-    height: 40px;
-    display: block;
-    margin: 0 20px;
-    ${(props) =>
-        props.left &&
-        css`
-          fill: white;
-          width: 100px;
-         height: 100px;
-        `}
-`
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 20px;
+  ${(props) =>
+    props.left &&
+    css`
+      fill: white;
+      width: 100px;
+      height: 100px;
+    `}
+`;
 
 const Text = styled.p`
   font-size: 15px;
   color: rgba(0, 0, 0, 0.56);
   ${(props) =>
-        props.left &&
-        css`
-          display: none;
-        `}
+    props.left &&
+    css`
+      display: none;
+    `}
 `;
 const BigText = styled.p`
   font-size: 24px;
   max-width: 250px;
   font-weight: 300;
   ${(props) =>
-        props.left &&
-        css`
-          color: white;
-          font-size: 20px;
-          margin: 10px 0 0;
-        `}
+    props.left &&
+    css`
+      color: white;
+      font-size: 20px;
+      margin: 10px 0 0;
+    `}
 `;
-
-const AccountMenu = ({ firebase, left}) => {
-  return (
-    <Wrapper left={left}>
-      <Account left={left}/>
-      <div>
-        <BigText left={left} >{firebase.profile.firstName} {firebase.profile.lastName}</BigText>
-        <Text left={left} >{firebase.auth.email}</Text>
-      </div>
-    </Wrapper>
-  );
-};
-
-const mapStateToProps = ({ firebase }) => ({
-  firebase
-});
-
-export default connect(mapStateToProps)(AccountMenu);
 

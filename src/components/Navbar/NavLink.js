@@ -2,6 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink as Link } from "react-router-dom";
 
+const NavLink = ({ to, text, user, signup, offer }) => {
+  return (
+    <Wrapper>
+      <StyledLink
+        user={user}
+        signup={signup}
+        offer={offer}
+        activeClassName="active"
+        to={to}>
+        {text}
+      </StyledLink>
+    </Wrapper>
+  );
+};
+export default NavLink;
+
 const StyledLink = styled(Link)`
   color: yellow;
   font-size: 20px;
@@ -29,20 +45,3 @@ const Wrapper = styled.li`
   justify-content: center;
   align-items: center;
 `;
-
-const NavLink = ({ to, text, user, signup, offer }) => {
-  return (
-    <Wrapper>
-      <StyledLink
-        user={user}
-        signup={signup}
-        offer={offer}
-        activeClassName="active"
-        to={to}>
-        {text}
-      </StyledLink>
-    </Wrapper>
-  );
-};
-
-export default NavLink;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Formik, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 import { Button, Input, Select, DeleteButton } from "../../Form";
@@ -7,18 +7,13 @@ import {
   FieldArrayWrapper,
 } from "../../Form/FormStyles";
 import * as actions from "../../../store/actions";
-import { connect } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { FormWrapper } from "./ProfileStyles";
 
 const ProfileSchema = Yup.object().shape({});
-const Experience = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
-  useEffect(() => {
-    return () => {
-      cleanUp();
-    };
-  }, [cleanUp]);
-  if (!firebase.profile.isLoaded) return null;
-
+const Experience = () => {
+  const dispatch = useDispatch();
+  const firebase = useSelector((state) => state.firebase);
 
   return (
     <Formik
@@ -27,7 +22,7 @@ const Experience = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
       }}
       validationSchema={ProfileSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        await editProfileTwo(values);
+        await dispatch(actions.editExperience(values));
         console.log(values);
         setSubmitting(false);
       }}
@@ -92,15 +87,5 @@ const Experience = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   );
 };
 
-const mapStateToProps = ({ firebase, auth }) => ({
-  firebase,
-  loading: auth.profileEdit.loading,
-  error: auth.profileEdit.error,
-});
 
-const mapDispatchToProps = {
-  editProfileTwo: actions.editExperience,
-  cleanUp: actions.clean,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Experience);
+export default Experience;

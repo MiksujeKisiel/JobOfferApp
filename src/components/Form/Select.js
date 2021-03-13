@@ -2,6 +2,20 @@ import React from "react";
 import styled,{ css} from "styled-components";
 import { Error, Group, Label } from './FormStyles';
 
+export const Select = ({ job, profile, field, children, form: { touched, errors }, ...props }) => {
+  return (
+    <Group job={job} profile={profile}>
+      <Label>{props.word}</Label>
+      <StyledSelect job={job} {...field} {...props}>
+        {children}
+      </StyledSelect>
+      <Error job={job} show={errors[field.name] && touched[field.name]}>
+        {errors[field.name]}
+      </Error>
+    </Group>
+  );
+};
+
 const StyledSelect = styled.select`
   width: 100%;
   border: none;
@@ -34,18 +48,4 @@ const StyledSelect = styled.select`
   }
         `}
 `;
-
-export const Select = ({ job, profile, field, children, form: { touched, errors }, ...props }) => {
-  return (
-    <Group job={job} profile={profile}>
-      <Label>{props.word}</Label>
-      <StyledSelect job={job} {...field} {...props}>
-        {children}
-      </StyledSelect>
-      <Error job={job} show={errors[field.name] && touched[field.name]}>
-        {errors[field.name]}
-      </Error>
-    </Group>
-  );
-};
 

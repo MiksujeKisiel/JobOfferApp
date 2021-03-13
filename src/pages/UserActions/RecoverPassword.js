@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { Message, Button, Input, BackgroundImage} from '../../components/Form';
 import { FormWrapper, Form, Wrapper } from "../../components/Form/FormStyles";
 import forgetpasswords from "../../assets/images/forgetpasswords-min.jpg";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../store/actions";
 
 const BigText = styled.p`
@@ -30,7 +30,14 @@ const RecoverSchema = Yup.object().shape({
     .required("Musisz podać adres e-mail"),
 });
 
-const RecoverPassword = ({ error, sendEmail }) => {
+const RecoverPassword = () => {
+  const dispatch = useDispatch();
+
+  const [error] = useSelector((state) => [
+    // state.auth.recoverPassword.loading,
+    state.auth.recoverPassword.error,
+  ]);
+
   return (
     <Wrapper>
       <FormWrapper>
@@ -40,7 +47,7 @@ const RecoverPassword = ({ error, sendEmail }) => {
           }}
           validationSchema={RecoverSchema}
           onSubmit={async (values, { setSubmitting }) => {
-            await sendEmail(values);
+            await dispatch(actions.recoverPassword(values));
             setSubmitting(false);
           }}
         >
@@ -77,13 +84,5 @@ const RecoverPassword = ({ error, sendEmail }) => {
   );
 };
 
-const mapStateToProps = ({ auth }) => ({
-  loading: auth.recoverPassword.loading,
-  error: auth.recoverPassword.error,
-});
 
-const mapDispatchToProps = {
-  sendEmail: actions.recoverPassword,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecoverPassword);
+export default RecoverPassword;

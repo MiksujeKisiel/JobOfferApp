@@ -20,7 +20,6 @@ const Technologies = ({ offer }) => {
     return null;
   }
 };
-
 export default Technologies;
 
 const SmallWrapper = styled.div`

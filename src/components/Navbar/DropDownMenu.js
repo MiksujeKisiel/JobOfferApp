@@ -3,32 +3,11 @@ import styled from "styled-components";
 import AccountMenu from "./User/AccountMenu";
 import { ReactComponent as User } from "../../assets/svg/newuser.svg";
 import { ReactComponent as Arrow } from "../../assets/svg/next.svg";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import UserRouter from "./User/UserRouter";
 
-const Nav = styled.div`
- 
-  z-index: 200;
-  display: ${({ showNav }) =>
-    showNav ? "flex" : "none"};
-  flex-direction: column;
-  position: absolute;
-  width: 310px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  top: 83px;
-  right: 180px;
-  background-color: white;
-  max-height: 600px;
-`
-
-const Wrapper = styled.div`
-display: none;
-@media (min-width: ${768}px) {
-display: block;
-}
-`
-
-const DropDownMenu = ({ firebase }) => {
+const DropDownMenu = () => {
+  const firebase = useSelector((state) => state.firebase);
   const [menu, showMenu] = useState(false);
   return (
     <Wrapper>
@@ -52,15 +31,27 @@ const DropDownMenu = ({ firebase }) => {
     </Wrapper>
   );
 };
-const mapStateToProps = ({ firebase, auth }) => ({
-  firebase,
-  loading: auth.profileEdit.loading,
-  error: auth.profileEdit.error,
-});
+export default DropDownMenu;
 
-const mapDispatchToProps = {};
+const Nav = styled.div`
+  z-index: 200;
+  display: ${({ showNav }) => (showNav ? "flex" : "none")};
+  flex-direction: column;
+  position: absolute;
+  width: 310px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  top: 83px;
+  right: 180px;
+  background-color: white;
+  max-height: 600px;
+`;
 
-export default connect(mapStateToProps, mapDispatchToProps)(DropDownMenu);
+const Wrapper = styled.div`
+  display: none;
+  @media (min-width: ${768}px) {
+    display: block;
+  }
+`;
 
 const StyledBurger = styled.button`
   position: relative;
@@ -92,7 +83,6 @@ const StyledBurger = styled.button`
     width: 8px;
     height: 8px;
     fill: white;
-    /* transform: rotate(90deg); */
     margin-left: 5px;
     margin-top: 3px;
     transform: ${({ showNav }) => (showNav ? "rotate(180deg)" : "")};

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
@@ -6,10 +6,9 @@ import {
   Button,
   Input,
   Select,
-  // DeleteButton,
 } from "../../../components/Form";
 import * as actions from "../../../store/actions";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FormWrapper } from "./ProfileStyles";
 
 const TopWrapper = styled.div`
@@ -26,13 +25,10 @@ const TopWrapper = styled.div`
 `;
 
 const ProfileSchema = Yup.object().shape({});
-const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
-  useEffect(() => {
-    return () => {
-      cleanUp();
-    };
-  }, [cleanUp]);
-  if (!firebase.profile.isLoaded) return null;
+const Data = () => {
+
+  const dispatch = useDispatch();
+  const firebase = useSelector((state) => state.firebase);
 
 
   return (
@@ -50,12 +46,12 @@ const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
       }}
       validationSchema={ProfileSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        await editProfileTwo(values);
+        await dispatch(actions.editData(values));
         console.log(values);
         setSubmitting(false);
       }}
     >
-      {({ isSubmitting, isValid, values }) => (
+      {({ isSubmitting, isValid}) => (
         <FormWrapper profile>
           <TopWrapper>
             <Field
@@ -117,15 +113,6 @@ const Data = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   );
 };
 
-const mapStateToProps = ({ firebase, auth }) => ({
-  firebase,
-  loading: auth.profileEdit.loading,
-  error: auth.profileEdit.error,
-});
 
-const mapDispatchToProps = {
-  editProfileTwo: actions.editData,
-  cleanUp: actions.clean,
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Data);
+export default Data;

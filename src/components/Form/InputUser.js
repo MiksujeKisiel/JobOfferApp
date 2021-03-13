@@ -2,6 +2,18 @@ import React from "react";
 import styled, {css} from "styled-components";
 import { Error, Group, Label} from './FormStyles';
 
+export const Input = ({ job, field, long, profile, form: { touched, errors }, ...props }) => {
+  return (
+    <Group job={job} profile={profile} long={long}>
+      <Label profile={profile}>{props.word}</Label>
+      <StyledInput job={job}  profile={profile}  {...field} {...props}></StyledInput>
+      <Error job={job} show={errors[field.name] && touched[field.name]}>
+        {errors[field.name]}
+      </Error>
+    </Group>
+  );
+};
+
 const StyledInput = styled.input`
   width: 100%;
   border: none;
@@ -34,16 +46,3 @@ const StyledInput = styled.input`
   }
         `}
 `;
-
-export const Input = ({ job, field, long, profile, form: { touched, errors }, ...props }) => {
-  return (
-    <Group job={job} profile={profile} long={long}>
-      <Label profile={profile}>{props.word}</Label>
-      <StyledInput job={job}  profile={profile}  {...field} {...props}></StyledInput>
-      <Error job={job} show={errors[field.name] && touched[field.name]}>
-        {errors[field.name]}
-      </Error>
-    </Group>
-  );
-};
-

@@ -15,181 +15,6 @@ import * as Yup from "yup";
 import * as actions from "../../store/actions";
 import { ReactComponent as JobOffer } from "../../assets/svg/jobedit.svg";
 
-const Wrapper = styled.div`
-  @media (min-width: ${1024}px) {
-    display: flex;
-    align-items: stretch;
-  }
-`;
-
-const StyledLink = styled(NavLink)`
-  position: absolute;
-  left: 30px;
-  top: 30px;
-  color: white;
-  @media (min-width: ${1024}px) {
-    position: fixed;
-    top: 20px;
-    left: 30px;
-    color: white;
-    font-size: 20px;
-  }
-`;
-const Sidebar = styled.div`
-  background-color: #44c97d;
-  display: flex;
-  justify-content: center;
-  height: 350px;
-  @media (min-width: ${1024}px) {
-    height: auto;
-    justify-content: flex-start;
-    width: 400px;
-    margin-right: 20px;
-    overflow-y: hidden;
-  }
-  @media (min-width: ${1280}px) {
-    width: 450px;
-  }
-  @media (min-width: ${1440}px) {
-    width: 500px;
-  }
-`;
-
-const Xd = styled(JobOffer)`
-  height: 100px;
-  width: 100px;
-  margin-bottom: 20px;
-  @media (min-width: ${768}px) {
-    height: 150px;
-    width: 150px;
-  }
-`;
-
-const SmallWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  @media (min-width: ${1024}px) {
-    position: fixed;
-    top: 200px;
-    left: 20px;
-  }
-  @media (min-width: ${1280}px) {
-    left: 35px;
-    top: 250px;
-  }
-  @media (min-width: ${1440}px) {
-    left: 55px;
-  }
-`;
-
-const SmallText = styled.p`
-  color: white;
-  max-width: 350px;
-  text-align: center;
-  margin-top: 15px;
-`;
-
-const Text = styled.p`
-  color: #1c1c1c;
-  font-size: 24px;
-  margin: 0 auto;
-  text-align: center;
-  margin: 20px 0;
-  @media (min-width: ${768}px) {
-    margin: 60px 0 30px;
-  }
-  @media (min-width: ${1024}px) {
-    margin: 100px 0 20px;
-  }
-`;
-const BigText = styled.p`
-  color: white;
-  font-weight: 600;
-  text-align: center;
-  font-size: 25px;
-  max-width: 400px;
-  @media (min-width: ${1024}px) {
-    font-size: 22px;
-  }
-  @media (min-width: ${1280}px) {
-    font-size: 24px;
-  }
-`;
-const InputWrapper = styled.div`
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  @media (min-width: ${768}px) {
-    grid-template-columns: 270px 270px;
-    gap: 0 30px;
-    justify-content: center;
-  }
-  @media (min-width: ${1440}px) {
-    grid-template-columns: 250px 250px 250px;
-    gap: 0 30px;
-    justify-content: center;
-  }
-`;
-
-const JobSchema = Yup.object().shape({
-  company: Yup.string()
-    .required("Musisz podać nazwe firmy")
-    .min(3, "Zbyt krótko")
-    .max(35, "Zbyt długie"),
-  employees: Yup.string()
-    .required("Musisz podać liczbe pracowników")
-    .min(3, "Zbyt krótko")
-    .max(50, "Zbyt długie"),
-  location: Yup.string()
-    .required("Musisz podać lokalizacje")
-    .min(3, "Zbyt krótko")
-    .max(50, "Zbyt długie"),
-  name: Yup.string()
-    .required("Musisz podać nazwę stanowiska")
-    .min(3, "Zbyt krótko")
-    .max(50, "Zbyt długie"),
-  earnings: Yup.string()
-    .required("Musisz podać zarobki")
-    .min(3, "Zbyt krótko")
-    .max(15, "Zbyt długie"),
-  earningsType: Yup.string()
-    .required("Musisz podać rodzaj wypłaty")
-    .min(3, "Zbyt krótko")
-    .max(20, "Zbyt długie"),
-  interview: Yup.string()
-    .required("Musisz podać miejsce rozmowy o prace")
-    .min(3, "Zbyt krótko")
-    .max(15, "Zbyt długie"),
-  timelapse: Yup.string()
-    .required("Musisz podać na jaki etat rekrutujesz")
-    .min(3, "Zbyt krótko")
-    .max(15, "Zbyt długie"),
-  level: Yup.string()
-    .required("Musisz podać na jaki poziom rekrutujesz")
-    .min(3, "Zbyt krótko")
-    .max(15, "Zbyt długie"),
-  about: Yup.string()
-    .required("Musisz opisać swoją firmę")
-    .min(3, "Zbyt krótko")
-    .max(2000, "Zbyt długie"),
-  requirement: Yup.array().of(
-    Yup.object().shape({
-      requirement: Yup.string().required("..."),
-    })
-  ),
-  offer: Yup.array().of(
-    Yup.object().shape({
-      offer: Yup.string().required("..."),
-    })
-  ),
-  responsibility: Yup.array().of(
-    Yup.object().shape({
-      responsibility: Yup.string().required("..."),
-    })
-  ),
-});
 
 const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
   return (
@@ -197,7 +22,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
       <Sidebar>
         <StyledLink to="/">Strona główna</StyledLink>
         <SmallWrapper>
-          <Xd />
+          <Svg />
           <BigText>
             {jobEditing ? "Edytuj swoją ofertę pracy" : "Dodaj ofertę pracy"}
           </BigText>
@@ -228,7 +53,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
         validationSchema={JobSchema}
         onSubmit={async (values, { resetForm, setSubmitting }) => {
           jobEditing ? await editJob(id, values) : await addJob(values);
-          // jobEditing ? console.log("xd") : resetForm({});
+          jobEditing ? console.log("edytowanie...") : resetForm({});
           setSubmitting(false);
         }}
       >
@@ -445,7 +270,6 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                     ? "Oferta pracy została edytowana"
                     : "Oferta pracy została dodana"}
                 </Message>
-                {/* {!isValid ? "hahaha" : null} */}
               </MessegeWrapper>
             </SubmitButtonWrapper>
           </Form>
@@ -454,6 +278,124 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
     </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  @media (min-width: ${1024}px) {
+    display: flex;
+    align-items: stretch;
+  }
+`;
+
+const StyledLink = styled(NavLink)`
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  color: white;
+  @media (min-width: ${1024}px) {
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    color: white;
+    font-size: 20px;
+  }
+`;
+const Sidebar = styled.div`
+  background-color: #44c97d;
+  display: flex;
+  justify-content: center;
+  height: 350px;
+  @media (min-width: ${1024}px) {
+    height: auto;
+    justify-content: flex-start;
+    width: 400px;
+    margin-right: 20px;
+    overflow-y: hidden;
+  }
+  @media (min-width: ${1280}px) {
+    width: 450px;
+  }
+  @media (min-width: ${1440}px) {
+    width: 500px;
+  }
+`;
+
+const Svg = styled(JobOffer)`
+  height: 100px;
+  width: 100px;
+  margin-bottom: 20px;
+  @media (min-width: ${768}px) {
+    height: 150px;
+    width: 150px;
+  }
+`;
+
+const SmallWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: ${1024}px) {
+    position: fixed;
+    top: 200px;
+    left: 20px;
+  }
+  @media (min-width: ${1280}px) {
+    left: 35px;
+    top: 250px;
+  }
+  @media (min-width: ${1440}px) {
+    left: 55px;
+  }
+`;
+
+const SmallText = styled.p`
+  color: white;
+  max-width: 350px;
+  text-align: center;
+  margin-top: 15px;
+`;
+
+const Text = styled.p`
+  color: #1c1c1c;
+  font-size: 24px;
+  margin: 0 auto;
+  text-align: center;
+  margin: 20px 0;
+  @media (min-width: ${768}px) {
+    margin: 60px 0 30px;
+  }
+  @media (min-width: ${1024}px) {
+    margin: 100px 0 20px;
+  }
+`;
+const BigText = styled.p`
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  font-size: 25px;
+  max-width: 400px;
+  @media (min-width: ${1024}px) {
+    font-size: 22px;
+  }
+  @media (min-width: ${1280}px) {
+    font-size: 24px;
+  }
+`;
+const InputWrapper = styled.div`
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  @media (min-width: ${768}px) {
+    grid-template-columns: 270px 270px;
+    gap: 0 30px;
+    justify-content: center;
+  }
+  @media (min-width: ${1440}px) {
+    grid-template-columns: 250px 250px 250px;
+    gap: 0 30px;
+    justify-content: center;
+  }
+`;
 
 const Form = styled(FormFormik)`
   width: 80%;
@@ -533,5 +475,64 @@ const mapDispatchToProps = {
   addJob: actions.addJob,
   editJob: actions.editJob,
 };
+
+const JobSchema = Yup.object().shape({
+  company: Yup.string()
+    .required("Musisz podać nazwe firmy")
+    .min(3, "Zbyt krótko")
+    .max(35, "Zbyt długie"),
+  employees: Yup.string()
+    .required("Musisz podać liczbe pracowników")
+    .min(3, "Zbyt krótko")
+    .max(50, "Zbyt długie"),
+  location: Yup.string()
+    .required("Musisz podać lokalizacje")
+    .min(3, "Zbyt krótko")
+    .max(50, "Zbyt długie"),
+  name: Yup.string()
+    .required("Musisz podać nazwę stanowiska")
+    .min(3, "Zbyt krótko")
+    .max(50, "Zbyt długie"),
+  earnings: Yup.string()
+    .required("Musisz podać zarobki")
+    .min(3, "Zbyt krótko")
+    .max(15, "Zbyt długie"),
+  earningsType: Yup.string()
+    .required("Musisz podać rodzaj wypłaty")
+    .min(3, "Zbyt krótko")
+    .max(20, "Zbyt długie"),
+  interview: Yup.string()
+    .required("Musisz podać miejsce rozmowy o prace")
+    .min(3, "Zbyt krótko")
+    .max(15, "Zbyt długie"),
+  timelapse: Yup.string()
+    .required("Musisz podać na jaki etat rekrutujesz")
+    .min(3, "Zbyt krótko")
+    .max(15, "Zbyt długie"),
+  level: Yup.string()
+    .required("Musisz podać na jaki poziom rekrutujesz")
+    .min(3, "Zbyt krótko")
+    .max(15, "Zbyt długie"),
+  about: Yup.string()
+    .required("Musisz opisać swoją firmę")
+    .min(3, "Zbyt krótko")
+    .max(2000, "Zbyt długie"),
+  requirement: Yup.array().of(
+    Yup.object().shape({
+      requirement: Yup.string().required("..."),
+    })
+  ),
+  offer: Yup.array().of(
+    Yup.object().shape({
+      offer: Yup.string().required("..."),
+    })
+  ),
+  responsibility: Yup.array().of(
+    Yup.object().shape({
+      responsibility: Yup.string().required("..."),
+    })
+  ),
+});
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddJob);

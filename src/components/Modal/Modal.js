@@ -3,6 +3,19 @@ import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import Backdrop from './Backdrop';
 
+const Modal = ({ opened, close, children }) => {
+  return createPortal(
+    <>
+      <Backdrop close={close} opened={opened} />
+      <WrappedModal opened={opened}>
+        <InsideWrapper>{children}</InsideWrapper>
+      </WrappedModal>
+    </>,
+    document.getElementById('root-modal')
+  );
+};
+export default Modal;
+
 const WrappedModal = styled.div`
   position: fixed;
   top: 50%;
@@ -35,17 +48,3 @@ const InsideWrapper = styled.div`
   align-items: center;
   padding: 4rem 3rem;
 `;
-
-const Modal = ({ opened, close, children }) => {
-  return createPortal(
-    <>
-      <Backdrop close={close} opened={opened} />
-      <WrappedModal opened={opened}>
-        <InsideWrapper>{children}</InsideWrapper>
-      </WrappedModal>
-    </>,
-    document.getElementById('root-modal')
-  );
-};
-
-export default Modal;

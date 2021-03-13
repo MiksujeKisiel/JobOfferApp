@@ -1,19 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import {
   Formik,
   Field,
   Form,
-  // getIn
 } from "formik";
-import * as Yup from "yup";
-import // DeleteButton,
-"../../../components/Form";
-// import { ArrayWrapper, FieldArrayWrapper, ActionButton } from '../../components/Form/FormStyles';
 import * as actions from "../../../store/actions";
-import { connect } from "react-redux";
-
-
+import { useDispatch, useSelector } from "react-redux";
 
 const FormWrapper = styled(Form)`
    background: white;
@@ -40,38 +33,23 @@ const SmallWrapper = styled.div`
   align-items: center;
   font-weight: 300;
 `;
-const ProfileSchema = Yup.object().shape({});
-const Show = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
-  useEffect(() => {
-    return () => {
-      cleanUp();
-    };
-  }, [cleanUp]);
-  if (!firebase.profile.isLoaded) return null;
 
-  // const ErrorMessage = ({ name }) => (
-  //   <Field
-  //     name={name}
-  //     render={({ form }) => {
-  //       const error = getIn(form.errors, name);
-  //       const touch = getIn(form.touched, name);
-  //       return touch && error ? error : null;
-  //     }}
-  //   />
-  // );
+const Show = () => {
+  const dispatch = useDispatch();
+  const firebase = useSelector((state) => state.firebase);
+
   return (
     <Formik
       initialValues={{
         show: firebase.profile.show,
       }}
-      validationSchema={ProfileSchema}
       onSubmit={async (values, { setSubmitting }) => {
-        await editProfileTwo(values);
+        await dispatch(actions.showProfile(values));
         console.log(values);
         setSubmitting(false);
       }}
     >
-      {({ isSubmitting, isValid, values, handleSubmit }) => (
+      {({ values, handleSubmit }) => (
         <FormWrapper onChange={handleSubmit}>
           <SmallWrapper>
             <Toggle className="blue" type="checkbox" name="show" />
@@ -85,15 +63,6 @@ const Show = ({ firebase, loading, error, editProfileTwo, cleanUp }) => {
   );
 };
 
-const mapStateToProps = ({ firebase, auth }) => ({
-  firebase,
-  loading: auth.profileEdit.loading,
-  error: auth.profileEdit.error,
-});
 
-const mapDispatchToProps = {
-  editProfileTwo: actions.showProfile,
-  cleanUp: actions.clean,
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Show);
+export default Show
