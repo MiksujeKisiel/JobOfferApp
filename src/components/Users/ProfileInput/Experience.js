@@ -2,12 +2,9 @@ import React from "react";
 import { Formik, Field, FieldArray } from "formik";
 import * as Yup from "yup";
 import { Button, Input, Select, DeleteButton } from "../../Form";
-import {
-  ArrayWrapper,
-  FieldArrayWrapper,
-} from "../../Form/FormStyles";
+import { ArrayWrapper, FieldArrayWrapper } from "../../Form/FormStyles";
 import * as actions from "../../../store/actions";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FormWrapper } from "./ProfileStyles";
 
 const ProfileSchema = Yup.object().shape({});
@@ -53,12 +50,11 @@ const Experience = () => {
                           rodzaj zatrudnienia
                         </option>
                         <option value="Freelancing">Freelancing</option>
-                        <option value="Samozatrudnienie">Samozatrudnienie</option>
-                        <option value="Pełny etat">
-                          Pełny etat
+                        <option value="Samozatrudnienie">
+                          Samozatrudnienie
                         </option>
+                        <option value="Pełny etat">Pełny etat</option>
                         <option value="Niepełny etat">Niepełny etat</option>
-                   
                       </Field>
                       <DeleteButton
                         onClick={() => arrayHelpers.remove(index)}
@@ -86,6 +82,5 @@ const Experience = () => {
     </Formik>
   );
 };
-
 
 export default Experience;

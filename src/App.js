@@ -5,20 +5,12 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-
 import { createBrowserHistory } from "history";
-import { compose } from "redux";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import Layout from "./layout/Layout";
-
-// import UserLayout from './layout/UserLayout'
 import GlobalStyle from "./assets/style/GlobalStyle";
-//login
-import Login from "./pages/UserActions/Login";
-import Signup from "./pages/UserActions/Signup";
-import Logout from "./pages/UserActions/Logout";
-import VerifyEmail from "./pages/UserActions/VerifyEmail";
-import RecoverPassword from "./pages/UserActions/RecoverPassword";
+//user actions
+import { Login, Signup, Logout, VerifyEmail, RecoverPassword} from './pages/UserActions'
 //user settings
 import Settings from "./pages/UserPages/Settings";
 import Profile from "./pages/UserPages/Profile";
@@ -33,9 +25,11 @@ import UserDetails from "./pages/UserProfiles/UserDetails";
 import JobEditor from "./components/Jobs/JobEditor";
 import AddJob from "./pages/JobActions/AddJob";
 
-const App = ({ loggedIn, emailVerified }) => {
-
-
+const App = () => {
+  const [loggedIn, emailVerified] = useSelector((state) => [
+    state.firebase.auth.uid ? true : null,
+    state.firebase.auth.emailVerified,
+  ]);
   
   let routes;
   if (loggedIn && !emailVerified) {
@@ -101,13 +95,4 @@ const App = ({ loggedIn, emailVerified }) => {
   );
 };
 
-const mapStateToProps = ({ firebase, firestore }) => {
-  return {
-    loggedIn: firebase.auth.uid ? true : null,
-    emailVerified: firebase.auth.emailVerified,
-  };
-};
-
-const mapDispatchToProps = {};
-
-export default compose(connect(mapStateToProps, mapDispatchToProps))(App);
+export default App;

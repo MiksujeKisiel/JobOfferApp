@@ -1,18 +1,16 @@
 import { useEffect } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import * as actions from "../../store/actions";
 import { useHistory } from "react-router";
-const Logout = ({ logout }) => {
+
+export const Logout = () => {
+  const dispatch = useDispatch();
   let history = useHistory();
   useEffect(() => {
-    logout();
+    dispatch(actions.signOut());
     history.push("/");
-  }, [logout, history]);
+  }, [dispatch, history]);
   return null;
 };
 
-const mapDispatchToProps = {
-  logout: actions.signOut,
-};
 
-export default connect(null, mapDispatchToProps)(Logout);

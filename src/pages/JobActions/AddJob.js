@@ -15,7 +15,6 @@ import * as Yup from "yup";
 import * as actions from "../../store/actions";
 import { ReactComponent as JobOffer } from "../../assets/svg/jobedit.svg";
 
-
 const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
   return (
     <Wrapper>
@@ -466,6 +465,7 @@ const BigWrapper = styled.div`
     max-width: none;
   }
 `;
+
 const mapStateToProps = ({ job }) => ({
   loading: job.loading,
   error: job.error,

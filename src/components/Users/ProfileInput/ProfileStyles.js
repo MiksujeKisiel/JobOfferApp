@@ -1,11 +1,8 @@
-import styled from 'styled-components';
-import {
+import styled from "styled-components";
+import { Form } from "formik";
 
-    Form,
-  } from "formik";
-
-  export const FormWrapper = styled(Form)`
-  background: white;
+export const FormWrapper = styled(Form)`
+  background: whit;
   padding: 10px 15px;
   @media (min-width: ${768}px) {
     display: flex;

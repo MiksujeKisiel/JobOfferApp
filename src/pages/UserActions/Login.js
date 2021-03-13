@@ -23,11 +23,8 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router";
 
-
-
-function Login() {
+export const Login = () => {
   const dispatch = useDispatch();
-
   const [loading, error] = useSelector((state) => [
     state.auth.loading,
     state.auth.error,
@@ -93,7 +90,7 @@ function Login() {
       />
     </Wrapper>
   );
-}
+};
 
 const StyledLink = styled(Link)`
   color: #1b75bc;
@@ -109,4 +106,3 @@ const LoginSchema = Yup.object().shape({
 });
 
 
-export default Login;

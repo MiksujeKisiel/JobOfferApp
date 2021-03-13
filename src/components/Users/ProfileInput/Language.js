@@ -6,7 +6,6 @@ import {
   ArrayWrapper,
   FieldArrayWrapper,
 } from "../../../components/Form/FormStyles";
-
 import * as actions from "../../../store/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { FormWrapper } from "./ProfileStyles";
@@ -14,8 +13,8 @@ import { FormWrapper } from "./ProfileStyles";
 const ProfileSchema = Yup.object().shape({
   language: Yup.array().of(
     Yup.object().shape({
-      name: Yup.string().min(4, "too short").required("Required"), // these constraints take precedence
-      type: Yup.string().min(1, "cmon").required("Required"), // these constraints take precedence
+      name: Yup.string().min(4, "too short").required("Required"), 
+      type: Yup.string().min(1, "cmon").required("Required"), 
     })
   ),
 });

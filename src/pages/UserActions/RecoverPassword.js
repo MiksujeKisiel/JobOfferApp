@@ -30,11 +30,10 @@ const RecoverSchema = Yup.object().shape({
     .required("Musisz podać adres e-mail"),
 });
 
-const RecoverPassword = () => {
+export const RecoverPassword = () => {
   const dispatch = useDispatch();
 
   const [error] = useSelector((state) => [
-    // state.auth.recoverPassword.loading,
     state.auth.recoverPassword.error,
   ]);
 
@@ -85,4 +84,3 @@ const RecoverPassword = () => {
 };
 
 
-export default RecoverPassword;

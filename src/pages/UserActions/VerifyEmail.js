@@ -33,15 +33,13 @@ const Text = styled.p`
   color: green;
 `;
 
-const VerifyEmail = () => {
+export const VerifyEmail = () => {
   useEffect(() => {
     return () => {
       dispatch(actions.clean);
     };
   });
-
   const dispatch = useDispatch();
-
   const [loading, error] = useSelector((state) => [
     state.auth.verifyEmail.loading,
     state.auth.verifyEmail.error,
@@ -71,5 +69,3 @@ const VerifyEmail = () => {
     </Wrapper>
   );
 };
-
-export default VerifyEmail;

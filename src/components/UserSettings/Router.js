@@ -18,7 +18,6 @@ const Router = ({ children }) => {
           <Nav>
             <StyledLink to="/">Strona główna</StyledLink>
           </Nav>
-
           {children}
         </ChildrenWrapper>
       </BigWrapper>

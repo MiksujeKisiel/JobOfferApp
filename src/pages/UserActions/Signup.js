@@ -32,7 +32,7 @@ const LoginSchema = Yup.object().shape({
     .required("Musisz potwierdzić hasło"),
 });
 
-const Signup = () => {
+export const Signup = () => {
   const dispatch = useDispatch();
 
   const [loading, error] = useSelector((state) => [
@@ -116,4 +116,3 @@ const Signup = () => {
   );
 };
 
-export default Signup;
