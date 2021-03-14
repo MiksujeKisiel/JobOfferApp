@@ -4,7 +4,6 @@ import { ReactComponent as Suitcase } from "../../../assets/svg/suitcase.svg";
 import { ReactComponent as Mail } from "../../../assets/svg/mail.svg";
 import { Link } from "react-router-dom";
 
-
 const UserList = ({ user, userid }) => {
   const { firstName, lastName, userType, profession, email, show } = user;
   if (show === false) {

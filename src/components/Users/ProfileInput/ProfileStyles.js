@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Form } from "formik";
 
 export const FormWrapper = styled(Form)`
-  background: whit;
+  background: white;
   padding: 10px 15px;
   @media (min-width: ${768}px) {
     display: flex;

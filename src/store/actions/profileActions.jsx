@@ -54,8 +54,6 @@ export const editData = (data) => async (
       firstName: data.firstName,
       lastName: data.lastName,
       location: data.location,
-      // phone: data.phone,
-      // payment: data.payment,
       profession: data.profession,
       userType: data.userType,
     });

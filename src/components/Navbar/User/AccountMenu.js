@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 const AccountMenu = ({ left }) => {
   const firebase = useSelector((state) => state.firebase);
+  console.log(firebase)
   return (
     <Wrapper left={left}>
       <Account left={left} />
@@ -53,7 +54,7 @@ const Account = styled(account)`
 `;
 
 const Text = styled.p`
-  font-size: 15px;
+  font-size: 12px;
   color: rgba(0, 0, 0, 0.56);
   ${(props) =>
     props.left &&
@@ -62,7 +63,7 @@ const Text = styled.p`
     `}
 `;
 const BigText = styled.p`
-  font-size: 24px;
+  font-size: 20px;
   max-width: 250px;
   font-weight: 300;
   ${(props) =>

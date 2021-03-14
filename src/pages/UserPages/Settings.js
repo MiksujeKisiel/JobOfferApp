@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Field, Form } from "formik";
 import { Button, Input } from "../../components/Form";
 import * as Yup from "yup";
@@ -30,11 +30,11 @@ const Profile = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(actions.clean())
+      dispatch(actions.clean());
     };
   }, [dispatch]);
   if (!firebase.profile.isLoaded) return null;
-  
+
   return (
     <Router>
       <Wrapper>
@@ -47,7 +47,7 @@ const Profile = () => {
           validationSchema={ProfileSchema}
           onSubmit={async (values, { setSubmitting }) => {
             console.log(values);
-            await dispatch(actions.editProfile(values));
+            await dispatch(actions.editSettings(values));
             setSubmitting(false);
           }}
         >

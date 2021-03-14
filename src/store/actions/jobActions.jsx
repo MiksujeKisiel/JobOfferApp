@@ -26,7 +26,6 @@ export const addJob = (data) => async (
       offer: data.offer,
       level: data.level,
       about: data.about,
-      // date: data.date
     });
     dispatch({ type: actions.ADD_JOB_SUCCESS });
    

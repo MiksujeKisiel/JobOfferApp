@@ -19,10 +19,9 @@ export const store = createStore(
 /* eslint-enable */
 
 export const rrfConfig = {
-  userProfile: 'users',
+  userProfile: 'users', 
   useFirestoreForProfile: true,
   attachAuthIsReady: true
-  
 };
 
 export const rrfProps = {
@@ -31,5 +30,6 @@ export const rrfProps = {
   dispatch: store.dispatch,
   createFirestoreInstance,
 };
+
 
 export default store;

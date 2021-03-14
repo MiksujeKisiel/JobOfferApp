@@ -1,11 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import { useFirestoreConnect } from "react-redux-firebase";
-import { useSelector } from "react-redux";
-import JobList from "../../components/Jobs/JobList";
-import Loader from "../../components/Loader/Loader";
 import main from "../../assets/images/header-min.jpg";
 import { Background } from "../../components/Background";
+import { JobsList }  from '../../components/Jobs/Jobs/JobList';
+
+const Dashboard = () => {
+ 
+  return (
+    <>
+      <Background src={main}>
+        <BigText>Znajdź wymarzoną pracę IT</BigText>
+      </Background>
+      <Wrapper>
+        <SmallWrapper><JobsList/></SmallWrapper>
+      </Wrapper>
+    </>
+  );
+};
+
+export default Dashboard;
+
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -64,39 +78,3 @@ const SmallWrapper = styled.div`
   }
 `;
 
-const Dashboard = () => {
-  useFirestoreConnect([{ collection: "jobs" }]);
-  const jobs = useSelector((state) => state.firestore.ordered.jobs);
-
-  let content;
-  if (!jobs) {
-    content = <Loader />;
-  } else if (jobs.length === 0) {
-    content = (
-      <div>
-        <p>nie masz dodanych ofert prac</p>
-      </div>
-    );
-  } else {
-    content = (
-      <>
-        {jobs &&
-          jobs.map((jobs) => (
-            <JobList jobs={jobs} id={jobs.id} key={jobs.id} />
-          ))}
-      </>
-    );
-  }
-  return (
-    <>
-      <Background src={main}>
-        <BigText>Znajdź wymarzoną pracę IT</BigText>
-      </Background>
-      <Wrapper>
-        <SmallWrapper>{content}</SmallWrapper>
-      </Wrapper>
-    </>
-  );
-};
-
-export default Dashboard;

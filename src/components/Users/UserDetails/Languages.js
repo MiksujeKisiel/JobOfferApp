@@ -1,12 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 
+export const Languages = ({ language }) => {
+  if (language && language.length > 0)
+    return (
+      <Wrapper>
+        <Header>Języki</Header>
+        <SmallWrapper>
+          {language.map((item, i) => {
+            return (
+              <LanguageWrapper key={i} value={item}>
+                <Text>{item.name}</Text>
+                <SmallText>{item.type}</SmallText>
+              </LanguageWrapper>
+            );
+          })}
+        </SmallWrapper>
+      </Wrapper>
+    );
+    else return null;
+};
+
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   background: white;
-  color: #0F69C3;
+  color: #0f69c3;
   margin-bottom: 10px;
   font-size: 20px;
   font-weight: 600;
@@ -19,61 +39,33 @@ const Wrapper = styled.div`
 `;
 
 const Text = styled.p`
-font-weight: 400;
-font-size: 16px;
-margin-bottom: 5px;
-`
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 5px;
+`;
 const SmallText = styled.p`
-font-size: 15px;
-font-weight: 300;
-`
+  font-size: 15px;
+  font-weight: 300;
+`;
 
 const SmallWrapper = styled.ul`
   margin-top: 20px;
   width: 100%;
-  border-top: 1px solid #D9D9D9;
+  border-top: 1px solid #d9d9d9;
   padding: 20px 29px 10px 20px;
   display: flex;
   flex-direction: column;
 `;
 const Header = styled.p`
-  font-size: 20px; 
-  color: #0F69C3;
+  font-size: 20px;
+  color: #0f69c3;
   margin-left: 40px;
-
-`
+`;
 const LanguageWrapper = styled.div`
-margin: 10px 0 10px 60px;
-padding: 0 0 10px;
-border-bottom: 1px solid #deddda;
-&:last-of-type{
-  border: none;
-}
-
-`
-
-export const Languages = ({ language }) => {
-
-  return (
-    <Wrapper>
-  <Header>Języki</Header>   
-      <SmallWrapper>
-        {language ? (
-          <>
-            {language.map((item, i) => {
-              return (
-                <LanguageWrapper key={i} value={item}>
-                  <Text>
-                  {item.name}</Text> 
-                  <SmallText>{item.type}</SmallText>
-                </LanguageWrapper>
-              );
-            })}
-          </>
-        ) : (
-          "Brak informacji"
-        )}
-      </SmallWrapper>
-    </Wrapper>
-  );
-};
+  margin: 10px 0 10px 60px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #deddda;
+  &:last-of-type {
+    border: none;
+  }
+`;

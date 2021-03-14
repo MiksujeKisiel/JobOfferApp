@@ -70,6 +70,10 @@ const NavLinks = styled.div`
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
   display: ${({ open }) => (open ? "block" : "none")};
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   transition: 0.3s ease-in;
   height: 100vh;
   position: fixed;
@@ -77,6 +81,8 @@ const NavLinks = styled.div`
   padding: 40px 0;
   font-family: "Poppins", sans-serif;
   @media (min-width: ${768}px) {
+    align-items: flex-start;
+    flex-direction: row;
     background: none;
     height: auto;
     width: auto;
@@ -142,7 +148,7 @@ const SmallWrapper = styled.div`
 `;
 
 const Text = styled.p`
-  font-size: 18px;
+  font-size: 24px;
   margin: 70px 0 10px;
   text-align: center;
   color: burlywood;

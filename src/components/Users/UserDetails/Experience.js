@@ -1,6 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 
+export const Experience = ({ experience }) => {
+  if (experience && experience.length > 0)
+    return (
+      <Wrapper>
+        <Header>Doświadczenie</Header>
+        <SmallWrapper>
+          {experience.map((item, i) => {
+            return (
+              <ExperienceWrapper key={i} value={item}>
+                <Text>{item.name}</Text> <SmallText>{item.type}</SmallText>
+              </ExperienceWrapper>
+            );
+          })}
+        </SmallWrapper>
+      </Wrapper>
+    );
+    else return null
+};
+
+
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -50,26 +70,3 @@ const ExperienceWrapper = styled.div`
   }
 `;
 
-export const Experience = ({ experience }) => {
- 
-  return (
-    <Wrapper>
-      <Header>Doświadczenie</Header>
-      <SmallWrapper>
-        {experience ? (
-          <>
-            {experience.map((item, i) => {
-              return (
-                <ExperienceWrapper key={i} value={item}>
-                  <Text>{item.name}</Text> <SmallText>{item.type}</SmallText>
-                </ExperienceWrapper>
-              );
-            })}
-          </>
-        ) : (
-          "Brak informacji"
-        )}
-      </SmallWrapper>
-    </Wrapper>
-  );
-};

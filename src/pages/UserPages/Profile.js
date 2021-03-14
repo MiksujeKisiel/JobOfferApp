@@ -20,7 +20,6 @@ const Profile = () => {
   return (
     <Router>
       <Wrapper>
-
         <BigText>Podstawowe dane</BigText>
         <Show />
         <Data />
@@ -82,4 +81,3 @@ const TopWrapper = styled.div`
   border-radius: 20px;
   z-index: 200;
 `;
-

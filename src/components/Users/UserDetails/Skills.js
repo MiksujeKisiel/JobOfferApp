@@ -1,6 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
+export const Skills = ({ skills }) => {
+  if (skills && skills.length > 0) return (
+    <Wrapper>
+    <Header>Umiejętności i technologie</Header>
+    <SmallWrapper>
+      {skills.map((item, i) => {
+        return <Text>{item.name}</Text>;
+      })}
+    </SmallWrapper>
+  </Wrapper>
+  );
+  else return null
+};
+
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
@@ -38,15 +52,3 @@ const Header = styled.p`
   margin-left: 40px;
 `;
 
-export const Skills = ({ skills }) => {
-  return (
-    <Wrapper>
-      <Header>Umiejętności i technologie</Header>
-      <SmallWrapper>
-        {skills.map((item, i) => {
-          return <Text>{item.name}</Text>;
-        })}
-      </SmallWrapper>
-    </Wrapper>
-  );
-};
