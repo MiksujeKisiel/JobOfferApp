@@ -15,4 +15,8 @@ You can
 - Add/Edit/Delete Job offer
 - Show/Hide your profile
 - Edit profile
+##Live preview
+netlify: https://smakowskijoboffer.netlify.app/
 
+
+##My linkedin: https://www.linkedin.com/in/sebastian-m%C4%85kowski-2b63751a8/
