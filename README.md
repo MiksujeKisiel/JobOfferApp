@@ -7,13 +7,12 @@
 - I18n 
 
 ## What can you do in this React App? 
-You can 
 - Register
 - Login
 - Recover Password
 - Change password and email
 - Add/Edit/Delete Job offer
-- Show/Hide your profile
+- Show/Hide your profile 
 - Edit profile
 
 ## Live preview: https://smakowskijoboffer.netlify.app/
