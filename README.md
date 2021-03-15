@@ -6,4 +6,13 @@
 - Styled components
 - I18n 
 
-&& xd
+## What can you do in this React App? 
+You can 
+- Register
+- Login
+- Recover Password
+- Change password and email
+- Add/Edit/Delete Job offer
+- Show/Hide your profile
+- Edit profile
+
