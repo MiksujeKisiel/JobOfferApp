@@ -25,4 +25,4 @@ yarn-error.log*
 /history
 /VSCodeCounter
 # src
-.env.local
+# .env.local
