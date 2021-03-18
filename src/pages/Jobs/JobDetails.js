@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { useFirestoreConnect } from "react-redux-firebase";
@@ -11,8 +11,17 @@ import Requirements from "../../components/Jobs/JobDetails/Requirements";
 import UserJob from "../../components/Jobs/JobDetails/UserJob";
 import details from "../../assets/images/details-min.jpg";
 import { Background } from "../../components/Background";
+import { useHistory } from "react-router";
 
 const JobDetails = ({ job, jobId }) => {
+  const Route = () => {
+    let history = useHistory();
+    useEffect(() => {
+      history.push("/");
+    }, [history]);
+    return null;
+  };
+
   useFirestoreConnect([{ collection: "jobs" }]);
   if (job) {
     return (
@@ -30,9 +39,9 @@ const JobDetails = ({ job, jobId }) => {
               timelapse={job.timelapse}
               employmentType={job.employmentType}
             />
-            <Technologies offer={job.offer} />
             <Responsibilities responsibility={job.responsibility} />
             <Requirements requirement={job.requirement} />
+            <Technologies offer={job.offer} />
             <About about={job.about} companyName={job.companyName} />
           </ContentWrapper>
           <UserJob userId={job.userid} jobId={jobId} />
@@ -40,9 +49,10 @@ const JobDetails = ({ job, jobId }) => {
       </>
     );
   } else if (!job) {
-    return <div>no job detail</div>;
+    return <Route/>;
   }
 };
+
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
@@ -64,7 +74,8 @@ const Wrapper = styled.div`
   align-items: center;
   padding-top: 30px;
   position: relative;
-  margin-top: -200px;
+  margin-top: -300px;
+  padding-bottom: 100px;
   @media (min-width: ${768}px) {
     flex-direction: row;
     align-items: flex-start;

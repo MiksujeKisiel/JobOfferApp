@@ -1,43 +1,49 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../store/actions";
 import Modal from "../../components/Modal/Modal";
-import { Message, Button } from '../../components/Form';
+import { Message, Button } from "../../components/Form";
 
 const Wrapper = styled.div`
   width: 200px;
   height: 200px;
   position: relative;
-  background-color: blue;
   z-index: 200;
+  .p {
+    font-size: 15px;
+    color: red;
+  }
 `;
 
-const DeleteJob = ({
-  show,
-  close,
-  isOpened,
-  jobs,
-  deleteJob,
-  error,
-  loading,
-}) => {
+const DeleteJob = ({ show, close, jobs, deleteJob }) => {
+
+  const dispatch = useDispatch();
+
+  const [loading, error] = useSelector((state) => [
+    state.job.deleteJob.loading,
+    state.job.deleteJob.error,
+  ]);
+
   async function jobDeleting() {
-    await deleteJob(jobs);
+    await dispatch(actions.deleteJob(jobs));
     close();
   }
   return (
     <Modal opened={show} close={close}>
-      <p>Are you sure you want to delete job</p>
+      <p>Czy na pewno chcesz usunąc tę ofertę pracy?</p>
       <Wrapper>
         <Button
           onClick={jobDeleting}
           disabled={loading}
           loading={loading ? "Deleting..." : null}
+          profile
         >
-          Delete job
+          Usuń
         </Button>
-        <Button onClick={close}>Cancel</Button>
+        <Button profile onClick={close}>
+          Anuluj
+        </Button>
       </Wrapper>
       <Message error show={error}>
         {error}
@@ -49,13 +55,4 @@ const DeleteJob = ({
   );
 };
 
-const mapStateToProps = ({ job }) => ({
-  error: job.deleteJob.error,
-  loading: job.deleteJob.loading,
-});
-
-const mapDispatchToProps = {
-  deleteJob: actions.deleteJob,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeleteJob);
+export default DeleteJob;

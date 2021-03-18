@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Wrapper, Header } from "./JobDetailStyles";
 
-const Text = styled.p``;
-
 const Technologies = ({ offer }) => {
   const listItems = offer
     .slice(0)
@@ -11,8 +9,7 @@ const Technologies = ({ offer }) => {
   if (offer.length > 0)
     return (
       <Wrapper>
-        <Header>Technologie, których używamy</Header>
-        <Text>Wymagane</Text>
+        <Header>Co oferujemy</Header>
         <SmallWrapper>{listItems}</SmallWrapper>
       </Wrapper>
     );
@@ -23,7 +20,6 @@ const Technologies = ({ offer }) => {
 export default Technologies;
 
 const SmallWrapper = styled.div`
-  margin-top: 20px;
   width: auto;
   flex-wrap: wrap;
   display: flex;

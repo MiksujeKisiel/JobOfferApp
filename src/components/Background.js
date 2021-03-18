@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Background = styled.div`
+export const Background = styled.header`
   width: 100%;
   height: 500px;
   display: flex;

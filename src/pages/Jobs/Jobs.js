@@ -21,7 +21,7 @@ const Dashboard = () => {
 export default Dashboard;
 
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
@@ -60,7 +60,7 @@ const SmallWrapper = styled.div`
   padding-bottom: 100px;
 
   @media (min-width: ${768}px) {
-    grid-template-columns: 43% 43%;
+    grid-template-columns: 48% 48%;
     grid-gap: 10px 10px;
     padding: none;
   }

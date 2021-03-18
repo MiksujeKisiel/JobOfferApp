@@ -22,8 +22,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   background: white;
   width: 90%;
-  box-shadow: 0 0 10px rgba(21, 21, 21, 0.3);
-  margin: 10px 0;
+  box-shadow: 0 0 10px rgba(21, 21, 21, 0.2);
+  margin: 5px 0;
   padding: 30px 30px;
   @media (min-width: ${600}px) {
     flex-direction: row;

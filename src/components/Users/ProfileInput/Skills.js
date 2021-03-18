@@ -96,7 +96,7 @@ const Skills = () => {
 const ProfileSchema = Yup.object().shape({
   skills: Yup.array().of(
     Yup.object().shape({
-      name: Yup.string().min(4, "too short").required("Required"),
+      name: Yup.string().min(2, "too short").required("Required"),
     })
   ),
 });

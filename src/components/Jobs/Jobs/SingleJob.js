@@ -32,7 +32,7 @@ const SingleJob = ({ jobs, id, userProfile }) => {
             </TopWrapper>
             <MidWrapper>
               <Level>{level}</Level>
-              <Wallet className="svg" /> {earnings}
+              <Wallet className="svg" /> {earnings}zł
               <Marker className="svg" /> {location}
             </MidWrapper>
             <BottomWrapper>
@@ -56,11 +56,11 @@ const SingleJob = ({ jobs, id, userProfile }) => {
         </TopWrapper>
         <MidWrapper>
           <Level>{level}</Level>
-          <Wallet className="svg" /> {earnings}
+          <Wallet className="svg" /> {earnings}zł
           <Marker className="svg" /> {location}
         </MidWrapper>
         <BottomWrapper>
-          {requirement.slice(0, 3).map((text) => (
+          {requirement.slice(0, 4).map((text) => (
             <Attribute>{text.requirement}</Attribute>
           ))}
         </BottomWrapper>
@@ -93,12 +93,12 @@ const Wrapper = styled(Link)`
   }
 `;
 const Image = styled.img`
-  width: 50px;
+  width: 45px;
   height: 40px;
 
   @media (min-width: ${1440}px) {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
   }
 `;
 const Name = styled.p`
@@ -106,13 +106,13 @@ const Name = styled.p`
   font-size: 19px;
   color: #555454;
   @media (min-width: ${768}px) {
-    font-size: 20px;
+    font-size: 16px;
   }
   @media (min-width: ${1280}px) {
-    font-size: 20px;
+    font-size: 19px;
   }
   @media (min-width: ${1440}px) {
-    font-size: 22px;
+    font-size: 20px;
   }
 `;
 const Company = styled.p`
@@ -135,6 +135,7 @@ const Level = styled.p`
   color: #29b6f6;
   font-weight: 500;
   font-size: 12px;
+
   @media (min-width: ${768}px) {
     font-size: 13px;
   }
@@ -165,15 +166,16 @@ const MidWrapper = styled.div`
     .svg {
       width: 17px;
       height: 17px;
-    }
-    font-size: 14px;
-    padding: 35px 0 30px 0;
+      margin: 0 8px 0 10px;
+        }
+    font-size: 12px;
+    padding: 25px 0 30px 0;
   }
   @media (min-width: ${1440}px) {
     .svg {
       width: 19px;
       height: 19px;
-      margin: 0 8px 0 30px;
+      margin: 0 8px 0 15px;
     }
     font-size: 14px;
   }
@@ -183,6 +185,9 @@ const BottomWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  max-height: 30px;
+  overflow: hidden;
 `;
 
 const Attribute = styled.p`

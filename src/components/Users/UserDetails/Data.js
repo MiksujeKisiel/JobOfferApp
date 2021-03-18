@@ -19,13 +19,20 @@ export const Data = ({
       </SmallWrapper>
       <SmallWrapper>-</SmallWrapper>
       <SmallWrapper>
-        <Text>Profesja: <span>{!profession ? "Brak informacji" : profession}</span></Text>
+        <Text>
+          Profesja: <span>{!profession ? "Brak informacji" : profession}</span>
+        </Text>
       </SmallWrapper>
       <SmallWrapper>
-        <Text> Miejsce zamieszkania: <span>{!location ? "Brak informacji" : location}</span> </Text>
+        <Text>
+          Miejsce zamieszkania:
+          <span>{!location ? "Brak informacji" : location}</span>
+        </Text>
       </SmallWrapper>
       <SmallWrapper>
-        <Text> E-mail: <span>{!email ? "Brak informacji" : email}</span> </Text>
+        <Text>
+          E-mail: <span>{!email ? "Brak informacji" : email}</span>
+        </Text>
       </SmallWrapper>
     </Wrapper>
   );
@@ -52,6 +59,10 @@ const Text = styled.p`
   span {
     font-weight: 500;
   }
+  @media (min-width: ${768}px) {
+    font-size: 16px;
+    line-height: 200%;
+  }
 `;
 
 const Name = styled.p`
@@ -59,6 +70,9 @@ const Name = styled.p`
   font-weight: 600;
   @media (min-width: ${768}px) {
     font-size: 24px;
+  }
+  @media (min-width: ${768}px) {
+    font-size: 28px;
   }
 `;
 const SmallWrapper = styled.div`

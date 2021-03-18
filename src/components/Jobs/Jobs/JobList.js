@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import JobList from "./SingleJob";
 import Loader from "../../Loader/Loader";
 
-export const JobsList = ({userProfile}) => {
+export const JobsList = ({ userProfile }) => {
   useFirestoreConnect([{ collection: "jobs" }]);
   const jobs = useSelector((state) => state.firestore.ordered.jobs);
 
@@ -14,13 +14,13 @@ export const JobsList = ({userProfile}) => {
   } else if (!jobs || !jobs) {
     content = (
       <div>
-        <p>nie masz dodanych ofert prac</p>
+        <p>Brak dodanych ofert prac</p>
       </div>
     );
   } else if (jobs.length === 0) {
     content = (
       <div>
-        <p>nie masz dodanych ofert prac</p>
+        <p>Brak dodanych ofert prac</p>
       </div>
     );
   } else {
@@ -28,7 +28,14 @@ export const JobsList = ({userProfile}) => {
       <>
         {jobs &&
           jobs.map((jobs) => (
-            <JobList userProfile={userProfile} jobs={jobs} id={jobs.id} key={jobs.id} />
+        
+            <JobList
+              userProfile={userProfile}
+              jobs={jobs}
+              id={jobs.id}
+              key={jobs.id}
+            />
+         
           ))}
       </>
     );

@@ -33,18 +33,19 @@ const WrappedModal = styled.div`
   max-width: 50rem;
   box-shadow: 0 0.5rem 3.5em rgba(21,21,21,0.3);
   border-radius: 1rem;
-  background-color: grey;
+  background-color: rgba(244,244,244, 0.8);
   transition: all 0.1s;
 `;
 
 const InsideWrapper = styled.div`
   position: relative;
   width: 500px;
-  height: 500px;
-  background-color: blue;
+  height: 400px;
+  z-index: 10;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   padding: 4rem 3rem;
+ 
 `;

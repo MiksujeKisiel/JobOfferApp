@@ -21,17 +21,26 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, loading: false, error: payload };
 
     case actions.DELETE_JOB_START:
-      return { ...state, deleteJob: { ...state.deleteJob, loading: true } };
+      return {
+        ...state,
+        error: null,
+        loading: false,
+        deleteJob: { ...state.deleteJob, loading: true },
+      };
 
     case actions.DELETE_JOB_SUCCESS:
       return {
         ...state,
+        error: null,
+        loading: false,
         deleteJob: { ...state.deleteJob, loading: false, error: false },
       };
-      
+
     case actions.DELETE_JOB_FAIL:
       return {
         ...state,
+        error: null,
+        loading: false,
         deleteJob: { ...state.deleteJob, loading: false, error: payload },
       };
 

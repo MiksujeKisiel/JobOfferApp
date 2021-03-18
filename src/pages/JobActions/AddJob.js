@@ -159,7 +159,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                     profile
                     onClick={() => arrayHelpers.push("")}
                   >
-                    Dodaj oferowanie
+                    Dodaj wymaganie
                   </Button>
                 </BigWrapper>
               )}
@@ -197,7 +197,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                     profile
                     onClick={() => arrayHelpers.push("")}
                   >
-                    Dodaj oferowanie
+                    Dodaj obowiązek
                   </Button>
                 </BigWrapper>
               )}
@@ -234,7 +234,7 @@ const AddJob = ({ addJob, error, loading, jobs, jobEditing, editJob, id }) => {
                     profile
                     onClick={() => arrayHelpers.push("")}
                   >
-                    Dodaj oferowanie
+                    Dodaj co oferujesz
                   </Button>
                 </BigWrapper>
               )}
@@ -501,18 +501,6 @@ const JobSchema = Yup.object().shape({
     .required("Musisz podać rodzaj wypłaty")
     .min(3, "Zbyt krótko")
     .max(20, "Zbyt długie"),
-  interview: Yup.string()
-    .required("Musisz podać miejsce rozmowy o prace")
-    .min(3, "Zbyt krótko")
-    .max(15, "Zbyt długie"),
-  timelapse: Yup.string()
-    .required("Musisz podać na jaki etat rekrutujesz")
-    .min(3, "Zbyt krótko")
-    .max(15, "Zbyt długie"),
-  level: Yup.string()
-    .required("Musisz podać na jaki poziom rekrutujesz")
-    .min(3, "Zbyt krótko")
-    .max(15, "Zbyt długie"),
   about: Yup.string()
     .required("Musisz opisać swoją firmę")
     .min(3, "Zbyt krótko")
