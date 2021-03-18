@@ -12,7 +12,7 @@ const Dashboard = () => {
         <BigText>Znajdź wymarzoną pracę IT</BigText>
       </Background>
       <Wrapper>
-        <SmallWrapper><JobsList/></SmallWrapper>
+        <SmallWrapper><JobsList/> </SmallWrapper>
       </Wrapper>
     </>
   );
