@@ -15,6 +15,10 @@
 - Show/Hide your profile 
 - Edit profile
 
+TEST ACCOUNT
+email: miskujekisiel@gmail.com
+password: testtest
+
 ## Live preview: https://smakowskijoboffer.netlify.app/
 ![image](https://user-images.githubusercontent.com/68729655/111154102-18576700-8593-11eb-96bd-bd3cbeea5929.png)
 
